@@ -1,28 +1,27 @@
-(setq inhibit-startup-message t)
+(setq inhibit-startup-message t) ; Disable startup message
 
-(scroll-bar-mode -1)
+(scroll-bar-mode -1)    ; Disable scroll-bar
 (tool-bar-mode -1)
 (tooltip-mode -1)
-(set-fringe-mode 10)
+(set-fringe-mode 0)
+(menu-bar-mode -1)      ; Disable the menu-bar
 
-(menu-bar-mode -1)
-
-(set-face-attribute 'default nil :font "Terminus (TTF)" :height 135)
-
-(load-theme 'wombat)
+;; Fonts
+; (set-face-attribute 'default nil :font "DejaVuSansMono Nerd Font" :height 110)
+(set-face-attribute 'default nil :font "Hack" :height 110)
 
 ;; Initialize package sources
 (require 'package)
 
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
-                         ("org" . "https://orgmode.org/elpa/")
-                         ("elpa" . "https://elpa.gnu.org/packages/")))
+			 ("org" . "https://orgmode.org/elpa/")
+			 ("elpa" . "https://elpa.gnu.org/packages/")))
 
 (package-initialize)
 (unless package-archive-contents
   (package-refresh-contents))
 
-;; Initialize use-package on non-Linux platforms
+;; Initialize use-package
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 
@@ -33,19 +32,6 @@
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
 (use-package ivy
-  :bind (("C-s" . swiper)
-	 :map ivy-minibuffer-map
-	 ("TAB" . ivy-alt-done)
-	 ("C-l" . ivy-alt-done)
-	 ("C-j" . ivy-next-line)
-	 ("C-k" . ivy-previous-line)
-	 :map ivy-switch-buffer-map
-	 ("C-k" . ivy-previous-line)
-	 ("C-l" . ivy-done)
-	 ("C-d" . ivy-switch-buffer-kill)
-	 :map ivy-reverse-i-search-map
-	 ("C-k" . ivy-previous-line)
-	 ("C-d" . ivy-reverse-i-search-kill))
   :config
   (ivy-mode 1))
 
@@ -53,17 +39,9 @@
 (global-display-line-numbers-mode t)
 
 ;; Disable line numbers for some modes
-(dolist (mode '(org-mode-hook
-                 term-mode-hook
-                 eshell-mode-hook))
+(dolist (mode '(term-mode-hook
+		eshell-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
-
-;; Enabling which-key package
-(use-package which-key
-  :init (which-key-mode)
-  :diminish which-key-mode
-  :config
-  (setq which-key-idle-delay 1))
 
 (use-package evil
   :init
@@ -87,16 +65,39 @@
   :after evil
   :config
   (evil-collection-init))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(auctex auctex-latexmk evil-collection evil which-key use-package ivy-rich)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+
+(use-package modus-themes
+  :ensure
+  :init
+  (setq modus-themes-italic-constructs t
+	modus-themes-bold-constructs nil
+	modus-themes-region '(bg-only no-extend))
+  (modus-themes-load-themes)
+  :config
+  (modus-themes-load-vivendi))
+
+(use-package latex
+  :ensure auctex)
+
+(require 'auctex-latexmk)
+(auctex-latexmk-setup)
+
+;; (pdf-loader-install)
+(use-package pdf-tools
+   :pin manual
+   :config
+   (pdf-tools-install)
+   (setq-default pdf-view-display-size 'fit-width)
+   (define-key pdf-view-mode-map (kbd "C-s") 'isearch-forward)
+   :custom
+   (pdf-annot-activate-created-annotations t "automatically annotate highlights"))
+
+(setq TeX-view-program-selection '((output-pdf "PDF Tools"))
+      TeX-view-program-list '(("PDF Tools" TeX-pdf-tools-sync-view))
+      TeX-source-correlate-start-server t)
+
+(add-hook 'TeX-after-compilation-finished-functions
+          #'TeX-revert-document-buffer)
+
+;; PDF tools doesn't work well with linum mode. This line deactivates it
+(add-hook 'pdf-view-mode-hook (lambda() (linum-mode -1)))
