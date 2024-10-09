@@ -160,7 +160,8 @@
 (setq org-log-done 'time)
 (setq org-todo-keywords
       '((sequence "TODO" "IN-PROGRESS" "DONE")))
-
+; org-indent-mode turned on by default
+(setq org-startup-indented t)
 ;; Emacs identifies sentences with a single space after fullstop.
 (setq sentence-end-double-space nil)
 
