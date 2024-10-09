@@ -1,0 +1,8 @@
+auto-save-list/
+elpa/
+transient/
+*~
+eshell/
+tutorial/
+eln-cache/
+custom.el
