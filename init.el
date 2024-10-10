@@ -164,6 +164,9 @@
 (setq org-startup-indented t)
 ;; Emacs identifies sentences with a single space after fullstop.
 (setq sentence-end-double-space nil)
+;; Start calendar week from Monday
+(setq calendar-week-start-day 1)
+
 
 ;; Automatic text wrapping in all major modes
 (setq-default auto-fill-function 'do-auto-fill)
