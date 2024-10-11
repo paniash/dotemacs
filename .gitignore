@@ -6,3 +6,4 @@ eshell/
 tutorial/
 eln-cache/
 custom.el
+session*
