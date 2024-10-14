@@ -61,10 +61,6 @@
 (column-number-mode)
 (global-display-line-numbers-mode t)
 
-;; ;;; UNDO
-;; ;; Vim style undo not needed for emacs 28
-;; (use-package undo-fu)
-
 ;;; Vim Bindings
 (setq evil-want-keybinding nil)
 (use-package evil
