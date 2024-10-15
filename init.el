@@ -269,34 +269,6 @@
   (setq world-clock-timer-enable t)
   (setq world-clock-timer-second 60))
 
-;;;; Pulsar (temporarily highlights text when a function is invoked)
-;; Read the pulsar manual: <https://protesilaos.com/emacs/pulsar>.
-(use-package pulsar
-  :ensure t
-  :config
-  (setopt pulsar-pulse t
-          pulsar-delay 0.055
-          pulsar-iterations 10
-          pulsar-face 'pulsar-red
-          pulsar-highlight-face 'pulsar-cyan)
-  (customize-set-variable
-   'pulsar-pulse-functions
-   '(evil-yank))
-
-  (pulsar-global-mode 1)
-  :hook
-  ;; There are convenience functions/commands which pulse the line using
-  ;; a specific colour: `pulsar-pulse-line-red' is one of them.
-  ((next-error . (pulsar-pulse-line-red pulsar-recenter-top pulsar-reveal-entry))
-   (minibuffer-setup . pulsar-pulse-line-red))
-  :bind
-  ;; pulsar does not define any key bindings.  This is just my personal
-  ;; preference.  Remember to read the manual on the matter.  Evaluate:
-  ;;
-  ;; (info "(elisp) Key Binding Conventions")
-  (("C-x l" . pulsar-pulse-line) ; override `count-lines-page'
-   ("C-x L" . pulsar-highlight-dwim))) ; or use `pulsar-highlight-line'
-
 ;; TODO add consult and embark packages
 ;; TODO play around with General.el
 
