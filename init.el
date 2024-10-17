@@ -294,7 +294,7 @@
 
   (add-hook 'dired-mode-hook 'dired-hide-details-mode))
 
-;; Mode-specific keybindings using evil
-(evil-define-key 'normal dired-mode-map
-  (kbd "h") 'dired-up-directory
-  (kbd "l") 'dired-find-file)
+;; ;; Mode-specific keybindings using evil
+;; (evil-define-key 'normal dired-mode-map
+;;   (kbd "h") 'dired-up-directory
+;;   (kbd "l") 'dired-find-file)
