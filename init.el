@@ -163,6 +163,10 @@
 ;; Start calendar week from Monday
 (setq calendar-week-start-day 1)
 
+;; Org specific global keybindings
+(global-set-key (kbd "C-c a") #'org-agenda)
+(global-set-key (kbd "C-c c") #'org-capture)
+
 
 ;; Automatic text wrapping in all major modes
 (setq-default auto-fill-function 'do-auto-fill)
