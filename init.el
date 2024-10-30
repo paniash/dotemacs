@@ -307,3 +307,7 @@
 ;; Emacs local webserver
 (use-package simple-httpd
   :ensure t)
+
+;; Python-mode config
+;; Use TAB in place of C-M-i for completion-at-point
+(setq tab-always-indent 'complete)
