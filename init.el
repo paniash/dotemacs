@@ -33,10 +33,6 @@
                 eshell-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode -1))))
 
-(use-package ef-themes
-  :config
-  (load-theme 'ef-symbiosis t))
-
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
@@ -112,6 +108,11 @@
     (interactive "<r>")
     (comment-or-uncomment-region beg end))
   (evil-define-key 'normal 'global (kbd "gc") 'my-evil-comment-or-uncomment))
+
+;; Protesilaos' ef-theme loading
+(use-package ef-themes
+  :config
+  (load-theme 'ef-symbiosis t))
 
 ;;; Vertico
 (use-package vertico
