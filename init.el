@@ -206,6 +206,7 @@
 (add-hook 'LaTeX-mode-hook 'prettify-symbols-mode)
 (add-hook 'LaTeX-mode-hook #'turn-on-cdlatex)
 (add-hook 'LaTeX-mode-hook (prettify-symbols-mode -1))
+(setq font-latex-fontify-script nil)    ;; disables fontification of formatted text
 
 (use-package orderless
   :ensure t
