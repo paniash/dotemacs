@@ -313,3 +313,7 @@
 ;; Python-mode config
 ;; Use TAB in place of C-M-i for completion-at-point
 (setq tab-always-indent 'complete)
+;; Turn on reftex by default in .tex files
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+;; Activate nice interface between RefTeX and AUCTeX
+(setq reftex-plug-into-AUCTeX t)
