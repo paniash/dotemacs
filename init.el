@@ -317,3 +317,9 @@
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
 ;; Activate nice interface between RefTeX and AUCTeX
 (setq reftex-plug-into-AUCTeX t)
+
+;; YAML file support
+(use-package yaml-mode
+  :ensure t
+  :config
+  (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode)))
