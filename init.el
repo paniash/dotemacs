@@ -154,20 +154,21 @@
   (setq which-key-idle-delay 1))
 
 ;; Org-mode specific settings
-(setq org-log-done 'time)
-(setq org-todo-keywords
-      '((sequence "TODO" "IN-PROGRESS" "DONE")))
-;; org-indent-mode turned on by default
-(setq org-startup-indented t)
-;; Emacs identifies sentences with a single space after fullstop.
-(setq sentence-end-double-space nil)
-;; Start calendar week from Monday
-(setq calendar-week-start-day 1)
+(use-package org
+  :config
+  (setq org-log-done 'time)
+  (setq org-todo-keywords
+    '((sequence "TODO" "IN-PROGRESS" "DONE")))
+  ;; org-indent-mode turned on by default
+  (setq org-startup-indented t)
+  ;; Emacs identifies sentences with a single space after fullstop.
+  (setq sentence-end-double-space nil)
+  ;; Start calendar week from Monday
+  (setq calendar-week-start-day 1)
 
-;; Org specific global keybindings
-(global-set-key (kbd "C-c a") #'org-agenda)
-(global-set-key (kbd "C-c c") #'org-capture)
-
+  ;; Org specific global keybindings
+  (global-set-key (kbd "C-c a") #'org-agenda)
+  (global-set-key (kbd "C-c c") #'org-capture))
 
 ;; Automatic text wrapping in all major modes
 (setq-default auto-fill-function 'do-auto-fill)
@@ -201,12 +202,12 @@
 
 ;; AucTeX package for LaTeX niceties
 (use-package tex
-  :ensure auctex)
-
-(add-hook 'LaTeX-mode-hook 'prettify-symbols-mode)
-(add-hook 'LaTeX-mode-hook #'turn-on-cdlatex)
-(add-hook 'LaTeX-mode-hook (prettify-symbols-mode -1))
-(setq font-latex-fontify-script nil)    ;; disables fontification of formatted text
+  :ensure auctex
+  :config
+  (add-hook 'LaTeX-mode-hook 'prettify-symbols-mode)
+  (add-hook 'LaTeX-mode-hook #'turn-on-cdlatex)
+  (add-hook 'LaTeX-mode-hook (prettify-symbols-mode -1))
+  (setq font-latex-fontify-script nil))    ;; disables fontification of formatted text
 
 (use-package orderless
   :ensure t
