@@ -207,6 +207,10 @@
   (add-hook 'LaTeX-mode-hook 'prettify-symbols-mode)
   (add-hook 'LaTeX-mode-hook #'turn-on-cdlatex)
   (add-hook 'LaTeX-mode-hook (prettify-symbols-mode -1))
+  ;; Turn on reftex by default in .tex files
+  (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+  ;; Activate nice interface between RefTeX and AUCTeX
+  (setq reftex-plug-into-AUCTeX t)
   (setq font-latex-fontify-script nil))    ;; disables fontification of formatted text
 
 (use-package orderless
@@ -314,10 +318,6 @@
 ;; Python-mode config
 ;; Use TAB in place of C-M-i for completion-at-point
 (setq tab-always-indent 'complete)
-;; Turn on reftex by default in .tex files
-(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
-;; Activate nice interface between RefTeX and AUCTeX
-(setq reftex-plug-into-AUCTeX t)
 
 ;; YAML file support
 (use-package yaml-mode
