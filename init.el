@@ -91,6 +91,7 @@
   (evil-collection-init))
 
 (use-package undo-fu
+  :demand t
   :commands (undo-fu-only-undo
 	     undo-fu-only-redo
 	     undo-fu-only-redo-all
@@ -110,6 +111,7 @@
 
 ;; Protesilaos' ef-theme loading
 (use-package ef-themes
+  :demand t
   :config
   (load-theme 'ef-symbiosis t))
 
@@ -133,6 +135,7 @@
 
 ;; Vi-style fringes for empty lines
 (use-package vi-tilde-fringe
+  :demand t
   :config
   (global-vi-tilde-fringe-mode))
 
@@ -178,8 +181,11 @@
   :ensure t)
 
 (use-package markdown-mode
+  :defer t
   :mode ("*.md" . gfm-mode)
-  :init (setq markdown-command "multimarkdown"))
+  :init (setq markdown-command "multimarkdown")
+  :config
+  (setq markdown-fontify-code-blocks-natively t))
 
 ;; Deletes trailing whitespace upon saving a file
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -203,19 +209,17 @@
 (use-package tex
   :ensure auctex
   :ensure cdlatex
+  :hook ((LaTeX-mode . cdlatex-mode)
+	(LaTeX-mode . reftex-mode))  ;; Turn on reftex by default in .tex files
   :config
-  (add-hook 'LaTeX-mode-hook #'turn-on-cdlatex)
-  (add-hook 'LaTeX-mode-hook (prettify-symbols-mode -1))
-  ;; Turn on reftex by default in .tex files
-  (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
   ;; Activate nice interface between RefTeX and AUCTeX
   (setq reftex-plug-into-AUCTeX t)
   (setq font-latex-fontify-script nil))    ;; disables fontification of formatted text
 
 (use-package orderless
   :custom
-  (completion-styles '(orderless basic))
-  (completion-category-overrides '((file (styles basic partial-completion)))))
+  ((completion-styles '(orderless basic))
+  (completion-category-overrides '((file (styles basic partial-completion))))))
 
 ;; Add Zathura as default pdf-viewer
 (push (list 'output-pdf "Zathura") TeX-view-program-selection)
