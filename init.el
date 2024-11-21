@@ -249,9 +249,9 @@
   :commands vterm
   :config
   ;; Speed up vterm
+  (add-hook 'vterm-mode-hook #'turn-off-evil-mode nil)
   (setq vterm-timer-delay 0.01))
 
-(add-hook 'vterm-mode-hook #'turn-off-evil-mode nil)
 
 ;; World-clock customization
 ;;;; World clock (M-x world-clock)
