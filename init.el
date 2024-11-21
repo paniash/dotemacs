@@ -204,7 +204,6 @@
 (use-package tex
   :ensure auctex
   :config
-  (add-hook 'LaTeX-mode-hook 'prettify-symbols-mode)
   (add-hook 'LaTeX-mode-hook #'turn-on-cdlatex)
   (add-hook 'LaTeX-mode-hook (prettify-symbols-mode -1))
   ;; Turn on reftex by default in .tex files
