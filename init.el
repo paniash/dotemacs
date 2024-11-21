@@ -91,7 +91,6 @@
   (evil-collection-init))
 
 (use-package undo-fu
-  :ensure t
   :commands (undo-fu-only-undo
 	     undo-fu-only-redo
 	     undo-fu-only-redo-all
@@ -178,7 +177,6 @@
   :ensure t)
 
 (use-package markdown-mode
-  :ensure t
   :mode ("*.md" . gfm-mode)
   :init (setq markdown-command "multimarkdown"))
 
@@ -203,6 +201,7 @@
 ;; AucTeX package for LaTeX niceties
 (use-package tex
   :ensure auctex
+  :ensure cdlatex
   :config
   (add-hook 'LaTeX-mode-hook #'turn-on-cdlatex)
   (add-hook 'LaTeX-mode-hook (prettify-symbols-mode -1))
@@ -213,7 +212,6 @@
   (setq font-latex-fontify-script nil))    ;; disables fontification of formatted text
 
 (use-package orderless
-  :ensure t
   :custom
   (completion-styles '(orderless basic))
   (completion-category-overrides '((file (styles basic partial-completion)))))
@@ -244,7 +242,6 @@
 
 ;; vterm terminal emulation
 (use-package vterm
-  :ensure t
   :defer t
   :commands vterm
   :config
@@ -320,6 +317,5 @@
 
 ;; YAML file support
 (use-package yaml-mode
-  :ensure t
   :config
   (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode)))
