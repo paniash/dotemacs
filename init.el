@@ -221,8 +221,8 @@
   ((completion-styles '(orderless basic))
   (completion-category-overrides '((file (styles basic partial-completion))))))
 
-;; Add Zathura as default pdf-viewer
-(push (list 'output-pdf "Zathura") TeX-view-program-selection)
+;; ;; Add Zathura as default pdf-viewer
+;; (push (list 'output-pdf "Zathura") TeX-view-program-selection)
 
 ;; ;; Text wrapping for specific modes
 ;; (add-hook 'org-mode-hook
