@@ -306,6 +306,19 @@
 
   (add-hook 'dired-mode-hook 'dired-hide-details-mode))
 
+(use-package dired-subtree
+  :ensure t
+  :after dired
+  :bind
+  ( :map dired-mode-map
+    ("<tab>" . dired-subtree-toggle)
+    ("TAB" . dired-subtree-toggle)
+    ("<backtab>" . dired-subtree-remove)
+    ("S-TAB" . dired-subtree-remove))
+  :config
+  (setq dired-subtree-use-backgrounds nil))
+
+
 ;; Minibuffer keybindings
 (define-key minibuffer-local-map (kbd "C-v") 'yank)
 
