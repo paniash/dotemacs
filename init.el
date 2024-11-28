@@ -111,7 +111,7 @@
 
 ;; Protesilaos' ef-theme loading
 (use-package ef-themes
-  :demand t
+  :ensure t
   :config
   (load-theme 'ef-symbiosis t))
 
