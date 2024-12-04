@@ -332,6 +332,7 @@
 ;; Python-mode config
 ;; Use TAB in place of C-M-i for completion-at-point
 ;; (setq tab-always-indent 'complete)
+(setq python-shell-enable-font-lock nil)
 
 ;; YAML file support
 (use-package yaml-mode
