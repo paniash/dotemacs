@@ -133,12 +133,6 @@
   ;; already arrived directory
   (add-hook 'rfn-eshadow-update-overlay-hook #'vertico-directory-tidy))
 
-;; Vi-style fringes for empty lines
-(use-package vi-tilde-fringe
-  :demand t
-  :config
-  (global-vi-tilde-fringe-mode))
-
 ;; Disable vi-style fringes for some modes
 (dolist (mode '(term-mode-hook
                 shell-mode-hook
