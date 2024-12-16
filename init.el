@@ -133,14 +133,6 @@
   ;; already arrived directory
   (add-hook 'rfn-eshadow-update-overlay-hook #'vertico-directory-tidy))
 
-;; Disable vi-style fringes for some modes
-(dolist (mode '(term-mode-hook
-                shell-mode-hook
-                treemacs-mode-hook
-		dired-mode-hook
-                eshell-mode-hook))
-  (add-hook mode (lambda () (vi-tilde-fringe-mode -1))))
-
 ;; Which-key (to show available commands when typing a prefix say 'C-c')
 (use-package which-key
   :defer 0
