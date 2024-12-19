@@ -160,6 +160,9 @@
 	'(("IN-PROGRESS" . "orange")
 	  ("CANCELLED" . (:foreground "#B50741" :weight bold))))
 
+  ;; Block parent TODO to DONE if children are undone
+  (setq org-enforce-todo-dependencies t)
+
   ;; Org specific global keybindings
   (global-set-key (kbd "C-c a") #'org-agenda)
   (global-set-key (kbd "C-c c") #'org-capture))
