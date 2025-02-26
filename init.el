@@ -267,13 +267,12 @@
   (setq zoneinfo-style-world-list ; M-x shell RET timedatectl list-timezones
         '(("America/Los_Angeles" "Los Angeles")
           ("America/New_York" "New York")
-          ("America/Vancouver" "Vancouver")
           ("UTC" "UTC")
           ("Europe/Berlin" "Berlin")
+          ("Europe/Helsinki" "Helsinki")
           ("Asia/Kolkata" "Kolkata")
           ("Asia/Singapore" "Singapore")
           ("Asia/Tokyo" "Tokyo")
-          ("Asia/Vladivostok" "Vladivostok")
           ("Australia/Sydney" "Sydney")))
 
   ;; All of the following variables are for Emacs 28
