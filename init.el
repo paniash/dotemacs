@@ -209,6 +209,7 @@
   :config
   ;; Activate nice interface between RefTeX and AUCTeX
   (setq reftex-plug-into-AUCTeX t)
+  (add-hook 'LaTeX-mode-hook (lambda () (setq TeX-command-default "LaTeXmk")))
   (setq font-latex-fontify-script nil))    ;; disables fontification of formatted text
 
 (use-package orderless
