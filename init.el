@@ -219,6 +219,7 @@
 
 ;; ;; Add Zathura as default pdf-viewer
 ;; (push (list 'output-pdf "Zathura") TeX-view-program-selection)
+(setq TeX-view-program-selection '((output-pdf "Zathura")))
 
 ;; ;; Text wrapping for specific modes
 ;; (add-hook 'org-mode-hook
