@@ -226,6 +226,11 @@
 ;; 	  (lambda ()
 ;; 	    (set-fill-column 90)))
 
+;; Setting leader key in emacs
+(evil-set-leader 'normal (kbd "SPC"))
+(evil-define-key 'normal LaTeX-mode-map
+  (kbd "<leader>c") 'TeX-command-run-all)
+
 ;; Text wrapping for specific modes
 (defun my-add-to-multiple-hooks (function hooks)
   (mapc (lambda (hook)
