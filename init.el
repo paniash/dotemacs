@@ -399,3 +399,26 @@ The DWIM behaviour of this command is as follows:
           (set-window-buffer (next-window) next-win-buffer)
           (select-window first-win)
           (if this-win-2nd (other-window 1))))))
+
+
+;; mu4e for email
+(use-package mu4e
+  :ensure nil
+  :config
+
+  ;; This is set to 't' to avoid mail syncing issues when using mbsync
+  (setq mu4e-change-filenames-when-moving t)
+
+  (setq user-mail-address "ap@ashishpanigrahi.com")
+  (setq user-full-name "Ashish Panigrahi")
+
+  (setq mu4e-drafts-folder "/Drafts")
+  (setq mu4e-sent-folder "/Sent")
+  (setq mu4e-refile-folder "/Archive")
+  (setq mu4e-trash-folder "/Trash")
+
+  (setq mu4e-maildir-shortcuts
+	'(("/INBOX" . ?i)
+	  ("/Sent" . ?s)
+	  ("/Trash" . ?t)
+	  ("/Draft" . ?d))))
