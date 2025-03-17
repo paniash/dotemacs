@@ -220,11 +220,6 @@
 ;; (push (list 'output-pdf "Zathura") TeX-view-program-selection)
 (setq TeX-view-program-selection '((output-pdf "Zathura")))
 
-;; ;; Text wrapping for specific modes
-;; (add-hook 'org-mode-hook
-;; 	  (lambda ()
-;; 	    (set-fill-column 90)))
-
 ;; Setting leader key in emacs
 (evil-set-leader 'normal (kbd "SPC"))
 (evil-define-key 'normal LaTeX-mode-map
