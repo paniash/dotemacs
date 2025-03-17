@@ -203,8 +203,7 @@
 ;; AucTeX package for LaTeX niceties
 (use-package tex
   :ensure auctex
-  :ensure cdlatex
-  :hook ((LaTeX-mode . cdlatex-mode)
+  :hook ((LaTeX-mode . electric-pair-mode)
 	(LaTeX-mode . reftex-mode))  ;; Turn on reftex by default in .tex files
   :config
   ;; Activate nice interface between RefTeX and AUCTeX
