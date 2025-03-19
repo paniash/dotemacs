@@ -218,7 +218,7 @@
   :config
   ;; Activate nice interface between RefTeX and AUCTeX
   (setq reftex-plug-into-AUCTeX t)
-  ;; Autosaving and document parsing enabled
+  ;; LaTeX document parsing enabled (even on save)
   (setq TeX-auto-save t)
   (setq TeX-parse-self t)
   (add-hook 'LaTeX-mode-hook (lambda () (setq TeX-command-default "LaTeXmk")))
