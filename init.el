@@ -404,6 +404,10 @@ The DWIM behaviour of this command is as follows:
           (select-window first-win)
           (if this-win-2nd (other-window 1))))))
 
+;; Helpful package
+;; Adds verbose documentation for help pages
+(use-package helpful
+  :ensure t)
 
 ;; mu4e for email
 (use-package mu4e
