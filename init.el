@@ -152,7 +152,7 @@
   ;; Collapse the log entries into a "drawer"
   (setq org-log-into-drawer t)
   (setq org-todo-keywords
-    '((sequence "TODO(t)" "IN-PROGRESS(p)" "|" "DONE(d)" "CANCELLED(c)")))
+    '((sequence "TODO(t)" "PROG(p)" "|" "DONE(d)" "CANCELLED(c)")))
   ;; org-indent-mode turned on by default
   (setq org-startup-indented t)
   ;; Emacs identifies sentences with a single space after fullstop.
