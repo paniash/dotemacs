@@ -147,6 +147,10 @@
   :ensure nil
   :config
   (setq org-log-done 'time)
+  ;; Adds log entries in org agenda
+  (setq org-agenda-start-with-log-mode t)
+  ;; Collapse the log entries into a "drawer"
+  (setq org-log-into-drawer t)
   (setq org-todo-keywords
     '((sequence "TODO(t)" "IN-PROGRESS(p)" "|" "DONE(d)" "CANCELLED(c)")))
   ;; org-indent-mode turned on by default
