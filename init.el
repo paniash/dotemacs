@@ -162,7 +162,7 @@
 
   ;; Faces for TODO keywords
   (setq org-todo-keyword-faces
-	'(("IN-PROGRESS" . "orange")
+	'(("PROG" . "orange")
 	  ("CANCELLED" . (:foreground "#B50741" :weight bold))))
 
   ;; Block parent TODO to DONE if children are undone
