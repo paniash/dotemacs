@@ -221,10 +221,17 @@
   (add-hook 'LaTeX-mode-hook (lambda () (setq TeX-command-default "LaTeXmk")))
   (setq font-latex-fontify-script nil))    ;; disables fontification of formatted text
 
+;; Setup YaSnippet for LaTeX
+(use-package yasnippet
+  :ensure t
+  :hook ((LaTeX-mode) . yas-minor-mode-on)
+  :init
+  (setq yas-snippet-dir "~/.emacs.d/snippets"))
+
 (use-package orderless
   :custom
   ((completion-styles '(orderless basic))
-  (completion-category-overrides '((file (styles basic partial-completion))))))
+  (completon-category-overrides '((file (styles basic partial-completion))))))
 
 ;; ;; Add Zathura as default pdf-viewer
 ;; (push (list 'output-pdf "Zathura") TeX-view-program-selection)
