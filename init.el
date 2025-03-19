@@ -161,8 +161,8 @@
   ;; Setting org-agenda file
   ;; Eliminates the need for putting org-agenda file to the top everytime
   (setq org-agenda-files
-	'("~/documents/phd-notes/agenda.org"
-	  "~/documents/phd-notes/birthdays.org"))
+	'("~/org/agenda.org"
+	  "~/org/birthdays.org"))
 
   ;; Faces for TODO keywords
   (setq org-todo-keyword-faces
