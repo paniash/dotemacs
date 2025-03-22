@@ -221,6 +221,8 @@
   ;; LaTeX document parsing enabled (even on save)
   (setq TeX-auto-save t)
   (setq TeX-parse-self t)
+  ;; Autosave upon compilation
+  (setq TeX-save-query nil)
   (add-hook 'LaTeX-mode-hook (lambda () (setq TeX-command-default "LaTeXmk")))
   (setq font-latex-fontify-script nil))    ;; disables fontification of formatted text
 
