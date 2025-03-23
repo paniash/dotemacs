@@ -270,15 +270,11 @@
    markdown-mode-hook
    LaTeX-mode-hook))
 
-;; vterm terminal emulation
-(use-package vterm
-  :defer t
-  :commands vterm
+;; Emacs eat terminal emulation
+(use-package eat
+  :ensure t
   :config
-  ;; Speed up vterm
-  (add-hook 'vterm-mode-hook #'turn-off-evil-mode nil)
-  (setq vterm-timer-delay 0.01))
-
+  (add-hook 'eat-mode-hook #'turn-off-evil-mode nil))
 
 ;; World-clock customization
 ;;;; World clock (M-x world-clock)
@@ -420,11 +416,6 @@ The DWIM behaviour of this command is as follows:
           (set-window-buffer (next-window) next-win-buffer)
           (select-window first-win)
           (if this-win-2nd (other-window 1))))))
-
-;; Helpful package
-;; Adds verbose documentation for help pages
-(use-package helpful
-  :ensure t)
 
 ;; mu4e for email
 (use-package mu4e
