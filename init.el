@@ -172,6 +172,11 @@
   ;; Block parent TODO to DONE if children are undone
   (setq org-enforce-todo-dependencies t)
 
+  ;; Add syntax highlighting for org documents
+  ;; Also add native <Tab> behaviour in codeblocks
+  (setq org-src-fontify-natively t
+	org-src-tab-acts-natively t)
+
   ;; Org specific global keybindings
   (global-set-key (kbd "C-c a") #'org-agenda)
   (global-set-key (kbd "C-c c") #'org-capture))
