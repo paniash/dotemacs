@@ -254,6 +254,9 @@
   (kbd "<leader>c") 'TeX-command-run-all)
 (evil-define-key nil 'global
   (kbd "<leader>o") 'toggle-window-split)
+(evil-define-key nil 'global
+  (kbd "<leader>a")
+  (lambda () (interactive) (find-file "~/org/agenda.org")))
 
 ;; Text wrapping for specific modes
 (defun my-add-to-multiple-hooks (function hooks)
