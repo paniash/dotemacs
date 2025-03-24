@@ -162,6 +162,7 @@
   ;; Eliminates the need for putting org-agenda file to the top everytime
   (setq org-agenda-files
 	'("~/org/agenda.org"
+	  "~/org/misc.org"
 	  "~/org/birthdays.org"))
 
   ;; Faces for TODO keywords
