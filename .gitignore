@@ -5,6 +5,7 @@ transient/
 eshell/
 tutorial/
 eln-cache/
+elpy/
 custom.el
 session*
 tramp
