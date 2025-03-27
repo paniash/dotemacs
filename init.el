@@ -446,7 +446,7 @@ The DWIM behaviour of this command is as follows:
 
 ;; elpy for python
 (use-package elpy
-  :ensure t
+  :defer t
   :commands (elpy-enable elpy-disable)
   :init
   (elpy-enable)
