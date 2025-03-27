@@ -437,6 +437,15 @@ The DWIM behaviour of this command is as follows:
   (setq mu4e-refile-folder "/Archive")
   (setq mu4e-trash-folder "/Trash")
 
+  ;; some customizations
+  (setq
+   mu4e-attachment-dir "~/downloads"
+   mu4e-view-show-images t
+   mu4e-compose-signature-auto-include nil
+   mu4e-view-show-addresses t
+   mu4e-hide-index-messages t
+   mu4e-compose-dont-reply-to-self t)
+
   (setq mu4e-maildir-shortcuts
 	'(("/INBOX" . ?i)
 	  ("/Sent" . ?s)
