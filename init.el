@@ -142,7 +142,7 @@
   (which-key-mode)
   (setq which-key-idle-delay 1))
 
-;; Org-mode specific settings
+;; Orgmode specific settings
 (use-package org
   :ensure nil
   :config
