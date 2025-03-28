@@ -58,6 +58,12 @@
 (column-number-mode)
 (global-display-line-numbers-mode t)
 
+;; Disable certain emacs features
+(mapc
+ (lambda (command)
+   (put command 'disabled t))
+ '(eshell project-eshell overwrite-mode iconify-frame diary))
+
 ;;; Some standard emacs config
 (use-package emacs
   :ensure nil
