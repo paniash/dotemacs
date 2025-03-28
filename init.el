@@ -58,6 +58,23 @@
 (column-number-mode)
 (global-display-line-numbers-mode t)
 
+;;; Some standard emacs config
+(use-package emacs
+  :ensure nil
+  :demand t
+  :config
+  (setq kill-do-not-save-duplicates t)
+  (setq echo-keystrokes-help nil) ; Emacs 30
+
+  :bind
+  ( :map global-map
+    ("C-x C-d" . nil) ; never use it
+    ("C-x C-v" . nil) ; never use it
+    ("C-x C-z" . nil) ; never use it
+    ("C-x C-c" . nil) ; avoid accidentally exiting Emacs
+    ("C-h h" . nil) ; never show that "hello" file
+  ))
+
 ;;; Vim Bindings
 (use-package evil
   :demand t
