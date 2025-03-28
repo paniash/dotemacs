@@ -175,6 +175,12 @@
   ;; Start calendar week from Monday
   (setq calendar-week-start-day 1)
 
+  ;; Turn on cdlatex minor mode in all org buffers
+  ;; See https://orgmode.org/manual/CDLaTeX-mode.html for details
+  (add-hook 'org-mode-hook #'turn-on-org-cdlatex)
+  ;; Set renderer for LaTeX preview in orgmode
+  (setq org-preview-latex-default-process 'imagemagick)
+
   ;; Setting org-agenda file
   ;; Eliminates the need for putting org-agenda file to the top everytime
   (setq org-agenda-files
