@@ -207,6 +207,17 @@
 ;; 	      (interactive)
 ;; 	      (open-journal-file)))
 
+;; Org-roam for roam research note taking
+(use-package org-roam
+  :ensure t
+  :custom
+  (org-roam-directory "~/roam")
+  :bind (("C-c n l" . org-roam-buffer-toggle)
+         ("C-c n f" . org-roam-node-find)
+         ("C-c n i" . org-roam-node-insert))
+  :config
+  (org-roam-setup))
+
 ;; Automatic text wrapping in all major modes
 (setq-default auto-fill-function 'do-auto-fill)
 
