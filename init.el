@@ -521,3 +521,15 @@ The DWIM behaviour of this command is as follows:
   :config
   ;; disable highlight-indentation minor mode
   (setq elpy-modules (delq 'elpy-module-highlight-indentation elpy-modules)))
+
+;; `proced` (process monitor, similar to `top`)
+;; This is a built-in emacs package
+(use-package proced
+  :ensure nil
+  :commands (proced)
+  :config
+  (setq proced-auto-update-flag 'visible)
+  (setq proced-enable-color-flag t)
+  (setq proced-auto-update-interval 5)
+  (setq proced-descend t)
+  (setq proced-filter 'user))
