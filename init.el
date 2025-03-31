@@ -541,11 +541,18 @@ The DWIM behaviour of this command is as follows:
   :hook (after-init . envrc-global-mode)
         (python-mode . envrc-global-mode))
 
+;; Autocompletion via corfu
+(use-package corfu
+  :ensure t
+  :custom
+  (corfu-cycle t) ; enable cycling for `corfu-next/previous'
+
+  ;; enable corfu only for certain modes.
+  :hook ((python-mode . corfu-mode))
+  :bind (:map corfu-map ("<tab>" . corfu-complete))
   :init
-  (elpy-enable)
-  :config
-  ;; disable highlight-indentation minor mode
-  (setq elpy-modules (delq 'elpy-module-highlight-indentation elpy-modules)))
+  (global-corfu-mode))
+
 ;; LSP server using eglot
 (use-package eglot
   :defer t
