@@ -497,7 +497,7 @@ The DWIM behaviour of this command is as follows:
   :ensure nil
   :config
 
-  ;; This is set to 't' to avoid mail syncing issues when using mbsync
+  ;; This is set to `t' to avoid mail syncing issues when using mbsync
   (setq mu4e-change-filenames-when-moving t)
 
   (setq user-mail-address "ap@ashishpanigrahi.com")
@@ -524,10 +524,15 @@ The DWIM behaviour of this command is as follows:
 	  ("/Draft" . ?d))))
 
 
-;; elpy for python
-(use-package elpy
-  :defer t
-  :commands (elpy-enable elpy-disable)
+;; ;; elpy for python
+;; (use-package elpy
+;;   :defer t
+;;   :commands (elpy-enable elpy-disable)
+;;   :init
+;;   (elpy-enable)
+;;   :config
+;;   ;; disable highlight-indentation minor mode
+;;   (setq elpy-modules (delq 'elpy-module-highlight-indentation elpy-modules)))
   :init
   (elpy-enable)
   :config
