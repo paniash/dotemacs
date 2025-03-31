@@ -71,6 +71,7 @@
   :config
   (setq kill-do-not-save-duplicates t)
   (setq echo-keystrokes-help nil) ; Emacs 30
+  (setq tab-always-indent 'complete) ; tab for completion and not indenting
 
   :bind
   ( :map global-map
