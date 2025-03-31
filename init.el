@@ -80,7 +80,12 @@
     ("C-x C-z" . nil) ; never use it
     ("C-x C-c" . nil) ; avoid accidentally exiting Emacs
     ("C-h h" . nil) ; never show that "hello" file
-  ))
+    )
+  :custom
+  ;; disable Ispell completion function
+  (text-mode-ispell-word-completion nil)
+  (read-extended-command-predicate #'command-completion-default-include-p)
+  )
 
 ;;; Vim Bindings
 (use-package evil
