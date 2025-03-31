@@ -547,7 +547,7 @@ The DWIM behaviour of this command is as follows:
   ;; disable highlight-indentation minor mode
   (setq elpy-modules (delq 'elpy-module-highlight-indentation elpy-modules)))
 
-;; `proced` (process monitor, similar to `top`)
+;; `proced' (process monitor, similar to `top')
 ;; This is a built-in emacs package
 (use-package proced
   :ensure nil
