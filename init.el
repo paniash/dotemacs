@@ -533,6 +533,14 @@ The DWIM behaviour of this command is as follows:
 ;;   :config
 ;;   ;; disable highlight-indentation minor mode
 ;;   (setq elpy-modules (delq 'elpy-module-highlight-indentation elpy-modules)))
+
+;; Add direnv integration in emacs
+;; envrc package
+(use-package envrc
+  :ensure t
+  :hook (after-init . envrc-global-mode)
+        (python-mode . envrc-global-mode))
+
   :init
   (elpy-enable)
   :config
