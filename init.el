@@ -546,6 +546,10 @@ The DWIM behaviour of this command is as follows:
   :config
   ;; disable highlight-indentation minor mode
   (setq elpy-modules (delq 'elpy-module-highlight-indentation elpy-modules)))
+;; LSP server using eglot
+(use-package eglot
+  :defer t
+  :hook (python-mode . eglot-ensure))
 
 ;; `proced' (process monitor, similar to `top')
 ;; This is a built-in emacs package
