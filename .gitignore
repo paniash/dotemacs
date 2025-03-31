@@ -9,3 +9,6 @@ elpy/
 custom.el
 session*
 tramp
+.org-id-locations
+bookmarks
+org-roam.db
