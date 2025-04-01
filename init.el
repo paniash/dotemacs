@@ -497,17 +497,6 @@ The DWIM behaviour of this command is as follows:
 	  ("/Trash" . ?t)
 	  ("/Draft" . ?d))))
 
-
-;; ;; elpy for python
-;; (use-package elpy
-;;   :defer t
-;;   :commands (elpy-enable elpy-disable)
-;;   :init
-;;   (elpy-enable)
-;;   :config
-;;   ;; disable highlight-indentation minor mode
-;;   (setq elpy-modules (delq 'elpy-module-highlight-indentation elpy-modules)))
-
 ;; Add direnv integration in emacs
 ;; envrc package
 (use-package envrc
