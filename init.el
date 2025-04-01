@@ -580,4 +580,5 @@ The DWIM behaviour of this command is as follows:
   (setq doom-modeline-height 10)
   (setq doom-modeline-icon nil)
   (setq doom-modeline-minor-modes nil)
+  (setq doom-modeline-bar-width 0)
   (setq doom-modeline-enable-word-count t))
