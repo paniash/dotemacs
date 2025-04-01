@@ -28,7 +28,6 @@
 ;; Disable line numbers for some modes
 (dolist (mode '(term-mode-hook
                 shell-mode-hook
-                treemacs-mode-hook
 		dired-mode-hook
 		woman-mode-hook
                 eshell-mode-hook))
