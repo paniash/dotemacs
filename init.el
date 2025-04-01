@@ -555,7 +555,10 @@ The DWIM behaviour of this command is as follows:
 ;; LSP server using eglot
 (use-package eglot
   :defer t
-  :hook (python-mode . eglot-ensure))
+  :hook (python-mode . eglot-ensure)
+  :config
+  (setq eglot-ignored-server-capabilities
+	'(:documentHighlightProvider))) ;; disables highlighting words under active cursor
 
 ;; `proced' (process monitor, similar to `top')
 ;; This is a built-in emacs package
