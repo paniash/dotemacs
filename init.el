@@ -216,31 +216,6 @@
   (global-set-key (kbd "C-c a") #'org-agenda)
   (global-set-key (kbd "C-c c") #'org-capture))
 
-;; (defun open-journal-file ()
-;;   (let* ((today (format-time-string "%Y%m%d"))
-;;          (path (concat (getenv "HOME") "~/org/phd-notes/logs/" today ".org"))
-;;          (hdr-list (list (concat "#+TITLE: [" today "]")
-;;                          "#+AUTHOR: Ashish Panigrahi"))
-;;          (hdr (apply 'concat
-;;                      (mapcar (lambda (s) (concat s "\n"))
-;;                              hdr-list)))
-;;          (has-hdr (lambda ()
-;;                     (save-excursion
-;;                       (goto-char (point-min))
-;;                       (search-forward "#+TITLE" nil t)))))
-;;     (message (concat "opening " path " ..."))
-;;     (find-file path)
-;;     (unless (funcall has-hdr)
-;;       (save-excursion
-;;         (goto-char (point-min))
-;;         (insert hdr)))
-;;     (message "Enjoy your journaling!")))
-
-;; (define-key global-map (kbd "C-c 1")
-;; 	    (lambda ()
-;; 	      (interactive)
-;; 	      (open-journal-file)))
-
 ;; Org-roam for roam research note taking
 (use-package org-roam
   :ensure t
