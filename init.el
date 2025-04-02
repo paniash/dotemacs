@@ -1,7 +1,3 @@
-;; Improve startup time
-;; The default is 800 kilobytes.  Measured in bytes.
-(setq gc-cons-threshold (* 50 1000 1000))
-
 ;; Display load message when starting emacs
 (defun efs/display-startup-time ()
   (message "Emacs loaded in %s with %d garbage collections."
@@ -11,8 +7,6 @@
            gcs-done))
 
 (add-hook 'emacs-startup-hook #'efs/display-startup-time)
-
-(setq inhibit-startup-message t)
 
 ;; Remove visible bell
 (setq visible-bell nil
@@ -74,6 +68,7 @@
 
   ;; save last session
   (desktop-save-mode 1)
+  (setq desktop-auto-save-timeout nil)
 
   :bind
   ( :map global-map

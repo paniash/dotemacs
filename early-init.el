@@ -1,5 +1,11 @@
 (setq inhibit-startup-message t)
 
+;; Improve startup time
+;; The default is 800 kilobytes.  Measured in bytes.
+(setq gc-cons-threshold (* 50 1000 1000))
+(setq native-comp-async-report-warnings-errors 'silent)
+(setq byte-compile-warnings '(not obsolete))
+
 (setq-default default-frame-alist '(
 				    ;; Setting the face in here prevents flashes of
 				    ;; color as the theme gets activated
