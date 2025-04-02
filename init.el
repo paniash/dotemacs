@@ -72,6 +72,9 @@
   (setq echo-keystrokes-help nil) ; Emacs 30
   (setq tab-always-indent 'complete) ; tab for completion and not indenting
 
+  ;; save last session
+  (desktop-save-mode 1)
+
   :bind
   ( :map global-map
     ("C-x C-d" . nil) ; never use it
