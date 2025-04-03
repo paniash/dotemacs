@@ -17,8 +17,9 @@
 				    (vertical-scroll-bars . nil)
 				    (horizontal-scroll-bars . nil)))
 
-;; No more saving customization information
-(setq custom-file null-device)
+;; No more saving customization information to init.el
+;; Setting the variable to `null-device' would yield a maximum buffer size issue
+(setq custom-file "~/.emacs.d/custom.el")
 
 ;; Fixes UI font issue when emacs is run in daemon mode
 (defun efs/set-font-faces ()
