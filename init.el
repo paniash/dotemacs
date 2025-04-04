@@ -68,9 +68,8 @@
 
   ;; (desktop-save-mode 1)
 
-  ;; ;; Enable `completion-preview-mode' for certain hooks
-  ;; :hook ((prog-mode . completion-preview-mode)
-  ;; 	 (python-mode . completion-preview-mode))
+  ;; Enable `completion-preview-mode' for certain hooks
+  :hook (python-mode . completion-preview-mode)
 
   :bind
   ( :map global-map
