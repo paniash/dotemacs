@@ -539,3 +539,9 @@ The DWIM behaviour of this command is as follows:
   (setq doom-modeline-minor-modes nil)
   (setq doom-modeline-bar-width 0)
   (setq doom-modeline-enable-word-count t))
+
+;; Python config
+(use-package python
+  :ensure t
+  :config
+  (setq python-indent-offset 4))
