@@ -384,16 +384,11 @@
   :config
   (setq dired-subtree-use-backgrounds nil))
 
-
 ;; Minibuffer keybindings
 (define-key minibuffer-local-map (kbd "C-v") 'yank)
 
 ;; Put autosave files in one folder
 (setq backup-directory-alist `(("." . "~/.autosaves")))
-
-;; Emacs local webserver
-(use-package simple-httpd
-  :ensure t)
 
 ;; Python-mode config
 ;; Use TAB in place of C-M-i for completion-at-point
