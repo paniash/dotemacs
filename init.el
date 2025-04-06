@@ -597,4 +597,4 @@ The DWIM behaviour of this command is as follows:
 	  "https://www.noendcomic.com/rss.php"
 	  "https://xkcd.com/atom.xml"
 	  "https://www.smbc-comics.com/comic/rss"
-	  "https://www.commitstrip.com/en/feed/"))
+	  "https://www.commitstrip.com/en/feed/")))
