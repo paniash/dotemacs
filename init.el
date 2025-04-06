@@ -545,3 +545,56 @@ The DWIM behaviour of this command is as follows:
   :ensure t
   :config
   (setq python-indent-offset 4))
+
+;; Elfeed for RSS
+(use-package elfeed
+  :ensure t
+  :bind
+  ("C-c e" . elfeed)
+
+  :config
+  (setq elfeed-use-curl t)
+  (setq elfeed-curl-max-connections 10)
+  (setq elfeed-db-directory "~/.emacs.d/elfeed/")
+  (setq elfeed-enclosure-default-dir "~/downloads/")
+  (setq elfeed-feeds
+	'("https://www.archlinux.org/feeds/news/"
+	  "https://medium.com/feed/qiskit"
+	  "https://peterwittek.com/feeds/all.atom.xml"
+	  "https://gregorygundersen.com/feed.xml"
+	  "https://mikeinnes.github.io/feed.xml"
+	  "https://rosenzweig.io/feed.xml"
+	  "https://karthinks.com/index.xml"
+	  "https://adol.pw/index.xml"
+	  "https://andreyor.st/feed.xml"
+	  "https://www.paritybit.ca/feed.xml"
+	  "https://m-malinowski.github.io/feed.xml"
+	  "https://kishvanchee.com/index.xml"
+	  "https://dataswamp.org/~solene/rss.xml"
+	  "https://drewdevault.com/blog/index.xml"
+	  "https://11de784a.github.io/feed.xml"
+	  "https://ashishpanigrahi.com/feed.xml"
+	  "https://yarmo.eu/atom.xml"
+	  "https://timharek.no/rss.xml"
+	  "https://terrytao.wordpress.com/feed/"
+	  "https://protesilaos.com/commentary.xml"
+	  "https://themkat.net/feed.xml"
+	  "https://www.romanzolotarev.com/rss.xml"
+	  "https://vimtricks.com/feed/"
+	  "https://nullprogram.com/feed/"
+	  "https://www.unixsheikh.com/feed.rss"
+	  "https://matt.might.net/articles/feed.rss"
+	  "https://simon.peytonjones.org/feed.xml"
+	  "https://jvns.ca/atom.xml"
+	  "http://100r.co/links/rss.xml"
+	  "https://anchor.fm/s/c761a04/podcast/rss"
+	  "https://www.physicsforums.com/insights/feed/"
+	  "https://phdcomics.com/gradfeed.php"
+	  "https://phys.org/rss-feed/breaking/physics-news/quantum-physics/"
+	  "https://phys.org/rss-feed/breaking/physics-news/physics/"
+	  "https://phys.org/rss-feed/breaking/physics-news/optics-photonics/"
+	  "https://phys.org/rss-feed/breaking/physics-news/materials/"
+	  "https://www.noendcomic.com/rss.php"
+	  "https://xkcd.com/atom.xml"
+	  "https://www.smbc-comics.com/comic/rss"
+	  "https://www.commitstrip.com/en/feed/"))
