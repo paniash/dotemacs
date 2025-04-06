@@ -15,7 +15,7 @@
 ;; Fonts
 (set-face-attribute 'default nil :font "Hack" :height 115)
 (set-face-attribute 'fixed-pitch nil :font "Hack" :height 115)
-(set-face-attribute 'variable-pitch nil :font "Iosevka" :height 125)
+(set-face-attribute 'variable-pitch nil :font "Iosevka" :height 120)
 
 (setq display-line-numbers-type 'relative)
 
