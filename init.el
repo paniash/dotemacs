@@ -19,20 +19,15 @@
 
 (setq display-line-numbers-type 'relative)
 
-;; Disable line numbers for some modes
-(dolist (mode '(term-mode-hook
-                shell-mode-hook
-		dired-mode-hook
-		woman-mode-hook
-                eshell-mode-hook))
-  (add-hook mode (lambda () (display-line-numbers-mode -1))))
+;; Enable line numbers only for programming and text modes
+(add-hook 'prog-mode-hook #'display-line-numbers-mode)
+(add-hook 'text-mode-hook #'display-line-numbers-mode)
 
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
 ;; Initialize package sources
 (require 'package)
-
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                          ("non-gnu" . "https://elpa.nongnu.org/nongnu/")
                          ("elpa" . "https://elpa.gnu.org/packages/")))
@@ -48,8 +43,17 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
-(column-number-mode)
-(global-display-line-numbers-mode t)
+(column-number-mode 1)
+
+;; Disable line numbers for some text modes
+(dolist (mode '(eat-mode-hook
+                shell-mode-hook
+		dired-mode-hook
+		woman-mode-hook
+		Info-mode-hook
+		Man-mode-hook
+                eshell-mode-hook))
+  (add-hook mode (lambda () (display-line-numbers-mode -1))))
 
 ;; Disable certain emacs features
 (mapc
