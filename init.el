@@ -533,22 +533,24 @@ The DWIM behaviour of this command is as follows:
   (setq proced-descend t)
   (setq proced-filter 'user))
 
-;; Doom-modeline
-(use-package doom-modeline
-  :ensure t
-  :hook (after-init . doom-modeline-mode)
-  :config
-  (setq doom-modeline-height 10)
-  (setq doom-modeline-icon nil)
-  (setq doom-modeline-minor-modes nil)
-  (setq doom-modeline-bar-width 0)
-  (setq doom-modeline-enable-word-count t))
+;; ;; Doom-modeline
+;; (use-package doom-modeline
+;;   :ensure t
+;;   :hook (after-init . doom-modeline-mode)
+;;   :config
+;;   (setq doom-modeline-height 10)
+;;   (setq doom-modeline-icon nil)
+;;   (setq doom-modeline-minor-modes nil)
+;;   (setq doom-modeline-bar-width 0)
+;;   (setq doom-modeline-enable-word-count t))
 
 ;; Python config
 (use-package python
   :ensure nil   ; because this is built-in
   :config
-  (setq python-indent-offset 4))
+  (setq python-indent-offset 4)
+  (setq python-shell-interpreter "ipython")
+  (add-hook 'eat-mode-hook #'turn-off-evil-mode nil))
 
 ;; Elfeed for RSS
 (use-package elfeed
