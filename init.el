@@ -81,6 +81,7 @@
     ("C-x C-z" . nil) ; never use it
     ("C-x C-c" . nil) ; avoid accidentally exiting Emacs
     ("C-h h" . nil) ; never show that "hello" file
+    ("C-x C-p" . previous-buffer)  ; remap binding to go to previous buffer
     )
   :custom
   ;; disable Ispell completion function
