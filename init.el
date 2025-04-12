@@ -537,7 +537,7 @@ The DWIM behaviour of this command is as follows:
 
 ;; Python config
 (use-package python
-  :ensure t
+  :ensure nil   ; because this is built-in
   :config
   (setq python-indent-offset 4))
 
