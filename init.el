@@ -573,6 +573,7 @@ The DWIM behaviour of this command is as follows:
 	  "https://timharek.no/rss.xml"
 	  "https://terrytao.wordpress.com/feed/"
 	  "https://protesilaos.com/commentary.xml"
+	  "https://ogbe.net/blog-feed.xml"
 	  "https://themkat.net/feed.xml"
 	  "https://www.romanzolotarev.com/rss.xml"
 	  "https://vimtricks.com/feed/"
