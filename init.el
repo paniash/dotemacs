@@ -589,3 +589,12 @@ The DWIM behaviour of this command is as follows:
 	  "https://xkcd.com/atom.xml"
 	  "https://www.smbc-comics.com/comic/rss"
 	  "https://www.commitstrip.com/en/feed/")))
+
+
+;; Helful package for better documentation in emacs
+(use-package helpful
+  :ensure t
+  :bind (("C-h f" . helpful-callable)
+	 ("C-h v" . helpful-variable)
+	 ("C-h k" . helpful-key)
+	 ("C-h x" . helpful-command)))
