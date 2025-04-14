@@ -232,6 +232,17 @@
   :config
   (org-roam-setup))
 
+(use-package citar
+  :no-require
+  :custom
+  (org-cite-insert-processor 'citar)
+  (org-cite-follow-processor 'citar)
+  (org-cite-activate-processor 'citar)
+  (citar-bibliography org-cite-global-bibliography)
+  ;; optional: org-cite-insert is also bound to C-c C-x C-@
+  :bind
+  (:map org-mode-map :package org ("C-c b" . #'org-cite-insert)))
+
 ;; Automatic text wrapping in all major modes
 (setq-default auto-fill-function 'do-auto-fill)
 
