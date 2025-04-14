@@ -171,6 +171,8 @@
 ;; Orgmode specific settings
 (use-package org
   :ensure nil
+  :bind (:map org-mode-map
+	      ("C-c C-r" . consult-ripgrep))
   :config
   (setq org-log-done 'time)
   ;; Collapse the log entries into a "drawer"
