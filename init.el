@@ -350,6 +350,8 @@
 
 ;; TODO add consult and embark packages
 ;; TODO play around with General.el
+(use-package consult
+  :ensure t)
 
 ;; Replace "yes or no" with "y or n"
 (setq use-short-answers t)
