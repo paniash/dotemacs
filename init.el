@@ -290,6 +290,8 @@
   (setq TeX-parse-self t)
   ;; Autosave upon compilation
   (setq TeX-save-query nil)
+  ;; Set Zathura as the default pdf viewer
+  (setq TeX-view-program-selection '((output-pdf "Zathura")))
   (add-hook 'LaTeX-mode-hook (lambda () (setq TeX-command-default "LaTeXmk")))
   (setq font-latex-fontify-script nil))    ;; disables fontification of formatted text
 
@@ -304,10 +306,6 @@
   :custom
   ((completion-styles '(orderless basic))
   (completon-category-overrides '((file (styles basic partial-completion))))))
-
-;; ;; Add Zathura as default pdf-viewer
-;; (push (list 'output-pdf "Zathura") TeX-view-program-selection)
-(setq TeX-view-program-selection '((output-pdf "Zathura")))
 
 ;; Setting leader key in emacs
 (evil-set-leader 'normal (kbd "SPC"))
