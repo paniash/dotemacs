@@ -90,7 +90,7 @@
   :bind (("<escape>" . keyboard-escape-quit))
   :init
   ;; allows for using cgn
-  ;; (setq evil-search-module 'evil-search)
+  (setq evil-search-module 'isearch)
   (setq evil-want-integration t)
   (setq evil-want-keybinding nil)
   (setq evil-want-keybinding nil)
