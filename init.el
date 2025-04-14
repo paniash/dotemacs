@@ -328,7 +328,7 @@
 (use-package eat
   :ensure t
   :config
-  (add-hook 'eat-mode-hook #'turn-off-evil-mode nil))
+  (add-hook 'eat-mode-hook (lambda () (evil-local-mode -1))))
 
 ;; World-clock customization
 ;;;; World clock (M-x world-clock)
