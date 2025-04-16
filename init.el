@@ -604,3 +604,7 @@ The DWIM behaviour of this command is as follows:
 	  "https://xkcd.com/atom.xml"
 	  "https://www.smbc-comics.com/comic/rss"
 	  "https://www.commitstrip.com/en/feed/")))
+
+;; Testing sly package for common lisp
+(use-package sly
+  :ensure t)
