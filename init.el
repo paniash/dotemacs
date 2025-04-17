@@ -69,6 +69,7 @@
   (setq kill-do-not-save-duplicates t)
   (setq echo-keystrokes-help nil) ; Emacs 30
   (setq tab-always-indent 'complete) ; tab for completion and not indenting
+  (setq auto-save-timeout nil)
 
   ;; (desktop-save-mode 1)
 
