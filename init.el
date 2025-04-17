@@ -242,9 +242,6 @@
   (citar-bibliography org-cite-global-bibliography)
   (citar-bibliography '("~/org/phd-notes/references.bib"))
   ;; optional: org-cite-insert is also bound to C-c C-x C-@
-  :hook
-  (LaTeX-mode . citar-capf-setup)
-  (org-mode . citar-capf-setup)
   :bind
   (:map org-mode-map ("C-c b" . #'citar-insert-citation))
   (:map LaTeX-mode-map ("C-c b" . #'citar-insert-citation)))
