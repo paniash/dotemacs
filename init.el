@@ -620,4 +620,4 @@ The DWIM behaviour of this command is as follows:
 
 ;; Testing sly package for common lisp
 (use-package sly
-  :ensure t)
+  :defer t)
