@@ -20,6 +20,7 @@
 ;; No more saving customization information to init.el
 ;; Setting the variable to `null-device' would yield a maximum buffer size issue
 (setq custom-file "~/.emacs.d/custom.el")
+(load custom-file :no-error-if-file-is-missing)
 
 ;; Fixes UI font issue when emacs is run in daemon mode
 (defun efs/set-font-faces ()
