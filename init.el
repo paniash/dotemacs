@@ -528,8 +528,16 @@ The DWIM behaviour of this command is as follows:
   :custom
   (corfu-cycle t) ; enable cycling for `corfu-next/previous'
 
-  ;; enable corfu only for certain modes.
-  :hook ((python-mode . corfu-mode))
+  :config
+  (setq tab-always-indent 'complete)
+  (setq corfu-preview-current nil)
+  (corfu-popupinfo-mode 1) ; shows documentation after `corfu-popupinfo-delay'
+
+  ;; Sort by input history (no need to modify `corfu-sort-function').
+  (with-eval-after-load 'savehist
+    (corfu-history-mode 1)
+    (add-to-list 'savehist-additional-variables 'corfu-history))
+
   :bind (:map corfu-map ("<tab>" . corfu-complete))
   :init
   (global-corfu-mode))
