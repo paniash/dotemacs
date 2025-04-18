@@ -395,11 +395,13 @@
 (use-package dired
   :ensure nil
   :commands (dired)
+  :hook
+  ((dired-mode . dired-hide-details-mode)
+   (dired-mode . hl-line-mode))
   :config
   (setq dired-recursive-copies 'always)
   (setq dired-recursive-deletes 'always)
-
-  (add-hook 'dired-mode-hook 'dired-hide-details-mode))
+  (setq dired-dwim-target t))
 
 (use-package dired-subtree
   :ensure t
