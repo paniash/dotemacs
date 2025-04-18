@@ -40,6 +40,12 @@
 (unless (package-installed-p 'use-package)
    (package-install 'use-package))
 
+;; Silence byte compile warnings when installing new packages
+(add-to-list 'display-buffer-alist
+             '("\\`\\*\\(Warnings\\|Compile-Log\\)\\*\\'"
+               (display-buffer-no-window)
+               (allow-no-window . t)))
+
 (require 'use-package)
 (setq use-package-always-ensure t)
 
