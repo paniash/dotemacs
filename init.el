@@ -185,7 +185,8 @@
 (use-package org
   :ensure nil  ; org is built-in
   :bind (:map org-mode-map
-	      ("C-c C-r" . consult-ripgrep))
+	      ("C-c C-r" . consult-ripgrep)
+	      ("C-x C-a" . org-archive-subtree-default))
   :config
   (setq org-log-done 'time)
   ;; Collapse the log entries into a "drawer"
