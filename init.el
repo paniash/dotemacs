@@ -183,7 +183,7 @@
 
 ;; Orgmode specific settings
 (use-package org
-  :ensure nil
+  :ensure nil  ; org is built-in
   :bind (:map org-mode-map
 	      ("C-c C-r" . consult-ripgrep))
   :config
