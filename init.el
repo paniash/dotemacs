@@ -149,11 +149,28 @@
     (comment-or-uncomment-region beg end))
   (evil-define-key 'normal 'global (kbd "gc") 'my-evil-comment-or-uncomment))
 
-;; Protesilaos' ef-theme loading
+;; Protesilaos' ef-theme
 (use-package ef-themes
   :ensure t
   :config
-  (load-theme 'ef-symbiosis t))
+  ;; They are nil by default...
+  (setq ef-themes-mixed-fonts t
+	ef-themes-variable-pitch-ui t)
+
+  (setq ef-themes-headings ; read the manual's entry or the doc string
+	'((0 variable-pitch regular 1.6)
+	  (1 variable-pitch regular 1.5)
+	  (2 variable-pitch regular 1.2)
+	  (3 variable-pitch regular 1.2)
+	  (4 variable-pitch regular 1.2)
+	  (5 variable-pitch 1.1) ; absence of weight means `bold'
+	  (6 variable-pitch 1.1)
+	  (7 variable-pitch 1.1)
+	  (t variable-pitch 1.1)))
+
+  ;; Disable all other themes to avoid awkward blending:
+  (mapc #'disable-theme custom-enabled-themes)
+  (load-theme 'ef-autumn :no-confirm))
 
 ;;; Vertico
 (use-package vertico
