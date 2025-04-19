@@ -215,6 +215,7 @@
   ;; Faces for TODO keywords
   (setq org-todo-keyword-faces
 	'(("PROG" . "orange")
+	  ("TODO" . "#cc43a5")
 	  ("CANCELLED" . (:foreground "#B50741" :weight bold))))
 
   ;; Block parent TODO to DONE if children are undone
