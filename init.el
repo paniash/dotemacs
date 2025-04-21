@@ -597,7 +597,8 @@ The DWIM behaviour of this command is as follows:
 
   :config
   (setq elfeed-use-curl t)
-  (setq elfeed-curl-max-connections 10)
+  (setq elfeed-curl-max-connections 20)
+  (setq-default elfeed-search-filter "@6-months-ago +unread")
   (setq elfeed-db-directory "~/.emacs.d/elfeed/")
   (setq elfeed-enclosure-default-dir "~/downloads/")
   (setq elfeed-feeds
