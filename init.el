@@ -602,12 +602,12 @@ The DWIM behaviour of this command is as follows:
   (setq elfeed-enclosure-default-dir "~/downloads/")
   (setq elfeed-feeds
 	'("https://www.archlinux.org/feeds/news/"
-	  "https://emacsredux.com/atom.xml"
+	  ("https://emacsredux.com/atom.xml" emacs)
 	  "https://peterwittek.com/feeds/all.atom.xml"
 	  "https://gregorygundersen.com/feed.xml"
 	  "https://mikeinnes.github.io/feed.xml"
 	  "https://rosenzweig.io/feed.xml"
-	  "https://karthinks.com/index.xml"
+	  ("https://karthinks.com/index.xml" emacs)
 	  "https://adol.pw/index.xml"
 	  "https://andreyor.st/feed.xml"
 	  "https://www.paritybit.ca/feed.xml"
@@ -619,23 +619,23 @@ The DWIM behaviour of this command is as follows:
 	  "https://yarmo.eu/atom.xml"
 	  "https://timharek.no/rss.xml"
 	  "https://terrytao.wordpress.com/feed/"
-	  "https://protesilaos.com/commentary.xml"
+	  ("https://protesilaos.com/commentary.xml" emacs philosophy)
 	  "https://ogbe.net/blog-feed.xml"
 	  "https://themkat.net/feed.xml"
 	  "https://www.romanzolotarev.com/rss.xml"
-	  "https://vimtricks.com/feed/"
 	  "https://nullprogram.com/feed/"
 	  "https://www.unixsheikh.com/feed.rss"
 	  "https://matt.might.net/articles/feed.rss"
+	  ("https://lambdaland.org/index.xml" emacs)
 	  "https://simon.peytonjones.org/feed.xml"
 	  "https://jvns.ca/atom.xml"
 	  "http://100r.co/links/rss.xml"
 	  "https://anchor.fm/s/c761a04/podcast/rss"
 	  "https://phdcomics.com/gradfeed.php"
 	  "https://www.noendcomic.com/rss.php"
-	  "https://xkcd.com/atom.xml"
-	  "https://www.smbc-comics.com/comic/rss"
-	  "https://www.commitstrip.com/en/feed/")))
+	  ("https://xkcd.com/atom.xml" comics)
+	  ("https://www.smbc-comics.com/comic/rss" comics)
+	  ("https://www.commitstrip.com/en/feed/" comics))))
 
 ;; Testing sly package for common lisp
 (use-package sly
