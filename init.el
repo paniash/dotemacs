@@ -158,7 +158,7 @@
 	ef-themes-variable-pitch-ui t)
 
   (setq ef-themes-headings ; read the manual's entry or the doc string
-	'((0 variable-pitch regular 1.6)
+	'((0 variable-pitch regular 1.5)
 	  (1 variable-pitch regular 1.5)
 	  (2 variable-pitch regular 1.2)
 	  (3 variable-pitch regular 1.2)
