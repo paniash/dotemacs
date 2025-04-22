@@ -90,6 +90,7 @@
     ("C-h h" . nil) ; never show that "hello" file
     ("C-x <left>" . nil) ; unbind the `previous-buffer' command
     ("C-x C-p" . previous-buffer)  ; rebind `previous-buffer' command
+    ("C-u" . evil-scroll-up) ; explicitly bind C-u because it sometimes misbehaves in evil mode
     )
   :custom
   ;; disable Ispell completion function
