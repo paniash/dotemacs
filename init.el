@@ -629,6 +629,7 @@ Returns the new window."
 	  "https://rosenzweig.io/feed.xml"
 	  ("https://karthinks.com/index.xml" emacs)
 	  "https://adol.pw/index.xml"
+	  ("https://marci.gunyho.com/rss" blog)
 	  "https://andreyor.st/feed.xml"
 	  "https://www.paritybit.ca/feed.xml"
 	  "https://m-malinowski.github.io/feed.xml"
