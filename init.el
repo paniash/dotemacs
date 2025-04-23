@@ -506,6 +506,21 @@ The DWIM behaviour of this command is as follows:
           (select-window first-win)
           (if this-win-2nd (other-window 1))))))
 
+;; Mainly for running some inferior process that doesn't require a lot
+;; of screen real estate (`inferior-python' for example).
+;; TODO: Really understand this function.
+(defun pani/my-split-window-below-30 (&optional window-to-split)
+  "Split WINDOW-TO-SPLIT into two windows, with the lower window occupying ~30% of the height.
+WINDOW-TO-SPLIT defaults to the selected window.
+Returns the new window."
+  (interactive)
+  (let* ((window (or window-to-split (selected-window)))
+         (total-height (window-total-height window))
+         (size (- (floor (* total-height 0.3)))))
+    (unless (>= (- total-height size) window-min-height)
+      (error "Resulting window too small"))
+    (split-window window size)))
+
 ;; mu4e for email
 (use-package mu4e
   :ensure nil
