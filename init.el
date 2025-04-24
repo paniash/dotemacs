@@ -627,7 +627,7 @@ Returns the new window."
 	  "https://gregorygundersen.com/feed.xml"
 	  "https://mikeinnes.github.io/feed.xml"
 	  "https://rosenzweig.io/feed.xml"
-	  ("https://karthinks.com/index.xml" emacs)
+	  ("https://karthinks.com/index.xml" emacs blog)
 	  "https://adol.pw/index.xml"
 	  ("https://marci.gunyho.com/rss" blog)
 	  "https://andreyor.st/feed.xml"
@@ -636,23 +636,23 @@ Returns the new window."
 	  "https://kishvanchee.com/index.xml"
 	  "https://dataswamp.org/~solene/rss.xml"
 	  "https://drewdevault.com/blog/index.xml"
-	  "https://11de784a.github.io/feed.xml"
+	  ("https://11de784a.github.io/feed.xml" blog)
 	  "https://yarmo.eu/atom.xml"
-	  "https://timharek.no/rss.xml"
+	  ("https://timharek.no/rss.xml" blog)
 	  "https://terrytao.wordpress.com/feed/"
-	  ("https://protesilaos.com/commentary.xml" emacs philosophy)
-	  "https://ogbe.net/blog-feed.xml"
-	  "https://themkat.net/feed.xml"
+	  ("https://protesilaos.com/commentary.xml" emacs blog)
+	  ("https://ogbe.net/blog-feed.xml" emacs)
+	  ("https://themkat.net/feed.xml" emacs)
 	  "https://www.romanzolotarev.com/rss.xml"
-	  "https://nullprogram.com/feed/"
+	  ("https://nullprogram.com/feed/" emacs)
 	  "https://www.unixsheikh.com/feed.rss"
 	  "https://matt.might.net/articles/feed.rss"
-	  ("https://lambdaland.org/index.xml" emacs)
+	  ("https://lambdaland.org/index.xml" emacs blog)
 	  "https://simon.peytonjones.org/feed.xml"
 	  "https://jvns.ca/atom.xml"
 	  "http://100r.co/links/rss.xml"
 	  "https://anchor.fm/s/c761a04/podcast/rss"
-	  "https://phdcomics.com/gradfeed.php"
+	  ("https://phdcomics.com/gradfeed.php" comics)
 	  "https://www.noendcomic.com/rss.php"
 	  ("https://xkcd.com/atom.xml" comics)
 	  ("https://www.smbc-comics.com/comic/rss" comics)
