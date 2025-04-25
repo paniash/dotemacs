@@ -584,6 +584,7 @@ Returns the new window."
   :defer t
   :hook (python-mode . eglot-ensure)
   :config
+  ;; (setq eglot-managed-mode-hook (list (lambda () (eldoc-mode -1))))
   (setq eglot-ignored-server-capabilities
 	'(:documentHighlightProvider))) ;; disables highlighting words under active cursor
 
