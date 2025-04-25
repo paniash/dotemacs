@@ -164,8 +164,8 @@
 	  (2 variable-pitch regular 1.2)
 	  (3 variable-pitch regular 1.2)
 	  (4 variable-pitch regular 1.2)
-	  (5 variable-pitch 1.1) ; absence of weight means `bold'
-	  (6 variable-pitch 1.1)
+	  (5 variable-pitch 1.2) ; absence of weight means `bold'
+	  (6 variable-pitch 1.2)
 	  (7 variable-pitch 1.1)
 	  (t variable-pitch 1.1)))
 
