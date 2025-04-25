@@ -587,6 +587,14 @@ Returns the new window."
   (setq eglot-ignored-server-capabilities
 	'(:documentHighlightProvider))) ;; disables highlighting words under active cursor
 
+;; eldoc config
+(use-package eldoc
+  :defer t  ;; built-in
+  :config
+  ;; disables resizing of echo area for automatic eldoc documentation
+  ;; under the cursor
+  (setq eldoc-echo-area-use-multiline-p nil))
+
 ;; `proced' (process monitor, similar to `top')
 ;; This is a built-in emacs package
 (use-package proced
