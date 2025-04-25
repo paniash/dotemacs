@@ -76,6 +76,7 @@
   (setq echo-keystrokes-help nil) ; Emacs 30
   (setq tab-always-indent 'complete) ; tab for completion and not indenting
   (setq auto-save-timeout nil)
+  (setq help-window-select t) ; Cursor focus goes to help window when invoked
 
   ;; Enable `completion-preview-mode' for certain hooks
   :hook (python-mode . completion-preview-mode)
