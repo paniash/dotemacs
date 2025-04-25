@@ -661,3 +661,7 @@ Returns the new window."
 ;; Testing sly package for common lisp
 (use-package sly
   :defer t)
+
+;; rg.el for ripgrep in Emacs
+(use-package rg
+  :ensure t)
