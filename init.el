@@ -77,8 +77,6 @@
   (setq tab-always-indent 'complete) ; tab for completion and not indenting
   (setq auto-save-timeout nil)
 
-  ;; (desktop-save-mode 1)
-
   ;; Enable `completion-preview-mode' for certain hooks
   :hook (python-mode . completion-preview-mode)
 
