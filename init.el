@@ -662,7 +662,8 @@ Returns the new window."
 	  "https://yarmo.eu/atom.xml"
 	  ("https://timharek.no/rss.xml" blog)
 	  "https://terrytao.wordpress.com/feed/"
-	  ("https://protesilaos.com/commentary.xml" emacs blog)
+	  ("https://protesilaos.com/commentary.xml" blog life)
+	  ("https://protesilaos.com/codelog.xml" emacs blog tech)
 	  ("http://irreal.org/blog/?tag=emacs&feed=rss2" emacs blog)
 	  ("https://ogbe.net/blog-feed.xml" emacs blog)
 	  ("https://themkat.net/feed.xml" emacs blog)
@@ -677,6 +678,7 @@ Returns the new window."
 	  "https://jvns.ca/atom.xml"
 	  "http://100r.co/links/rss.xml"
 	  "https://anchor.fm/s/c761a04/podcast/rss"
+	  ("https://changelog.complete.org/feed" blog tech)
 	  ("https://phdcomics.com/gradfeed.php" comics)
 	  ("https://www.noendcomic.com/rss.php" comics)
 	  ("https://xkcd.com/atom.xml" comics)
