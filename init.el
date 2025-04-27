@@ -49,7 +49,6 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
-(column-number-mode 1)
 
 ;; Disable line numbers for some text modes
 (dolist (mode '(eat-mode-hook
@@ -77,6 +76,9 @@
   (setq tab-always-indent 'complete) ; tab for completion and not indenting
   (setq auto-save-timeout nil)
   (setq help-window-select t) ; Cursor focus goes to help window when invoked
+
+  (column-number-mode 1)
+  (global-visual-wrap-prefix-mode 1)
 
   ;; Enable `completion-preview-mode' for certain hooks
   :hook (python-mode . completion-preview-mode)
