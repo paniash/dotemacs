@@ -533,10 +533,11 @@ Returns the new window."
   (setq user-mail-address "ap@ashishpanigrahi.com")
   (setq user-full-name "Ashish Panigrahi")
 
-  (setq mu4e-drafts-folder "/Drafts")
-  (setq mu4e-sent-folder "/Sent")
-  (setq mu4e-refile-folder "/Archive")
-  (setq mu4e-trash-folder "/Trash")
+  (setq
+   mu4e-drafts-folder "/Drafts"
+   mu4e-sent-folder "/Sent"
+   mu4e-refile-folder "/Archive"
+   mu4e-trash-folder "/Trash")
 
   ;; some customizations
   (setq
