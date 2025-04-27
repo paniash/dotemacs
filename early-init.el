@@ -37,3 +37,21 @@
 
 ;; Set name for main frame
 (add-hook 'after-init-hook (lambda () (set-frame-name "home")))
+
+;; Better window management handling
+(setq frame-resize-pixelwise t
+      frame-inhibit-implied-resize t
+      frame-title-format '("Emacs"))
+
+(setq inhibit-compacting-font-caches t)
+
+;; Resizing emacs frame can be terribly expensive part of changing
+;; font. By inhibiting this, we easily halve the startup times with
+;; fonts that are larger than the system default
+(setq frame-inhibit-implied-resize t
+      frame-resize-pixelwise t)
+
+;; Avoid raising the *Messages* buffer if anything is still without
+;; lexical bindings
+(setq warning-minimum-level :error)
+(setq warning-suppress-types '((lexical-binding)))
