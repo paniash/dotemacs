@@ -652,19 +652,22 @@ Returns the new window."
 	  ("https://timharek.no/rss.xml" blog)
 	  "https://terrytao.wordpress.com/feed/"
 	  ("https://protesilaos.com/commentary.xml" emacs blog)
-	  ("https://ogbe.net/blog-feed.xml" emacs)
-	  ("https://themkat.net/feed.xml" emacs)
+	  ("http://irreal.org/blog/?tag=emacs&feed=rss2" emacs blog)
+	  ("https://ogbe.net/blog-feed.xml" emacs blog)
+	  ("https://themkat.net/feed.xml" emacs blog)
 	  "https://www.romanzolotarev.com/rss.xml"
-	  ("https://nullprogram.com/feed/" emacs)
+	  ("https://nullprogram.com/feed/" emacs blog)
 	  "https://www.unixsheikh.com/feed.rss"
 	  "https://matt.might.net/articles/feed.rss"
 	  ("https://lambdaland.org/index.xml" emacs blog)
+	  ("https://200ok.ch/atom.xml" emacs blog)
+	  ("https://sachachua.com/blog/category/emacs/feed/index.xml" emacs blog)
 	  "https://simon.peytonjones.org/feed.xml"
 	  "https://jvns.ca/atom.xml"
 	  "http://100r.co/links/rss.xml"
 	  "https://anchor.fm/s/c761a04/podcast/rss"
 	  ("https://phdcomics.com/gradfeed.php" comics)
-	  "https://www.noendcomic.com/rss.php"
+	  ("https://www.noendcomic.com/rss.php" comics)
 	  ("https://xkcd.com/atom.xml" comics)
 	  ("https://www.smbc-comics.com/comic/rss" comics)
 	  ("https://www.commitstrip.com/en/feed/" comics))))
