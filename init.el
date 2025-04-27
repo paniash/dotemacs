@@ -554,6 +554,17 @@ Returns the new window."
 	  ("/Trash" . ?t)
 	  ("/Draft" . ?d))))
 
+;; sending email in emacs
+(use-package smtpmail
+  :ensure nil
+  :after message
+  :config
+  (setq message-send-mail-function 'smtpmail-send-it)
+  (setq smtpmail-smtp-server "smtp.migadu.com")
+  (setq smtpmail-smtp-service 465)
+  (setq smtpmail-debug-info t)
+  (setq smtpmail-stream-type 'tls))
+
 ;; Add direnv integration in emacs
 ;; envrc package
 (use-package envrc
