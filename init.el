@@ -624,6 +624,11 @@ Returns the new window."
 ;; Python config
 (use-package python
   :ensure nil   ; because this is built-in
+  :bind
+  ( :map python-mode-map
+    ("C-l" . nil) ; unbind default binding for text view centering
+    ("C-l" . xref-go-back)
+  )
   :config
   (setq python-indent-offset 4)
   (setq python-shell-interpreter "python3")
