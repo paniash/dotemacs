@@ -560,10 +560,11 @@ Returns the new window."
   :after message
   :config
   (setq message-send-mail-function 'smtpmail-send-it)
+  (setq send-mail-function 'smtpmail-send-it)
   (setq smtpmail-smtp-server "smtp.migadu.com")
   (setq smtpmail-smtp-service 465)
   (setq smtpmail-debug-info t)
-  (setq smtpmail-stream-type 'tls))
+  (setq smtpmail-stream-type 'nil))
 
 ;; Add direnv integration in emacs
 ;; envrc package
