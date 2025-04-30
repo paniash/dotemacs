@@ -626,7 +626,7 @@ Returns the new window."
   :ensure nil   ; because this is built-in
   :config
   (setq python-indent-offset 4)
-  (setq python-shell-interpreter "ipython")
+  (setq python-shell-interpreter "python3")
   (add-hook 'eat-mode-hook #'turn-off-evil-mode nil))
 
 ;; Elfeed for RSS
