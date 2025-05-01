@@ -128,6 +128,7 @@
 ;;; Vim Bindings Everywhere else
 (use-package evil-collection
   :after evil
+  :delight evil-collection-unimpaired-mode
   :config
   (setq evil-want-integration t)
   (evil-collection-init))
@@ -194,8 +195,8 @@
 
 ;; Which-key (to show available commands when typing a prefix say 'C-c')
 (use-package which-key
-  :defer 0
-  :diminish which-key-mode
+  :ensure nil  ; built-in
+  :delight which-key-mode
   :config
   (which-key-mode)
   (setq which-key-idle-delay 1))
@@ -282,6 +283,10 @@
 
 ;; Magit
 (use-package magit
+  :ensure t)
+
+;; Delight package for hiding minor modes in the modeline
+(use-package delight
   :ensure t)
 
 (use-package markdown-mode
@@ -602,9 +607,10 @@ Returns the new window."
   (setq eglot-ignored-server-capabilities
 	'(:documentHighlightProvider))) ;; disables highlighting words under active cursor
 
-;; eldoc config
+;; Eldoc config
 (use-package eldoc
   :defer t  ;; built-in
+  :delight
   :config
   ;; disables resizing of echo area for automatic eldoc documentation
   ;; under the cursor
@@ -698,3 +704,7 @@ Returns the new window."
 ;; rg.el for ripgrep in Emacs
 (use-package rg
   :ensure t)
+
+;; Hide autorevert mode in modeline
+(use-package autorevert
+  :delight auto-revert-mode)
