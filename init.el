@@ -559,21 +559,34 @@ Returns the new window."
 	  ("/Trash" . ?t)
 	  ("/Draft" . ?d))))
 
-;; sending email in emacs
-(use-package smtpmail
+;; ;; sending email in emacs
+;; (use-package smtpmail
+;;   :ensure nil
+;;   :after message
+;;   :config
+;;   (setq message-send-mail-function 'smtpmail-send-it)
+;;   (setq send-mail-function 'smtpmail-send-it)
+;;   (setq smtpmail-smtp-server "smtp.migadu.com")
+;;   (setq smtpmail-smtp-service 465)
+;;   (setq smtpmail-debug-info t)
+;;   (setq smtpmail-stream-type 'nil))
+
+(use-package sendmail
   :ensure nil
   :after message
   :config
-  (setq message-send-mail-function 'smtpmail-send-it)
-  (setq send-mail-function 'smtpmail-send-it)
-  (setq smtpmail-smtp-server "smtp.migadu.com")
-  (setq smtpmail-smtp-service 465)
-  (setq smtpmail-debug-info t)
-  (setq smtpmail-stream-type 'nil))
+  (setq send-mail-function 'sendmail-send-it
+        ;; ;; NOTE 2023-08-08: We do not need this if we have the Arch
+        ;; ;; Linux `msmtp-mta' package installed: it replaces the
+        ;; ;; generic sendmail executable with msmtp.
+        ;;
+        ;; sendmail-program (executable-find "msmtp")
+        message-sendmail-envelope-from 'header))
 
 ;; Add direnv integration in emacs
 ;; envrc package
 (use-package envrc
+  :delight
   :ensure t
   :hook (after-init . envrc-global-mode)
         (python-mode . envrc-global-mode))
