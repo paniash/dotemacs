@@ -163,9 +163,9 @@
   (setq ef-themes-headings ; read the manual's entry or the doc string
 	'((0 variable-pitch regular 1.5)
 	  (1 variable-pitch regular 1.5)
-	  (2 variable-pitch regular 1.2)
-	  (3 variable-pitch regular 1.2)
-	  (4 variable-pitch regular 1.2)
+	  (2 variable-pitch regular 1.3)
+	  (3 variable-pitch regular 1.3)
+	  (4 variable-pitch regular 1.3)
 	  (5 variable-pitch 1.2) ; absence of weight means `bold'
 	  (6 variable-pitch 1.2)
 	  (7 variable-pitch 1.1)
