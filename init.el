@@ -572,6 +572,90 @@ Returns the new window."
 ;;   (setq smtpmail-debug-info t)
 ;;   (setq smtpmail-stream-type 'nil))
 
+;; Notmuch for email
+(use-package notmuch
+  :load-path "/usr/share/emacs/site-lisp/"
+  :defer t
+  :commands (notmuch notmuch-mua-new-mail)
+  :config
+  ; General UI
+  (setq notmuch-show-logo nil
+	notmuch-column-control 1.0
+	notmuch-hello-auto-refresh t
+	notmuch-hello-recent-searches-max 20
+	notmuch-hello-thousands-separator ""
+	notmuch-hello-sections '(notmuch-hello-insert-saved-searches)
+	notmuch-show-all-tags-list t)
+
+  ; Search
+  (setq notmuch-search-oldest-first nil)
+  (setq notmuch-search-result-format
+        '(("date" . "%12s  ")
+          ("count" . "%-7s  ")
+          ("authors" . "%-20s  ")
+          ("subject" . "%-80s  ")
+          ("tags" . "(%s)")))
+  (setq notmuch-tree-result-format
+        '(("date" . "%12s  ")
+          ("authors" . "%-20s  ")
+          ((("tree" . "%s")
+            ("subject" . "%s"))
+           . " %-80s  ")
+          ("tags" . "(%s)")))
+  (setq notmuch-show-empty-saved-searches t)
+
+  ; Tags
+  (setq notmuch-archive-tags nil ; I don't archive email
+	notmuch-message-replied-tags '("+replied")
+	notmuch-message-forwarded-tags '("+forwarded")
+	notmuch-show-mark-read-tags '("-unread")
+	notmuch-draft-tags '("+draft")
+	notmuch-draft-folder "drafts"
+	notmuch-draft-save-plaintext 'ask)
+
+  ; Email composition
+  (setq notmuch-mua-compose-in 'new-window)
+  (setq notmuch-mua-hidden-headers nil)
+  (setq notmuch-address-command 'internal)
+  (setq notmuch-address-use-company nil)
+  (setq notmuch-always-prompt-for-sender t)
+  (setq notmuch-mua-cite-function
+	'message-cite-original-without-signature)
+  (setq notmuch-mua-user-agent-function nil)
+
+  (setq notmuch-show-relative-dates t)
+  (setq notmuch-show-all-multipart/alternative-parts nil)
+  (setq notmuch-show-indent-messages-width 0)
+  (setq notmuch-show-indent-multipart nil)
+  (setq notmuch-show-part-button-default-action 'notmuch-show-view-part)
+  (setq notmuch-wash-wrap-lines-length 120)
+  (setq notmuch-unthreaded-show-out nil)
+  (setq notmuch-message-headers '("To" "Cc" "Subject" "Date"))
+  (setq notmuch-message-headers-visible t)
+
+  ;; Prot customization
+  (let ((count most-positive-fixnum)) ; I don't like the buttonisation of long quotes
+    (setq notmuch-wash-citation-lines-prefix count
+          notmuch-wash-citation-lines-suffix count))
+
+  :bind
+  ( :map global-map
+    ("C-c m" . notmuch)
+    ("C-x m" . notmuch-mua-new-mail) ; override `compose-mail'
+    :map notmuch-search-mode-map
+    ("a" . nil) ; not archiving so better to disable it
+    ("A" . nil) ; same reason
+    ("/" . notmuch-search-filter) ; alias for l
+    ("r" . notmuch-search-reply-to-thread) ; easier to reply to all by default
+    ("R" . notmuch-search-reply-to-thread-sender)
+    :map notmuch-show-mode-map
+    ("a" . nil) ; not archiving so better to disable it
+    ("A" . nil)
+    ("r" . notmuch-show-reply) ; easier to reply to all by default
+    ("R" . notmuch-show-reply-sender)
+    :map notmuch-hello-mode-map
+    ("C-<tab>" . nil)))
+
 ;; Message composition for email
 (use-package message
   :ensure nil
