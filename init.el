@@ -711,10 +711,6 @@ Returns the new window."
 	  ("https://www.smbc-comics.com/comic/rss" comics)
 	  ("https://www.commitstrip.com/en/feed/" comics))))
 
-;; Testing sly package for common lisp
-(use-package sly
-  :defer t)
-
 ;; rg.el for ripgrep in Emacs
 (use-package rg
   :ensure t)
