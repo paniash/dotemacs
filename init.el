@@ -572,6 +572,29 @@ Returns the new window."
 ;;   (setq smtpmail-debug-info t)
 ;;   (setq smtpmail-stream-type 'nil))
 
+;; Message composition for email
+(use-package message
+  :ensure nil
+  :defer t
+  :hook
+  (message-setup . message-sort-headers)
+  :config
+  (setq mail-user-agent 'message-user-agent
+	message-mail-user-agent t)  ; use `mail-user-agent'
+  (setq mail-header-separator "--text follows this line--")
+  (setq message-elide-ellipsis "\n [... %l lines elided]\n")
+  (setq compose-mail-user-agent-warnings nil)
+  (setq message-signature "Ashish Panigrahi\nhttps://ashishpanigrahi.com\n"
+	mail-signature message-signature)
+  (setq message-citation-line-function #'message-insert-formatted-citation-line)
+  (setq message-citation-line-format (concat "> From: %f\n"
+					     "> Date: %a, %e %b %Y %T %z\n"
+					     ">")
+	message-ignored-cited-headers "") ; default is "." for all headers
+  (setq message-confirm-send nil) ; doesn't ask for confirmation when sending email
+  (setq message-kill-buffer-on-exit t)
+  (setq message-wide-reply-confirm-recipients nil))
+
 (use-package sendmail
   :ensure nil
   :after message
