@@ -776,7 +776,7 @@ Returns the new window."
   (setq elfeed-db-directory "~/.emacs.d/elfeed/")
   (setq elfeed-enclosure-default-dir "~/downloads/")
   (setq elfeed-feeds
-	'("https://www.archlinux.org/feeds/news/"
+	'("https://www.archlinux.org/feeds/news/" archlinux
 	  ("https://emacsredux.com/atom.xml" emacs)
 	  "https://peterwittek.com/feeds/all.atom.xml"
 	  "https://gregorygundersen.com/feed.xml"
