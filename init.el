@@ -355,6 +355,8 @@
   (kbd "<leader>o") 'toggle-window-split)
 (evil-define-key nil 'global
   (kbd "<leader>b") 'bookmark-jump)
+(evil-define-key nil 'global
+  (kbd "<leader>r") 'rg)
 
 ;; Text wrapping for specific modes
 (defun my-add-to-multiple-hooks (function hooks)
