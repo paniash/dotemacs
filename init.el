@@ -205,7 +205,6 @@
 (use-package org
   :ensure nil  ; org is built-in
   :bind (:map org-mode-map
-	      ("C-c C-r" . consult-ripgrep)
 	      ("C-x C-a" . org-archive-subtree-default))
   :config
   (setq org-log-done 'time)
@@ -356,7 +355,7 @@
 (evil-define-key nil 'global
   (kbd "<leader>b") 'bookmark-jump)
 (evil-define-key nil 'global
-  (kbd "<leader>r") 'rg)
+  (kbd "<leader>r") 'consult-ripgrep)
 
 ;; Text wrapping for specific modes
 (defun my-add-to-multiple-hooks (function hooks)
@@ -819,10 +818,6 @@ Returns the new window."
 	  ("https://xkcd.com/atom.xml" comics)
 	  ("https://www.smbc-comics.com/comic/rss" comics)
 	  ("https://www.commitstrip.com/en/feed/" comics))))
-
-;; rg.el for ripgrep in Emacs
-(use-package rg
-  :ensure t)
 
 ;; Hide autorevert mode in modeline
 (use-package autorevert
