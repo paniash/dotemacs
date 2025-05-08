@@ -169,6 +169,8 @@
 	  (5 variable-pitch 1.2) ; absence of weight means `bold'
 	  (6 variable-pitch 1.2)
 	  (7 variable-pitch 1.1)
+	  (agenda-date variable-pitch 1.3)
+	  (agenda-structure variable-pitch light 1.8)
 	  (t variable-pitch 1.1)))
 
   ;; Disable all other themes to avoid awkward blending:
