@@ -778,6 +778,8 @@ Returns the new window."
   (setq-default elfeed-search-filter "@6-months-ago +unread")
   (setq elfeed-db-directory "~/.emacs.d/elfeed/")
   (setq elfeed-enclosure-default-dir "~/downloads/")
+  (setq elfeed-search-date-format '("%Y-%m-%d" 10 :left))
+  (setq elfeed-search-title-max-width 130)
   (setq elfeed-feeds
 	'(("https://rss.arxiv.org/atom/quant-ph+cond-mat.mes-hall" arxiv)
 	  ("https://www.archlinux.org/feeds/news/" archlinux)
