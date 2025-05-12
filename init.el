@@ -767,7 +767,8 @@ Returns the new window."
 
 ;; Elfeed for RSS
 (use-package elfeed
-  :ensure t
+  :ensure nil
+  :defer t
   :bind (("C-c e" . elfeed)
 	 :map elfeed-search-mode-map
 	 ("C-c C-c" . elfeed-update))
