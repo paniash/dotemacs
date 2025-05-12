@@ -828,10 +828,3 @@ Returns the new window."
 ;; Hide autorevert mode in modeline
 (use-package autorevert
   :delight auto-revert-mode)
-
-;; Highlight todo keywords in prog modes
-(use-package hl-todo
-  :ensure t
-  :config
-  (setq hl-todo-keyword-faces
-	'(("TODO" . "#25be48")))
