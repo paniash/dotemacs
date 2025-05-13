@@ -722,7 +722,7 @@ Returns the new window."
 
 ;; LSP server using eglot
 (use-package eglot
-  :defer t
+  :ensure nil  ;; built-in
   :hook (python-mode . eglot-ensure)
   :config
   ;; (setq eglot-managed-mode-hook (list (lambda () (eldoc-mode -1))))
@@ -731,7 +731,7 @@ Returns the new window."
 
 ;; Eldoc config
 (use-package eldoc
-  :defer t  ;; built-in
+  :ensure nil  ;; built-in
   :delight
   :config
   ;; disables resizing of echo area for automatic eldoc documentation
@@ -765,8 +765,7 @@ Returns the new window."
 
 ;; Elfeed for RSS
 (use-package elfeed
-  :ensure nil
-  :defer t
+  :ensure t
   :bind (("C-c e" . elfeed)
 	 :map elfeed-search-mode-map
 	 ("C-c C-c" . elfeed-update))
