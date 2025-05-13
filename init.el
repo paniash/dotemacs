@@ -74,12 +74,29 @@
   (setq tab-always-indent 'complete) ; tab for completion and not indenting
   (setq auto-save-timeout nil)
   (setq help-window-select t) ; Cursor focus goes to help window when invoked
+  (setq-default auto-fill-function 'do-auto-fill) ;; Automatic text wrapping in all major modes
 
   (column-number-mode 1)
   (global-visual-wrap-prefix-mode 1)
 
+  ;; Deletes trailing whitespace upon saving a file
+  (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
   ;; Enable `completion-preview-mode' for certain hooks
   :hook (python-mode . completion-preview-mode)
+
+  ;; Vim like scrolling
+  (setq scroll-step            1
+      scroll-conservatively  10000
+      next-screen-context-lines 5
+      ;; move by logical lines rather than visual lines (better for macros)
+      line-move-visual nil)
+
+  ;; Put autosave files in one folder
+  (setq backup-directory-alist `(("." . "~/.autosaves")))
+
+  ;; Replace "yes or no" with "y or n"
+  (setq use-short-answers t)
 
   :bind
   ( :map global-map
@@ -278,9 +295,6 @@
   (:map org-mode-map ("C-c b" . #'citar-insert-citation))
   (:map LaTeX-mode-map ("C-c b" . #'citar-insert-citation)))
 
-;; Automatic text wrapping in all major modes
-(setq-default auto-fill-function 'do-auto-fill)
-
 ;; Magit
 (use-package magit
   :ensure t)
@@ -295,16 +309,6 @@
   :init (setq markdown-command "multimarkdown")
   :config
   (setq markdown-fontify-code-blocks-natively t))
-
-;; Deletes trailing whitespace upon saving a file
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
-
-;; Vim like scrolling
-(setq scroll-step            1
-    scroll-conservatively  10000
-    next-screen-context-lines 5
-    ;; move by logical lines rather than visual lines (better for macros)
-    line-move-visual nil)
 
 ;; Marginalia package
 (use-package marginalia
@@ -409,9 +413,6 @@
 (use-package consult
   :ensure t)
 
-;; Replace "yes or no" with "y or n"
-(setq use-short-answers t)
-
 ;;;; Emacs server (allow emacsclient to connect to running session)
 (use-package server
   :ensure nil
@@ -448,13 +449,9 @@
 ;; Minibuffer keybindings
 (define-key minibuffer-local-map (kbd "C-v") 'yank)
 
-;; Put autosave files in one folder
-(setq backup-directory-alist `(("." . "~/.autosaves")))
-
 ;; Python-mode config
 ;; Use TAB in place of C-M-i for completion-at-point
 ;; (setq tab-always-indent 'complete)
-(setq python-shell-enable-font-lock nil)
 
 ;; Disable byte-compile warnings during package installation
 (add-to-list 'display-buffer-alist
@@ -761,6 +758,7 @@ Returns the new window."
   :config
   (setq python-indent-offset 4)
   (setq python-shell-interpreter "python3")
+  (setq python-shell-enable-font-lock nil)
   (add-hook 'eat-mode-hook #'turn-off-evil-mode nil))
 
 ;; Elfeed for RSS
