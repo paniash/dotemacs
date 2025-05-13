@@ -790,6 +790,7 @@ Returns the new window."
 	  ("https://karthinks.com/index.xml" emacs blog)
 	  "https://adol.pw/index.xml"
 	  ("https://marci.gunyho.com/rss" blog)
+	  ("https://tony-zorman.com/atom.xml" blog)
 	  "https://andreyor.st/feed.xml"
 	  "https://www.paritybit.ca/feed.xml"
 	  "https://m-malinowski.github.io/feed.xml"
