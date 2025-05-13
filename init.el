@@ -297,7 +297,19 @@
 
 ;; Magit
 (use-package magit
-  :ensure t)
+  :ensure t
+  :bind
+  ( :map global-map
+    ("C-x g" . magit-status)
+    :map magit-mode-map
+    ("C-w" . nil)
+    ("M-w" . nil))
+  :init
+  (setq magit-define-global-key-bindings nil)
+  :config
+  (setq git-commit-summary-max-length 50)
+  (setq git-commit-style-convention-checks '(non-empty-second-line))
+  (setq magit-diff-refine-hunk nil))
 
 ;; Delight package for hiding minor modes in the modeline
 (use-package delight
