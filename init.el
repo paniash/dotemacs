@@ -1,3 +1,9 @@
+;; use-package no longer needed at runtime
+(eval-when-compile
+  (require 'use-package))
+(require 'bind-key)                ;; if you use any :bind variant
+(setq use-package-always-ensure t)
+
 ;; Display load message when starting emacs
 (defun efs/display-startup-time ()
   (message "Emacs loaded in %s with %d garbage collections."
@@ -41,10 +47,6 @@
              '("\\`\\*\\(Warnings\\|Compile-Log\\)\\*\\'"
                (display-buffer-no-window)
                (allow-no-window . t)))
-
-(require 'use-package)
-(setq use-package-always-ensure t)
-
 
 ;; Disable line numbers for some text modes
 (dolist (mode '(eat-mode-hook
