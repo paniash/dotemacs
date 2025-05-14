@@ -82,9 +82,6 @@
   ;; Deletes trailing whitespace upon saving a file
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-  ;; Enable `completion-preview-mode' for certain hooks
-  :hook (python-mode . completion-preview-mode)
-
   ;; Vim like scrolling
   (setq scroll-step            1
       scroll-conservatively  10000
@@ -97,6 +94,9 @@
 
   ;; Replace "yes or no" with "y or n"
   (setq use-short-answers t)
+
+  ;; Enable `completion-preview-mode' for certain hooks
+  :hook (python-mode . completion-preview-mode)
 
   :bind
   ( :map global-map
