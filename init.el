@@ -307,7 +307,7 @@
   :init
   (setq magit-define-global-key-bindings nil)
   :config
-  (setq git-commit-summary-max-length 50)
+  (setq git-commit-summary-max-length 70)
   (setq git-commit-style-convention-checks '(non-empty-second-line))
   (setq magit-diff-refine-hunk nil))
 
