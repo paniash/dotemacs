@@ -824,6 +824,7 @@ Returns the new window."
 	  ("https://sachachua.com/blog/category/emacs/feed/index.xml" emacs blog)
 	  "https://simon.peytonjones.org/feed.xml"
 	  "https://jvns.ca/atom.xml"
+	  ("https://bernsteinbear.com/feed.xml" blog)
 	  "http://100r.co/links/rss.xml"
 	  "https://anchor.fm/s/c761a04/podcast/rss"
 	  ("https://changelog.complete.org/feed" blog tech)
