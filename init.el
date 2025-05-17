@@ -14,20 +14,6 @@
 
 (add-hook 'emacs-startup-hook #'efs/display-startup-time)
 
-;; Remove visible bell
-(setq visible-bell nil
-      ring-bell-function #'ignore)
-
-;; Fonts
-(set-face-attribute 'default nil :font "Hack" :height 115)
-(set-face-attribute 'fixed-pitch nil :font "Hack" :height 115)
-(set-face-attribute 'variable-pitch nil :font "Iosevka" :height 120)
-
-(setq display-line-numbers-type 'relative)
-
-;; Enable line numbers only for programming and text modes
-(add-hook 'prog-mode-hook #'display-line-numbers-mode)
-(add-hook 'text-mode-hook #'display-line-numbers-mode)
 
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
@@ -68,6 +54,15 @@
 (use-package emacs
   :ensure nil
   :demand t
+  :init
+  ;; Remove visible bell
+  (setq visible-bell nil
+        ring-bell-function #'ignore)
+
+  ;; Fonts
+  (set-face-attribute 'default nil :font "Hack" :height 115)
+  (set-face-attribute 'fixed-pitch nil :font "Hack" :height 115)
+  (set-face-attribute 'variable-pitch nil :font "Iosevka" :height 120)
   :config
   (setq kill-do-not-save-duplicates t)
   (setq echo-keystrokes-help nil) ; Emacs 30
@@ -97,6 +92,12 @@
 
   ;; ;; Enable `completion-preview-mode' for certain hooks
   ;; :hook (python-mode . completion-preview-mode)
+
+  (setq display-line-numbers-type 'relative)
+
+  ;; Enable line numbers only for programming and text modes
+  (add-hook 'prog-mode-hook #'display-line-numbers-mode)
+  (add-hook 'text-mode-hook #'display-line-numbers-mode)
 
   :bind
   ( :map global-map
