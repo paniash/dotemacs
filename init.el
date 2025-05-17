@@ -168,7 +168,7 @@
     (comment-or-uncomment-region beg end))
   (evil-define-key 'normal 'global (kbd "gc") 'my-evil-comment-or-uncomment))
 
-;; Protesilaos' ef-theme
+;; Protesilaos' ef-themes
 (use-package ef-themes
   :ensure t
   :config
