@@ -272,17 +272,6 @@
   (global-set-key (kbd "C-c a") #'org-agenda)
   (global-set-key (kbd "C-c c") #'org-capture))
 
-;; Org-roam for roam research note taking
-(use-package org-roam
-  :ensure t
-  :custom
-  (org-roam-directory "~/org/roam")
-  :bind (("C-c n l" . org-roam-buffer-toggle)
-         ("C-c n f" . org-roam-node-find)
-         ("C-c n i" . org-roam-node-insert))
-  :config
-  (org-roam-setup))
-
 (use-package citar
   :no-require
   :custom
