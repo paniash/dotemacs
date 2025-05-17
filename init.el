@@ -448,12 +448,12 @@
   :config
   (setq dired-subtree-use-backgrounds nil))
 
-;; Minibuffer keybindings
-(define-key minibuffer-local-map (kbd "C-v") 'yank)
-
-;; Python-mode config
-;; Use TAB in place of C-M-i for completion-at-point
-;; (setq tab-always-indent 'complete)
+;; Minibuffer settings
+(use-package minibuffer
+  :ensure nil
+  :bind
+  ( :map minibuffer-local-map
+    ("C-v" . yank)))
 
 ;; Disable byte-compile warnings during package installation
 (add-to-list 'display-buffer-alist
