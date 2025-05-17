@@ -726,7 +726,8 @@ Returns the new window."
   :config
   ;; (setq eglot-managed-mode-hook (list (lambda () (eldoc-mode -1))))
   (setq eglot-ignored-server-capabilities
-	'(:documentHighlightProvider))) ;; disables highlighting words under active cursor
+	'(:documentHighlightProvider :inlayHintProvider :colorProvider
+	  :documentLinkProvider))) ;; disables highlighting words under active cursor
 
 ;; Eldoc config
 (use-package eldoc
