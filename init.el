@@ -825,6 +825,13 @@ Returns the new window."
 	  ("https://www.smbc-comics.com/comic/rss" comics)
 	  ("https://www.commitstrip.com/en/feed/" comics))))
 
+(use-package elfeed-score
+  :ensure t
+  :config
+  (progn
+    (elfeed-score-enable)
+    (define-key elfeed-search-mode-map "=" elfeed-score-map)))
+
 ;; Hide autorevert mode in modeline
 (use-package autorevert
   :delight auto-revert-mode)
