@@ -812,6 +812,7 @@ Returns the new window."
 	  "https://matt.might.net/articles/feed.rss"
 	  ("https://lambdaland.org/index.xml" emacs blog)
 	  ("https://200ok.ch/atom.xml" emacs blog)
+	  ("https://www.emacs.dyerdwelling.family/index.xml" emacs blog)
 	  ("https://sachachua.com/blog/category/emacs/feed/index.xml" emacs blog)
 	  "https://simon.peytonjones.org/feed.xml"
 	  "https://jvns.ca/atom.xml"
