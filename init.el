@@ -62,7 +62,7 @@
   ;; Fonts
   (set-face-attribute 'default nil :font "Hack" :height 115)
   (set-face-attribute 'fixed-pitch nil :font "Hack" :height 115)
-  (set-face-attribute 'variable-pitch nil :font "Iosevka" :height 120)
+  (set-face-attribute 'variable-pitch nil :font "Iosevka Term" :height 120)
   :config
   (setq kill-do-not-save-duplicates t)
   (setq echo-keystrokes-help nil) ; Emacs 30
