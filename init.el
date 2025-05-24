@@ -778,7 +778,7 @@ Returns the new window."
   :config
   (setq elfeed-use-curl t)
   (setq elfeed-curl-max-connections 20)
-  (setq-default elfeed-search-filter "@6-months-ago +unread")
+  (setq-default elfeed-search-filter "@6-months-ago")
   (setq elfeed-db-directory "~/.emacs.d/elfeed/")
   (setq elfeed-enclosure-default-dir "~/downloads/")
   (setq elfeed-search-date-format '("%Y-%m-%d" 0 :left))
