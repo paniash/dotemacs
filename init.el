@@ -362,6 +362,8 @@
   (kbd "<leader>b") 'bookmark-jump)
 (evil-define-key nil 'global
   (kbd "<leader>r") 'consult-ripgrep)
+(evil-define-key nil 'global
+  (kbd "<leader>l") 'lgrep)
 
 ;; Text wrapping for specific modes
 (defun my-add-to-multiple-hooks (function hooks)
