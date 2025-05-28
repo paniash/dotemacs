@@ -1,0 +1,49 @@
+* RSS Feeds                                                          :elfeed:
+** ArXiV                                                             :arxiv:
+*** [[http://rss.arxiv.org/atom/quant-ph+cond-mat.mes-hall][ArXiV Quantum Physics]]                                         :quantum:
+** Emacs                                                             :emacs:
+*** http://emacsredux.com/atom.xml
+*** http://lambdaland.org/index.xml
+*** http://200ok.ch/atom.xml
+*** http://www.emacs.dyerdwelling.family/index.xml
+*** http://sachachua.com/blog/category/emacs/feed/index.xml
+*** http://karthinks.com/index.xml
+*** http://protesilaos.com/codelog.xml
+*** http://irreal.org/blog/?tag=emacs&feed=rss2
+*** http://ogbe.net/blog-feed.xml
+*** http://themkat.net/feed.xml
+*
+** Blogs                                                              :blog:
+*** http://marci.gunyho.com/rss
+*** http://11de784a.github.io/feed.xml
+*** http://terrytao.wordpress.com/feed/                              :math:
+*** http://m-malinowski.github.io/feed.xml                        :quantum:
+*** http://timharek.no/rss.xml
+*** http://matt.might.net/articles/feed.rss
+*** http://protesilaos.com/commentary.xml                            :life:
+*** http://gregorygundersen.com/feed.xml
+*** http://rosenzweig.io/feed.xml
+*** http://adol.pw/index.xml
+*** http://tony-zorman.com/atom.xml
+*** http://andreyor.st/feed.xml
+*** http://www.paritybit.ca/feed.xml
+*** http://kishvanchee.com/index.xml
+*** http://dataswamp.org/~solene/rss.xml
+*** http://drewdevault.com/blog/index.xml
+*** http://simon.peytonjones.org/feed.xml
+*** http://jvns.ca/atom.xml
+*** http://100r.co/links/rss.xml
+*** http://anchor.fm/s/c761a04/podcast/rss
+*** Tech & Linux                                                     :tech:
+**** http://www.romanzolotarev.com/rss.xml
+**** http://www.unixsheikh.com/feed.rss
+**** http://nullprogram.com/feed/
+**** http://yarmo.eu/atom.xml
+**** http://bernsteinbear.com/feed.xml
+**** http://changelog.complete.org/feed
+** Comics                                                           :comics:
+*** http://phdcomics.com/gradfeed.php
+*** http://www.noendcomic.com/rss.php
+*** http://xkcd.com/atom.xml
+*** http://www.smbc-comics.com/comic/rss
+*** http://www.commitstrip.com/en/feed/
