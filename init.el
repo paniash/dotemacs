@@ -765,6 +765,7 @@ Returns the new window."
 ;; Elfeed for RSS
 (use-package elfeed
   :ensure t
+  :defer t
   :hook ((elfeed-search-mode . variable-pitch-mode)
 	 (elfeed-show-mode . variable-pitch-mode))
   :bind (("C-c e" . elfeed)
@@ -829,7 +830,7 @@ Returns the new window."
 	  ("https://www.commitstrip.com/en/feed/" comics))))
 
 (use-package elfeed-score
-  :ensure t
+  :defer t
   :config
   (progn
     (elfeed-score-enable)
