@@ -781,53 +781,7 @@ Returns the new window."
   (setq elfeed-search-date-format '("%Y-%m-%d" 0 :left))
   (setq elfeed-search-title-max-width 130)
   (setq elfeed-search-title-min-width 120)
-  (setq elfeed-search-trailing-width 0)
-  (setq elfeed-feeds
-	'(("https://rss.arxiv.org/atom/quant-ph+cond-mat.mes-hall" arxiv)
-	  ("https://www.archlinux.org/feeds/news/" archlinux)
-	  ("https://emacsredux.com/atom.xml" emacs)
-	  "https://peterwittek.com/feeds/all.atom.xml"
-	  "https://gregorygundersen.com/feed.xml"
-	  "https://mikeinnes.github.io/feed.xml"
-	  "https://rosenzweig.io/feed.xml"
-	  ("https://karthinks.com/index.xml" emacs blog)
-	  "https://adol.pw/index.xml"
-	  ("https://marci.gunyho.com/rss" blog)
-	  ("https://tony-zorman.com/atom.xml" blog)
-	  "https://andreyor.st/feed.xml"
-	  "https://www.paritybit.ca/feed.xml"
-	  "https://m-malinowski.github.io/feed.xml"
-	  "https://kishvanchee.com/index.xml"
-	  "https://dataswamp.org/~solene/rss.xml"
-	  "https://drewdevault.com/blog/index.xml"
-	  ("https://11de784a.github.io/feed.xml" blog)
-	  "https://yarmo.eu/atom.xml"
-	  ("https://timharek.no/rss.xml" blog)
-	  "https://terrytao.wordpress.com/feed/"
-	  ("https://protesilaos.com/commentary.xml" blog life)
-	  ("https://protesilaos.com/codelog.xml" emacs blog tech)
-	  ("http://irreal.org/blog/?tag=emacs&feed=rss2" emacs blog)
-	  ("https://ogbe.net/blog-feed.xml" emacs blog)
-	  ("https://themkat.net/feed.xml" emacs blog)
-	  "https://www.romanzolotarev.com/rss.xml"
-	  ("https://nullprogram.com/feed/" emacs blog)
-	  "https://www.unixsheikh.com/feed.rss"
-	  "https://matt.might.net/articles/feed.rss"
-	  ("https://lambdaland.org/index.xml" emacs blog)
-	  ("https://200ok.ch/atom.xml" emacs blog)
-	  ("https://www.emacs.dyerdwelling.family/index.xml" emacs blog)
-	  ("https://sachachua.com/blog/category/emacs/feed/index.xml" emacs blog)
-	  "https://simon.peytonjones.org/feed.xml"
-	  "https://jvns.ca/atom.xml"
-	  ("https://bernsteinbear.com/feed.xml" blog)
-	  "http://100r.co/links/rss.xml"
-	  "https://anchor.fm/s/c761a04/podcast/rss"
-	  ("https://changelog.complete.org/feed" blog tech)
-	  ("https://phdcomics.com/gradfeed.php" comics)
-	  ("https://www.noendcomic.com/rss.php" comics)
-	  ("https://xkcd.com/atom.xml" comics)
-	  ("https://www.smbc-comics.com/comic/rss" comics)
-	  ("https://www.commitstrip.com/en/feed/" comics))))
+  (setq elfeed-search-trailing-width 0))
 
 (use-package elfeed-score
   :defer t
@@ -835,6 +789,13 @@ Returns the new window."
   (progn
     (elfeed-score-enable)
     (define-key elfeed-search-mode-map "=" elfeed-score-map)))
+
+(use-package elfeed-org
+  :ensure t
+  :init
+  (setq rmh-elfeed-org-files (list "~/.emacs.d/elfeed.org"))
+  :config
+  (elfeed-org))
 
 ;; Hide autorevert mode in modeline
 (use-package autorevert
