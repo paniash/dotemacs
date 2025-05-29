@@ -773,6 +773,62 @@ Returns the new window."
 	 ("C-c C-c" . elfeed-update))
 
   :config
+  (defun concatenate-authors (authors-list)
+    "Given AUTHORS-LIST, list of plists; return string of all authors
+    concatenated."
+    (mapconcat
+     (lambda (author) (plist-get author :name))
+     authors-list ", "))
+
+  (defun pani/my-search-print-fn (entry)
+    "Print ENTRY to the buffer."
+    (let* ((date (elfeed-search-format-date (elfeed-entry-date entry)))
+	   (title (or (elfeed-meta entry :title)
+		      (elfeed-entry-title entry) ""))
+	   (title-faces (elfeed-search--faces (elfeed-entry-tags entry)))
+	   (feed (elfeed-entry-feed entry))
+	   (feed-title
+	    (when feed
+	      (or (elfeed-meta feed :title) (elfeed-feed-title feed))))
+	   (entry-authors (concatenate-authors
+			   (elfeed-meta entry :authors)))
+	   (tags (mapcar #'symbol-name (elfeed-entry-tags entry)))
+	   (tags-str (mapconcat
+		      (lambda (s) (propertize s 'face
+					      'elfeed-search-tag-face))
+		      tags ","))
+	   (title-width (- (window-width) 10
+			   elfeed-search-trailing-width))
+	   (title-column (elfeed-format-column
+			  title (elfeed-clamp
+				 elfeed-search-title-min-width
+				 title-width
+				 elfeed-search-title-max-width)
+			  :left))
+	   (authors-width 135)
+	   (authors-column (elfeed-format-column
+			    entry-authors (elfeed-clamp
+					   elfeed-search-title-min-width
+					   authors-width
+					   80)
+			    :left)))
+      (insert (propertize date 'face 'elfeed-search-date-face) " ")
+      (insert (propertize title-column
+			  'face title-faces 'kbd-help title) " ")
+      (insert (propertize authors-column
+			  'face 'elfeed-search-date-face
+			  'kbd-help entry-authors) " ")
+      ;; (when feed-title
+      ;;   (insert (propertize entry-authors
+      ;; 'face 'elfeed-search-feed-face) " "))
+      (when entry-authors
+	(insert (propertize feed-title
+			    'face 'elfeed-search-feed-face) " "))
+      (when tags
+        (insert "(" tags-str ")"))
+      )
+  )
+  (setq elfeed-search-print-entry-function #'pani/my-search-print-fn)
   (setq elfeed-use-curl t)
   (setq elfeed-curl-max-connections 20)
   (setq-default elfeed-search-filter "@6-months-ago")
