@@ -14,10 +14,6 @@
 
 (add-hook 'emacs-startup-hook #'efs/display-startup-time)
 
-
-;; Make ESC quit prompts
-(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-
 ;; Initialize package sources
 (require 'package)
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
