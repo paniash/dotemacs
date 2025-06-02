@@ -259,8 +259,8 @@
   ;; Block parent TODO to DONE if children are undone
   (setq org-enforce-todo-dependencies t)
 
-  ;; Show markup elements (default behaviour)
-  (setq org-hide-emphasis-markers nil)
+  ;; Hide markup elements (default behaviour is to show)
+  (setq org-hide-emphasis-markers t)
 
   ;; Add syntax highlighting for org documents
   ;; Also add native <Tab> behaviour in codeblocks
