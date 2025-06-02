@@ -222,6 +222,10 @@
 (use-package org
   :ensure nil  ; org is built-in
   :bind (:map org-mode-map
+  :bind (:map global-map
+	      ("C-c a" . org-agenda)
+	      ("C-c c" . org-capture)
+	 :map org-mode-map
 	      ("C-x C-a" . org-archive-subtree-default))
   :config
   (setq org-log-done 'time)
@@ -267,9 +271,6 @@
   (setq org-src-fontify-natively t
 	org-src-tab-acts-natively t)
 
-  ;; Org specific global keybindings
-  (global-set-key (kbd "C-c a") #'org-agenda)
-  (global-set-key (kbd "C-c c") #'org-capture))
 
 (use-package citar
   :no-require
