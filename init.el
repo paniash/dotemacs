@@ -274,6 +274,21 @@
   (setq org-src-fontify-natively t
 	org-src-tab-acts-natively t)
 
+  ;; Org styling
+  (setq org-pretty-entities nil
+	org-ellipsis "…"
+	org-auto-align-tags nil)
+
+  ;; Org-indent settings
+  (setq org-adapt-indentation nil)
+  (setq org-indent-mode-turns-on-hiding-stars nil)
+  (setq org-indent-indentation-per-level 4)
+
+  ;; List points now use a unicode bullet symbol instead of a generic
+  ;; dash or asterisk
+  (font-lock-add-keywords 'org-mode
+			  '(("^ *\\([-]\\) "
+			     (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•")))))))
 
 (use-package citar
   :no-require
