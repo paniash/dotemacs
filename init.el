@@ -859,3 +859,8 @@ Returns the new window."
 ;; Hide autorevert mode in modeline
 (use-package autorevert
   :delight auto-revert-mode)
+
+;; Info-mode config
+(use-package info
+  :ensure nil ; built-in
+  :hook (Info-mode . variable-pitch-mode))
