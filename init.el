@@ -221,10 +221,10 @@
 ;; Orgmode specific settings
 (use-package org
   :ensure nil  ; org is built-in
-  :bind (:map org-mode-map
   :init
   (setq org-directory (expand-file-name "~/org/"))
   (setq org-imenu-depth 7)
+  :hook (org-mode . auto-revert-mode)
   :bind (:map global-map
 	      ("C-c a" . org-agenda)
 	      ("C-c c" . org-capture)
