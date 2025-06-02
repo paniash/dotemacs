@@ -838,8 +838,8 @@ Returns the new window."
   (setq elfeed-db-directory "~/.emacs.d/elfeed/")
   (setq elfeed-enclosure-default-dir "~/downloads/")
   (setq elfeed-search-date-format '("%Y-%m-%d" 0 :left))
-  (setq elfeed-search-title-max-width 130)
-  (setq elfeed-search-title-min-width 120)
+  (setq elfeed-search-title-max-width 100)
+  (setq elfeed-search-title-min-width 90)
   (setq elfeed-search-trailing-width 0))
 
 (use-package elfeed-score
