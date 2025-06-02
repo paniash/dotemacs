@@ -111,8 +111,8 @@
   :custom
   ;; disable Ispell completion function
   (text-mode-ispell-word-completion nil)
-  (read-extended-command-predicate #'command-completion-default-include-p)
-  )
+  (read-extended-command-predicate #'command-completion-default-include-p))
+
 
 ;;; Vim Bindings
 (use-package evil
