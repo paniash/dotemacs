@@ -843,8 +843,10 @@ Returns the new window."
   (setq elfeed-search-trailing-width 0))
 
 (use-package elfeed-score
-  :defer t
+  :ensure t
   :config
+  (setq elfeed-score-rule-stats-file "~/.emacs.d/elfeed.stats")
+  (setq elfeed-score-serde-score-file "~/.emacs.d/elfeed.score")
   (progn
     (elfeed-score-enable)
     (define-key elfeed-search-mode-map "=" elfeed-score-map)))
