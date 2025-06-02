@@ -95,6 +95,9 @@
   (add-hook 'prog-mode-hook #'display-line-numbers-mode)
   (add-hook 'text-mode-hook #'display-line-numbers-mode)
 
+  ;; Specify line-spacing (in pixels)
+  (setq line-spacing nil)   ;; `nil' is default value
+
   :bind
   ( :map global-map
     ("C-x C-d" . nil) ; never use it
