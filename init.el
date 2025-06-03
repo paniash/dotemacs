@@ -360,7 +360,7 @@
   (add-hook 'LaTeX-mode-hook (lambda () (setq TeX-command-default "LaTeXmk")))
   (setq font-latex-fontify-script nil))    ;; disables fontification of formatted text
 
-;; Setup YaSnippet for LaTeX
+;; Setup YaSnippet for LaTeX and orgmode
 (use-package yasnippet
   :ensure t
   :hook (LaTeX-mode . yas-minor-mode-on)
