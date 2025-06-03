@@ -363,7 +363,8 @@
 ;; Setup YaSnippet for LaTeX and orgmode
 (use-package yasnippet
   :ensure t
-  :hook (LaTeX-mode . yas-minor-mode-on)
+  :hook ((LaTeX-mode . yas-minor-mode)
+	 (org-mode . yas-minor-mode))
   :init
   (setq yas-snippet-dir "~/.emacs.d/snippets"))
 
