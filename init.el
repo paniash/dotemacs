@@ -327,6 +327,7 @@
 (use-package markdown-mode
   :defer t
   :mode ("*.md" . gfm-mode)
+  :hook (markdown-mode . visual-line-mode)
   :init (setq markdown-command "multimarkdown")
   :config
   (setq markdown-fontify-code-blocks-natively t))
