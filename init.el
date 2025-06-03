@@ -224,7 +224,8 @@
   :init
   (setq org-directory (expand-file-name "~/org/"))
   (setq org-imenu-depth 7)
-  :hook (org-mode . auto-revert-mode)
+  :hook ((org-mode . auto-revert-mode)
+	 (org-agenda-mode . variable-pitch-mode))
   :bind (:map global-map
 	      ("C-c a" . org-agenda)
 	      ("C-c c" . org-capture)
