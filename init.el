@@ -484,7 +484,8 @@
                (display-buffer-no-window)
                (allow-no-window . t)))
 
-(defun prot/keyboard-quit-dwim ()
+;; Stolen from Protesilaos' config
+(defun pani/keyboard-quit-dwim ()
   "Do-What-I-Mean behaviour for a general `keyboard-quit'.
 
 The generic `keyboard-quit' does not do the expected thing when
@@ -508,7 +509,7 @@ The DWIM behaviour of this command is as follows:
    (t
     (keyboard-quit))))
 
-(define-key global-map (kbd "C-g") #'prot/keyboard-quit-dwim)
+(define-key global-map (kbd "C-g") #'pani/keyboard-quit-dwim)
 
 ;; Function to instantly toggle between vertical and horizontal split
 (defun toggle-window-split ()
