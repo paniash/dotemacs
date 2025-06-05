@@ -60,9 +60,6 @@
   (set-face-attribute 'fixed-pitch nil :font "Hack" :height 115)
   (set-face-attribute 'variable-pitch nil :font "Iosevka Term" :height 120)
 
-  ;; Tree-sitter font lock (4 is highest)
-  (setq treesit-font-lock-level 4)
-
   :config
   (setq kill-do-not-save-duplicates t)
   (setq echo-keystrokes-help nil) ; Emacs 30
@@ -101,10 +98,6 @@
 
   ;; Specify line-spacing (in pixels)
   (setq line-spacing nil)   ;; `nil' is default value
-
-  ;; Remap major modes to treesitter
-  (setq major-mode-remap-alist
-	'((python-mode . python-ts-mode)))
 
   ;; Setting leader key in emacs
   (evil-set-leader 'normal (kbd "SPC"))
@@ -917,3 +910,14 @@ Returns the new window."
   :ensure nil ; built-in
   :config
   (setq tramp-verbose 10))
+
+
+;; Treesitter config
+(use-package treesit
+  :ensure nil ; built-in
+  :config
+  ;; Remap major modes to treesitter
+  (setq major-mode-remap-alist
+	'((python-mode . python-ts-mode)))
+  ;; Tree-sitter font lock (4 is highest)
+  (setq treesit-font-lock-level 4))
