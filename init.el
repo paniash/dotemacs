@@ -106,6 +106,28 @@
   (setq major-mode-remap-alist
 	'((python-mode . python-ts-mode)))
 
+  ;; Setting leader key in emacs
+  (evil-set-leader 'normal (kbd "SPC"))
+  (evil-define-key 'normal LaTeX-mode-map
+    (kbd "<leader>c") 'TeX-command-run-all)
+  (evil-define-key nil 'global
+    (kbd "<leader>o") 'toggle-window-split)
+  (evil-define-key nil 'global
+    (kbd "<leader>b") 'bookmark-jump)
+  (evil-define-key nil 'global
+    (kbd "<leader>r") 'consult-ripgrep)
+  (evil-define-key nil 'global
+    (kbd "<leader>l") 'lgrep)
+
+  ;; Set `t' as a prefix key for tab manipulation commands
+  (define-prefix-command 'pani/t-key)
+  (define-key evil-motion-state-map (kbd "t") 'pani/t-key)
+  (define-key pani/t-key (kbd "j") 'tab-previous)
+  (define-key pani/t-key (kbd "k") 'tab-next)
+  (define-key pani/t-key (kbd "n") 'tab-new)
+  (define-key pani/t-key (kbd "x") 'tab-close)
+  (define-key pani/t-key (kbd "X") 'tab-close-other)
+
   :bind
   ( :map global-map
     ("C-x C-d" . nil) ; never use it
@@ -380,19 +402,6 @@
   :custom
   ((completion-styles '(orderless basic))
   (completon-category-overrides '((file (styles basic partial-completion))))))
-
-;; Setting leader key in emacs
-(evil-set-leader 'normal (kbd "SPC"))
-(evil-define-key 'normal LaTeX-mode-map
-  (kbd "<leader>c") 'TeX-command-run-all)
-(evil-define-key nil 'global
-  (kbd "<leader>o") 'toggle-window-split)
-(evil-define-key nil 'global
-  (kbd "<leader>b") 'bookmark-jump)
-(evil-define-key nil 'global
-  (kbd "<leader>r") 'consult-ripgrep)
-(evil-define-key nil 'global
-  (kbd "<leader>l") 'lgrep)
 
 ;; Text wrapping for specific modes
 (defun my-add-to-multiple-hooks (function hooks)
