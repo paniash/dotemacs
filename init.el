@@ -900,3 +900,9 @@ Returns the new window."
   (:map Info-mode-map
 	("<SPC>" . nil))  ;; TODO: Fix this binding as its bound to `Info-scroll-up'
   :hook (Info-mode . variable-pitch-mode))
+
+;; TRAMP config
+(use-package tramp
+  :ensure nil ; built-in
+  :config
+  (setq tramp-verbose 10))
