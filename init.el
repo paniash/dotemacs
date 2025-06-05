@@ -128,6 +128,8 @@
   (define-key pani/t-key (kbd "x") 'tab-close)
   (define-key pani/t-key (kbd "X") 'tab-close-other)
 
+  (setq tab-bar-show 1) ; turns off `tab-bar-mode' when only 1 tab is present.
+
   :bind
   ( :map global-map
     ("C-x C-d" . nil) ; never use it
