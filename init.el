@@ -896,4 +896,7 @@ Returns the new window."
 ;; Info-mode config
 (use-package info
   :ensure nil ; built-in
+  :bind
+  (:map Info-mode-map
+	("<SPC>" . nil))  ;; TODO: Fix this binding as its bound to `Info-scroll-up'
   :hook (Info-mode . variable-pitch-mode))
