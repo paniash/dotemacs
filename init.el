@@ -98,6 +98,10 @@
   ;; Specify line-spacing (in pixels)
   (setq line-spacing nil)   ;; `nil' is default value
 
+  ;; Remap major modes to treesitter
+  (setq major-mode-remap-alist
+	'((python-mode . python-ts-mode)))
+
   :bind
   ( :map global-map
     ("C-x C-d" . nil) ; never use it
