@@ -911,7 +911,6 @@ Returns the new window."
   :config
   (setq tramp-verbose 10))
 
-
 ;; Treesitter config
 (use-package treesit
   :ensure nil ; built-in
