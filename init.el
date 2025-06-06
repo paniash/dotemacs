@@ -802,6 +802,9 @@ Returns the new window."
   ( :map python-mode-map
     ("C-l" . nil) ; unbind default binding for text view centering
     ("C-l" . xref-go-back)
+    :map python-ts-mode-map
+    ("C-l" . nil) ; unbind default binding for text view centering
+    ("C-l" . xref-go-back)
   )
   :config
   (setq python-indent-offset 4)
