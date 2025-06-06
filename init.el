@@ -335,7 +335,9 @@
     ("C-x g" . magit-status)
     :map magit-mode-map
     ("C-w" . nil)
-    ("M-w" . nil))
+    ("M-w" . nil)
+    ("C-c c" . nil)
+    ("C-c a" . nil))
   :init
   (setq magit-define-global-key-bindings nil)
   :config
