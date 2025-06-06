@@ -758,7 +758,8 @@ Returns the new window."
 ;; LSP server using eglot
 (use-package eglot
   :ensure nil  ;; built-in
-  :hook (python-mode . eglot-ensure)
+  :hook ((python-mode . eglot-ensure)
+	 (python-ts-mode . eglot-ensure))   ;; run eglot when opening python files
   :config
   ;; (setq eglot-managed-mode-hook (list (lambda () (eldoc-mode -1))))
   (setq eglot-ignored-server-capabilities
