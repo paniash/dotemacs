@@ -253,7 +253,8 @@
 	      ("C-c a" . org-agenda)
 	      ("C-c c" . org-capture)
 	 :map org-mode-map
-	      ("C-x C-a" . org-archive-subtree-default))
+	 ("C-x C-a" . org-archive-subtree-default)
+	 ("C-c i" . org-toggle-inline-images))
   :config
   (setq org-log-done 'time)
   ;; Collapse the log entries into a "drawer"
