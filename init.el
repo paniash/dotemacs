@@ -164,7 +164,7 @@
 
 ;; Set `t' as a prefix key for tab manipulation commands
 (define-prefix-command 'pani/t-key)
-(define-key evil-motion-state-map (kbd "t") 'pani/t-key)
+(define-key evil-normal-state-map (kbd "t") 'pani/t-key)
 (define-key pani/t-key (kbd "j") 'tab-previous)
 (define-key pani/t-key (kbd "k") 'tab-next)
 (define-key pani/t-key (kbd "n") 'tab-new)
