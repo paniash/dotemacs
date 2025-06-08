@@ -449,7 +449,11 @@
 ;; TODO add consult and embark packages
 ;; TODO play around with General.el
 (use-package consult
-  :ensure t)
+  :ensure t
+  :bind (:map global-map
+	      ("C-c l f" . consult-focus-lines)
+	      ("C-c l g" . consult-grep)
+	      ("C-c l l" . consult-line)))
 
 ;;;; Emacs server (allow emacsclient to connect to running session)
 (use-package server
