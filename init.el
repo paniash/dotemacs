@@ -156,7 +156,7 @@
 (evil-define-key nil 'global
 (kbd "<leader>o") 'toggle-window-split)
 (evil-define-key nil 'global
-(kbd "<leader>b") 'bookmark-jump)
+(kbd "<leader>b") 'consult-buffer)
 (evil-define-key nil 'global
 (kbd "<leader>r") 'consult-ripgrep)
 (evil-define-key nil 'global
