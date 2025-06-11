@@ -389,6 +389,7 @@
 ;; Setup YaSnippet for LaTeX and orgmode
 (use-package yasnippet
   :ensure t
+  :delight yas-minor-mode
   :hook ((LaTeX-mode . yas-minor-mode)
 	 (org-mode . yas-minor-mode))
   :init
