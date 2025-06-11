@@ -282,6 +282,10 @@
 	  "~/org/hobby.org"
 	  "~/org/birthdays.org"))
 
+  ;; Hides DONE items in org-agenda for schedules and deadlines
+  (setq org-agenda-skip-scheduled-if-done t)
+  (setq org-agenda-skip-deadline-if-done t)
+
   ;; Faces for TODO keywords
   (setq org-todo-keyword-faces
 	'(("PROG" . (:foreground "orange" :weight bold))
