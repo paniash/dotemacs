@@ -81,6 +81,9 @@
       ;; move by logical lines rather than visual lines (better for macros)
       line-move-visual nil)
 
+  ;; Disable remote file locks
+  (setq remote-file-name-inhibit-locks t)
+
   ;; Put autosave files in one folder
   (setq backup-directory-alist `(("." . "~/.autosaves")))
 
@@ -930,7 +933,11 @@ Returns the new window."
 (use-package tramp
   :ensure nil ; built-in
   :config
-  (setq tramp-verbose 10))
+  (setq tramp-verbose 10)
+  (setq vc-ignore-dir-regexp
+	(format "\\(%s\\)\\|\\(%s\\)"
+		vc-ignore-dir-regexp
+		tramp-file-name-regexp)))
 
 ;; Treesitter config
 (use-package treesit
