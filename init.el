@@ -283,8 +283,36 @@
 	'("~/org/agenda.org"
 	  "~/org/chores.org"
 	  "~/org/hobby.org"
+	  "~/org/inbox.org"
 	  "~/org/birthdays.org"))
 
+  ;; Setup org-capture templates
+  (setq org-capture-templates
+	`(("i" "Inbox" entry (file "inbox.org")
+	   ,(concat "* TODO %?\n"
+		    "/Entered on/ %U"))))
+
+  ;; Small hook to tell org-capture to use full window instead of splitting window
+  (add-hook 'org-capture-mode-hook 'delete-other-windows)
+
+  ;; Sets TODO items to not have a prefix at the left hand side of the
+  ;; org-agenda window (typically the filename where the TODO item was created).
+  (setq org-agenda-prefix-format
+	'((agenda . " %i %-12:c%?-12t% s")
+	  (todo   . " ")
+	  (tags   . " %i %-12:c")
+	  (search . " %i %-12:c")))
+
+  ;; Stolen from Nicholas Rougier's GTD guide
+  (defun org-capture-inbox ()
+    (interactive)
+    (call-interactively 'org-store-link)
+    (org-capture nil "i"))
+
+  :bind (:map global-map
+	      ("C-c i" . org-capture-inbox))
+
+  :config
   ;; Hides DONE items in org-agenda for schedules and deadlines
   (setq org-agenda-skip-scheduled-if-done t)
   (setq org-agenda-skip-deadline-if-done t)
