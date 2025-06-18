@@ -50,6 +50,7 @@
 (use-package emacs
   :ensure nil
   :demand t
+  :delight auto-fill-function
   :init
   ;; Remove visible bell
   (setq visible-bell nil
