@@ -489,6 +489,8 @@
   :bind (:map global-map
 	      ("C-c l f" . consult-focus-lines)
 	      ("C-c l g" . consult-grep)
+	      ("C-c l r" . consult-ripgrep)
+	      ("C-c l d" . consult-fd)
 	      ("C-c l l" . consult-line)))
 
 ;;;; Emacs server (allow emacsclient to connect to running session)
