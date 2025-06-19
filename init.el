@@ -103,6 +103,7 @@
   ;; Specify line-spacing (in pixels)
   (setq line-spacing nil)   ;; `nil' is default value
   (setq tab-bar-show 1) ; turns off `tab-bar-mode' when only 1 tab is present.
+  (setq tab-bar-close-button-show nil) ; removes 'x' button from the tabs.
   :bind
   ( :map global-map
     ("C-x C-d" . nil) ; never use it
