@@ -249,6 +249,8 @@
 ;; Orgmode specific settings
 (use-package org
   :ensure nil  ; org is built-in
+  :delight org-cdlatex-mode
+  :delight org-indent-mode
   :init
   (setq org-directory (expand-file-name "~/org/"))
   (setq org-imenu-depth 7)
