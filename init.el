@@ -953,7 +953,9 @@ Returns the new window."
 
 ;; Hide autorevert mode in modeline
 (use-package autorevert
-  :delight auto-revert-mode)
+  :delight auto-revert-mode
+  :config
+  (global-auto-revert-mode 1))
 
 ;; Info-mode config
 (use-package info
