@@ -12,6 +12,7 @@
 *** http://irreal.org/blog/?tag=emacs&feed=rss2
 *** http://ogbe.net/blog-feed.xml
 *** http://themkat.net/feed.xml
+*** https://coredumped.dev/index.xml
 ** Blogs                                                              :blog:
 *** http://marci.gunyho.com/rss
 *** http://11de784a.github.io/feed.xml
