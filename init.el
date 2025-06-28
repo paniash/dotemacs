@@ -104,6 +104,12 @@
   (setq line-spacing nil)   ;; `nil' is default value
   (setq tab-bar-show 1) ; turns off `tab-bar-mode' when only 1 tab is present.
   (setq tab-bar-close-button-show nil) ; removes 'x' button from the tabs.
+
+  ;; Specify gpg executable
+  (setq epg-gpg-program "gpg2")
+  ;; ;; Do gpg pin entry from Emacs
+  ;; (setenv "GPG_AGENT_INFO" nil)
+
   :bind
   ( :map global-map
     ("C-x C-d" . nil) ; never use it
