@@ -944,12 +944,12 @@ Returns the new window."
 
 (use-package elfeed-score
   :ensure t
+  :after elfeed
   :config
   (setq elfeed-score-rule-stats-file "~/.emacs.d/elfeed.stats")
   (setq elfeed-score-serde-score-file "~/.emacs.d/elfeed.score")
-  (progn
-    (elfeed-score-enable)
-    (define-key elfeed-search-mode-map "=" elfeed-score-map)))
+  (elfeed-score-enable)
+  (define-key elfeed-search-mode-map "=" elfeed-score-map))
 
 (use-package elfeed-org
   :ensure t
