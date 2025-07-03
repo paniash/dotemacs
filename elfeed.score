@@ -2,6 +2,7 @@
 ((version 10)
  ("title"
   (:text "transmon" :value 100 :type s)
+  (:text "fluxonium" :value 100 :type s)
   (:text "superconducting" :value 100 :type s)
   (:text "qubit" :value 100 :type s))
  ("content")
@@ -16,7 +17,7 @@
   (:text "Andrew Houck" :value 300 :type w :tags (t arxiv))
   (:text "Peter Leek" :value 300 :type w :tags (t arxiv))
   (:text "Yasunobu Nakamura" :value 300 :type w :tags (t arxiv))
-  (:text "William Oliver" :value 300 :type w :tags (t arxiv))
+  (:text "William D. Oliver" :value 300 :type w :tags (t arxiv))
   (:text "Ioan Pop" :value 300 :type w :tags (t arxiv))
   (:text "Alexey Ustinov" :value 300 :type w :tags (t arxiv))
   (:text "Christopher Eichler" :value 300 :type w :tags (t arxiv))
