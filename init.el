@@ -985,12 +985,12 @@ Returns the new window."
 		vc-ignore-dir-regexp
 		tramp-file-name-regexp)))
 
-;; Treesitter config
-(use-package treesit
-  :ensure nil ; built-in
-  :config
-  ;; Remap major modes to treesitter
-  (setq major-mode-remap-alist
-	'((python-mode . python-ts-mode)))
-  ;; Tree-sitter font lock (4 is highest)
-  (setq treesit-font-lock-level 4))
+;; ;; Treesitter config
+;; (use-package treesit
+;;   :ensure nil ; built-in
+;;   :config
+;;   ;; Remap major modes to treesitter
+;;   (setq major-mode-remap-alist
+;; 	'((python-mode . python-ts-mode)))
+;;   ;; Tree-sitter font lock (4 is highest)
+;;   (setq treesit-font-lock-level 4))
