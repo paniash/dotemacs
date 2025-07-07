@@ -270,6 +270,9 @@
 	 ("C-x a" . org-archive-subtree-default)
 	 ("C-x i" . org-toggle-inline-images))
   :config
+  (use-package org-indent
+    :ensure nil
+    :delight)
   (setq org-log-done 'time)
   ;; Collapse the log entries into a "drawer"
   (setq org-log-into-drawer t)
