@@ -1,10 +1,11 @@
 ;;; Elfeed score file             -*- lisp -*-
 ((version 10)
  ("title"
-  (:text "transmon" :value 100 :type s)
-  (:text "fluxonium" :value 100 :type s)
-  (:text "superconducting" :value 100 :type s)
-  (:text "qubit" :value 100 :type s))
+  (:text "transmon" :value 200 :type s)
+  (:text "graphene" :value 50 :type s)
+  (:text "fluxonium" :value 200 :type s)
+  (:text "superconducting" :value 75 :type s)
+  (:text "qubit" :value 150 :type s))
  ("content")
  ("title-or-content")
  ("authors"
