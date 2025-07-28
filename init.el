@@ -225,7 +225,7 @@
 
   ;; Disable all other themes to avoid awkward blending:
   (mapc #'disable-theme custom-enabled-themes)
-  (load-theme 'ef-autumn :no-confirm))
+  (load-theme 'ef-symbiosis :no-confirm))
 
 ;;; Vertico
 (use-package vertico
