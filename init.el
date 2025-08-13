@@ -975,6 +975,14 @@ Returns the new window."
   :config
   (elfeed-org))
 
+;; Olivetti for reducing eye strain
+(use-package olivetti
+  :hook
+  (elfeed-search-mode . olivetti-mode)
+  :config
+  (setq olivetti-minimum-body-width 180)
+  (setq olivetti-body-width 100))
+
 ;; Hide autorevert mode in modeline
 (use-package autorevert
   :delight auto-revert-mode
