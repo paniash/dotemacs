@@ -844,13 +844,6 @@ Returns the new window."
 	'(:documentHighlightProvider :inlayHintProvider :colorProvider
 	  :documentLinkProvider))) ;; disables highlighting words under active cursor
 
-;; eglot-booster
-(use-package eglot-booster
-  :vc (:url "https://github.com/jdtsmith/eglot-booster"
-	    :branch "main")
-  :after eglot
-  :config (eglot-booster-mode))
-
 ;; Eldoc config
 (use-package eldoc
   :ensure nil  ;; built-in
