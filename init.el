@@ -882,6 +882,13 @@ Returns the new window."
   (setq python-shell-enable-font-lock nil)
   (add-hook 'eat-mode-hook #'turn-off-evil-mode nil))
 
+;; code-cells for ipython like behaviour
+(use-package code-cells
+  :ensure t
+  :config
+  (add-hook 'python-ts-mode-hook 'code-cells-mode-maybe)
+  (add-hook 'python-mode-hook 'code-cells-mode-maybe))
+
 ;; Elfeed for RSS
 (use-package elfeed
   :ensure t
