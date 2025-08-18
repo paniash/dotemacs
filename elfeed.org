@@ -1,6 +1,6 @@
 * RSS Feeds                                                          :elfeed:
 ** ArXiV                                                             :arxiv:
-*** [[http://export.arxiv.org/api/query?search_query=cat:quant-ph+cond-mat.mes-hall&start=0&max_results=1000&sortBy=submittedDate&sortOrder=descending][ArXiV Quantum Physics]] :quantum:
+*** [[http://export.arxiv.org/api/query?search_query=cat:quant-ph+cond-mat.mes-hall&start=0&max_results=800&sortBy=submittedDate&sortOrder=descending][ArXiV Quantum Physics]] :quantum:
 ** Emacs                                                             :emacs:
 *** http://emacsredux.com/atom.xml
 *** http://lambdaland.org/index.xml
