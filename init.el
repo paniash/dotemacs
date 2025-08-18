@@ -1086,6 +1086,10 @@ Returns the new window."
 
 ;; Olivetti for reducing eye strain
 (use-package olivetti
+  :ensure t
+  :hook
+  ((elfeed-search-mode . olivetti-mode)
+   (elfeed-show-mode . olivetti-mode))
   :config
   (setq olivetti-minimum-body-width 180)
   (setq olivetti-body-width 100))
