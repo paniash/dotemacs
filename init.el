@@ -1008,6 +1008,55 @@ Returns the new window."
     '((t :foreground "DarkOliveGreen3"))
     "Face for displaying authors in the elfeed search buffer.")
 
+  (defun pani/my-search-print-fn (entry)
+    "Print ENTRY to the buffer with dynamic column widths and right-aligned score."
+    (let* ((date (elfeed-search-format-date (elfeed-entry-date entry)))
+	   (title (or (elfeed-meta entry :title)
+		      (elfeed-entry-title entry) ""))
+	   (title-faces (elfeed-search--faces (elfeed-entry-tags entry)))
+	   (entry-authors (concatenate-authors
+			   (elfeed-meta entry :authors)))
+	   (entry-score (number-to-string (elfeed-score-scoring-get-score-from-entry entry)))
+	   ;; Fixed widths
+	   (date-width 12)
+	   (padding 3)
+	   ;; Available width for title + authors
+	   (total-width (window-width))
+	   (available-width (- total-width date-width padding (length entry-score))))
+      ;; Clamp authors width dynamically so score always aligns
+      (let* ((authors-min-width 10)
+	     (authors-max-width 40)
+	     (authors-width (min authors-max-width
+				 (max authors-min-width (/ available-width 3))))
+	     ;; Title takes remaining space
+	     (title-width (max 10 (- available-width authors-width)))
+	     ;; Format columns
+	     (title-column (elfeed-format-column title title-width :left))
+	     (authors-column (elfeed-format-column entry-authors authors-width :left))
+	     ;; Right-align score by padding spaces
+	     (score-padding (- total-width (+ date-width title-width authors-width padding)))
+	     (score-column (concat (make-string (max 0 score-padding) ? ) entry-score)))
+	;; Insert columns
+	(insert (propertize date 'face 'elfeed-search-date-face) " ")
+	(insert (propertize title-column 'face title-faces 'kbd-help title) " ")
+	(insert (propertize authors-column 'face 'elfeed-search-author-face 'kbd-help entry-authors))
+	(insert score-column))))
+
+
+  (defvar elfeed--last-window-width 0
+    "Stores the last known width of the Elfeed search window.")
+
+  (defun elfeed-dynamic-resize-hook ()
+    "Redisplay the Elfeed search buffer only if the window width changed."
+    (when (eq major-mode 'elfeed-search-mode)
+      (let ((current-width (window-width)))
+	(unless (= current-width elfeed--last-window-width)
+	  (setq elfeed--last-window-width current-width)
+	  (let ((inhibit-read-only t))
+	    (elfeed-search-update--force))))))
+
+  (add-hook 'window-configuration-change-hook #'elfeed-dynamic-resize-hook)
+
   (setq elfeed-search-print-entry-function #'pani/my-search-print-fn)
   (setq elfeed-use-curl t)
   (setq elfeed-curl-max-connections 20)
