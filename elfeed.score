@@ -5,6 +5,7 @@
   (:text "graphene" :value 50 :type s)
   (:text "fluxonium" :value 200 :type s)
   (:text "bolometer" :value 200 :type s)
+  (:text "superconducting resonators" :value 200 :type s)
   (:text "superconducting" :value 75 :type s)
   (:text "Josephson" :value 100 :type s)
   (:text "readout" :value 150 :type s)
