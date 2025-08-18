@@ -903,9 +903,9 @@ Returns the new window."
   (defun concatenate-authors (authors-list)
     "Given AUTHORS-LIST, list of plists; return string of all authors
     concatenated."
-    (mapconcat
-     (lambda (author) (plist-get author :name))
-     authors-list ", "))
+    (if (> (length authors-list) 1)
+	(format "%s et al." (plist-get (nth 0 authors-list) :name))
+      (plist-get (nth 0 authors-list) :name)))
 
   (defun pani/my-search-print-fn (entry)
     "Print ENTRY to the buffer."
