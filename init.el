@@ -985,10 +985,12 @@ Returns the new window."
 	 (elfeed-show-mode . variable-pitch-mode))
   :bind (("C-c e" . elfeed)
 	 :map elfeed-search-mode-map
-	 ("C-c C-c" . elfeed-update))
+	 ("C-c C-c" . elfeed-update)
+	 ("C-c C-v" . 'elfeed-arxiv-open-pdf)
+	 :map elfeed-show-mode-map
+	 ("C-c C-v" . 'elfeed-arxiv-open-pdf))
 
   :config
-
   ;; Helper function: safe truncation
   (defun truncate-string-to-width-safe (str width)
     "Truncate STR to WIDTH characters if it exceeds it, adding an ellipsis."
