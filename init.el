@@ -1055,6 +1055,26 @@ Returns the new window."
 	  (let ((inhibit-read-only t))
 	    (elfeed-search-update--force))))))
 
+  ;; arxiv pdf extractor function
+  (defun elfeed-arxiv-open-pdf (entry)
+    "Open the arXiv PDF for the current Elfeed ENTRY in a browser.
+Works in both search and show mode."
+    (interactive
+     (list (cond
+	    ;; If in search mode, get selected entry
+	    ((eq major-mode 'elfeed-search-mode)
+	     (elfeed-search-selected :single))
+	    ;; If in show mode, use the shown entry
+	    ((eq major-mode 'elfeed-show-mode)
+	     elfeed-show-entry))))
+    (when entry
+      (let ((link (elfeed-entry-link entry)))
+	(if (string-match "arxiv.org/abs/\\([0-9.]+\\)" link)
+	    (let ((pdf-url (format "https://arxiv.org/pdf/%s.pdf"
+				   (match-string 1 link))))
+	      (browse-url pdf-url))
+	  (message "Not an arXiv link: %s" link)))))
+
   (add-hook 'window-configuration-change-hook #'elfeed-dynamic-resize-hook)
 
   (setq elfeed-search-print-entry-function #'pani/my-search-print-fn)
