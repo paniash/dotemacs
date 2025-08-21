@@ -1066,7 +1066,22 @@ Returns the new window."
   (setq elfeed-search-date-format '("%Y-%m-%d" 0 :left))
   (setq elfeed-search-title-max-width 100)
   (setq elfeed-search-title-min-width 90)
-  (setq elfeed-search-trailing-width 0))
+  (setq elfeed-search-trailing-width 0)
+  (setq elfeed-feeds
+	'(("http://export.arxiv.org/api/query?search_query=cat:quant-ph+cond-mat.mes-hall&start=0&max_results=1100&sortBy=submittedDate&sortOrder=descending"
+	   arxiv)
+	  ("http://emacsredux.com/atom.xml" emacs)
+	  ("http://lambdaland.org/index.xml" emacs)
+	  ("http://www.emacs.dyerdwelling.family/index.xml" emacs)
+	  ("http://sachachua.com/blog/category/emacs/feed/index.xml"
+	   emacs)
+	  ("http://karthinks.com/index.xml" emacs)
+	  ("http://ogbe.net/blog-feed.xml" emacs blog)
+	  ("http://protesilaos.com/codelog.xml" emacs)
+	  ("http://themkat.net/feed.xml" emacs)
+	  ("https://coredumped.dev/index.xml" emacs)
+	  ("http://irreal.org/blog/?tag=emacs&feed=rss2" emacs)
+	  ("http://marci.gunyho.com/rss" blog))))
 
 (use-package elfeed-score
   :ensure t
@@ -1077,12 +1092,12 @@ Returns the new window."
   (elfeed-score-enable)
   (define-key elfeed-search-mode-map "=" elfeed-score-map))
 
-(use-package elfeed-org
-  :ensure t
-  :init
-  (setq rmh-elfeed-org-files (list "~/.emacs.d/elfeed.org"))
-  :config
-  (elfeed-org))
+;; (use-package elfeed-org
+;;   :ensure t
+;;   :init
+;;   (setq rmh-elfeed-org-files (list "~/.emacs.d/elfeed.org"))
+;;   :config
+;;   (elfeed-org))
 
 ;; Olivetti for reducing eye strain
 (use-package olivetti
