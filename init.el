@@ -1144,13 +1144,6 @@ Works in both search and show mode."
   (elfeed-score-enable)
   (define-key elfeed-search-mode-map "=" elfeed-score-map))
 
-;; (use-package elfeed-org
-;;   :ensure t
-;;   :init
-;;   (setq rmh-elfeed-org-files (list "~/.emacs.d/elfeed.org"))
-;;   :config
-;;   (elfeed-org))
-
 ;; Olivetti for reducing eye strain
 (use-package olivetti
   :ensure t
