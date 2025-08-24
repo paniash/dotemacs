@@ -17,7 +17,7 @@
   (:text "Michel Devoret" :value 500 :type w :tags (t arxiv))
   (:text "Mikko Mottonen" :value 500 :type w :tags (t arxiv))
   (:text "Andreas Wallraff" :value 500 :type w :tags (t arxiv))
-  (:text "Jukka Pekola" :value 500 :type w :tags (t arxiv))
+  (:text "Jukka P. Pekola" :value 500 :type w :tags (t arxiv))
   (:text "Morten Kjaergaard" :value 500 :type w :tags (t arxiv))
   (:text "David Schuster" :value 500 :type w :tags (t arxiv))
   (:text "Andrew Houck" :value 500 :type w :tags (t arxiv))
