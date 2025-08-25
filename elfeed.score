@@ -23,6 +23,8 @@
   (:text "Andrew Houck" :value 500 :type w :tags (t arxiv))
   (:text "Peter Leek" :value 500 :type w :tags (t arxiv))
   (:text "Yasunobu Nakamura" :value 500 :type w :tags (t arxiv))
+  (:text "Peter Krogstrup" :value 500 :type w :tags (t arxiv))
+  (:text "Moty Heiblum" :value 400 :type w :tags (t arxiv))
   (:text "S. Shankar" :value 500 :type w :tags (t arxiv))
   (:text "William D. Oliver" :value 500 :type w :tags (t arxiv))
   (:text "Ioan Pop" :value 500 :type w :tags (t arxiv))
