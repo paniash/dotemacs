@@ -27,7 +27,7 @@
   (:text "Moty Heiblum" :value 400 :type w :tags (t arxiv))
   (:text "S. Shankar" :value 500 :type w :tags (t arxiv))
   (:text "John Martinis" :value 500 :type w :tags (t arxiv))
-  (:text "Marko Lončar" :value 500 :type w :tags (t arxiv))
+  (:text "Oskar Painter" :value 500 :type w :tags (t arxiv))
   (:text "William D. Oliver" :value 500 :type w :tags (t arxiv))
   (:text "Ioan Pop" :value 500 :type w :tags (t arxiv))
   (:text "Alexey Ustinov" :value 500 :type w :tags (t arxiv))
