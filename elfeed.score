@@ -15,7 +15,7 @@
  ("title-or-content")
  ("authors"
   (:text "Michel Devoret" :value 500 :type w :tags (t arxiv))
-  (:text "Mikko Mottonen" :value 500 :type w :tags (t arxiv))
+  (:text "Mikko Möttönen" :value 500 :type w :tags (t arxiv))
   (:text "Andreas Wallraff" :value 500 :type w :tags (t arxiv))
   (:text "Jukka P. Pekola" :value 500 :type w :tags (t arxiv))
   (:text "Morten Kjaergaard" :value 500 :type w :tags (t arxiv))
@@ -37,6 +37,7 @@
   (:text "Nicholas Roch" :value 500 :type w :tags (t arxiv))
   (:text "Jarryd Pla" :value 500 :type w :tags (t arxiv))
   (:text "Robert Schoelkopf" :value 500 :type w :tags (t arxiv))
+  (:text "Simone Gasparinetti" :value 500 :type w :tags (t arxiv))
   (:text "Christopher Eichler" :value 500 :type w :tags (t arxiv))
   (:text "Angela Kou" :value 500 :type w :tags (t arxiv))
   (:text "Yiwen Chu" :value 500 :type w :tags (t arxiv))
