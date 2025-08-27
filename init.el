@@ -973,6 +973,9 @@ Returns the new window."
 ;; code-cells for ipython like behaviour
 (use-package code-cells
   :ensure t
+  :bind
+  ( :map code-cells-mode-map
+    ("C-c C-c" . code-cells-eval))
   :config
   (add-hook 'python-ts-mode-hook 'code-cells-mode-maybe)
   (add-hook 'python-mode-hook 'code-cells-mode-maybe))
