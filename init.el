@@ -68,6 +68,23 @@
   (setq auto-save-timeout nil)
   (setq help-window-select t) ; Cursor focus goes to help window when invoked
   (setq-default auto-fill-function 'do-auto-fill) ;; Automatic text wrapping in all major modes
+  (setq compilation-scroll-output t) ; scroll compilation buffer as output appears
+
+  ;; Automatically close successful build window
+  (defun ar/compile-autoclose (buffer string)
+    "Hide successful builds window with BUFFER and STRING."
+    (if (string-match "finished" string)
+	(progn
+	  (message "Build finished :)")
+	  (run-with-timer 3 nil
+			  (lambda ()
+			    (when-let* ((multi-window (> (count-windows) 1))
+					(live (buffer-live-p buffer))
+					(window (get-buffer-window buffer t)))
+			      (delete-window window)))))
+      (message "Compilation %s" string)))
+
+  (setq compilation-finish-functions (list #'ar/compile-cache-env #'ar/compile-autoclose))
 
   (column-number-mode 1)
   (global-visual-wrap-prefix-mode 1)
