@@ -9,7 +9,6 @@
   (:text "superconducting" :value 75 :type s)
   (:text "Josephson" :value 100 :type s)
   (:text "readout" :value 150 :type s)
-  (:text "Majorana" :value 250 :type s)
   (:text "qubit" :value 150 :type s))
  ("content")
  ("title-or-content")
