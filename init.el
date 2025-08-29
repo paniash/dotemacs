@@ -1093,7 +1093,7 @@ Works in both search and show mode."
     (when entry
       (let ((link (elfeed-entry-link entry)))
 	(if (string-match "arxiv.org/abs/\\([0-9.]+\\)" link)
-	    (let ((pdf-url (format "https://arxiv.org/pdf/%s.pdf"
+	    (let ((pdf-url (format "https://arxiv.org/pdf/%s"
 				   (match-string 1 link))))
 	      (browse-url pdf-url))
 	  (message "Not an arXiv link: %s" link)))))
