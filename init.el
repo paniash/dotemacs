@@ -1111,7 +1111,7 @@ Works in both search and show mode."
   (setq elfeed-search-title-min-width 90)
   (setq elfeed-search-trailing-width 0)
   (setq elfeed-feeds
-	'(("http://export.arxiv.org/api/query?search_query=cat:quant-ph+cond-mat.mes-hall&start=0&max_results=1100&sortBy=submittedDate&sortOrder=descending"
+	'(("http://export.arxiv.org/api/query?search_query=cat:quant-ph+cond-mat.mes-hall&start=0&max_results=500&sortBy=submittedDate&sortOrder=descending"
 	   arxiv)
 	  ("http://emacsredux.com/atom.xml" emacs)
 	  ("http://lambdaland.org/index.xml" emacs)
