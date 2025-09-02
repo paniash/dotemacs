@@ -30,6 +30,7 @@
   (:text "William D. Oliver" :value 500 :type w :tags (t arxiv))
   (:text "Ioan Pop" :value 500 :type w :tags (t arxiv))
   (:text "Alexey Ustinov" :value 500 :type w :tags (t arxiv))
+  (:text "Pertti Hakonen" :value 500 :type w :tags (t arxiv))
   (:text "Michael Hatridge" :value 500 :type w :tags (t arxiv))
   (:text "Kun Zuo" :value 500 :type w :tags (t arxiv))
   (:text "Mohammad Mirhosseini" :value 500 :type w :tags (t arxiv))
