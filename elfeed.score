@@ -23,6 +23,7 @@
   (:text "Peter Leek" :value 500 :type w :tags (t arxiv))
   (:text "Yasunobu Nakamura" :value 500 :type w :tags (t arxiv))
   (:text "Peter Krogstrup" :value 500 :type w :tags (t arxiv))
+  (:text "Gheorghe Sorin Paraoanu" :value 500 :type w :tags (t arxiv))
   (:text "Moty Heiblum" :value 400 :type w :tags (t arxiv))
   (:text "S. Shankar" :value 500 :type w :tags (t arxiv))
   (:text "John Martinis" :value 500 :type w :tags (t arxiv))
