@@ -45,6 +45,7 @@
   (:text "Dorian Gangloff" :value 400 :type w :tags (t arxiv))
   (:text "Yiwen Chu" :value 500 :type w :tags (t arxiv))
   (:text "Javad Shabani" :value 500 :type w :tags (t arxiv))
+  (:text "Gerhard Kirchmair" :value 500 :type w :tags (t arxiv))
   (:text "Alexander Grimm" :value 500 :type w :tags (t arxiv))
   (:text "Banabir Pal" :value 200 :type w :tags (t arxiv))
   (:text "Chetan Nayak" :value 400 :type w :tags (t arxiv))
