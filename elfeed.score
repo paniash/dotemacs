@@ -35,6 +35,7 @@
   (:text "Michael Hatridge" :value 500 :type w :tags (t arxiv))
   (:text "Kun Zuo" :value 500 :type w :tags (t arxiv))
   (:text "Mohammad Mirhosseini" :value 500 :type w :tags (t arxiv))
+  (:text "Mustafa Bakr" :value 500 :type w :tags (t arxiv))
   (:text "Sergey M. Frolov" :value 500 :type w :tags (t arxiv))
   (:text "Nicholas Roch" :value 500 :type w :tags (t arxiv))
   (:text "Jarryd Pla" :value 500 :type w :tags (t arxiv))
