@@ -40,6 +40,7 @@
   (:text "Nicholas Roch" :value 500 :type w :tags (t arxiv))
   (:text "Jarryd Pla" :value 500 :type w :tags (t arxiv))
   (:text "Robert Schoelkopf" :value 500 :type w :tags (t arxiv))
+  (:text "Jian-Wei Pan" :value 500 :type w :tags (t arxiv))
   (:text "Simone Gasparinetti" :value 500 :type w :tags (t arxiv))
   (:text "Christopher Eichler" :value 500 :type w :tags (t arxiv))
   (:text "Angela Kou" :value 500 :type w :tags (t arxiv))
