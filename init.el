@@ -108,6 +108,9 @@
   ;; Replace "yes or no" with "y or n"
   (setq use-short-answers t)
 
+  ;; isearch now shows number of search hits
+  (setq isearch-lazy-count t)
+
   ;; ;; Enable `completion-preview-mode' for certain hooks
   ;; :hook (python-mode . completion-preview-mode)
 
