@@ -922,9 +922,13 @@ Returns the new window."
   :bind (("C-c e" . elfeed)
 	 :map elfeed-search-mode-map
 	 ("C-c C-c" . elfeed-update)
-	 ("C-c C-v" . 'elfeed-arxiv-open-pdf)
+	 ("C-c C-v" . elfeed-arxiv-open-pdf)
+	 ("C-c C-b" . (lambda () (interactive)
+			(elfeed-arxiv-open-pdf (elfeed-search-selected :single) t)))
 	 :map elfeed-show-mode-map
-	 ("C-c C-v" . 'elfeed-arxiv-open-pdf))
+	 ("C-c C-v" . elfeed-arxiv-open-pdf)
+	 ("C-c C-b" . (lambda () (interactive)
+			(elfeed-arxiv-open-pdf elfeed-show-entry t))))
 
   :config
   ;; Helper function: safe truncation
@@ -994,7 +998,7 @@ Returns the new window."
 	    (elfeed-search-update--force))))))
 
   ;; arxiv pdf extractor function
-  (defun elfeed-arxiv-open-pdf (entry)
+  (defun elfeed-arxiv-open-pdf (entry &optional open-abstract)
     "Open the arXiv PDF for the current Elfeed ENTRY in a browser.
 Works in both search and show mode."
     (interactive
@@ -1007,10 +1011,12 @@ Works in both search and show mode."
 	     elfeed-show-entry))))
     (when entry
       (let ((link (elfeed-entry-link entry)))
-	(if (string-match "arxiv.org/abs/\\([0-9.]+\\)" link)
-	    (let ((pdf-url (format "https://arxiv.org/pdf/%s"
-				   (match-string 1 link))))
-	      (browse-url pdf-url))
+	(if (string-match "arxiv\\.org/abs/\\([0-9.]+\\)" link)
+	    (let ((base-id (match-string 1 link))
+		  (url (if open-abstract
+			   (format "https://arxiv.org/abs/%s" (match-string 1 link))
+			 (format "https://arxiv.org/pdf/%s.pdf" (match-string 1 link)))))
+	      (browse-url url))
 	  (message "Not an arXiv link: %s" link)))))
 
   (add-hook 'window-configuration-change-hook #'elfeed-dynamic-resize-hook)
