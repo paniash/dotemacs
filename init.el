@@ -1129,3 +1129,9 @@ Works in both search and show mode."
 	'((python-mode . python-ts-mode)))
   ;; Tree-sitter font lock (4 is highest)
   (setq treesit-font-lock-level 4))
+
+;; Typst support
+(use-package typst-ts-mode
+  :defer t
+  :config
+  (add-to-list 'auto-mode-alist '("\\.typ\\'" . typst-ts-mode)))
