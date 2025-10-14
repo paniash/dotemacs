@@ -25,6 +25,7 @@
   (:text "David Schuster" :value 500 :type w :tags (t arxiv))
   (:text "J. M. Fink" :value 500 :type w :tags (t arxiv))
   (:text "Andrew Houck" :value 500 :type w :tags (t arxiv))
+  (:text "Andrew N. Cleland" :value 500 :type w :tags (t arxiv))
   (:text "Peter Leek" :value 500 :type w :tags (t arxiv))
   (:text "Yasunobu Nakamura" :value 500 :type w :tags (t arxiv))
   (:text "Peter Krogstrup" :value 500 :type w :tags (t arxiv))
