@@ -23,6 +23,7 @@
   (:text "Jukka P. Pekola" :value 500 :type w :tags (t arxiv))
   (:text "Morten Kjaergaard" :value 500 :type w :tags (t arxiv))
   (:text "David Schuster" :value 500 :type w :tags (t arxiv))
+  (:text "J. M. Fink" :value 500 :type w :tags (t arxiv))
   (:text "Andrew Houck" :value 500 :type w :tags (t arxiv))
   (:text "Peter Leek" :value 500 :type w :tags (t arxiv))
   (:text "Yasunobu Nakamura" :value 500 :type w :tags (t arxiv))
