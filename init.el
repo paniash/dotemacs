@@ -896,8 +896,16 @@ Returns the new window."
     :map python-ts-mode-map
     ("C-l" . nil) ; unbind default binding for text view centering
     ("C-l" . xref-go-back)
+    ("C-c C-n" . pani/new-python-repl)
   )
   :config
+
+  (defun pani/new-python-repl ()
+    "Start a new python interpreter in a fresh buffer."
+    (interactive)
+    (let ((current-prefix-arg '(4)))
+      (call-interactively #'run-python)))
+
   (setq python-indent-offset 4)
   (setq python-shell-interpreter "python3")
   (setq python-shell-enable-font-lock nil)
