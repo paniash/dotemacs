@@ -31,6 +31,7 @@
   (:text "Peter Krogstrup" :value 500 :type w :tags (t arxiv))
   (:text "Gheorghe Sorin Paraoanu" :value 500 :type w :tags (t arxiv))
   (:text "Moty Heiblum" :value 300 :type w :tags (t arxiv))
+  (:text "Serge Rosenblum" :value 500 :type w :tags (t arxiv))
   (:text "S. Shankar" :value 500 :type w :tags (t arxiv))
   (:text "John Martinis" :value 500 :type w :tags (t arxiv))
   (:text "Oskar Painter" :value 500 :type w :tags (t arxiv))
