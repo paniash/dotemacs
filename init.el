@@ -59,7 +59,7 @@
   ;; Fonts
   (set-face-attribute 'default nil :font "Hack" :height 115)
   (set-face-attribute 'fixed-pitch nil :font "Hack" :height 1.0)
-  (set-face-attribute 'variable-pitch nil :font "Iosevka Term" :height 1.1)
+  (set-face-attribute 'variable-pitch nil :font "Iosevka Term" :height 1.05)
 
   :config
   (setq kill-do-not-save-duplicates t)
