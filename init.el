@@ -94,10 +94,10 @@
 
   ;; Vim like scrolling
   (setq scroll-step            1
-      scroll-conservatively  10000
-      next-screen-context-lines 5
-      ;; move by logical lines rather than visual lines (better for macros)
-      line-move-visual nil)
+	scroll-conservatively  10000
+	next-screen-context-lines 5
+	;; move by logical lines rather than visual lines (better for macros)
+	line-move-visual nil)
 
   ;; Disable remote file locks
   (setq remote-file-name-inhibit-locks t)
