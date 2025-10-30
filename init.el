@@ -131,6 +131,10 @@
   ;; ;; Do gpg pin entry from Emacs
   ;; (setenv "GPG_AGENT_INFO" nil)
 
+  ;; Set regexp syntax to `string'
+  ;; `read' is default but is plagued with requiring many backslashes
+  (setq reb-re-syntax 'string)
+
   :bind
   ( :map global-map
     ("C-x C-d" . nil) ; never use it
