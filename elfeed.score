@@ -31,6 +31,7 @@
   (:text "\\(?:A\\(?:\\(?:\\. N\\.\\|ndrew\\(?: N\\.\\)?\\) Cleland\\)\\)" :value 500 :type R :tags (t arxiv))
   (:text "\\(?:P\\(?:\\(?:\\. J\\.\\|eter\\(?: J\\.\\)?\\) Leek\\)\\)" :value 500 :type R :tags (t arxiv))
   (:text "\\(?:P\\(?:\\(?:\\.\\|eter\\) Krogstrup\\)\\)" :value 500 :type R :tags (t arxiv))
+  (:text "\\(?:C\\(?:\\(?:\\. J\\.\\|hristopher\\(?: J\\.\\)?\\) Palmstrøm\\)\\)" :value 400 :type R :tags (t arxiv))
   (:text "Gheorghe Sorin Paraoanu" :value 500 :type w :tags (t arxiv))
   (:text "Giovanna Tancredi" :value 500 :type w :tags (t arxiv))
   (:text "Moty Heiblum" :value 300 :type w :tags (t arxiv))
