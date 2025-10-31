@@ -63,10 +63,9 @@
   (:text "Mete Atatüre" :value 300 :type w :tags (t arxiv))
   (:text "Dorian Gangloff" :value 300 :type w :tags (t arxiv))
   (:text "Jarryd Pla" :value 300 :type w :tags (t arxiv))
-  (:text "\\(?:C\\(?:\\(?:\\. M\\.\\|harles\\(?: M\\.\\)?\\)
-Marcus\\)\\)" :value 400 :type R :tags (t arxiv))
-  (:text "\\(?:S\\(?:\\(?:\\.\\|aulius\\) Vaitiekėnas\\)\\)" :value
-	 400 :type R :tags (t arxiv))
+  (:text "\\(?:C\\(?:\\(?:\\. M\\.\\|harles\\(?: M\\.\\)?\\) Marcus\\)\\)" :value 400 :type R :tags (t arxiv))
+  (:text "\\(?:M\\(?:\\(?:\\. J\\.\\|ichael\\(?: J\\.\\)?\\) Manfra\\)\\)" :value 400 :type R :tags (t arxiv))
+  (:text "\\(?:S\\(?:\\(?:\\.\\|aulius\\) Vaitiekėnas\\)\\)" :value 400 :type R :tags (t arxiv))
   (:text "Arne Ludwig" :value 200 :type w :tags (t arxiv))
   (:text "Banabir Pal" :value 200 :type w :tags (t arxiv))
   (:text "Stuart Parkin" :value 200 :type w :tags (t arxiv))
