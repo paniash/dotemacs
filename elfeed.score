@@ -11,7 +11,7 @@
   (:text "Josephson" :value 100 :type s)
   (:text "readout" :value 150 :type s)
   (:text "neutral atom" :value -500 :type s)
-  (:text "atom" :value -500 :type s)
+  (:text "superconducting .* atom" :value 500 :type r)
   (:text "spin" :value -500 :type s)
   (:text "qubit" :value 150 :type s))
  ("content")
