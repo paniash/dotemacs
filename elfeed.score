@@ -40,7 +40,7 @@
   (:text "\\(?:J\\(?:\\(?:\\.\\|ohn\\) Martinis\\)\\)" :value 500 :type R :tags (t arxiv))
   (:text "Oskar Painter" :value 500 :type w :tags (t arxiv))
   (:text "\\(?:W\\(?:\\(?:\\. D\\.\\|illiam\\(?: D\\.\\)?\\) Oliver\\)\\)" :value 500 :type R :tags (t arxiv))
-  (:text "Ioan Pop" :value 500 :type w :tags (t arxiv))
+  (:text "\\(?:I\\(?:\\(?:\\. M\\.\\|oan\\(?: M\\.\\)?\\) Pop\\)\\)" :value 500 :type R :tags (t arxiv))
   (:text "\\(?:A\\(?:\\(?:\\.\\|lexey\\) Ustinov\\)\\)" :value 500 :type R :tags (t arxiv))
   (:text "\\(?:J\\(?:\\(?:\\.\\|ürgen\\) Lisenfeld\\)\\)" :value 500 :type R :tags (t arxiv))
   (:text "\\(?:P\\(?:\\(?:\\. J\\.\\|ertti\\(?: J\\.\\)?\\) Hakonen\\)\\)" :value 500 :type R :tags (t arxiv))
