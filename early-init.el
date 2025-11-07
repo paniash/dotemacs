@@ -1,9 +1,7 @@
 (setq inhibit-startup-message t)
 
 ;; Hack to increase startup speed
-(setq gc-cons-threshold most-positive-fixnum
-      gc-cons-percentage 0.6
-      vc-handled-backends '(Git))
+(setq vc-handled-backends '(Git))
 
 (setq-default default-frame-alist '(
 				    ;; Setting the face in here prevents flashes of
@@ -42,8 +40,6 @@
 (setq frame-resize-pixelwise t
       frame-inhibit-implied-resize t
       frame-title-format '("Emacs"))
-
-(setq inhibit-compacting-font-caches t)
 
 ;; Resizing emacs frame can be terribly expensive part of changing
 ;; font. By inhibiting this, we easily halve the startup times with
