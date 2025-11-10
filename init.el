@@ -1148,15 +1148,3 @@ Works in both search and show mode."
   :defer t
   :config
   (add-to-list 'auto-mode-alist '("\\.typ\\'" . typst-ts-mode)))
-
-;; Music management
-(use-package emms
-  :defer t
-  :config
-  (require 'emms-setup)
-  (require 'emms-mpris)
-  (emms-all)
-  (emms-default-players)
-  (emms-mpris-enable)
-  :custom
-  (emms-browser-covers #'emms-browser-cache-thumbnail-async))
