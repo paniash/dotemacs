@@ -1052,6 +1052,7 @@ Works in both search and show mode."
 	  ("http://sachachua.com/blog/category/emacs/feed/index.xml"
 	   emacs)
 	  ("http://karthinks.com/index.xml" emacs)
+	  ("https://feyor.sh/atom.xml" emacs blog)
 	  ("http://ogbe.net/blog-feed.xml" emacs blog)
 	  ("http://protesilaos.com/codelog.xml" emacs)
 	  ("http://themkat.net/feed.xml" emacs)
