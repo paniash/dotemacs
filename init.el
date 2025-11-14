@@ -229,12 +229,16 @@
 ;; Protesilaos' ef-themes
 (use-package ef-themes
   :ensure t
+  :init
+  (ef-themes-take-over-modus-themes-mode 1)
   :config
   ;; They are nil by default...
-  (setq ef-themes-mixed-fonts t
-	ef-themes-variable-pitch-ui t)
+  (setq modus-themes-mixed-fonts t
+	modus-themes-italic-constructs t
+	modus-themes-bold-constructs t
+	modus-themes-variable-pitch-ui t)
 
-  (setq ef-themes-headings ; read the manual's entry or the doc string
+  (setq modus-themes-headings ; read the manual's entry or the doc string
 	'((0 variable-pitch regular 1.5)
 	  (1 variable-pitch regular 1.5)
 	  (2 variable-pitch regular 1.25)
