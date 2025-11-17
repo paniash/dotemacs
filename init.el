@@ -238,6 +238,14 @@
 	modus-themes-bold-constructs t
 	modus-themes-variable-pitch-ui t)
 
+  ;; Sets line number color back to white
+  (setq modus-themes-common-palette-overrides
+	'((fg-line-number-active fg-main)))
+
+  ;; Minibuffer completions are bold by default. This fixes it.
+  (setq modus-themes-completions
+	'((selection regular)))
+
   (setq modus-themes-headings ; read the manual's entry or the doc string
 	'((0 variable-pitch regular 1.5)
 	  (1 variable-pitch regular 1.5)
