@@ -399,6 +399,57 @@
 			  '(("^ *\\([-]\\) "
 			     (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•")))))))
 
+;; Org-agenda customization (based on Protesilaos Stavrou's config)
+(use-package org-agenda
+  :ensure nil
+  :config
+
+  ;; Basic agenda setup
+  (setq org-agenda-custom-commands
+	'(
+	  ("j" "Daily agenda and top priority tasks"
+	   ((todo "PROG"
+		  ((org-agenda-overriding-header "Tasks in progress")))
+	    (agenda ""
+		    ((org-agenda-block-separator nil)
+		     (org-agenda-span 1)
+		     (org-deadline-warning-days 0)
+		     (org-scheduled-past-days 0)
+
+		     ;; We don't need the `org-agenda-date-today'
+		     ;; highlight because that only has a practical
+		     ;; utility in multi-day views.
+		     (org-agenda-day-face-function (lambda (date) 'org-agenda-date))
+		     (org-agenda-format-date "%A, %-e %B %Y")
+		     (org-agenda-overriding-header "\nDaily agenda")))
+	    (agenda "" ((org-agenda-start-on-weekday nil)
+			(org-agenda-start-day "+1d")
+			(org-agenda-format-date "%A, %-e %B %Y")
+			(org-agenda-span 3)
+			(org-deadline-warning-days 0)
+			(org-agenda-block-separator nil)
+			(org-agenda-skip-function
+			 '(org-agenda-skip-entry-if 'todo 'done))
+			 (org-agenda-overriding-header "\nNext three days")))
+	    (agenda "" ((org-agenda-time-grid nil)
+			(org-agenda-start-on-weekday nil)
+			(org-agenda-format-date "%A, %-e %B %Y")
+			;; We don't want to replciate the previous
+			;; section's three days, so we start counting
+			;; from the day after.
+			(org-agenda-start-day "+4d")
+			(org-agenda-span 14)
+			(org-agenda-show-all-dates nil)
+			(org-deadline-warning-days 0)
+			(org-agenda-block-separator nil)
+			(org-agenda-entry-types '(:deadline))
+			(org-agenda-skip-function
+			 '(org-agenda-skip-entry-if 'todo 'done))
+			(org-agenda-overriding-header "\nUpcoming deadlines (+14d)")))))
+
+	  ))
+)
+
 ;; Denote package by Protesilaos
 ;; Experimenting with it at the moment
 (use-package denote
