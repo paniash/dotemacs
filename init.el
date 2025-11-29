@@ -160,7 +160,6 @@
   (setq evil-search-module 'isearch)
   (setq evil-want-integration t)
   (setq evil-want-keybinding nil)
-  (setq evil-want-keybinding nil)
   (setq evil-want-C-u-scroll t)
   (setq evil-want-C-i-jump nil)
   ;; no vim insert bindings
