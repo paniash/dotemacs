@@ -929,12 +929,12 @@ Returns the new window."
 ;; code-cells for ipython like behaviour
 (use-package code-cells
   :ensure t
+  :init
+  (add-hook 'python-ts-mode-hook 'code-cells-mode-maybe)
+  (add-hook 'python-mode-hook 'code-cells-mode-maybe)
   :bind
   ( :map code-cells-mode-map
-    ("C-c C-c" . code-cells-eval))
-  :config
-  (add-hook 'python-ts-mode-hook 'code-cells-mode-maybe)
-  (add-hook 'python-mode-hook 'code-cells-mode-maybe))
+    ("C-c C-c" . code-cells-eval)))
 
 ;; Elfeed for RSS
 (use-package elfeed
