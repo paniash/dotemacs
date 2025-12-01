@@ -312,7 +312,7 @@
   ;; Collapse the log entries into a "drawer"
   (setq org-log-into-drawer t)
   (setq org-todo-keywords
-    '((sequence "TODO(t)" "PROG(p)" "|" "DONE(d)" "CANCELLED(c)")))
+    '((sequence "TODO(t)" "PROG(p)" "WAIT(w)" "|" "DONE(d)" "CANCELLED(c)")))
   ;; org-indent-mode turned on by default
   (setq org-startup-indented t)
   ;; Emacs identifies sentences with a single space after fullstop.
@@ -370,6 +370,7 @@
   (setq org-todo-keyword-faces
 	'(("PROG" . (:foreground "orange" :weight bold))
 	  ("TODO" . (:foreground "#EA4E34" :weight bold))
+	  ("WAIT" . (:foreground "#ff64bf" :weight bold))
 	  ("CANCELLED" . (:foreground "#B50741" :weight bold))))
 
   ;; Block parent TODO to DONE if children are undone
