@@ -326,15 +326,6 @@
   ;; Set renderer for LaTeX preview in orgmode
   (setq org-preview-latex-default-process 'imagemagick)
 
-  ;; Setting org-agenda file
-  ;; Eliminates the need for putting org-agenda file to the top everytime
-  (setq org-agenda-files
-	'("~/org/agenda.org"
-	  "~/org/chores.org"
-	  "~/org/hobby.org"
-	  "~/org/inbox.org"
-	  "~/org/birthdays.org"))
-
   ;; Setup org-capture templates
   (setq org-capture-templates
 	`(("i" "Inbox" entry (file "inbox.org")
@@ -343,14 +334,6 @@
 
   ;; Small hook to tell org-capture to use full window instead of splitting window
   (add-hook 'org-capture-mode-hook 'delete-other-windows)
-
-  ;; Sets TODO items to not have a prefix at the left hand side of the
-  ;; org-agenda window (typically the filename where the TODO item was created).
-  (setq org-agenda-prefix-format
-	'((agenda . " %i %-12:c%?-12t% s")
-	  (todo   . " ")
-	  (tags   . " %i %-12:c")
-	  (search . " %i %-12:c")))
 
   ;; Stolen from Nicholas Rougier's GTD guide
   (defun org-capture-inbox ()
@@ -362,10 +345,6 @@
 	      ("C-c i" . org-capture-inbox))
 
   :config
-  ;; Hides DONE items in org-agenda for schedules and deadlines
-  (setq org-agenda-skip-scheduled-if-done t)
-  (setq org-agenda-skip-deadline-if-done t)
-
   ;; Faces for TODO keywords
   (setq org-todo-keyword-faces
 	'(("PROG" . (:foreground "orange" :weight bold))
@@ -447,9 +426,30 @@
 			(org-agenda-skip-function
 			 '(org-agenda-skip-entry-if 'todo 'done))
 			(org-agenda-overriding-header "\nUpcoming deadlines (+14d)")))))
-
 	  ))
-)
+
+  ;; Setting org-agenda file
+  ;; Eliminates the need for putting org-agenda file to the top everytime
+  (setq org-agenda-files
+	'("~/org/agenda.org"
+	  "~/org/chores.org"
+	  "~/org/hobby.org"
+	  "~/org/inbox.org"
+	  "~/org/birthdays.org"))
+
+  ;; Sets TODO items to not have a prefix at the left hand side of the
+  ;; org-agenda window (typically the filename where the TODO item was created).
+  (setq org-agenda-prefix-format
+	'((agenda . " %i %-12:c%?-12t% s")
+	  (todo   . " ")
+	  (tags   . " %i %-12:c")
+	  (search . " %i %-12:c")))
+
+  ;; Hides DONE items in org-agenda for schedules and deadlines
+  (setq org-agenda-skip-scheduled-if-done t)
+  (setq org-agenda-skip-deadline-if-done t)
+  )
+
 
 ;; Denote package by Protesilaos
 ;; Experimenting with it at the moment
