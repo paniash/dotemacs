@@ -18,9 +18,11 @@
  ("title-or-content")
  ("authors"
   (:text "\\(?:M\\(?:\\(?:\\. H\\.\\|ichel\\(?: H\\.\\)?\\) Devoret\\)\\)" :value 500 :type R :tags (t arxiv))
-  (:text "Mikko Möttönen" :value 500 :type w :tags (t arxiv))
   (:text "\\(?:R\\(?:\\(?:\\. J\\.\\|obert\\(?: J\\.\\)?\\) Schoelkopf\\)\\)" :value 500 :type R :tags (t arxiv))
+  (:text "Mikko Möttönen" :value 500 :type w :tags (t arxiv))
   (:text "Yasunobu Nakamura" :value 500 :type w :tags (t arxiv))
+  (:text "\\(?:L\\(?:\\(?:\\.\\|eonardo\\) DiCarlo\\)\\)" :value 500 :type R :tags (t arxiv))
+  (:text "\\(?:R\\(?:\\(?:\\.\\|ami\\) Barends\\)\\)" :value 500 :type R :tags (t arxiv))
   (:text "Guo-Ping Guo" :value 500 :type w :tags (t arxiv))
   (:text "Andreas Wallraff" :value 500 :type w :tags (t arxiv))
   (:text "\\(?:J\\(?:\\(?:\\. P\\.\\|ukka\\(?: P\\.\\)?\\) Pekola\\)\\)" :value 500 :type R :tags (t arxiv))
