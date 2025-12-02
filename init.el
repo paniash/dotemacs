@@ -414,7 +414,7 @@
 	    (agenda "" ((org-agenda-time-grid nil)
 			(org-agenda-start-on-weekday nil)
 			(org-agenda-format-date "%A, %-e %B %Y")
-			;; We don't want to replciate the previous
+			;; We don't want to replicate the previous
 			;; section's three days, so we start counting
 			;; from the day after.
 			(org-agenda-start-day "+4d")
