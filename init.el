@@ -425,7 +425,19 @@
 			(org-agenda-entry-types '(:deadline))
 			(org-agenda-skip-function
 			 '(org-agenda-skip-entry-if 'todo 'done))
-			(org-agenda-overriding-header "\nUpcoming deadlines (+14d)")))))
+			(org-agenda-overriding-header "\nUpcoming deadlines (+14d)")))
+	    (agenda "" ((org-agenda-start-on-weekday nil)
+			(org-agenda-start-day "+1d")
+			(org-agenda-format-date "%A, %-e %B %Y")
+			(org-agenda-start-day "+4d")
+			(org-agenda-span 14)
+			(org-agenda-show-all-dates nil)
+			(org-deadline-warning-days 0)
+			(org-agenda-block-separator nil)
+			(org-agenda-entry-types '(:scheduled))
+			(org-agenda-skip-function
+			 '(org-agenda-skip-entry-if 'todo 'done))
+			(org-agenda-overriding-header "\nUpcoming schedule (+14 d)")))))
 	  ))
 
   ;; Setting org-agenda file
