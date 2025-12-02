@@ -447,8 +447,7 @@
 
   ;; Hides DONE items in org-agenda for schedules and deadlines
   (setq org-agenda-skip-scheduled-if-done t)
-  (setq org-agenda-skip-deadline-if-done t)
-  )
+  (setq org-agenda-skip-deadline-if-done t))
 
 
 ;; Denote package by Protesilaos
