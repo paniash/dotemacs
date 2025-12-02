@@ -1211,3 +1211,16 @@ Works in both search and show mode."
   :defer t
   :config
   (add-to-list 'auto-mode-alist '("\\.typ\\'" . typst-ts-mode)))
+
+;; IRC inside emacs
+(use-package erc
+  :ensure nil
+  :config
+  (setq erc-prompt (lambda () (concat "[" (buffer-name) "]"))
+	erc-server "irc.libera.chat"
+	erc-nick "paniash"
+	erc-user-full-name "Ashish Panigrahi"
+	erc-auto-query 'bury
+	erc-fill-column 100
+	erc-fill-function 'erc-fill-static
+	erc-fill-static-center 20))
