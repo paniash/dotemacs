@@ -80,6 +80,7 @@
   (:text "Menno Veldhorst" :value -500 :type w :tags (t arxiv))
   (:text "Giordano Scapucci" :value -500 :type w :tags (t arxiv))
   (:text "Lieven M. K. Vandersypen" :value -500 :type w :tags (t arxiv))
+  (:text "John M. Nichol" :value -500 :type w :tags (t arxiv))
   (:text "Vincent Mourik" :value 200 :type w :tags (t arxiv)))
  ("tag")
  ("feed")
