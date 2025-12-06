@@ -162,6 +162,7 @@
   (setq evil-want-keybinding nil)
   (setq evil-want-C-u-scroll t)
   (setq evil-want-C-i-jump nil)
+  (setq evil-want-Y-yank-to-eol t)  ;; yanks to end of line instead of whole line
   ;; no vim insert bindings
   (setq evil-undo-system 'undo-fu)
   :config
