@@ -443,11 +443,12 @@
   ;; Setting org-agenda file
   ;; Eliminates the need for putting org-agenda file to the top everytime
   (setq org-agenda-files
-	'("~/org/agenda.org"
-	  "~/org/personal.org"
-	  "~/org/inbox.org"
-	  "~/org/schedule-europe-athens.org"
-	  "~/org/birthdays.org"))
+	'("agenda.org"
+	  "tasks.org"
+	  "meetings.org"
+	  "personal.org"
+	  "schedule-europe-athens.org"
+	  "birthdays.org"))
 
   ;; Sets TODO items to not have a prefix at the left hand side of the
   ;; org-agenda window (typically the filename where the TODO item was created).
