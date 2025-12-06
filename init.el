@@ -475,6 +475,9 @@
 	  ("td" "Tasks with a deadline" entry
 	   (file+headline "tasks.org" "Tasks with deadline")
 	   "* TODO %?\n DEADLINE: %^t\n")
+	  ("w" "Wishlist" entry
+	   (file+headline "tasks.org" "Wishlist")
+	   "* TODO %?\n")
 	  ("m" "Formal meetings")
 	  ("mi" "One-to-one" entry
 	   (file+headline "meetings.org" "One-to-one meetings")
