@@ -462,6 +462,33 @@
   (setq org-agenda-skip-scheduled-if-done t)
   (setq org-agenda-skip-deadline-if-done t))
 
+;; Org-capture templates
+(use-package org-capture
+  :ensure nil
+  :config
+  (setq org-capture-templates
+	'(("t" "Tasks")
+	  ("ts" "Scheduled tasks" entry
+	   (file+headline "tasks.org" "Scheduled tasks")
+	   "** TODO %?\n SCHEDULED: %^t\n")
+	  ("td" "Tasks with a deadline" entry
+	   (file+headline "tasks.org" "Tasks with deadline")
+	   "* TODO %?\n DEADLINE: %^t\n")
+	  ("m" "Formal meetings")
+	  ("mi" "One-to-one" entry
+	   (file+headline "meetings.org" "One-to-one meetings")
+	   "* MEETING with %^{With whom} at %^{Place}\n SCHEDULED: %^t")
+	  ("mg" "Group" entry
+	   (file+headline "meetings.org" "Group meetings")
+	   "* %?\n SCHEDULED: %^t")
+	  ("r" "Rendez-vous")
+	  ("rp" "Phone calls" entry
+	   (file+headline "meetings.org" "Phone calls")
+	   "* CALL with %^{With whom}%?\n SCHEDULED: %^t")
+	  ("ri" "Rendezvous in-person" entry
+	   (file+headline "meetings.org" "Rendezvous in-person")
+	   "* HANGOUT with %^{With whom} at %^{Place}\n SCHEDULED: %^t"))))
+
 
 ;; Denote package by Protesilaos
 ;; Experimenting with it at the moment
