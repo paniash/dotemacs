@@ -14,4 +14,5 @@ bookmarks
 org-roam.db
 .emacs.desktop*
 url/
-/elfeed.stats
+elfeed.stats
+elfeed/
