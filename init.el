@@ -450,6 +450,7 @@
 	'("agenda.org"
 	  "tasks.org"
 	  "meetings.org"
+	  "events.org"
 	  "personal.org"
 	  "schedule-europe-athens.org"
 	  "birthdays.org"))
@@ -487,6 +488,9 @@
 	   "* MEETING with %^{With whom} at %^{Place}\n SCHEDULED: %^t")
 	  ("mg" "Group" entry
 	   (file+headline "meetings.org" "Group meetings")
+	   "* %?\n SCHEDULED: %^t")
+	  ("e" "Events" entry
+	   (file+headline "events.org" "Events")
 	   "* %?\n SCHEDULED: %^t")
 	  ("r" "Rendez-vous")
 	  ("rp" "Phone calls" entry
