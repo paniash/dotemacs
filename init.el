@@ -1276,3 +1276,21 @@ Works in both search and show mode."
 	erc-fill-column 100
 	erc-fill-function 'erc-fill-static
 	erc-fill-static-center 20))
+
+
+;; PDF support inside emacs
+(use-package pdf-tools
+  :ensure t
+  :magic ("%PDF" . pdf-view-mode)
+  :config
+  ;; Initialize the server
+  (pdf-tools-install :no-query)
+
+  ;; Tweaks for better rendering
+  (setq pdf-view-use-scaling t
+	pdf-view-use-imagemagick t)
+
+  :bind (:map pdf-view-mode-map
+	      ("j" . pdf-view-next-line-or-next-page)
+	      ("k" . pdf-view-previous-line-or-previous-page)
+	      ("C-s" . isearch-forward)))
