@@ -135,6 +135,9 @@
   ;; `read' is default but is plagued with requiring many backslashes
   (setq reb-re-syntax 'string)
 
+  ;; Set default pdf-viewer in org-mode
+  (add-to-list 'org-file-apps '("\\.pdf\\'" . "firefox \"%s\""))
+
   :bind
   ( :map global-map
     ("C-x C-d" . nil) ; never use it
