@@ -1294,3 +1294,15 @@ Works in both search and show mode."
 	      ("j" . pdf-view-next-line-or-next-page)
 	      ("k" . pdf-view-previous-line-or-previous-page)
 	      ("C-s" . isearch-forward)))
+
+;; Smooth scrolling
+(use-package pixel-scroll
+  :ensure nil
+  :bind (:map global-map
+	      ([remap scroll-up-command] . pixel-scroll-interpolate-down)
+	      ([remap scroll-down-command] . pixel-scroll-interpolate-up))
+  :custom
+  (pixel-scroll-precision-interpolate page t)
+  (pixel-scroll-precision-mode t)
+  :init
+  (pixel-scroll-precision-mode 1))
