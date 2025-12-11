@@ -386,8 +386,10 @@
 ;; Org-agenda customization (based on Protesilaos Stavrou's config)
 (use-package org-agenda
   :ensure nil
+  ;; Don't need to go through org-agenda template
+  :bind (:map global-map
+	      ("C-c j" . (lambda () (interactive) (org-agenda nil "j"))))
   :config
-
   ;; Basic agenda setup
   (setq org-agenda-custom-commands
 	'(
