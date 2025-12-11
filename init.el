@@ -1144,6 +1144,20 @@ Returns the new window."
 	  (let ((inhibit-read-only t))
 	    (elfeed-search-update--force))))))
 
+  (defun pani/elfeed-unify-fonts ()
+    "Remap faces to variable-pitch and scale buffer text by exactly 1.15x."
+    ;; 1. Force fixed-width text (arXiv abstracts) to use the variable-pitch face
+    (face-remap-add-relative 'fixed-pitch 'variable-pitch)
+    (face-remap-add-relative 'shr-code 'variable-pitch)
+    (face-remap-add-relative 'shr-abbreviation 'variable-pitch)
+
+    ;; 2. Scale the buffer content by exactly 1.15 (1.05 x 1.15 = 1.20)
+    ;; By remapping 'default' locally, we scale the buffer text
+    ;; but leave the modeline (which uses the unscaled global faces) alone.
+    (face-remap-add-relative 'default :height 1.15))
+
+  (add-hook 'elfeed-show-mode-hook #'pani/elfeed-unify-fonts)
+
   ;; arxiv pdf extractor function
   (defun elfeed-arxiv-open-pdf (entry &optional open-abstract)
     "Open the arXiv PDF for the current Elfeed ENTRY in a browser.
