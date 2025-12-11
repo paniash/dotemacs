@@ -1058,6 +1058,23 @@ Returns the new window."
 			(elfeed-arxiv-open-pdf elfeed-show-entry t))))
 
   :config
+  ;; Wraps text to 80 characters for arxiv abstracts
+  (defun pani/elfeed-fix-width-after-render (&rest _)
+    "Hard wrap the buffer content to 80 chars immediately after Elfeed renders it."
+    ;; Only run this in an Elfeed Show buffer
+    (when (eq major-mode 'elfeed-show-mode)
+      (let ((inhibit-read-only t)
+	    (fill-column 90)) ;; <--- Change this number to your desired width
+	(save-excursion
+	  (goto-char (point-min))
+	  ;; Move past the headers (Title, Date, etc.) by finding the first empty line
+	  (when (search-forward "\n\n" nil t)
+	    ;; Wrap the remaining text (the abstract)
+	    (fill-region (point) (point-max)))))))
+
+  ;; Attach this function to run exactly AFTER elfeed-show-refresh
+  (advice-add 'elfeed-show-refresh :after #'pani/elfeed-fix-width-after-render)
+
   ;; Helper function: safe truncation
   (defun truncate-string-to-width-safe (str width)
     "Truncate STR to WIDTH characters if it exceeds it, adding an ellipsis."
