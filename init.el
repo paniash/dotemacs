@@ -114,6 +114,9 @@
   ;; ;; Enable `completion-preview-mode' for certain hooks
   ;; :hook (python-mode . completion-preview-mode)
 
+  ;; Disable html font size overriding default fonts
+  (setq shr-use-fonts nil)
+
   (setq display-line-numbers-type 'relative)
 
   ;; Enable line numbers only for programming and text modes
