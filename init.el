@@ -457,7 +457,6 @@
 	  "meetings.org"
 	  "events.org"
 	  "personal.org"
-	  "schedule-europe-athens.org"
 	  "birthdays.org"))
 
   ;; Sets TODO items to not have a prefix at the left hand side of the
