@@ -261,8 +261,8 @@
 	  (5 variable-pitch 1.2) ; absence of weight means `bold'
 	  (6 variable-pitch 1.2)
 	  (7 variable-pitch 1.1)
-	  (agenda-date variable-pitch 1.3)
-	  (agenda-structure variable-pitch light 1.8)
+	  (agenda-date variable-pitch 1.1)
+	  (agenda-structure variable-pitch light 1.4)
 	  (t variable-pitch 1.1)))
 
   ;; Disable all other themes to avoid awkward blending:
@@ -393,6 +393,14 @@
   :bind (:map global-map
 	      ("C-c j" . (lambda () (interactive) (org-agenda nil "j"))))
   :config
+  ;; Custom function to resize fonts in org-agenda
+  (defun pani/org-agenda-font-size ()
+    "Remap the variable-pitch font face to 1.15 height specifically for
+org-agenda."
+    (face-remap-add-relative 'variable-pitch :height 1.15))
+
+  (add-hook 'org-agenda-mode-hook #'pani/org-agenda-font-size)
+
   ;; Basic agenda setup
   (setq org-agenda-custom-commands
 	'(
