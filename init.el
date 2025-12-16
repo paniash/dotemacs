@@ -50,7 +50,6 @@
 (use-package emacs
   :ensure nil
   :demand t
-  :delight auto-fill-function
   :init
   ;; Remove visible bell
   (setq visible-bell nil
@@ -186,7 +185,6 @@
 ;;; Vim Bindings Everywhere else
 (use-package evil-collection
   :after evil
-  :delight evil-collection-unimpaired-mode
   :config
   (setq evil-want-integration t)
   (evil-collection-init))
@@ -290,7 +288,6 @@
 ;; Which-key (to show available commands when typing a prefix say 'C-c')
 (use-package which-key
   :ensure nil  ; built-in
-  :delight which-key-mode
   :config
   (which-key-mode)
   (setq which-key-idle-delay 1))
@@ -298,8 +295,6 @@
 ;; Orgmode specific settings
 (use-package org
   :ensure nil  ; org is built-in
-  :delight org-cdlatex-mode
-  :delight org-indent-mode
   :init
   (setq org-directory (expand-file-name "~/org/"))
   (setq org-imenu-depth 7)
@@ -312,9 +307,6 @@
 	 ("C-x a" . org-archive-subtree-default)
 	 ("C-x i" . org-toggle-inline-images))
   :config
-  (use-package org-indent
-    :ensure nil
-    :delight)
   (setq org-log-done 'time)
   ;; Collapse the log entries into a "drawer"
   (setq org-log-into-drawer t)
@@ -566,10 +558,6 @@ org-agenda."
   (setq git-commit-style-convention-checks '(non-empty-second-line))
   (setq magit-diff-refine-hunk nil))
 
-;; Delight package for hiding minor modes in the modeline
-(use-package delight
-  :ensure t)
-
 (use-package markdown-mode
   :defer t
   :mode ("*.md" . gfm-mode)
@@ -609,7 +597,6 @@ org-agenda."
 ;; Setup YaSnippet for LaTeX and orgmode
 (use-package yasnippet
   :ensure t
-  :delight yas-minor-mode
   :hook ((LaTeX-mode . yas-minor-mode)
 	 (org-mode . yas-minor-mode))
   :init
@@ -958,7 +945,6 @@ Returns the new window."
 ;; Add direnv integration in emacs
 ;; envrc package
 (use-package envrc
-  :delight
   :ensure t
   :hook (after-init . envrc-global-mode)
         (python-mode . envrc-global-mode))
@@ -997,7 +983,6 @@ Returns the new window."
 ;; Eldoc config
 (use-package eldoc
   :ensure nil  ;; built-in
-  :delight
   :config
   ;; disables resizing of echo area for automatic eldoc documentation
   ;; under the cursor
@@ -1267,7 +1252,6 @@ Works in both search and show mode."
 
 ;; Hide autorevert mode in modeline
 (use-package autorevert
-  :delight auto-revert-mode
   :config
   (global-auto-revert-mode 1))
 
