@@ -298,8 +298,7 @@
   :init
   (setq org-directory (expand-file-name "~/org/"))
   (setq org-imenu-depth 7)
-  :hook ((org-mode . auto-revert-mode)
-	 (org-agenda-mode . variable-pitch-mode))
+  :hook (org-mode . auto-revert-mode)
   :bind (:map global-map
 	      ("C-c a" . org-agenda)
 	      ("C-c c" . org-capture)
@@ -389,7 +388,10 @@
   (defun pani/org-agenda-font-size ()
     "Remap the variable-pitch font face to 1.15 height specifically for
 org-agenda."
-    (face-remap-add-relative 'variable-pitch :height 1.15))
+    (setq buffer-face-mode-face '(:inherit variable-pitch :height 1.15))
+
+    ;; Turn on buffer-face-mode
+    (buffer-face-mode 1))
 
   (add-hook 'org-agenda-mode-hook #'pani/org-agenda-font-size)
 
