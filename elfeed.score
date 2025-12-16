@@ -52,6 +52,7 @@
   (:text "\\(?:J\\(?:\\(?:\\.\\|ürgen\\) Lisenfeld\\)\\)" :value 500 :type R :tags (t arxiv))
   (:text "\\(?:P\\(?:\\(?:\\. J\\.\\|ertti\\(?: J\\.\\)?\\) Hakonen\\)\\)" :value 500 :type R :tags (t arxiv))
   (:text "Michael Hatridge" :value 500 :type w :tags (t arxiv))
+  (:text "Valla Fatemi" :value 500 :type w :tags (t arxiv))
   (:text "Yiwen Chu" :value 500 :type w :tags (t arxiv))
   (:text "Mohammad Mirhosseini" :value 500 :type w :tags (t arxiv))
   (:text "Mustafa Bakr" :value 500 :type w :tags (t arxiv))
