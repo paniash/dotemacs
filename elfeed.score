@@ -58,6 +58,7 @@
   (:text "Mustafa Bakr" :value 500 :type w :tags (t arxiv))
   (:text "\\(?:S\\(?:\\(?:\\. M\\.\\|ergey\\(?: M\\.\\)?\\) Frolov\\)\\)" :value 500 :type R :tags (t arxiv))
   (:text "Nicolas Roch" :value 500 :type w :tags (t arxiv))
+  (:text "\\(?:V\\(?:\\. E\\. M\\(?:\\.\\|anucharyan\\)\\|ladimir E\\. Manucharyan\\)\\)" :value 500 :type R :tags (t arxiv))
   (:text "Benjamin Sacépé" :value 500 :type w :tags (t arxiv))
   (:text "Benjamin Huard" :value 500 :type w :tags (t arxiv))
   (:text "Jian-Wei Pan" :value 500 :type w :tags (t arxiv))
