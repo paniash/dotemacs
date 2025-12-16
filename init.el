@@ -463,30 +463,30 @@ org-agenda."
 	'(("t" "Tasks")
 	  ("ts" "Scheduled tasks" entry
 	   (file+headline "tasks.org" "Scheduled tasks")
-	   "** TODO %?\n SCHEDULED: %^t\n")
+	   "* TODO %^{Task} %^g\n SCHEDULED: %^t\n" :empty-lines-after 1)
 	  ("td" "Tasks with a deadline" entry
 	   (file+headline "tasks.org" "Tasks with deadline")
-	   "* TODO %?\n DEADLINE: %^t\n")
+	   "* TODO %^{Task} %^g\n DEADLINE: %^T\n" :empty-lines-after 1)
 	  ("w" "Wishlist" entry
-	   (file+headline "tasks.org" "Wishlist")
-	   "* TODO %?\n")
+	   (file+headline "tasks.org" "Wishlist" :empty-lines-after 1)
+	   "* TODO %^{Task}%? %^g\n")
 	  ("m" "Formal meetings")
 	  ("mi" "One-to-one" entry
 	   (file+headline "meetings.org" "One-to-one meetings")
-	   "* MEETING with %^{With whom} at %^{Place}\n SCHEDULED: %^t")
+	   "* MEETING with %^{With whom} at %^{Place} %^g\n DEADLINE: %^T" :empty-lines-after 1)
 	  ("mg" "Group" entry
 	   (file+headline "meetings.org" "Group meetings")
-	   "* %?\n SCHEDULED: %^t")
+	   "* %?\n DEADLINE: %^T" :empty-lines-after 1)
 	  ("e" "Events" entry
 	   (file+headline "events.org" "Events")
-	   "* %?\n SCHEDULED: %^t")
+	   "* %^{Event}%?\n SCHEDULED: %^t" :empty-lines-after 1)
 	  ("r" "Rendez-vous")
 	  ("rp" "Phone calls" entry
 	   (file+headline "meetings.org" "Phone calls")
-	   "* CALL with %^{With whom}%?\n SCHEDULED: %^t")
+	   "* CALL with %^{With whom}%?\n SCHEDULED: %^t" :empty-lines-after 1)
 	  ("ri" "Rendezvous in-person" entry
 	   (file+headline "meetings.org" "Rendezvous in-person")
-	   "* HANGOUT with %^{With whom} at %^{Place}\n SCHEDULED: %^t"))))
+	   "* HANGOUT with %^{With whom} at %^{Place}\n SCHEDULED: %^t" :empty-lines-after 1))))
 
 
 ;; Denote package by Protesilaos
