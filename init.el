@@ -1353,3 +1353,9 @@ Works in both search and show mode."
 				    :weight normal))))
   :init
   (keycast-mode-line-mode 1))
+
+;; minions package for hiding minor modes in the modeline
+(use-package minions
+  :ensure t
+  :config
+  (minions-mode 1))
