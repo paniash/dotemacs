@@ -1374,4 +1374,6 @@ org-agenda."
 (use-package minions
   :ensure t
   :config
+  ;; Add keycast-mode to the list of modes that should stay visible
+  (add-to-list 'minions-prominent-modes 'keycast-mode-line-mode)
   (minions-mode 1))
