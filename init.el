@@ -1148,7 +1148,12 @@ Returns the new window."
     ;; 2. Scale the buffer content by exactly 1.15 (1.05 x 1.15 = 1.20)
     ;; By remapping 'default' locally, we scale the buffer text
     ;; but leave the modeline (which uses the unscaled global faces) alone.
-    (face-remap-add-relative 'default :height 1.15))
+    (face-remap-add-relative 'default :height 1.15)
+
+    ;; 3. Fix olivetti layout for this bigger font
+    (setq-local olivetti-body-width 0.9)
+    (setq-local olivetti-minimum-body-width 130)
+    (olivetti-mode 1))
 
   (add-hook 'elfeed-show-mode-hook #'pani/elfeed-unify-fonts)
 
