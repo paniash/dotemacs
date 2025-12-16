@@ -1263,7 +1263,16 @@ Works in both search and show mode."
   :bind
   (:map Info-mode-map
 	("<SPC>" . nil))  ;; TODO: Fix this binding as its bound to `Info-scroll-up'
-  :hook (Info-mode . variable-pitch-mode))
+  :hook (Info-mode . variable-pitch-mode)
+  :config
+
+  ;; Custom function to resize fonts in Info manuals
+  (defun pani/info-font-size ()
+    "Remap the variable-pitch font face to 1.15 height specifically for
+org-agenda."
+    (face-remap-add-relative 'variable-pitch :height 1.15))
+
+  (add-hook 'Info-mode-hook #'pani/info-font-size))
 
 ;; TRAMP config
 (use-package tramp
