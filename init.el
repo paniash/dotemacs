@@ -324,24 +324,6 @@
   ;; Set renderer for LaTeX preview in orgmode
   (setq org-preview-latex-default-process 'imagemagick)
 
-  ;; Setup org-capture templates
-  (setq org-capture-templates
-	`(("i" "Inbox" entry (file "inbox.org")
-	   ,(concat "* TODO %?\n"
-		    "/Entered on/ %U"))))
-
-  ;; Small hook to tell org-capture to use full window instead of splitting window
-  (add-hook 'org-capture-mode-hook 'delete-other-windows)
-
-  ;; Stolen from Nicholas Rougier's GTD guide
-  (defun org-capture-inbox ()
-    (interactive)
-    (call-interactively 'org-store-link)
-    (org-capture nil "i"))
-
-  :bind (:map global-map
-	      ("C-c i" . org-capture-inbox))
-
   :config
   ;; Faces for TODO keywords
   (setq org-todo-keyword-faces
