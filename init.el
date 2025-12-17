@@ -479,7 +479,7 @@ org-agenda."
 	   "* %?\n DEADLINE: %^T" :empty-lines-after 1)
 	  ("e" "Events" entry
 	   (file+headline "events.org" "Events")
-	   "* %^{Event}%?\n SCHEDULED: %^t" :empty-lines-after 1)
+	   "* %^{Event}%? %^g\n SCHEDULED: %^t" :empty-lines-after 1)
 	  ("r" "Rendez-vous")
 	  ("rp" "Phone calls" entry
 	   (file+headline "meetings.org" "Phone calls")
