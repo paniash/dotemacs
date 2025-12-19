@@ -638,7 +638,6 @@ org-agenda."
   (setq world-clock-timer-enable t)
   (setq world-clock-timer-second 60))
 
-;; TODO add consult and embark packages
 ;; TODO play around with General.el
 (use-package consult
   :ensure t
