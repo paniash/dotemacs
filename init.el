@@ -1338,7 +1338,7 @@ org-agenda."
   :custom
   ;; Formatting and Positioning
   (keycast-mode-line-remove-tail-elements nil)
-  (keycast-mode-line-insert-after 'mode-line-modes)
+  (keycast-mode-line-insert-after 'mode-line-misc-info)
 
   ;; Security / Noise Filter
   ;; We now hide BOTH the standard insert and the Org mode insert
