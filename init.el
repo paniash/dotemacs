@@ -468,8 +468,8 @@ org-agenda."
 	   (file+headline "tasks.org" "Tasks with deadline")
 	   "* TODO %^{Task} %^g\n DEADLINE: %^T\n" :empty-lines-after 1)
 	  ("w" "Wishlist" entry
-	   (file+headline "tasks.org" "Wishlist" :empty-lines-after 1)
-	   "* TODO %^{Task}%? %^g\n")
+	   (file+headline "tasks.org" "Wishlist")
+	   "* TODO %^{Task}%? %^g\n" :empty-lines-after 1)
 	  ("m" "Formal meetings")
 	  ("mi" "One-to-one" entry
 	   (file+headline "meetings.org" "One-to-one meetings")
