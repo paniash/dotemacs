@@ -430,7 +430,7 @@ org-agenda."
 			(org-agenda-entry-types '(:scheduled))
 			(org-agenda-skip-function
 			 '(org-agenda-skip-entry-if 'todo 'done))
-			(org-agenda-overriding-header "\nUpcoming schedule (+14 d)")))))
+			(org-agenda-overriding-header "\nUpcoming schedule (+14d)")))))
 	  ))
 
   ;; Setting org-agenda file
