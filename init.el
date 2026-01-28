@@ -1305,7 +1305,7 @@ org-agenda."
 
 ;; PDF support inside emacs
 (use-package pdf-tools
-  :ensure t
+  :ensure nil
   :magic ("%PDF" . pdf-view-mode)
   :config
   ;; Initialize the server
