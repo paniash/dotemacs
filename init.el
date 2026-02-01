@@ -449,6 +449,15 @@
 	  (tags   . " %i %-12:c")
 	  (search . " %i %-12:c")))
 
+  ;; Provides good color contrast for custom org-agenda
+  (custom-set-faces
+   '(org-agenda-date ((t (:foreground "#dc8add" :weight bold))))
+   '(org-scheduled-today ((t (:foreground "#8997b3"))))
+   '(org-scheduled-previously ((t (:weight normal))))
+   '(org-deadline-today ((t (:weight normal))))
+   '(org-tag ((t (:foreground "#56b6c2" :weight light))))
+   )
+
   ;; Hides DONE items in org-agenda for schedules and deadlines
   (setq org-agenda-skip-scheduled-if-done t)
   (setq org-agenda-skip-deadline-if-done t))
