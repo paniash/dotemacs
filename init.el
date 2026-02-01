@@ -368,10 +368,8 @@
   :config
   ;; Custom function to resize fonts in org-agenda
   (defun pani/org-agenda-font-size ()
-    "Remap the variable-pitch font face to 1.15 height specifically for
-org-agenda."
+    "Remap the variable-pitch font face to 1.15 height specifically for org-agenda."
     (setq buffer-face-mode-face '(:inherit variable-pitch :height 1.15))
-
     ;; Turn on buffer-face-mode
     (buffer-face-mode 1))
 
