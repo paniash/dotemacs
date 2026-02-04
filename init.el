@@ -281,6 +281,12 @@
 	vertico-count 8
 	vertico-cycle t)
 
+  ;; Fix font for vertico group title
+  (set-face-attribute 'vertico-group-title nil
+		      :height 1.0
+		      :slant 'normal
+		      :weight 'bold)
+
   ;; This removes the shadowed-out region when finding file from an
   ;; already arrived directory
   (add-hook 'rfn-eshadow-update-overlay-hook #'vertico-directory-tidy))
