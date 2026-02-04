@@ -452,6 +452,7 @@
   ;; Provides good color contrast for custom org-agenda
   (custom-set-faces
    '(org-agenda-date ((t (:foreground "#dc8add" :weight normal))))
+   '(org-agenda-date-weekend ((t (:weight normal))))
    '(org-scheduled-today ((t (:foreground "#8997b3"))))
    '(org-scheduled-previously ((t (:weight normal))))
    '(org-deadline-today ((t (:weight normal))))
