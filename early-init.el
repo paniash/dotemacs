@@ -1,3 +1,21 @@
+;; Global GC bump for startup
+(setq gc-cons-threshold 100000000)
+
+;; Disable file name handler (speed up loading .el files)
+(defvar file-name-handler-alist-old file-name-handler-alist)
+(setq file-name-handler-alist nil)
+
+(add-hook 'after-init-hook
+	  (lambda ()
+	    (setq gc-cons-threshold 2000000
+		  file-name-handler-alist file-name-handler-alist-old)))
+
+;; Prevent package.el from loading too early
+(setq package-enable-at-startup nil)
+
+;; Silence native-comp messages at startup (does pop up in the minibuffer)
+(setq native-comp-async-report-warnings-errors 'silent)
+
 (setq inhibit-startup-message t)
 
 ;; Hack to increase startup speed
