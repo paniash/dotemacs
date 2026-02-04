@@ -301,6 +301,7 @@
 ;; Orgmode specific settings
 (use-package org
   :ensure nil  ; org is built-in
+  :defer t
   :init
   (setq org-directory (expand-file-name "~/org/"))
   (setq org-imenu-depth 7)
