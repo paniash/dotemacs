@@ -1312,7 +1312,7 @@ org-agenda."
   :custom
   (pixel-scroll-precision-interpolate page t)
   (pixel-scroll-precision-mode t)
-  :init
+  :config
   (pixel-scroll-precision-mode 1))
 
 ;; minions package for hiding minor modes in the modeline
