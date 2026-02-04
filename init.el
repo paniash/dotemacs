@@ -771,38 +771,6 @@ Returns the new window."
       (error "Resulting window too small"))
     (split-window window size)))
 
-;; mu4e for email
-(use-package mu4e
-  :ensure nil
-  :config
-
-  ;; This is set to `t' to avoid mail syncing issues when using mbsync
-  (setq mu4e-change-filenames-when-moving t)
-
-  (setq user-mail-address "ap@ashishpanigrahi.com")
-  (setq user-full-name "Ashish Panigrahi")
-
-  (setq
-   mu4e-drafts-folder "/Drafts"
-   mu4e-sent-folder "/Sent"
-   mu4e-refile-folder "/Archive"
-   mu4e-trash-folder "/Trash")
-
-  ;; some customizations
-  (setq
-   mu4e-attachment-dir "~/downloads"
-   mu4e-view-show-images t
-   mu4e-compose-signature-auto-include nil
-   mu4e-view-show-addresses t
-   mu4e-hide-index-messages t
-   mu4e-compose-dont-reply-to-self t)
-
-  (setq mu4e-maildir-shortcuts
-	'(("/INBOX" . ?i)
-	  ("/Sent" . ?s)
-	  ("/Trash" . ?t)
-	  ("/Draft" . ?d))))
-
 ;; ;; sending email in emacs
 ;; (use-package smtpmail
 ;;   :ensure nil
