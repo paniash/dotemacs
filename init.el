@@ -1308,26 +1308,6 @@ org-agenda."
   :init
   (pixel-scroll-precision-mode 1))
 
-;; keycast package for showing current keystrokes in modeline
-(use-package keycast
-  :ensure t
-  :custom
-  ;; Formatting and Positioning
-  (keycast-mode-line-remove-tail-elements nil)
-  (keycast-mode-line-insert-after 'mode-line-misc-info)
-
-  ;; Security / Noise Filter
-  ;; We now hide BOTH the standard insert and the Org mode insert
-  (keycast-substitute-alist '(
-			      (self-insert-command nil nil)
-			      (org-self-insert-command nil nil)
-			      ))
-  :custom-face
-  (keycast-command ((t (:foreground "#8ec07c"
-				    :weight normal))))
-  :init
-  (keycast-mode-line-mode 1))
-
 ;; minions package for hiding minor modes in the modeline
 (use-package minions
   :ensure t
