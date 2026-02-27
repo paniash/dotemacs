@@ -1244,15 +1244,10 @@ org-agenda."
 
   (add-hook 'Info-mode-hook #'pani/info-font-size))
 
-;; TRAMP config
 (use-package tramp
   :ensure nil ; built-in
   :config
-  (setq tramp-verbose 10)
-  (setq vc-ignore-dir-regexp
-	(format "\\(%s\\)\\|\\(%s\\)"
-		vc-ignore-dir-regexp
-		tramp-file-name-regexp)))
+  (setq tramp-verbose 3))
 
 ;; Treesitter config
 (use-package treesit
