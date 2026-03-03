@@ -984,7 +984,12 @@ Returns the new window."
 
   (setq python-indent-offset 4)
   (setq python-shell-interpreter "python3")
-  (setq python-shell-enable-font-lock nil))
+  (setq python-shell-enable-font-lock nil)
+
+  ;; Scroll to the bottom of the REPL on new output
+  (setq comint-scroll-to-bottom-on-input t)
+  (setq comint-scroll-to-bottom-on-output t)
+  (setq comint-move-point-for-output t))
 
 ;; code-cells for ipython like behaviour
 (use-package code-cells
