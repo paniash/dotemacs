@@ -180,7 +180,8 @@
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
 
   (evil-set-initial-state 'messages-buffer-mode 'normal)
-  (evil-set-initial-state 'dashboard-mode 'normal))
+  (evil-set-initial-state 'dashboard-mode 'normal)
+  (evil-set-initial-state 'inferior-python-mode 'emacs))
 
 ;;; Vim Bindings Everywhere else
 (use-package evil-collection
