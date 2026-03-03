@@ -622,12 +622,6 @@
    markdown-mode-hook
    LaTeX-mode-hook))
 
-;; Emacs eat terminal emulation
-(use-package eat
-  :ensure t
-  :config
-  (add-hook 'eat-mode-hook (lambda () (evil-local-mode -1))))
-
 ;; World-clock customization
 ;;;; World clock (M-x world-clock)
 (use-package time
@@ -989,8 +983,7 @@ Returns the new window."
 
   (setq python-indent-offset 4)
   (setq python-shell-interpreter "python3")
-  (setq python-shell-enable-font-lock nil)
-  (add-hook 'eat-mode-hook #'turn-off-evil-mode nil))
+  (setq python-shell-enable-font-lock nil))
 
 ;; code-cells for ipython like behaviour
 (use-package code-cells
