@@ -134,6 +134,13 @@
   ;; Set default pdf-viewer in org-mode
   (add-to-list 'org-file-apps '("\\.pdf\\'" . "firefox \"%s\""))
 
+  ;; Python buffers now occupy 25% of the screen
+  (add-to-list 'display-buffer-alist
+	       '("\\*Python\\*"
+		 (display-buffer-reuse-window
+		  display-buffer-at-bottom)
+		 (window-height . 0.25)))
+
   ;; Silence byte compile warnings when installing new packages
   (add-to-list 'display-buffer-alist
                '("\\`\\*\\(Warnings\\|Compile-Log\\)\\*\\'"
