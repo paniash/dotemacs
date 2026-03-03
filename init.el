@@ -24,12 +24,6 @@
 (unless package-archive-contents
  (package-refresh-contents))
 
-;; Silence byte compile warnings when installing new packages
-(add-to-list 'display-buffer-alist
-             '("\\`\\*\\(Warnings\\|Compile-Log\\)\\*\\'"
-               (display-buffer-no-window)
-               (allow-no-window . t)))
-
 ;; Disable line numbers for some text modes
 (dolist (mode '(eat-mode-hook
                 shell-mode-hook
@@ -139,6 +133,12 @@
 
   ;; Set default pdf-viewer in org-mode
   (add-to-list 'org-file-apps '("\\.pdf\\'" . "firefox \"%s\""))
+
+  ;; Silence byte compile warnings when installing new packages
+  (add-to-list 'display-buffer-alist
+               '("\\`\\*\\(Warnings\\|Compile-Log\\)\\*\\'"
+		 (display-buffer-no-window)
+		 (allow-no-window . t)))
 
   :bind
   ( :map global-map
