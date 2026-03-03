@@ -979,6 +979,8 @@ Returns the new window."
     :map python-ts-mode-map
     ("C-l" . nil) ; unbind default binding for text view centering
     ("C-l" . xref-go-back)
+    :map inferior-python-mode-map
+    ("C-l" . comint-clear-buffer)  ; `C-l' clears the inferior python buffer
   )
   :config
 
