@@ -991,7 +991,19 @@ Returns the new window."
   ;; Scroll to the bottom of the REPL on new output
   (setq comint-scroll-to-bottom-on-input t)
   (setq comint-scroll-to-bottom-on-output t)
-  (setq comint-move-point-for-output t))
+  (setq comint-scroll-show-maximum-output t)
+  (setq comint-move-point-for-output t)
+
+  ;; This ensures that even if the REPL window isn't the active one, it still scrolls
+  (defun pani/python-scroll-to-bottom (_string)
+    (let ((window (get-buffer-window (current-buffer))))
+      (when window
+	(with-selected-window window
+	  (goto-char (point-max))))))
+
+  (add-hook 'inferior-python-mode-hook
+            (lambda ()
+              (add-hook 'comint-output-filter-functions #'pani/python-scroll-to-bottom nil t))))
 
 ;; code-cells for ipython like behaviour
 (use-package code-cells
