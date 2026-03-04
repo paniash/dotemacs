@@ -486,7 +486,7 @@
 	'(("t" "Tasks")
 	  ("ts" "Scheduled tasks" entry
 	   (file+headline "tasks.org" "Scheduled tasks")
-	   "* TODO %^{Task} %^g\n SCHEDULED: %^t\n" :empty-lines-after 1)
+	   "* TODO [%^{Priority|B|A|C}] %^{Task} %^g\n SCHEDULED: %^t\n" :empty-lines-after 1)
 	  ("td" "Tasks with a deadline" entry
 	   (file+headline "tasks.org" "Tasks with deadline")
 	   "* TODO %^{Task} %^g\n DEADLINE: %^T\n" :empty-lines-after 1)
