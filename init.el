@@ -1320,3 +1320,14 @@ org-agenda."
   ;; Add keycast-mode to the list of modes that should stay visible
   (add-to-list 'minions-prominent-modes 'keycast-mode-line-mode)
   (minions-mode 1))
+
+;; ediff configuration
+(use-package ediff
+  :ensure nil ; built-in
+  :config
+  (setq ediff-keep-variants nil)
+  (setq ediff-make-buffers-readonly-at-startup nil)
+  (setq ediff-show-clashes-only t)
+
+  (setq ediff-split-window-function 'split-window-horizontally)
+  (setq ediff-window-setup-function 'ediff-setup-windows-plain))
