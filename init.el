@@ -1293,17 +1293,25 @@ org-agenda."
 	erc-fill-function 'erc-fill-static
 	erc-fill-static-center 20))
 
-;; Smooth scrolling
-(use-package pixel-scroll
-  :ensure nil
-  :bind (:map global-map
-	      ([remap scroll-up-command] . pixel-scroll-interpolate-down)
-	      ([remap scroll-down-command] . pixel-scroll-interpolate-up))
-  :custom
-  (pixel-scroll-precision-interpolate page t)
-  (pixel-scroll-precision-mode t)
+;; ;; Smooth scrolling
+;; (use-package pixel-scroll
+;;   :ensure nil
+;;   :bind (:map global-map
+;; 	      ([remap scroll-up-command] . pixel-scroll-interpolate-down)
+;; 	      ([remap scroll-down-command] . pixel-scroll-interpolate-up))
+;;   :custom
+;;   (pixel-scroll-precision-interpolate page t)
+;;   (pixel-scroll-precision-mode t)
+;;   :config
+;;   (pixel-scroll-precision-mode 1))
+
+(use-package ultra-scroll
+  :vc (:url "https://github.com/jdtsmith/ultra-scroll") ; if desired (emacs>=v30)
+  :init
+  (setq scroll-conservatively 3 ; or whatever value you prefer, since v0.4
+        scroll-margin 0)        ; important: scroll-margin>0 not yet supported
   :config
-  (pixel-scroll-precision-mode 1))
+  (ultra-scroll-mode 1))
 
 ;; minions package for hiding minor modes in the modeline
 (use-package minions
