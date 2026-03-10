@@ -52,6 +52,21 @@
 	("\\`\\*\\(Warnings\\|Compile-Log\\)\\*\\'"
 	 (display-buffer-no-window)
 	 (allow-no-window . t))
+
+	;; Occur specific buffer settings
+	("\\*Occur\\*"
+	 ;; If a buffer with the matching major-mode exists in
+	 ;; some window, then use that one. Otherwise, display
+	 ;; the buffer below the current window.
+	 (display-buffer-reuse-mode-window
+	  display-buffer-pop-up-window)
+	 ;; Then we have some parameters
+	 (dedicated . t)
+	 (body-function . (lambda (window) (select-window window)))
+	 (window-width . 0.5)
+	 (window-height . fit-window-to-buffer))))
+
+
 ;;; Some standard emacs config
 (use-package emacs
   :ensure nil
