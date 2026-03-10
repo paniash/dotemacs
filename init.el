@@ -156,7 +156,6 @@
     ("C-l" . nil) ; never use it
     ("C-x <left>" . nil) ; unbind the `previous-buffer' command
     ("C-x C-p" . previous-buffer)  ; rebind `previous-buffer' command
-    ("C-u" . evil-scroll-up) ; explicitly bind C-u because it sometimes misbehaves in evil mode
     )
   :custom
   ;; disable Ispell completion function
@@ -181,6 +180,7 @@
   (evil-mode 1)
   (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
   (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
+  (define-key evil-motion-state-map (kbd "C-u") 'evil-scroll-up) ; explicitly bind C-u
   (define-key evil-motion-state-map (kbd "C-o") 'occur) ; `occur' now bound to C-o
 
   ;; Use visual line motions even outside of visual-line-mode buffers
