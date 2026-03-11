@@ -26,6 +26,8 @@
   (:text "\\(?:R\\(?:\\(?:\\.\\|ami\\) Barends\\)\\)" :value 500 :type R :tags (t arxiv))
   (:text "Guo-Ping Guo" :value 500 :type w :tags (t arxiv))
   (:text "Andreas Wallraff" :value 500 :type w :tags (t arxiv))
+  (:text "\\(?:R\\(?:\\(?:\\.\\|aghavan\\) Vijay\\)\\)" :value 500 :type R :tags (t arxiv))
+  (:text "\\(?:E\\(?:\\(?:\\.\\|li\\(?: M\\.\\)?\\) Levenson-Falk\\)\\)" :value 500 :type R :tags (t arxiv))
   (:text "\\(?:A\\(?:\\(?:\\.\\|rkady\\) Fedorov\\)\\)" :value 500 :type R :tags (t arxiv))
   (:text "\\(?:K\\(?:\\(?:\\. D[.e]\\|ristiaan De\\) Greve\\)\\)" :value 500 :type R :tags (t arxiv))
   (:text "\\(?:A\\(?:\\(?:\\.\\|nton\\) Potocnik\\)\\)" :value 400 :type R :tags (t arxiv))
