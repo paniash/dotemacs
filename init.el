@@ -53,6 +53,12 @@
 	 (display-buffer-no-window)
 	 (allow-no-window . t))
 
+	;; Typst ts compilation mode settings
+	((derived-mode . typst-ts-compilation-mode)
+	 (display-buffer-reuse-mode-window
+	  display-buffer-pop-up-window)
+	 (window-height . fit-window-to-buffer))
+
 	;; Occur specific buffer settings
 	("\\*Occur\\*"
 	 ;; If a buffer with the matching major-mode exists in
@@ -65,7 +71,6 @@
 	 (body-function . (lambda (window) (select-window window)))
 	 (window-width . 0.5)
 	 (window-height . fit-window-to-buffer))))
-
 
 ;;; Some standard emacs config
 (use-package emacs
