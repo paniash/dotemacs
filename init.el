@@ -1199,6 +1199,7 @@ Works in both search and show mode."
 	  ("http://gregorygundersen.com/feed.xml" blog)
 	  ("http://rosenzweig.io/feed.xml" blog)
 	  ("http://adol.pw/index.xml" blog)
+	  ("https://nicholas.carlini.com/writing/feed.xml" blog research)
 	  ("http://tony-zorman.com/atom.xml" blog)
 	  ("http://andreyor.st/feed.xml" blog)
 	  ("http://www.paritybit.ca/feed.xml" blog)
