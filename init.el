@@ -501,7 +501,7 @@
 	  ("m" "Formal meetings")
 	  ("mi" "One-to-one" entry
 	   (file+headline "meetings.org" "One-to-one meetings")
-	   "* MEETING with %^{With whom} at %^{Place} %^g\n DEADLINE: %^T" :empty-lines-after 1)
+	   "* MEETING with %^{With whom} at %^{Place} %^g\n SCHEDULED: %^T" :empty-lines-after 1)
 	  ("mg" "Group" entry
 	   (file+headline "meetings.org" "Group meetings")
 	   "* %?\n DEADLINE: %^T" :empty-lines-after 1)
