@@ -373,6 +373,12 @@
   (setq org-indent-mode-turns-on-hiding-stars nil)
   (setq org-indent-indentation-per-level 4)
 
+  ;; Org-babel settings
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((python . t)
+     (emacs-lisp . t)))
+
   ;; List points now use a unicode bullet symbol instead of a generic
   ;; dash or asterisk
   (font-lock-add-keywords 'org-mode
