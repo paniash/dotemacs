@@ -958,6 +958,11 @@ Returns the new window."
   :hook ((python-mode . eglot-ensure)
 	 (python-ts-mode . eglot-ensure))   ;; run eglot when opening python files
   :config
+
+  ;; (add-to-list 'eglot-server-programs
+  ;; 	       '((python-ts-mode python-mode)
+  ;; 		 . ("pylsp" "server")))
+
   ;; (setq eglot-managed-mode-hook (list (lambda () (eldoc-mode -1))))
   (setq eglot-ignored-server-capabilities
 	'(:documentHighlightProvider
