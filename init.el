@@ -1015,6 +1015,12 @@ Returns the new window."
   (setq comint-scroll-show-maximum-output t)
   (setq comint-move-point-for-output t)
 
+  ;; Force focus to stay put when launching inferior python
+  (advice-add 'run-python :around
+	      (lambda (orig-fun &rest args)
+		(save-selected-window
+		  (apply orig-fun args))))
+
   ;; This ensures that even if the REPL window isn't the active one, it still scrolls
   (defun pani/python-scroll-to-bottom (_string)
     (let ((window (get-buffer-window (current-buffer))))
