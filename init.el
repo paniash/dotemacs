@@ -117,9 +117,6 @@
   ;; Replace "yes or no" with "y or n"
   (setq use-short-answers t)
 
-  ;; isearch now shows number of search hits
-  (setq isearch-lazy-count t)
-
   ;; ;; Enable `completion-preview-mode' for certain hooks
   ;; :hook (python-mode . completion-preview-mode)
 
@@ -1358,3 +1355,11 @@ org-agenda."
 
   (setq ediff-split-window-function 'split-window-horizontally)
   (setq ediff-window-setup-function 'ediff-setup-windows-plain))
+
+;; isearch config
+(use-package isearch
+  :ensure nil ; built-in
+  :config
+  (setq isearch-lazy-count t)
+  (setq isearch-repeat-on-direction-change t)
+  (setq isearch-wrap-pause 'no)) ; Jump to top/bottom without asking
