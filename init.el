@@ -183,6 +183,7 @@
   (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
   (define-key evil-motion-state-map (kbd "C-u") 'evil-scroll-up) ; explicitly bind C-u
   (define-key evil-motion-state-map (kbd "C-o") 'occur) ; `occur' now bound to C-o
+  (define-key evil-motion-state-map (kbd "C-q") 'query-replace) ; `query-replace' now bound to C-q
 
   ;; Use visual line motions even outside of visual-line-mode buffers
   (evil-global-set-key 'motion "j" 'evil-next-visual-line)
