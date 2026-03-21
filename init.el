@@ -964,7 +964,7 @@ Returns the new window."
   :config
   (add-to-list 'eglot-server-programs
 	       '((python-ts-mode python-mode)
-		 . ("zubanls")))
+		 . ("pyrefly" "lsp")))
 
   ;; (setq eglot-managed-mode-hook (list (lambda () (eldoc-mode -1))))
   (setq eglot-ignored-server-capabilities
