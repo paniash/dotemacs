@@ -518,7 +518,7 @@
 	   "* MEETING with %^{With whom} at %^{Place} %^g\n SCHEDULED: %^T" :empty-lines-after 1)
 	  ("mg" "Group" entry
 	   (file+headline "meetings.org" "Group meetings")
-	   "* %?\n DEADLINE: %^T" :empty-lines-after 1)
+	   "* %^{Event} MEETING%? %^g\n DEADLINE: %^T" :empty-lines-after 1)
 	  ("e" "Events" entry
 	   (file+headline "events.org" "Events")
 	   "* %^{Event}%? %^g\n SCHEDULED: %^t" :empty-lines-after 1)
