@@ -161,6 +161,7 @@
     ("C-h h" . nil) ; never show that "hello" file
     ("C-l" . nil) ; never use it
     ("C-k" . nil) ; never use it
+    ("C-s" . nil) ; disable isearch default binding
     ("C-x <left>" . nil) ; unbind the `previous-buffer' command
     ("C-x C-p" . previous-buffer)  ; rebind `previous-buffer' command
     )
