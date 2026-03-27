@@ -65,6 +65,12 @@
 	  display-buffer-pop-up-window)
 	 (window-height . fit-window-to-buffer))
 
+	;; xref buffer specific settings
+	("\\*xref\\*"
+	 (display-buffer-reuse-mode-window
+	  display-buffer-pop-up-window)
+	 (window-height . fit-window-to-buffer))
+
 	;; Occur specific buffer settings
 	("\\*Occur\\*"
 	 ;; If a buffer with the matching major-mode exists in
