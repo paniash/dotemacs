@@ -1050,7 +1050,7 @@ Returns the new window."
   (add-hook 'python-ts-mode-hook 'code-cells-mode-maybe)
   (add-hook 'python-mode-hook 'code-cells-mode-maybe)
   :bind
-  ( :map code-cells-mode-map
+  (:map code-cells-mode-map
     ("C-c C-c" . code-cells-eval)))
 
 ;; Elfeed for RSS
