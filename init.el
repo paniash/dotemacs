@@ -1035,6 +1035,8 @@ Returns the new window."
     ("C-l" . xref-go-back)
     :map inferior-python-mode-map
     ("C-l" . comint-clear-buffer)  ; `C-l' clears the inferior python buffer
+    ("<up>" . comint-previous-input)
+    ("<down>" . comint-next-input)
   )
   :config
 
