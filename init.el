@@ -973,6 +973,23 @@ Returns the new window."
 	       '((python-ts-mode python-mode)
 		 . ("ty" "server")))
 
+  (defun my/eglot-clean-docstring (markup)
+    "Clean up HTML entities and ANSI colors in Eglot docstrings."
+    (when (stringp markup)
+      ;; 1. Replace HTML non-breaking spaces with regular spaces
+      (setq markup (replace-regexp-in-string "&nbsp;" " " markup))
+      ;; 2. Replace other common HTML entities if they appear
+      (setq markup (replace-regexp-in-string "&gt;" ">" markup))
+      (setq markup (replace-regexp-in-string "&lt;" "<" markup))
+      ;; 3. Handle ANSI color codes (the ^[[31m stuff)
+      (setq markup (ansi-color-apply markup)))
+    markup)
+
+  (with-eval-after-load 'eglot
+    ;; We 'filter-return' so the original function runs,
+    ;; then we scrub the result before ElDoc shows it.
+    (advice-add 'eglot--format-markup :filter-return #'my/eglot-clean-docstring))
+
   ;; (setq eglot-managed-mode-hook (list (lambda () (eldoc-mode -1))))
   (setq eglot-ignored-server-capabilities
 	'(:documentHighlightProvider
