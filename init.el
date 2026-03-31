@@ -817,9 +817,14 @@ Returns the new window."
 ;;   (setq smtpmail-debug-info t)
 ;;   (setq smtpmail-stream-type 'nil))
 
+(defvar notmuch-path
+  (if (string=(system-name) "d22-0153")
+      "/usr/share/emacs/site-lisp/elpa/notmuch-0.38.3/"
+    "/use/share/emacs/site-lisp/"))
+
 ;; Notmuch for email
 (use-package notmuch
-  :load-path "/usr/share/emacs/site-lisp/"
+  :load-path notmuch-path
   :defer t
   :commands (notmuch notmuch-mua-new-mail)
   :config
