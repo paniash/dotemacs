@@ -399,7 +399,15 @@
   ;; dash or asterisk
   (font-lock-add-keywords 'org-mode
 			  '(("^ *\\([-]\\) "
-			     (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•")))))))
+			     (0 (prog1 () (compose-region
+					   (match-beginning 1)
+					   (match-end 1) "•"))))))
+
+  ;; Function to open a zotero link inside zotero as a pdf viewer
+  (defun org-zotero-open-link (path _)
+    (call-process "xdg-open" nil nil nil (concat "zotero:" path)))
+
+  (org-link-set-parameters "zotero" :follow #'org-zotero-open-link))
 
 ;; Org-agenda customization (based on Protesilaos Stavrou's config)
 (use-package org-agenda
