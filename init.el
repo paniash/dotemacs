@@ -46,6 +46,7 @@
 	("\\*Python\\*"
 	 (display-buffer-reuse-window
 	  display-buffer-at-bottom)
+	 (dedicated . t)
 	 (window-height . 0.25))
 
 	;; Silence byte compile warnings when installing new packages
