@@ -358,7 +358,6 @@
   ;; Set renderer for LaTeX preview in orgmode
   (setq org-preview-latex-default-process 'imagemagick)
 
-  :config
   ;; Faces for TODO keywords
   (setq org-todo-keyword-faces
 	'(("PROG" . (:foreground "orange" :weight bold))
