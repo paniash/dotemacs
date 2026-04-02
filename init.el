@@ -125,6 +125,8 @@
 
   ;; Put autosave files in one folder
   (setq backup-directory-alist `(("." . "~/.autosaves")))
+  (setq backup-inhibited t)
+  (setq auto-save-default nil)
 
   ;; Replace "yes or no" with "y or n"
   (setq use-short-answers t)
