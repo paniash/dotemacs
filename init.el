@@ -154,6 +154,10 @@
 
   ;; Prevent ffap from pinging hostnames
   (setq ffap-machine-p-known 'reject)
+
+  ;; Proportional window resizing (becomes apparent with multiple windows
+  (setq window-combination-resize t)
+
   ;; Enable line numbers only for programming and text modes
   (add-hook 'prog-mode-hook #'display-line-numbers-mode)
   (add-hook 'text-mode-hook #'display-line-numbers-mode)
