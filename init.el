@@ -144,6 +144,10 @@
   (setq-default bidi-display-reordering 'left-to-right
 		bidi-paragraph-direction 'left-to-right)
   (setq bidi-inhibit-bpa t)
+
+  ;; Skip fontification during input
+  (setq redisplay-skip-fontification-on-input t)
+
   ;; Enable line numbers only for programming and text modes
   (add-hook 'prog-mode-hook #'display-line-numbers-mode)
   (add-hook 'text-mode-hook #'display-line-numbers-mode)
