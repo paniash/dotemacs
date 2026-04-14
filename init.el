@@ -199,6 +199,7 @@
   :custom
   ;; disable Ispell completion function
   (text-mode-ispell-word-completion nil)
+  ;; Hide commands in M-x which do not work in current buffer
   (read-extended-command-predicate #'command-completion-default-include-p))
 
 ;;; Vim Bindings
