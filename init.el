@@ -148,6 +148,9 @@
   ;; Skip fontification during input
   (setq redisplay-skip-fontification-on-input t)
 
+  ;; Increase process output buffer for LSP
+  ;; Basically free performance with eglot
+  (setq read-process-output-max (* 4 1024 1024)) ; 4 MB
   ;; Enable line numbers only for programming and text modes
   (add-hook 'prog-mode-hook #'display-line-numbers-mode)
   (add-hook 'text-mode-hook #'display-line-numbers-mode)
