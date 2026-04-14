@@ -140,6 +140,10 @@
 
   (setq display-line-numbers-type 'relative)
 
+  ;; Disable bidirectional text scanning
+  (setq-default bidi-display-reordering 'left-to-right
+		bidi-paragraph-direction 'left-to-right)
+  (setq bidi-inhibit-bpa t)
   ;; Enable line numbers only for programming and text modes
   (add-hook 'prog-mode-hook #'display-line-numbers-mode)
   (add-hook 'text-mode-hook #'display-line-numbers-mode)
