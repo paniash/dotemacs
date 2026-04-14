@@ -162,6 +162,10 @@
   ;; Set default pdf-viewer in org-mode
   (add-to-list 'org-file-apps '("\\.pdf\\'" . "firefox \"%s\""))
 
+  ;; Auto-chmod scripts on save
+  (add-hook 'after-save-hook
+	    #'executable-make-buffer-file-executable-if-script-p)
+
   :bind
   ( :map global-map
     ("C-x C-d" . nil) ; never use it
