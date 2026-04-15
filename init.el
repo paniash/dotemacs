@@ -860,6 +860,9 @@ Returns the new window."
   :load-path notmuch-path
   :defer t
   :commands (notmuch notmuch-mua-new-mail)
+  :init
+  ;; Search
+  (setq notmuch-search-oldest-first nil)
   :config
   ; General UI
   (setq notmuch-show-logo nil
@@ -871,7 +874,6 @@ Returns the new window."
 	notmuch-show-all-tags-list t)
 
   ; Search
-  (setq notmuch-search-oldest-first nil)
   (setq notmuch-search-result-format
         '(("date" . "%12s  ")
           ("count" . "%-7s  ")
