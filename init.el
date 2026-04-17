@@ -60,6 +60,12 @@
 	  display-buffer-pop-up-window)
 	 (window-height . fit-window-to-buffer))
 
+	;; help-mode settings
+	((derived-mode . help-mode)
+	 (display-buffer-reuse-mode-window
+	  display-buffer-pop-up-window)
+	 (window-height . fit-window-to-buffer))
+
 	;; Eldoc specific settings
 	("\\*eldoc\\*"
 	 (display-buffer-reuse-mode-window
