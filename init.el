@@ -1419,7 +1419,7 @@ org-agenda."
   (setq ediff-make-buffers-readonly-at-startup nil)
   (setq ediff-show-clashes-only t)
 
-  (setq ediff-split-window-function 'split-window-horizontally)
+  (setq ediff-split-window-function 'split-window-sensibly)
   (setq ediff-window-setup-function 'ediff-setup-windows-plain))
 
 ;; isearch config
