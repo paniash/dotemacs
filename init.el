@@ -789,6 +789,7 @@ The DWIM behaviour of this command is as follows:
 - When the region is active, disable it.
 - When a minibuffer is open, but not focused, close the minibuffer.
 - When the Completions buffer is selected, close it.
+- When lines are hidden with `consult-focus-lines', reveal them.
 - In every other case use the regular `keyboard-quit'."
   (interactive)
   (cond
@@ -798,6 +799,9 @@ The DWIM behaviour of this command is as follows:
     (delete-completion-window))
    ((> (minibuffer-depth) 0)
     (abort-recursive-edit))
+   ((and (boundp 'consult--focus-lines-overlays)
+	 consult--focus-lines-overlays)
+    (consult-focus-lines nil t))
    (t
     (keyboard-quit))))
 
