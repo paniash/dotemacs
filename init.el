@@ -504,7 +504,7 @@
 			(org-agenda-show-all-dates nil)
 			(org-deadline-warning-days 0)
 			(org-agenda-block-separator nil)
-			(org-agenda-entry-types '(:scheduled))
+			(org-agenda-entry-types '(:scheduled :timestamp))
 			(org-agenda-skip-function
 			 '(org-agenda-skip-entry-if 'todo 'done))
 			(org-agenda-overriding-header "\nUpcoming schedule (+14d)")))))
