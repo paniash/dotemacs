@@ -66,6 +66,12 @@
 	  display-buffer-pop-up-window)
 	 (window-height . fit-window-to-buffer))
 
+	;; ibuffer settings
+	((derived-mode . Buffer-menu-mode)
+	 (display-buffer-reuse-mode-window
+	  display-buffer-pop-up-window)
+	 (window-height . fit-window-to-buffer))
+
 	;; Eldoc specific settings
 	("\\*eldoc\\*"
 	 (display-buffer-reuse-mode-window
