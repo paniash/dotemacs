@@ -1027,7 +1027,7 @@ Returns the new window."
   :config
   (add-to-list 'eglot-server-programs
 	       '((python-ts-mode python-mode)
-		 . ("ty" "server")))
+		 . ("pyrefly" "lsp")))
 
   (defun my/eglot-clean-docstring (markup)
     "Clean up HTML entities and ANSI colors in Eglot docstrings."
