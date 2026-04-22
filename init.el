@@ -387,8 +387,8 @@
   ;; Start calendar week from Monday
   (setq calendar-week-start-day 1)
 
-  ;; Hides leading stars
-  (setq org-hide-leading-stars t)
+  ;; Unhides leading stars (default behaviour)
+  (setq org-hide-leading-stars nil)
 
   ;; Turn on cdlatex minor mode in all org buffers
   ;; See https://orgmode.org/manual/CDLaTeX-mode.html for details
