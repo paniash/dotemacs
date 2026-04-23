@@ -71,6 +71,7 @@
 	((derived-mode . Buffer-menu-mode)
 	 (display-buffer-reuse-mode-window
 	  display-buffer-pop-up-window)
+	 (body-function . (lambda (window) (select-window window)))
 	 (window-height . (lambda (window)
 			    (fit-window-to-buffer window (floor (* 0.5 (frame-height)))))))
 
