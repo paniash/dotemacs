@@ -64,7 +64,8 @@
 	((derived-mode . help-mode)
 	 (display-buffer-reuse-mode-window
 	  display-buffer-pop-up-window)
-	 (window-height . fit-window-to-buffer))
+	 (window-height . (lambda (window)
+			    (fit-window-to-buffer window (floor (* 0.5 (frame-height)))))))
 
 	;; ibuffer settings
 	((derived-mode . Buffer-menu-mode)
@@ -95,7 +96,8 @@
 	 (dedicated . t)
 	 (body-function . (lambda (window) (select-window window)))
 	 (window-width . 0.5)
-	 (window-height . fit-window-to-buffer))))
+	 (window-height . (lambda (window)
+			    (fit-window-to-buffer window (floor (* 0.65 (frame-height)))))))))
 
 ;;; Some standard emacs config
 (use-package emacs
