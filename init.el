@@ -71,7 +71,8 @@
 	((derived-mode . Buffer-menu-mode)
 	 (display-buffer-reuse-mode-window
 	  display-buffer-pop-up-window)
-	 (window-height . fit-window-to-buffer))
+	 (window-height . (lambda (window)
+			    (fit-window-to-buffer window (floor (* 0.5 (frame-height)))))))
 
 	;; Eldoc specific settings
 	("\\*eldoc\\*"
