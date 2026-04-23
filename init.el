@@ -1445,3 +1445,16 @@ org-agenda."
   (setq isearch-lazy-count t)
   (setq isearch-repeat-on-direction-change t)
   (setq isearch-wrap-pause 'no)) ; Jump to top/bottom without asking
+
+;; ibuffer settings
+(use-package ibuffer
+  :ensure nil ; built-in
+  :hook
+  ((Buffer-menu-mode . hl-line-mode))
+  :config
+  (setq ibuffer-expert t)
+  (setq ibuffer-display-summary nil)
+  (setq ibuffer-show-empty-filter-groups nil)
+  (setq ibuffer-movement-cycle nil)
+  (setq ibuffer-use-header-line t)
+  (setq ibuffer-use-other-window nil))
