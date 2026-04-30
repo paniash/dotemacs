@@ -1000,8 +1000,9 @@ Returns the new window."
 ;; envrc package
 (use-package envrc
   :ensure t
-  :hook (after-init . envrc-global-mode)
-        (python-mode . envrc-global-mode))
+  :hook ((after-init . envrc-global-mode)
+	 (python-mode . envrc-global-mode)
+	 (python-ts-mode . envrc-global-mode)))
 
 ;; Autocompletion via corfu
 (use-package corfu
