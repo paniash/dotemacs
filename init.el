@@ -189,9 +189,6 @@ The DWIM behaviour of this command is as follows:
   ;; ;; Enable `completion-preview-mode' for certain hooks
   ;; :hook (python-mode . completion-preview-mode)
 
-  ;; Disable html font size overriding default fonts
-  (setq shr-use-fonts nil)
-
   (setq display-line-numbers-type 'relative)
 
   ;; Disable bidirectional text scanning
@@ -255,6 +252,13 @@ The DWIM behaviour of this command is as follows:
   (text-mode-ispell-word-completion nil)
   ;; Hide commands in M-x which do not work in current buffer
   (read-extended-command-predicate #'command-completion-default-include-p))
+(use-package shr
+  :ensure nil
+  :config
+  (setq shr-use-colors nil)
+  ;; Disable html font size overriding default fonts
+  (setq shr-use-fonts nil))
+
 
 ;;; Vim Bindings
 (use-package evil
