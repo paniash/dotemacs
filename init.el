@@ -246,11 +246,12 @@ The DWIM behaviour of this command is as follows:
     ("C-x <left>" . nil) ; unbind the `previous-buffer' command
     ("C-x C-p" . previous-buffer)  ; rebind `previous-buffer' command
     )
-  :custom
+  :config
   ;; disable Ispell completion function
-  (text-mode-ispell-word-completion nil)
+  (setq text-mode-ispell-word-completion nil)
   ;; Hide commands in M-x which do not work in current buffer
-  (read-extended-command-predicate #'command-completion-default-include-p))
+  (setq read-extended-command-predicate #'command-completion-default-include-p))
+
 (use-package shr
   :ensure nil
   :config
