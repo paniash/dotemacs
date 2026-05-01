@@ -885,7 +885,7 @@ Returns the new window."
 (defvar notmuch-path
   (if (string=(system-name) "d22-0153")
       "/usr/share/emacs/site-lisp/elpa/notmuch-0.38.3/"
-    "/use/share/emacs/site-lisp/"))
+    "/usr/share/emacs/site-lisp/"))
 
 ;; Notmuch for email
 (use-package notmuch
