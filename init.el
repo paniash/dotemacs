@@ -18,13 +18,16 @@
 (use-package package
   :ensure nil
   :config
+  (setq use-package-always-ensure t)
   (setq package-archives '(("melpa" . "https://melpa.org/packages/")
 			   ("non-gnu" . "https://elpa.nongnu.org/nongnu/")
 			   ("elpa" . "https://elpa.gnu.org/packages/")))
   (setq package-archive-priorities
 	'(("gnu-elpa" . 3)
 	  ("nongnu" . 2)
-	  ("melpa" . 1))))
+	  ("melpa" . 1)))
+  (setq package-review-policy t
+	package-review-diff-command '("git" "diff" "--no-index" "--color=never" "--diff-filter=d")))
 
 (package-initialize)
 (unless package-archive-contents
