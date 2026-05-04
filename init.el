@@ -21,11 +21,14 @@
 	  ("nongnu" . 2)
 	  ("melpa" . 1)))
   (setq package-review-policy t
-	package-review-diff-command '("git" "diff" "--no-index" "--color=never" "--diff-filter=d")))
+	package-review-diff-command '("git" "diff" "--no-index"
+				      "--color=never"
+				      "--diff-filter=d"))
+  ;; Initialize all packages after package.el is loaded
+  (package-initialize)
+  (unless package-archive-contents
+    (package-refresh-contents)))
 
-(package-initialize)
-(unless package-archive-contents
- (package-refresh-contents))
 
 ;; Disable line numbers for some text modes
 (dolist (mode '(eat-mode-hook
