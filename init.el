@@ -1,10 +1,10 @@
 ;; Display load message when starting emacs
 (defun efs/display-startup-time ()
   (message "Emacs loaded in %s with %d garbage collections."
-          (format "%.3f seconds"
-                   (float-time
-                     (time-subtract after-init-time before-init-time)))
-           gcs-done))
+	   (format "%.3f seconds"
+		   (float-time
+		    (time-subtract after-init-time before-init-time)))
+	   gcs-done))
 
 (add-hook 'emacs-startup-hook #'efs/display-startup-time)
 
@@ -28,7 +28,6 @@
   (package-initialize)
   (unless package-archive-contents
     (package-refresh-contents)))
-
 
 ;; Disable line numbers for some text modes
 (dolist (mode '(eat-mode-hook
@@ -259,7 +258,6 @@ The DWIM behaviour of this command is as follows:
   (setq shr-use-colors nil)
   ;; Disable html font size overriding default fonts
   (setq shr-use-fonts nil))
-
 
 ;;; Vim Bindings
 (use-package evil
