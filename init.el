@@ -1469,6 +1469,8 @@ org-agenda."
   :config
   (setq isearch-lazy-count t)
   (setq isearch-repeat-on-direction-change t)
+  (setq lazy-highlight-cleanup t)
+  (setq lazy-highlight-initial-delay 0)
   (setq isearch-wrap-pause 'no)) ; Jump to top/bottom without asking
 
 ;; ibuffer settings
