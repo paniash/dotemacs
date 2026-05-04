@@ -1,13 +1,3 @@
-;; Display load message when starting emacs
-(defun efs/display-startup-time ()
-  (message "Emacs loaded in %s with %d garbage collections."
-	   (format "%.3f seconds"
-		   (float-time
-		    (time-subtract after-init-time before-init-time)))
-	   gcs-done))
-
-(add-hook 'emacs-startup-hook #'efs/display-startup-time)
-
 ;; Initialize package sources
 (use-package package
   :ensure nil
@@ -28,22 +18,6 @@
   (package-initialize)
   (unless package-archive-contents
     (package-refresh-contents)))
-
-;; Disable line numbers for some text modes
-(dolist (mode '(eat-mode-hook
-                shell-mode-hook
-		dired-mode-hook
-		woman-mode-hook
-		Info-mode-hook
-		Man-mode-hook
-                eshell-mode-hook))
-  (add-hook mode (lambda () (display-line-numbers-mode -1))))
-
-;; Disable certain emacs features
-(mapc
- (lambda (command)
-   (put command 'disabled t))
- '(eshell project-eshell overwrite-mode iconify-frame diary))
 
 (setq display-buffer-alist
       '(
@@ -120,6 +94,16 @@
   (set-face-attribute 'fixed-pitch nil :font "Hack" :height 1.0)
   (set-face-attribute 'variable-pitch nil :font "Iosevka Term" :height 1.05)
 
+  ;; Display load message when starting emacs
+  (defun efs/display-startup-time ()
+    (message "Emacs loaded in %s with %d garbage collections."
+	     (format "%.3f seconds"
+		     (float-time
+		      (time-subtract after-init-time before-init-time)))
+	     gcs-done))
+
+  (add-hook 'emacs-startup-hook #'efs/display-startup-time)
+
   ;; Stolen from Protesilaos' config + my own for consult-focus-lines quitting
   (defun pani/keyboard-quit-dwim ()
     "Do-What-I-Mean behaviour for a general `keyboard-quit'.
@@ -174,6 +158,22 @@ The DWIM behaviour of this command is as follows:
 	next-screen-context-lines 5
 	;; move by logical lines rather than visual lines (better for macros)
 	line-move-visual nil)
+
+  ;; Disable line numbers for some text modes
+  (dolist (mode '(eat-mode-hook
+		  shell-mode-hook
+		  dired-mode-hook
+		  woman-mode-hook
+		  Info-mode-hook
+		  Man-mode-hook
+		  eshell-mode-hook))
+    (add-hook mode (lambda () (display-line-numbers-mode -1))))
+
+  ;; Disable certain emacs features
+  (mapc
+   (lambda (command)
+     (put command 'disabled t))
+   '(eshell project-eshell overwrite-mode iconify-frame diary))
 
   ;; Disable remote file locks
   (setq remote-file-name-inhibit-locks t)
