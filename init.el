@@ -177,6 +177,10 @@ The DWIM behaviour of this command is as follows:
      (put command 'disabled t))
    '(eshell project-eshell overwrite-mode iconify-frame diary))
 
+  ;; Hide minor modes in the modeline
+  (when (boundp 'mode-line-collapse-minor-modes)
+    (setq mode-line-collapse-minor-modes t))
+
   ;; Disable remote file locks
   (setq remote-file-name-inhibit-locks t)
 
