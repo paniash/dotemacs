@@ -7,7 +7,7 @@
 ;; Display load message when starting emacs
 (defun efs/display-startup-time ()
   (message "Emacs loaded in %s with %d garbage collections."
-          (format "%.2f seconds"
+          (format "%.3f seconds"
                    (float-time
                      (time-subtract after-init-time before-init-time)))
            gcs-done))
