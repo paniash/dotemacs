@@ -162,6 +162,7 @@ The DWIM behaviour of this command is as follows:
   (setq tab-always-indent 'complete) ; tab for completion and not indenting
   (setq auto-save-timeout nil)
   (setq help-window-select t) ; Cursor focus goes to help window when invoked
+  (setq help-window-keep-selected t)  ; Keep using the same window for more help buffers
   (setq-default auto-fill-function 'do-auto-fill) ;; Automatic text wrapping in all major modes
   (setq compilation-scroll-output t) ; scroll compilation buffer as output appears
 
