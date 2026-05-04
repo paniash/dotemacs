@@ -1,9 +1,3 @@
-;; use-package no longer needed at runtime
-(eval-when-compile
-  (require 'use-package))
-(require 'bind-key)                ;; if you use any :bind variant
-(setq use-package-always-ensure t)
-
 ;; Display load message when starting emacs
 (defun efs/display-startup-time ()
   (message "Emacs loaded in %s with %d garbage collections."
