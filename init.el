@@ -1442,14 +1442,6 @@ org-agenda."
   :config
   (pixel-scroll-precision-mode 1))
 
-;; minions package for hiding minor modes in the modeline
-(use-package minions
-  :ensure t
-  :config
-  ;; Add keycast-mode to the list of modes that should stay visible
-  (add-to-list 'minions-prominent-modes 'keycast-mode-line-mode)
-  (minions-mode 1))
-
 ;; ediff configuration
 (use-package ediff
   :ensure nil ; built-in
