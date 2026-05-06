@@ -1401,16 +1401,16 @@ org-agenda."
 ;; Treesitter config
 (use-package treesit
   :ensure nil ; built-in
-  :init
-  ;; Remap major modes to treesitter
-  (setq major-mode-remap-alist
-	'((python-mode . python-ts-mode)))
-  ;; Tree-sitter font lock (4 is highest)
   :config
+  ;; Remap major modes to treesitter
+  (unless (string-equal (system-name) "d22-0153")
+    (setq major-mode-remap-alist
+	  '((python-mode . python-ts-mode))))
   ;; Set sources for treesitter grammar
   (setq treesit-language-source-alist
 	'((python "https://github.com/tree-sitter/tree-sitter-python")
 	  (typst "https://github.com/uben0/tree-sitter-typst")))
+  ;; Tree-sitter font lock (4 is highest)
   (setq treesit-font-lock-level 4))
 
 ;; Typst support
