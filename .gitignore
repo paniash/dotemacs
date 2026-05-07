@@ -10,7 +10,7 @@ custom.el
 session*
 tramp
 .org-id-locations
-bookmarks
+bookmarks*
 org-roam.db
 .emacs.desktop*
 url/
@@ -18,3 +18,4 @@ elfeed.stats
 elfeed/
 multisession/
 projects
+tree-sitter/
