@@ -12,10 +12,10 @@
 	  ("melpa" . 1)))
   ; check package-review-policy only if this variable exists (available only after emacs 31)
   (when (boundp 'package-review-policy)
-  (setq package-review-policy nil  ; very manual at this point (needs automation)
-	package-review-diff-command '("git" "diff" "--no-index"
-				      "--color=never"
-				      "--diff-filter=d")))
+    (setq package-review-policy nil  ; very manual at this point (needs automation)
+	  package-review-diff-command '("git" "diff" "--no-index"
+					"--color=never"
+					"--diff-filter=d")))
   ;; Initialize all packages after package.el is loaded
   (package-initialize)
   (unless package-archive-contents
