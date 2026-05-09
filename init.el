@@ -1068,6 +1068,9 @@ Returns the new window."
     ;; then we scrub the result before ElDoc shows it.
     (advice-add 'eglot--format-markup :filter-return #'my/eglot-clean-docstring))
 
+  ;; Ensure that eglot stays out of flymake
+  (setq eglot-stay-out-of '(flymake))
+
   ;; (setq eglot-managed-mode-hook (list (lambda () (eldoc-mode -1))))
   (setq eglot-ignored-server-capabilities
 	'(:documentHighlightProvider
