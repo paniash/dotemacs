@@ -1077,6 +1077,8 @@ Returns the new window."
 	  :inlayHintProvider
 	  :colorProvider
 	  :codeLensProvider
+	  :semanticTokensProvider
+	  :publishDiagnostics
 	  :documentLinkProvider))) ;; disables highlighting words under active cursor
 
 ;; Eldoc config
