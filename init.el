@@ -185,6 +185,15 @@ The DWIM behaviour of this command is as follows:
   (when (boundp 'mode-line-collapse-minor-modes)
     (setq mode-line-collapse-minor-modes t))
 
+  ;; No ugly buttons for checkboxes
+  (setq widget-image-enable nil)
+
+  ;; Do not use graphical dialogs
+  (setq use-dialog-box nil)
+
+  ;; Disable tooltips
+  (tooltip-mode -1)
+
   ;; Disable remote file locks
   (setq remote-file-name-inhibit-locks t)
 
