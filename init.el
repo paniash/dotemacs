@@ -96,6 +96,10 @@
   (set-face-attribute 'fixed-pitch nil :font "Hack" :height 1.0)
   (set-face-attribute 'variable-pitch nil :font "Iosevka Term" :height 1.05)
 
+  ;; Personal details
+  (setq user-full-name "Ashish Panigrahi")
+  (setq user-mail-address "ashish@ashishpanigrahi.com")
+
   ;; Display load message when starting emacs
   (defun efs/display-startup-time ()
     (message "Emacs loaded in %s with %d garbage collections."
