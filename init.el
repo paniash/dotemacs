@@ -1421,9 +1421,8 @@ org-agenda."
   :ensure nil ; built-in
   :config
   ;; Remap major modes to treesitter
-  (unless (string-equal (system-name) "d22-0153")
-    (setq major-mode-remap-alist
-	  '((python-mode . python-ts-mode))))
+  (setq major-mode-remap-alist
+	'((python-mode . python-ts-mode)))
   ;; Set sources for treesitter grammar
   (setq treesit-language-source-alist
 	'((python "https://github.com/tree-sitter/tree-sitter-python")
