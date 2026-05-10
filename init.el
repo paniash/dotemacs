@@ -1156,7 +1156,7 @@ Returns the new window."
     (when (buffer-file-name)
       (save-buffer)
       (let ((file-name (shell-quote-argument (buffer-file-name))))
-	(compile (format "python3 %s" file-name)))))
+	(compilation-start (format "python3 %s" file-name)))))
 
   ;; Force focus to stay put when launching inferior python
   (advice-add 'run-python :around
