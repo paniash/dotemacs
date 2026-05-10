@@ -1468,17 +1468,24 @@ org-agenda."
 	erc-fill-function 'erc-fill-static
 	erc-fill-static-center 20))
 
-;; Smooth scrolling
-(use-package pixel-scroll
-  :ensure nil
-  :bind (:map global-map
-	      ([remap scroll-up-command] . pixel-scroll-interpolate-down)
-	      ([remap scroll-down-command] . pixel-scroll-interpolate-up))
-  :custom
-  (pixel-scroll-precision-interpolate page t)
-  (pixel-scroll-precision-mode t)
+;; ;; Smooth scrolling
+;; (use-package pixel-scroll
+;;   :ensure nil
+;;   :bind (:map global-map
+;; 	      ([remap scroll-up-command] . pixel-scroll-interpolate-down)
+;; 	      ([remap scroll-down-command] . pixel-scroll-interpolate-up))
+;;   :custom
+;;   (pixel-scroll-precision-interpolate page t)
+;;   (pixel-scroll-precision-mode t)
+;;   :config
+;;   (pixel-scroll-precision-mode 1))
+
+(use-package ultra-scroll
+  :init
+  (setq scroll-conservatively 101;
+	scroll-margin 0)
   :config
-  (pixel-scroll-precision-mode 1))
+  (ultra-scroll-mode 1))
 
 ;; ediff configuration
 (use-package ediff
