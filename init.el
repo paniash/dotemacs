@@ -1128,16 +1128,17 @@ Returns the new window."
   ( :map python-mode-map
     ("C-l" . nil) ; unbind default binding for text view centering
     ("C-l" . xref-go-back)
+    ("C-k" . pani/python-exec-file)
     :map python-ts-mode-map
     ("C-l" . nil) ; unbind default binding for text view centering
     ("C-l" . xref-go-back)
+    ("C-k" . pani/python-exec-file)
     :map inferior-python-mode-map
     ("C-l" . comint-clear-buffer)  ; `C-l' clears the inferior python buffer
     ("<up>" . comint-previous-input)
     ("<down>" . comint-next-input)
   )
   :config
-
   (setq python-indent-offset 4)
   (setq python-shell-interpreter "python3")
   (setq python-shell-enable-font-lock nil)
@@ -1147,6 +1148,13 @@ Returns the new window."
   (setq comint-scroll-to-bottom-on-output t)
   (setq comint-scroll-show-maximum-output t)
   (setq comint-move-point-for-output t)
+  ;; Custom function to run python in an async terminal (like VS code)
+  (defun pani/python-exec-file ()
+    (interactive)
+    (when (buffer-file-name)
+      (save-buffer)
+      (let ((file-name (shell-quote-argument (buffer-file-name))))
+	(compile (format "python3 %s" file-name)))))
 
   ;; Force focus to stay put when launching inferior python
   (advice-add 'run-python :around
