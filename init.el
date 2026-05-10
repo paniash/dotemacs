@@ -35,6 +35,13 @@
 	 (display-buffer-no-window)
 	 (allow-no-window . t))
 
+	;; Compilation mode buffers occupy small fraction of the screen
+	((derived-mode . compilation-mode)
+	 (display-buffer-reuse-window
+	  display-buffer-at-bottom)
+	 (dedicated . t)
+	 (window-height . 0.15))
+
 	;; Typst ts compilation mode settings
 	((derived-mode . typst-ts-compilation-mode)
 	 (display-buffer-reuse-mode-window
