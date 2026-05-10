@@ -1141,7 +1141,7 @@ Returns the new window."
   :config
   (setq python-indent-offset 4)
   (setq python-shell-interpreter "python3")
-  (setq python-shell-enable-font-lock nil)
+  (setq python-shell-font-lock-enable nil)
 
   ;; Scroll to the bottom of the REPL on new output
   (setq comint-scroll-to-bottom-on-input t)
