@@ -1148,6 +1148,8 @@ Returns the new window."
   (setq comint-scroll-to-bottom-on-output t)
   (setq comint-scroll-show-maximum-output t)
   (setq comint-move-point-for-output t)
+  (setq compilation-scroll-output t)
+
   ;; Custom function to run python in an async terminal (like VS code)
   (defun pani/python-exec-file ()
     (interactive)
