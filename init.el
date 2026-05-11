@@ -682,19 +682,6 @@ The DWIM behaviour of this command is as follows:
   ;; `denote-rename-buffer-format' for how to modify this.
   (denote-rename-buffer-mode 1))
 
-(use-package citar
-  :no-require
-  :custom
-  (org-cite-insert-processor 'citar)
-  (org-cite-follow-processor 'citar)
-  (org-cite-activate-processor 'citar)
-  (citar-bibliography org-cite-global-bibliography)
-  (citar-bibliography '("~/org/phd-notes/references.bib"))
-  ;; optional: org-cite-insert is also bound to C-c C-x C-@
-  :bind
-  (:map org-mode-map ("C-c b" . #'citar-insert-citation))
-  (:map LaTeX-mode-map ("C-c b" . #'citar-insert-citation)))
-
 ;; Magit
 (use-package magit
   :ensure t
