@@ -1197,6 +1197,8 @@ Returns the new window."
 	 ("C-c C-v" . elfeed-arxiv-open-pdf)
 	 ("C-c C-b" . (lambda () (interactive)
 			(elfeed-arxiv-open-pdf (elfeed-search-selected :single) t)))
+	 :map elfeed-tree-mode-map
+	 ("C-c C-c" . elfeed-update)
 	 :map elfeed-show-mode-map
 	 ("C-c C-v" . elfeed-arxiv-open-pdf)
 	 ("C-c C-b" . (lambda () (interactive)
