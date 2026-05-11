@@ -1551,12 +1551,8 @@ org-agenda."
 
 (use-package helpful
   :ensure t
-  :config
-  ;; Note that the built-in `describe-function' includes both functions
-  ;; and macros. `helpful-function' is functions only, so we provide
-  ;; `helpful-callable' as a drop-in replacement.
-  (global-set-key (kbd "C-h f") #'helpful-callable)
-
-  (global-set-key (kbd "C-h v") #'helpful-variable)
-  (global-set-key (kbd "C-h k") #'helpful-key)
-  (global-set-key (kbd "C-h x") #'helpful-command))
+  :bind (:map global-map
+	      ("C-h f" . helpful-callable)
+	      ("C-h v" . helpful-variable)
+	      ("C-h k" . helpful-key)
+	      ("C-h x" . helpful-command)))
