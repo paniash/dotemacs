@@ -1520,7 +1520,7 @@ org-agenda."
   (setq ibuffer-use-header-line t)
   (setq ibuffer-use-other-window nil))
 
-;; Highlight todo keywords in code
+;; Highlight TODO keywords in code
 (use-package hl-todo
   :ensure t
   :hook ((python-mode . hl-todo-mode)
@@ -1528,7 +1528,7 @@ org-agenda."
 	 (typst-ts-mode . hl-todo-mode))
   :config
   (setq hl-todo-keyword-faces
-	'(("TODO" . "#FF0000"))))
+	'(("TODO" . "#F59082"))))
 
 (use-package breadcrumb
   :ensure t
