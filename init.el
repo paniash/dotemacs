@@ -357,10 +357,10 @@ The DWIM behaviour of this command is as follows:
 	     undo-fu-only-redo
 	     undo-fu-only-redo-all
 	     undo-fu-disable-checkpoint)
-  :custom
+  :config
   ;; 3 times the default values
-  (undo-limit (* 3 160000))
-  (undo-strong-limit (* 3 240000)))
+  (setq undo-limit (* 3 160000))
+  (setq undo-strong-limit (* 3 240000)))
 
 ;; Vim-commentary without any extra package
 (with-eval-after-load "evil"
@@ -745,9 +745,9 @@ The DWIM behaviour of this command is as follows:
   (setq yas-snippet-dir "~/.emacs.d/snippets"))
 
 (use-package orderless
-  :custom
-  ((completion-styles '(orderless basic))
-  (completon-category-overrides '((file (styles basic partial-completion))))))
+  :config
+  (setq (completion-styles '(orderless basic))
+	(completon-category-overrides '((file (styles basic partial-completion))))))
 
 ;; Text wrapping for specific modes
 (defun my-add-to-multiple-hooks (function hooks)
@@ -1038,8 +1038,8 @@ Returns the new window."
 ;; Autocompletion via corfu
 (use-package corfu
   :ensure t
-  :custom
-  (corfu-cycle t) ; enable cycling for `corfu-next/previous'
+  :config
+  (setq corfu-cycle t) ; enable cycling for `corfu-next/previous'
 
   :config
   (setq tab-always-indent 'complete)
