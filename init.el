@@ -1483,6 +1483,7 @@ org-agenda."
   :init
   (setq scroll-conservatively 101;
 	scroll-margin 0)
+  (setq pixel-scroll-precision-interpolate-page t)
   :config
   (ultra-scroll-mode 1))
 
