@@ -1143,6 +1143,9 @@ Returns the new window."
   (setq python-shell-interpreter "python3")
   (setq python-shell-font-lock-enable nil)
 
+  ;; Do not inform every time python tries to guess indentation
+  (setq python-indent-guess-indent-offset-verbose nil)
+
   ;; Scroll to the bottom of the REPL on new output
   (setq comint-scroll-to-bottom-on-input t)
   (setq comint-scroll-to-bottom-on-output t)
