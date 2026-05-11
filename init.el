@@ -344,6 +344,13 @@ The DWIM behaviour of this command is as follows:
 (define-key pani/t-key (kbd "x") 'tab-close)
 (define-key pani/t-key (kbd "X") 'tab-close-other)
 
+;; Some useful config for emacs-lisp
+(use-package emacs-lisp-mode
+  :ensure nil
+  :bind (:map emacs-lisp-mode-map
+	      ("C-c C-r" . eval-region)
+	      ("C-c C-b" . eval-buffer)))
+
 (use-package undo-fu
   :demand t
   :commands (undo-fu-only-undo
