@@ -526,16 +526,15 @@ The DWIM behaviour of this command is as follows:
 ;; Org-agenda customization (based on Protesilaos Stavrou's config)
 (use-package org-agenda
   :ensure nil
-  ;; Don't need to go through org-agenda template
+  :hook (org-agenda-mode . variable-pitch-mode)
+  ;; Don't need to go through org-agenda template for custom agenda
   :bind (:map global-map
 	      ("C-c j" . (lambda () (interactive) (org-agenda nil "j"))))
   :config
   ;; Custom function to resize fonts in org-agenda
   (defun pani/org-agenda-font-size ()
     "Remap the variable-pitch font face to 1.15 height specifically for org-agenda."
-    (setq buffer-face-mode-face '(:inherit variable-pitch :height 1.15))
-    ;; Turn on buffer-face-mode
-    (buffer-face-mode 1))
+    (face-remap-add-relative 'default :height 1.15))
 
   (add-hook 'org-agenda-mode-hook #'pani/org-agenda-font-size)
 
