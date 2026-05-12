@@ -748,7 +748,7 @@ The DWIM behaviour of this command is as follows:
 (use-package orderless
   :config
   (setq completion-styles '(orderless basic))
-  (setq completon-category-overrides '((file (styles basic
+  (setq completion-category-overrides '((file (styles basic
 						     partial-completion))))
   (setq completion-pcm-leading-wildcard t))
 
