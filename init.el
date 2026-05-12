@@ -774,15 +774,12 @@ The DWIM behaviour of this command is as follows:
   :config
   (setq display-time-world-list t)
   (setq zoneinfo-style-world-list ; M-x shell RET timedatectl list-timezones
-        '(("America/Los_Angeles" "Los Angeles")
-          ("America/New_York" "New York")
-          ("UTC" "UTC")
+        '(("UTC" "UTC")
           ("Europe/Berlin" "Aachen")
           ("Europe/Helsinki" "Helsinki")
           ("Asia/Kolkata" "Chennai")
           ("Asia/Singapore" "Singapore")
-          ("Asia/Tokyo" "Tokyo")
-          ("Australia/Sydney" "Sydney")))
+          ("Asia/Tokyo" "Tokyo")))
 
   ;; All of the following variables are for Emacs 28
   (setq world-clock-list t)
