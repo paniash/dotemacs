@@ -788,7 +788,6 @@ The DWIM behaviour of this command is as follows:
   (setq world-clock-timer-enable t)
   (setq world-clock-timer-second 60))
 
-;; TODO play around with General.el
 (use-package consult
   :ensure t
   :bind (:map global-map
