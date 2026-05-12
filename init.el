@@ -1421,8 +1421,8 @@ Works in both search and show mode."
   ;; Custom function to resize fonts in Info manuals
   (defun pani/info-font-size ()
     "Remap the variable-pitch font face to 1.15 height specifically for
-org-agenda."
-    (face-remap-add-relative 'variable-pitch :height 1.15))
+Info manuals."
+    (face-remap-add-relative 'default :height 1.15))
 
   (add-hook 'Info-mode-hook #'pani/info-font-size))
 
