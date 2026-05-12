@@ -288,7 +288,8 @@ The DWIM behaviour of this command is as follows:
 ;;; Vim Bindings
 (use-package evil
   :demand t
-  :bind (("<escape>" . keyboard-escape-quit))
+  :bind (:map global-map
+	      ("<escape>" . keyboard-escape-quit))
   :init
   ;; allows for using cgn
   (setq evil-search-module 'isearch)
