@@ -21,6 +21,7 @@
   (:text "\\(?:R\\(?:\\(?:\\. J\\.\\|obert\\(?: J\\.\\)?\\) Schoelkopf\\)\\)" :value 800 :type R :tags (t arxiv))
   (:text "Mikko Möttönen" :value 1000 :type w :tags (t arxiv))
   (:text "Yasunobu Nakamura" :value 800 :type w :tags (t arxiv))
+  (:text "\\(?:P\\(?:\\(?:\\.\\|riyank\\) Singh\\)\\)" :value 500 :type w :tags (t arxiv))
   (:text "\\(?:L\\(?:\\(?:\\.\\|eonardo\\) DiCarlo\\)\\)" :value 500 :type R :tags (t arxiv))
   (:text "\\(?:K\\(?:\\(?:\\.\\|yle\\) Serniak\\)\\)" :value 500 :type R :tags (t arxiv))
   (:text "\\(?:S\\(?:\\(?:\\.\\|tefan\\) Filipp\\)\\)" :value 500 :type R :tags (t arxiv))
