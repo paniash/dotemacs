@@ -747,8 +747,10 @@ The DWIM behaviour of this command is as follows:
 
 (use-package orderless
   :config
-  (setq (completion-styles '(orderless basic))
-	(completon-category-overrides '((file (styles basic partial-completion))))))
+  (setq completion-styles '(orderless basic))
+  (setq completon-category-overrides '((file (styles basic
+						     partial-completion))))
+  (setq completion-pcm-leading-wildcard t))
 
 ;; Text wrapping for specific modes
 (defun my-add-to-multiple-hooks (function hooks)
