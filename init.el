@@ -1508,9 +1508,12 @@ Info manuals."
   (setq isearch-lax-whitespace t)
   (setq isearch-regexp-lax-whitespace nil)
   (setq isearch-lazy-count t)
+  (setq search-highlight t)
+  (setq isearch-lazy-highlight t)
   (setq isearch-repeat-on-direction-change t)
   (setq lazy-highlight-cleanup t)
-  (setq lazy-highlight-initial-delay 0)
+  (setq lazy-highlight-initial-delay 0.5)
+  (setq lazy-highlight-no-delay-length 4)
   (setq lazy-count-prefix-format "(%s/%s) ")
   (setq lazy-count-suffix-format nil)
   (setq isearch-wrap-pause 'no-ding)) ; Jump to top/bottom without asking
