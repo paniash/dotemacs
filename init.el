@@ -1511,7 +1511,7 @@ Info manuals."
   (setq isearch-repeat-on-direction-change t)
   (setq lazy-highlight-cleanup t)
   (setq lazy-highlight-initial-delay 0)
-  (setq isearch-wrap-pause 'no)) ; Jump to top/bottom without asking
+  (setq isearch-wrap-pause 'no-ding)) ; Jump to top/bottom without asking
 
 ;; ibuffer settings
 (use-package ibuffer
