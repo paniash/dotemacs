@@ -1479,10 +1479,11 @@ Info manuals."
 
 (use-package ultra-scroll
   :init
-  (setq scroll-conservatively 101;
-	scroll-margin 0)
+  (setq scroll-conservatively 101)
+  (setq scroll-margin 0)
   (setq pixel-scroll-precision-interpolate-page t)
   :config
+  (setq make-cursor-line-fully-visible t)
   (ultra-scroll-mode 1))
 
 ;; ediff configuration
