@@ -1511,6 +1511,8 @@ Info manuals."
   (setq isearch-repeat-on-direction-change t)
   (setq lazy-highlight-cleanup t)
   (setq lazy-highlight-initial-delay 0)
+  (setq lazy-count-prefix-format "(%s/%s) ")
+  (setq lazy-count-suffix-format nil)
   (setq isearch-wrap-pause 'no-ding)) ; Jump to top/bottom without asking
 
 ;; ibuffer settings
