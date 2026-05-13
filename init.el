@@ -1500,6 +1500,8 @@ Info manuals."
 ;; isearch config
 (use-package isearch
   :ensure nil ; built-in
+  :bind (:map global-map
+	      ("C-s" . isearch-forward))
   :config
   (setq isearch-lazy-count t)
   (setq isearch-repeat-on-direction-change t)
