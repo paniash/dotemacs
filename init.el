@@ -1503,6 +1503,10 @@ Info manuals."
   :bind (:map global-map
 	      ("C-s" . isearch-forward))
   :config
+  ;; Search for words not necessarily one after the other
+  (setq search-whitespace-regexp ".*?")
+  (setq isearch-lax-whitespace t)
+  (setq isearch-regexp-lax-whitespace nil)
   (setq isearch-lazy-count t)
   (setq isearch-repeat-on-direction-change t)
   (setq lazy-highlight-cleanup t)
