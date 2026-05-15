@@ -120,6 +120,9 @@
   (setopt user-full-name "Ashish Panigrahi")
   (setopt user-mail-address "ashish@ashishpanigrahi.com")
 
+  ;; Always load newest byte code
+  (setopt load-prefer-newer t)
+
   ;; Display load message when starting emacs
   (defun efs/display-startup-time ()
     (message "Emacs loaded in %s with %d garbage collections."
