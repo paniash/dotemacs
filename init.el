@@ -1014,10 +1014,10 @@ The DWIM behaviour of this command is as follows:
   ;; Don't prompt when exiting with `q'
   (setopt gnus-interactive-exit nil)
 
-  (setopt gnus-home-directory ("~/.emacs.d/gnus/")
-	  gnus-directory (+emacs.d "~/.emacs.d/gnus/news/")
-	  message-directory (+emacs.d "~/.emacs.d/gnus/mail/")
-	  nndraft-directory (+emacs.d "~/.emacs.d/gnus/drafts/"))
+  (setopt gnus-home-directory "~/.emacs.d/gnus/"
+	  gnus-directory "~/.emacs.d/gnus/news/"
+	  message-directory "~/.emacs.d/gnus/mail/"
+	  nndraft-directory "~/.emacs.d/gnus/drafts/")
 
   ;; Always display certain groups
   (setopt gnus-permanently-visible-groups ":INBOX$")
