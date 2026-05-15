@@ -428,6 +428,7 @@ The DWIM behaviour of this command is as follows:
 
 ;;; Vertico
 (use-package vertico
+  :ensure t
   :init
   (vertico-mode)
   :bind (:map minibuffer-local-map
@@ -719,6 +720,7 @@ The DWIM behaviour of this command is as follows:
   (setq magit-diff-refine-hunk 'all))
 
 (use-package markdown-mode
+  :ensure t
   :defer t
   :mode ("*.md" . gfm-mode)
   :hook (markdown-mode . visual-line-mode)
@@ -728,11 +730,9 @@ The DWIM behaviour of this command is as follows:
 
 ;; Marginalia package
 (use-package marginalia
-    :bind (:map minibuffer-local-map
-	    ("M-A" . marginalia-cycle))
-
-    :init
-    (marginalia-mode))
+  :ensure t
+  :init
+  (marginalia-mode))
 
 ;; AucTeX package for LaTeX niceties
 (use-package tex
@@ -857,13 +857,6 @@ The DWIM behaviour of this command is as follows:
   ( :map minibuffer-local-map
     ("C-v" . yank)))
 
-;; Disable byte-compile warnings during package installation
-(add-to-list 'display-buffer-alist
-             '("\\`\\*\\(Warnings\\|Compile-Log\\)\\*\\'"
-               (display-buffer-no-window)
-               (allow-no-window . t)))
-
-
 ;; Function to instantly toggle between vertical and horizontal split
 (defun toggle-window-split ()
   (interactive)
@@ -889,21 +882,6 @@ The DWIM behaviour of this command is as follows:
           (set-window-buffer (next-window) next-win-buffer)
           (select-window first-win)
           (if this-win-2nd (other-window 1))))))
-
-;; Mainly for running some inferior process that doesn't require a lot
-;; of screen real estate (`inferior-python' for example).
-;; TODO: Really understand this function.
-(defun pani/my-split-window-below-30 (&optional window-to-split)
-  "Split WINDOW-TO-SPLIT into two windows, with the lower window occupying ~30% of the height.
-WINDOW-TO-SPLIT defaults to the selected window.
-Returns the new window."
-  (interactive)
-  (let* ((window (or window-to-split (selected-window)))
-         (total-height (window-total-height window))
-         (size (- (floor (* total-height 0.3)))))
-    (unless (>= (- total-height size) window-min-height)
-      (error "Resulting window too small"))
-    (split-window window size)))
 
 ;; ;; sending email in emacs
 ;; (use-package smtpmail
