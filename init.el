@@ -21,74 +21,6 @@
   (unless package-archive-contents
     (package-refresh-contents)))
 
-(setq display-buffer-alist
-      '(
-	;; Python buffers now occupy 25% of the screen
-	("\\*Python\\*"
-	 (display-buffer-reuse-window
-	  display-buffer-at-bottom)
-	 (dedicated . t)
-	 (window-height . 0.25))
-
-	;; Silence byte compile warnings when installing new packages
-	("\\`\\*\\(Warnings\\|Compile-Log\\)\\*\\'"
-	 (display-buffer-no-window)
-	 (allow-no-window . t))
-
-	;; Compilation mode buffers occupy small fraction of the screen
-	((derived-mode . compilation-mode)
-	 (display-buffer-reuse-window
-	  display-buffer-at-bottom)
-	 (dedicated . t)
-	 (window-height . 0.15))
-
-	;; Typst ts compilation mode settings
-	((derived-mode . typst-ts-compilation-mode)
-	 (display-buffer-reuse-mode-window
-	  display-buffer-pop-up-window)
-	 (window-height . fit-window-to-buffer))
-
-	;; help-mode settings
-	((derived-mode . help-mode)
-	 (display-buffer-reuse-mode-window
-	  display-buffer-pop-up-window)
-	 (window-height . (lambda (window)
-			    (fit-window-to-buffer window (floor (* 0.5 (frame-height)))))))
-
-	;; ibuffer settings
-	((derived-mode . Buffer-menu-mode)
-	 (display-buffer-reuse-mode-window
-	  display-buffer-pop-up-window)
-	 (body-function . (lambda (window) (select-window window)))
-	 (window-height . (lambda (window)
-			    (fit-window-to-buffer window (floor (* 0.5 (frame-height)))))))
-
-	;; Eldoc specific settings
-	("\\*eldoc\\*"
-	 (display-buffer-reuse-mode-window
-	  display-buffer-pop-up-window)
-	 (window-height . fit-window-to-buffer))
-
-	;; xref buffer specific settings
-	("\\*xref\\*"
-	 (display-buffer-reuse-mode-window
-	  display-buffer-pop-up-window)
-	 (window-height . fit-window-to-buffer))
-
-	;; Occur specific buffer settings
-	("\\*Occur\\*"
-	 ;; If a buffer with the matching major-mode exists in
-	 ;; some window, then use that one. Otherwise, display
-	 ;; the buffer below the current window.
-	 (display-buffer-reuse-mode-window
-	  display-buffer-pop-up-window)
-	 ;; Then we have some parameters
-	 (dedicated . t)
-	 (body-function . (lambda (window) (select-window window)))
-	 (window-width . 0.5)
-	 (window-height . (lambda (window)
-			    (fit-window-to-buffer window (floor (* 0.65 (frame-height)))))))))
-
 ;;; Some standard emacs config
 (use-package emacs
   :ensure nil
@@ -110,6 +42,75 @@
 		  mode-line-misc-info mode-line-end-spaces))
 
   (setq mode-line-right-align-edge 'right-margin)
+
+  ;; Buffer list configuration
+  (setq display-buffer-alist
+	'(
+	  ;; Python buffers now occupy 25% of the screen
+	  ("\\*Python\\*"
+	   (display-buffer-reuse-window
+	    display-buffer-at-bottom)
+	   (dedicated . t)
+	   (window-height . 0.25))
+
+	  ;; Silence byte compile warnings when installing new packages
+	  ("\\`\\*\\(Warnings\\|Compile-Log\\)\\*\\'"
+	   (display-buffer-no-window)
+	   (allow-no-window . t))
+
+	  ;; Compilation mode buffers occupy small fraction of the screen
+	  ((derived-mode . compilation-mode)
+	   (display-buffer-reuse-window
+	    display-buffer-at-bottom)
+	   (dedicated . t)
+	   (window-height . 0.15))
+
+	  ;; Typst ts compilation mode settings
+	  ((derived-mode . typst-ts-compilation-mode)
+	   (display-buffer-reuse-mode-window
+	    display-buffer-pop-up-window)
+	   (window-height . fit-window-to-buffer))
+
+	  ;; help-mode settings
+	  ((derived-mode . help-mode)
+	   (display-buffer-reuse-mode-window
+	    display-buffer-pop-up-window)
+	   (window-height . (lambda (window)
+			      (fit-window-to-buffer window (floor (* 0.5 (frame-height)))))))
+
+	  ;; ibuffer settings
+	  ((derived-mode . Buffer-menu-mode)
+	   (display-buffer-reuse-mode-window
+	    display-buffer-pop-up-window)
+	   (body-function . (lambda (window) (select-window window)))
+	   (window-height . (lambda (window)
+			      (fit-window-to-buffer window (floor (* 0.5 (frame-height)))))))
+
+	  ;; Eldoc specific settings
+	  ("\\*eldoc\\*"
+	   (display-buffer-reuse-mode-window
+	    display-buffer-pop-up-window)
+	   (window-height . fit-window-to-buffer))
+
+	  ;; xref buffer specific settings
+	  ("\\*xref\\*"
+	   (display-buffer-reuse-mode-window
+	    display-buffer-pop-up-window)
+	   (window-height . fit-window-to-buffer))
+
+	  ;; Occur specific buffer settings
+	  ("\\*Occur\\*"
+	   ;; If a buffer with the matching major-mode exists in
+	   ;; some window, then use that one. Otherwise, display
+	   ;; the buffer below the current window.
+	   (display-buffer-reuse-mode-window
+	    display-buffer-pop-up-window)
+	   ;; Then we have some parameters
+	   (dedicated . t)
+	   (body-function . (lambda (window) (select-window window)))
+	   (window-width . 0.5)
+	   (window-height . (lambda (window)
+			      (fit-window-to-buffer window (floor (* 0.65 (frame-height)))))))))
 
   ;; Fonts
   (set-face-attribute 'default nil :font "Hack" :height 115)
