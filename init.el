@@ -109,6 +109,8 @@
 		  mode-line-position (vc-mode vc-mode) "  " mode-line-modes
 		  mode-line-misc-info mode-line-end-spaces))
 
+  (setq mode-line-right-align-edge 'right-margin)
+
   ;; Fonts
   (set-face-attribute 'default nil :font "Hack" :height 115)
   (set-face-attribute 'fixed-pitch nil :font "Hack" :height 1.0)
