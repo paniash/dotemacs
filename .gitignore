@@ -19,3 +19,6 @@ elfeed/
 multisession/
 projects
 tree-sitter/
+*.eld
+games/
+.authinfo
