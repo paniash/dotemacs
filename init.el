@@ -305,6 +305,7 @@ The DWIM behaviour of this command is as follows:
 
 ;;; Vim Bindings
 (use-package evil
+  :ensure t
   :demand t
   :bind (:map global-map
 	      ("<escape>" . keyboard-escape-quit))
@@ -336,6 +337,7 @@ The DWIM behaviour of this command is as follows:
 
 ;;; Vim Bindings Everywhere else
 (use-package evil-collection
+  :ensure t
   :after evil
   :config
   (setq evil-want-integration t)
@@ -371,6 +373,7 @@ The DWIM behaviour of this command is as follows:
 	      ("C-c C-b" . eval-buffer)))
 
 (use-package undo-fu
+  :ensure t
   :demand t
   :commands (undo-fu-only-undo
 	     undo-fu-only-redo
@@ -763,27 +766,12 @@ The DWIM behaviour of this command is as follows:
   (setq yas-snippet-dir "~/.emacs.d/snippets"))
 
 (use-package orderless
+  :ensure t
   :config
   (setq completion-styles '(orderless basic))
   (setq completion-category-overrides '((file (styles basic
 						     partial-completion))))
   (setq completion-pcm-leading-wildcard t))
-
-;; Text wrapping for specific modes
-(defun my-add-to-multiple-hooks (function hooks)
-  (mapc (lambda (hook)
-          (add-hook hook function))
-        hooks))
-
-(defun text-wrapper ()
-  (lambda ()
-    (set-fill-column 90)))
-
-(my-add-to-multiple-hooks
- 'text-wrapper
- '(org-mode-hook
-   markdown-mode-hook
-   LaTeX-mode-hook))
 
 ;; World-clock customization
 ;;;; World clock (M-x world-clock)
@@ -1445,6 +1433,7 @@ Works in both search and show mode."
 
 ;; Hide autorevert mode in modeline
 (use-package autorevert
+  :ensure nil
   :config
   (global-auto-revert-mode 1))
 
@@ -1486,6 +1475,7 @@ Info manuals."
 
 ;; Typst support
 (use-package typst-ts-mode
+  :ensure t
   :defer t
   :config
   ;; Disable formatting for superscripts and subscripts
@@ -1518,6 +1508,7 @@ Info manuals."
 ;;   (pixel-scroll-precision-mode 1))
 
 (use-package ultra-scroll
+  :ensure t
   :init
   (setq scroll-conservatively 101)
   (setq scroll-margin 0)
