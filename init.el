@@ -278,6 +278,22 @@ The DWIM behaviour of this command is as follows:
   (add-hook 'after-save-hook
 	    #'executable-make-buffer-file-executable-if-script-p)
 
+  ;; Text wrapping for specific modes
+  (defun my-add-to-multiple-hooks (function hooks)
+    (mapc (lambda (hook)
+	    (add-hook hook function))
+	  hooks))
+
+  (defun text-wrapper ()
+    (lambda ()
+      (set-fill-column 90)))
+
+  (my-add-to-multiple-hooks
+   'text-wrapper
+   '(org-mode-hook
+     markdown-mode-hook
+     LaTeX-mode-hook))
+
   :bind
   ( :map global-map
     ("C-x C-d" . nil) ; never use it
@@ -331,6 +347,26 @@ The DWIM behaviour of this command is as follows:
   (evil-global-set-key 'motion "j" 'evil-next-visual-line)
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
 
+  ;; Setting leader key in emacs
+  (evil-set-leader 'normal (kbd "SPC"))
+  (evil-define-key nil 'global
+    (kbd "<leader>o") 'toggle-window-split)
+  (evil-define-key nil 'global
+    (kbd "<leader>b") 'consult-buffer)
+  (evil-define-key nil 'global
+    (kbd "<leader>r") 'consult-ripgrep)
+  (evil-define-key nil 'global
+    (kbd "<leader>l") 'lgrep)
+
+  ;; Set `t' as a prefix key for tab manipulation commands
+  (define-prefix-command 'pani/t-key)
+  (define-key evil-normal-state-map (kbd "t") 'pani/t-key)
+  (define-key pani/t-key (kbd "j") 'tab-previous)
+  (define-key pani/t-key (kbd "k") 'tab-next)
+  (define-key pani/t-key (kbd "n") 'tab-new)
+  (define-key pani/t-key (kbd "x") 'tab-close)
+  (define-key pani/t-key (kbd "X") 'tab-close-other)
+
   (evil-set-initial-state 'messages-buffer-mode 'normal)
   (evil-set-initial-state 'dashboard-mode 'normal)
   (evil-set-initial-state 'inferior-python-mode 'emacs))
@@ -341,29 +377,14 @@ The DWIM behaviour of this command is as follows:
   :after evil
   :config
   (setq evil-want-integration t)
-  (evil-collection-init))
-
-;; Setting leader key in emacs
-(evil-set-leader 'normal (kbd "SPC"))
-(evil-define-key 'normal LaTeX-mode-map
-(kbd "<leader>c") 'TeX-command-run-all)
-(evil-define-key nil 'global
-(kbd "<leader>o") 'toggle-window-split)
-(evil-define-key nil 'global
-(kbd "<leader>b") 'consult-buffer)
-(evil-define-key nil 'global
-(kbd "<leader>r") 'consult-ripgrep)
-(evil-define-key nil 'global
-(kbd "<leader>l") 'lgrep)
-
-;; Set `t' as a prefix key for tab manipulation commands
-(define-prefix-command 'pani/t-key)
-(define-key evil-normal-state-map (kbd "t") 'pani/t-key)
-(define-key pani/t-key (kbd "j") 'tab-previous)
-(define-key pani/t-key (kbd "k") 'tab-next)
-(define-key pani/t-key (kbd "n") 'tab-new)
-(define-key pani/t-key (kbd "x") 'tab-close)
-(define-key pani/t-key (kbd "X") 'tab-close-other)
+  (evil-collection-init)
+  ;; Vim-commentary without any extra package
+  (with-eval-after-load "evil"
+    (evil-define-operator my-evil-comment-or-uncomment (beg end)
+      "Toggle comment for the region between BEG and END."
+      (interactive "<r>")
+      (comment-or-uncomment-region beg end))
+    (evil-define-key 'normal 'global (kbd "gc") 'my-evil-comment-or-uncomment)))
 
 ;; Some useful config for emacs-lisp
 (use-package emacs-lisp-mode
@@ -383,14 +404,6 @@ The DWIM behaviour of this command is as follows:
   ;; 3 times the default values
   (setq undo-limit (* 3 160000))
   (setq undo-strong-limit (* 3 240000)))
-
-;; Vim-commentary without any extra package
-(with-eval-after-load "evil"
-  (evil-define-operator my-evil-comment-or-uncomment (beg end)
-    "Toggle comment for the region between BEG and END."
-    (interactive "<r>")
-    (comment-or-uncomment-region beg end))
-  (evil-define-key 'normal 'global (kbd "gc") 'my-evil-comment-or-uncomment))
 
 ;; Protesilaos' ef-themes
 (use-package ef-themes
@@ -883,10 +896,13 @@ The DWIM behaviour of this command is as follows:
 ;;   (setq smtpmail-debug-info t)
 ;;   (setq smtpmail-stream-type 'nil))
 
-(defvar notmuch-path
-  (if (string=(system-name) "d22-0153")
-      "/usr/share/emacs/site-lisp/elpa/notmuch-0.38.3/"
-    "/usr/share/emacs/site-lisp/"))
+(use-package emacs
+  :ensure nil
+  :config
+  (defvar notmuch-path
+    (if (string=(system-name) "d22-0153")
+	"/usr/share/emacs/site-lisp/elpa/notmuch-0.38.3/"
+      "/usr/share/emacs/site-lisp/")))
 
 ;; Notmuch for email
 (use-package notmuch
