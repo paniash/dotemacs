@@ -1189,6 +1189,7 @@ Returns the new window."
     ("<down>" . comint-next-input)
   )
   :config
+  (setq-local confirm-kill-processes nil)
   (setq python-indent-offset 4)
   (setq python-shell-interpreter "python3")
   (setq python-shell-font-lock-enable nil)
