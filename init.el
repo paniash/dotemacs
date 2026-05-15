@@ -292,7 +292,8 @@ The DWIM behaviour of this command is as follows:
   ;; disable Ispell completion function
   (setq text-mode-ispell-word-completion nil)
   ;; Hide commands in M-x which do not work in current buffer
-  (setq read-extended-command-predicate #'command-completion-default-include-p))
+  (setq read-extended-command-predicate
+	#'command-completion-default-include-p))
 
 (use-package shr
   :ensure nil
