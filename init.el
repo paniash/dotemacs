@@ -1055,7 +1055,7 @@ Returns the new window."
   :hook
   (message-setup . message-sort-headers)
   :config
-  (setq mail-user-agent 'message-user-agent
+  (setq mail-user-agent 'gnus-user-agent
 	message-mail-user-agent t)  ; use `mail-user-agent'
   (setq mail-header-separator "--text follows this line--")
   (setq message-elide-ellipsis "\n [... %l lines elided]\n")
