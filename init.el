@@ -1357,6 +1357,7 @@ Works in both search and show mode."
 	   emacs)
 	  ("http://karthinks.com/index.xml" emacs)
 	  ("https://feyor.sh/atom.xml" emacs blog)
+	  ("https://thanosapollo.org/tags/emacs/index.xml" emacs)
 	  ("http://ogbe.net/blog-feed.xml" emacs blog)
 	  ("http://protesilaos.com/codelog.xml" emacs)
 	  ("http://themkat.net/feed.xml" emacs)
