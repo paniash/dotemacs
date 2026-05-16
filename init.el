@@ -350,13 +350,7 @@ The DWIM behaviour of this command is as follows:
   ;; Setting leader key in emacs
   (evil-set-leader 'normal (kbd "SPC"))
   (evil-define-key nil 'global
-    (kbd "<leader>o") 'toggle-window-split)
-  (evil-define-key nil 'global
     (kbd "<leader>b") 'consult-buffer)
-  (evil-define-key nil 'global
-    (kbd "<leader>r") 'consult-ripgrep)
-  (evil-define-key nil 'global
-    (kbd "<leader>l") 'lgrep)
 
   ;; Set `t' as a prefix key for tab manipulation commands
   (define-prefix-command 'pani/t-key)
@@ -857,32 +851,6 @@ The DWIM behaviour of this command is as follows:
   :bind
   ( :map minibuffer-local-map
     ("C-v" . yank)))
-
-;; Function to instantly toggle between vertical and horizontal split
-(defun toggle-window-split ()
-  (interactive)
-  (if (= (count-windows) 2)
-      (let* ((this-win-buffer (window-buffer))
-             (next-win-buffer (window-buffer (next-window)))
-             (this-win-edges (window-edges (selected-window)))
-             (next-win-edges (window-edges (next-window)))
-             (this-win-2nd (not (and (<= (car this-win-edges)
-                                         (car next-win-edges))
-                                     (<= (cadr this-win-edges)
-                                         (cadr next-win-edges)))))
-             (splitter
-              (if (= (car this-win-edges)
-                     (car (window-edges (next-window))))
-                  'split-window-horizontally
-                'split-window-vertically)))
-        (delete-other-windows)
-        (let ((first-win (selected-window)))
-          (funcall splitter)
-          (if this-win-2nd (other-window 1))
-          (set-window-buffer (selected-window) this-win-buffer)
-          (set-window-buffer (next-window) next-win-buffer)
-          (select-window first-win)
-          (if this-win-2nd (other-window 1))))))
 
 ;; ;; sending email in emacs
 ;; (use-package smtpmail
