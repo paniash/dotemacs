@@ -25,6 +25,7 @@
 				    ;; Setting the face in here prevents flashes of
 				    ;; color as the theme gets activated
 				    (background-color . "#130911")
+				    (foreground-color . "#ffffff")
 				    (ns-appearance . dark)
 				    (ns-transparent-titlebar . t)
 				    (tool-bar-lines . 0)
