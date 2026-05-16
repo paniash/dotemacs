@@ -984,6 +984,8 @@ The DWIM behaviour of this command is as follows:
 
   (setopt gnus-home-directory "~/.emacs.d/gnus/"
 	  gnus-directory "~/.emacs.d/gnus/news/"
+	  gnus-newsgroup-last-folder "~/.emacs.d/gnus/news/"
+	  gnus-newsgroup-last-directory "~/.emacs.d/gnus/news/"
 	  message-directory "~/.emacs.d/gnus/mail/"
 	  nndraft-directory "~/.emacs.d/gnus/drafts/")
 
