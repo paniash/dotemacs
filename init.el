@@ -717,6 +717,7 @@ The DWIM behaviour of this command is as follows:
   :bind
   ( :map global-map
     ("C-x g" . magit-status)
+    ("M-c" . magit-clone)
     :map magit-mode-map
     ("C-w" . nil)
     ("M-w" . nil)
