@@ -726,6 +726,9 @@ The DWIM behaviour of this command is as follows:
   (setq magit-define-global-key-bindings nil)
   :config
   (setq git-commit-summary-max-length 70)
+  ;; updates vc branch info in modeline instantaneously
+  ;; probably not very good for the CPU
+  (setq auto-revert-check-vc-info t)
   (setq git-commit-style-convention-checks '(non-empty-second-line))
   (setq magit-diff-refine-hunk 'all))
 
