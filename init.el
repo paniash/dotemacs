@@ -749,6 +749,26 @@ The DWIM behaviour of this command is as follows:
   :init
   (marginalia-mode))
 
+;; TeX config
+(use-package tex-site
+  :ensure auctex
+  :hook ((LaTeX-mode . electric-pair-mode)
+	 (LaTeX-mode . cdlatex-mode)
+	 (LaTeX-mode . reftex-mode))  ;; Turn on reftex by default in .tex files
+  :config
+  ;; Activate nice interface between RefTeX and AUCTeX
+  (setq reftex-plug-into-AUCTeX t)
+  ;; LaTeX document parsing enabled (even on save)
+  (setq TeX-auto-save t)
+  (setq TeX-parse-self t)
+  ;; Autosave upon compilation
+  (setq TeX-save-query nil)
+  (add-hook 'LaTeX-mode-hook (lambda () (setq TeX-command-default "LaTeXmk")))
+  (setq font-latex-fontify-script nil))    ;; disables fontification of formatted text
+
+(use-package tex-site
+  :ensure cdlatex)
+
 (use-package orderless
   :ensure t
   :config
