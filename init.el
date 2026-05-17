@@ -1330,6 +1330,8 @@ Works in both search and show mode."
 	   arxiv)
 	  ("http://emacsredux.com/atom.xml" emacs)
 	  ("http://lambdaland.org/index.xml" emacs)
+	  ("https://bwestbro.com/rss" blog emacs)
+	  ("https://magnus.therning.org/feed.xml" emacs)
 	  ("http://www.emacs.dyerdwelling.family/index.xml" emacs)
 	  ("http://sachachua.com/blog/category/emacs/feed/index.xml"
 	   emacs)
