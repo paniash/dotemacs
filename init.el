@@ -1172,6 +1172,8 @@ The DWIM behaviour of this command is as follows:
 
 ;; Elfeed for RSS
 (use-package elfeed
+  :vc (:url "https://github.com/emacs-elfeed/elfeed"
+       :rev "b89a014") ;; See https://github.com/emacs-elfeed/elfeed/issues/602
   :ensure t
   :defer t
   :hook ((elfeed-search-mode . variable-pitch-mode)
