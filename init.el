@@ -748,34 +748,6 @@ The DWIM behaviour of this command is as follows:
   :init
   (marginalia-mode))
 
-;; AucTeX package for LaTeX niceties
-(use-package tex
-  :ensure auctex
-  :ensure cdlatex
-  :hook ((LaTeX-mode . electric-pair-mode)
-	 (LaTeX-mode . cdlatex-mode)
-	 (LaTeX-mode . reftex-mode))  ;; Turn on reftex by default in .tex files
-  :config
-  ;; Activate nice interface between RefTeX and AUCTeX
-  (setq reftex-plug-into-AUCTeX t)
-  ;; LaTeX document parsing enabled (even on save)
-  (setq TeX-auto-save t)
-  (setq TeX-parse-self t)
-  ;; Autosave upon compilation
-  (setq TeX-save-query nil)
-  ;; Set Zathura as the default pdf viewer
-  (setq TeX-view-program-selection '((output-pdf "Zathura")))
-  (add-hook 'LaTeX-mode-hook (lambda () (setq TeX-command-default "LaTeXmk")))
-  (setq font-latex-fontify-script nil))    ;; disables fontification of formatted text
-
-;; Setup YaSnippet for LaTeX and orgmode
-(use-package yasnippet
-  :ensure t
-  :hook ((LaTeX-mode . yas-minor-mode)
-	 (org-mode . yas-minor-mode))
-  :init
-  (setq yas-snippet-dir "~/.emacs.d/snippets"))
-
 (use-package orderless
   :ensure t
   :config
