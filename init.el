@@ -271,9 +271,6 @@ The DWIM behaviour of this command is as follows:
   ;; `read' is default but is plagued with requiring many backslashes
   (setq reb-re-syntax 'string)
 
-  ;; Set default pdf-viewer in org-mode
-  (add-to-list 'org-file-apps '("\\.pdf\\'" . "firefox \"%s\""))
-
   ;; Auto-chmod scripts on save
   (add-hook 'after-save-hook
 	    #'executable-make-buffer-file-executable-if-script-p)
@@ -483,6 +480,9 @@ The DWIM behaviour of this command is as follows:
 	 ("C-x a" . org-archive-subtree-default)
 	 ("C-x i" . org-toggle-inline-images))
   :config
+  ;; Set default pdf-viewer in org-mode
+  (add-to-list 'org-file-apps '("\\.pdf\\'" . "firefox \"%s\""))
+
   (setq org-log-done 'time)
   ;; Collapse the log entries into a "drawer"
   (setq org-log-into-drawer t)
