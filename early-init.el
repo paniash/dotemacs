@@ -25,7 +25,8 @@
 				    ;; Setting the face in here prevents flashes of
 				    ;; color as the theme gets activated
 				    (background-color . "#130911")
-				    (foreground-color . "#ffffff")
+				    (foreground-color . "#D0D0D0")
+				    (font . "Hack-11.5")
 				    (ns-appearance . dark)
 				    (ns-transparent-titlebar . t)
 				    (tool-bar-lines . 0)
@@ -41,9 +42,8 @@
 ;; Fixes UI font issue when emacs is run in daemon mode
 (defun efs/set-font-faces ()
   (message "Setting faces!")
-  (set-face-attribute 'default nil :font "Hack" :height 115)
-  (set-face-attribute 'fixed-pitch nil :font "Hack" :height 115)
-  (set-face-attribute 'variable-pitch nil :font "Iosevka" :height 125))
+  (set-face-attribute 'fixed-pitch nil :font "Hack" :height 1.0)
+  (set-face-attribute 'variable-pitch nil :font "Iosevka Term" :height 1.05))
 
 (if (daemonp)
     (add-hook 'after-make-frame-functions
