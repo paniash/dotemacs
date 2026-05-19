@@ -736,7 +736,6 @@ The DWIM behaviour of this command is as follows:
 
 (use-package markdown-mode
   :ensure t
-  :defer t
   :mode ("*.md" . gfm-mode)
   :hook (markdown-mode . visual-line-mode)
   :init (setq markdown-command "multimarkdown")
