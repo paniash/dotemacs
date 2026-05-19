@@ -1352,6 +1352,9 @@ Works in both search and show mode."
 	'(("http://export.arxiv.org/api/query?search_query=cat:quant-ph+cond-mat.mes-hall&start=0&max_results=500&sortBy=submittedDate&sortOrder=descending"
 	   arxiv)
 	  ("http://emacsredux.com/atom.xml" emacs)
+	  ("https://yhetil.org/orgmode/new.atom" emacs-devel)
+	  ("https://yhetil.org/emacs-user/new.atom" emacs-devel)
+	  ("https://yhetil.org/notmuch/new.atom" notmuch)
 	  ("http://lambdaland.org/index.xml" emacs)
 	  ("https://bwestbro.com/rss" blog emacs)
 	  ("https://magnus.therning.org/feed.xml" emacs)
