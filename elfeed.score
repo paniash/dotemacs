@@ -36,6 +36,7 @@
   (:text "\\(?:K\\(?:\\(?:\\.\\|irill\\) Fedorov\\)\\)" :value 500 :type R :tags (t arxiv))
   (:text "\\(?:J\\(?:\\(?:\\. D\\.\\|ohn\\(?: D\\.\\)?\\) Teufel\\)\\)" :value 500 :type w :tags (t arxiv))
   (:text "\\(?:R\\(?:\\(?:\\.\\|aghavan\\) Vijay\\)\\)" :value 500 :type R :tags (t arxiv))
+  (:text "\\(?:M\\(?:\\(?:\\. M\\.\\|andar\\(?: M\\.\\)?\\) Deshmukh\\)\\)" :value 500 :type R :tags (t arxiv))
   (:text "\\(?:E\\(?:\\(?:\\.\\|li\\(?: M\\.\\)?\\) Levenson-Falk\\)\\)" :value 500 :type R :tags (t arxiv))
   (:text "\\(?:A\\(?:\\(?:\\.\\|rkady\\) Fedorov\\)\\)" :value 500 :type R :tags (t arxiv))
   (:text "\\(?:K\\(?:\\(?:\\. D[.e]\\|ristiaan De\\) Greve\\)\\)" :value 500 :type R :tags (t arxiv))
