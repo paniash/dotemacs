@@ -596,7 +596,7 @@ The DWIM behaviour of this command is as follows:
 			(org-agenda-block-separator nil)
 			(org-agenda-skip-function
 			 '(org-agenda-skip-entry-if 'todo 'done))
-			 (org-agenda-overriding-header "\nNext three days")))
+			(org-agenda-overriding-header "\nNext three days")))
 	    (agenda "" ((org-agenda-time-grid nil)
 			(org-agenda-start-on-weekday nil)
 			(org-agenda-format-date "%A, %-e %B %Y")
