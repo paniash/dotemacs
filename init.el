@@ -673,7 +673,7 @@ The DWIM behaviour of this command is as follows:
 	  ("w" "Wishlist" entry
 	   (file+headline "tasks.org" "Wishlist")
 	   "* TODO %^{Task}%? %^g\n" :empty-lines-after 1)
-	  ("m" "Formal meetings")
+	  ("m" "Meetings")
 	  ("mi" "One-to-one" entry
 	   (file+headline "meetings.org" "One-to-one meetings")
 	   "* MEETING with %^{With whom} at %^{Place} %^g\n SCHEDULED: %^T" :empty-lines-after 1)
