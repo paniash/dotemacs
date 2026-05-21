@@ -1158,11 +1158,14 @@ The DWIM behaviour of this command is as follows:
 
   ;; Custom function to run python in an async terminal (like VS code)
   (defun pani/python-exec-file ()
+    "Run the current buffer's .py file
+Works for both local and TRAMP-remote buffers."
     (interactive)
     (when (buffer-file-name)
       (save-buffer)
-      (let ((file-name (shell-quote-argument (buffer-file-name))))
-	(compilation-start (format "python3 %s" file-name)))))
+      (let ((file-name (shell-quote-argument
+			(file-relative-name (buffer-file-name)))))
+	(compilation-start (format "python %s" file-name)))))
 
   ;; Force focus to stay put when launching inferior python
   (advice-add 'run-python :around
