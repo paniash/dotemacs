@@ -348,6 +348,8 @@ The DWIM behaviour of this command is as follows:
   (evil-set-leader 'normal (kbd "SPC"))
   (evil-define-key nil 'global
     (kbd "<leader>b") 'consult-buffer)
+  (evil-define-key nil 'global
+    (kbd "<leader>v") 'consult-project-buffer)
 
   ;; Set `t' as a prefix key for tab manipulation commands
   (define-prefix-command 'pani/t-key)
