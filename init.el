@@ -1438,6 +1438,14 @@ Info manuals."
   :ensure nil ; built-in
   :config
   (setq tramp-verbose 3))
+  ;; Set tramp debug buffer to text-mode instead of default outline-mode
+  (defun my-tramp-debug-to-text-mode ()
+    "Force Tramp debug buffers into text-mode."
+    (when (and (string-match-p "\\*debug tramp/" (buffer-name))
+	       (eq major-mode 'outline-mode))
+      (text-mode)))
+
+  (add-hook 'after-change-major-mode-hook #'my-tramp-debug-to-text-mode)
 
 ;; Treesitter config
 (use-package treesit
