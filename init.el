@@ -482,7 +482,8 @@ The DWIM behaviour of this command is as follows:
 	      ("C-c c" . org-capture)
 	 :map org-mode-map
 	 ("C-x a" . org-archive-subtree-default)
-	 ("C-x i" . org-toggle-inline-images))
+	 ("C-x i" . org-toggle-inline-images)
+	 ("C-c C-j" . nil))  ;; I don't use `org-goto'
   :config
   ;; Set default pdf-viewer in org-mode
   (add-to-list 'org-file-apps '("\\.pdf\\'" . "firefox \"%s\""))
