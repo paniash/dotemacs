@@ -400,7 +400,8 @@ The DWIM behaviour of this command is as follows:
 
 ;; Protesilaos' ef-themes
 (use-package ef-themes
-  :ensure t
+  :vc (:url "https://github.com/protesilaos/ef-themes"
+       :rev :newest)
   :init
   (ef-themes-take-over-modus-themes-mode 1)
   :config
