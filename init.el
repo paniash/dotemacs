@@ -1449,6 +1449,9 @@ Info manuals."
 
   (add-hook 'after-change-major-mode-hook #'my-tramp-debug-to-text-mode)
 
+  (add-to-list 'tramp-remote-path
+	       "/c/Users/PXI05/qcodes-experiments/panigrahi/xilinx-venv/Scripts"))
+
 ;; Treesitter config
 (use-package treesit
   :ensure nil ; built-in
