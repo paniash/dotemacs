@@ -1437,7 +1437,9 @@ Info manuals."
 (use-package tramp
   :ensure nil ; built-in
   :config
-  (setq tramp-verbose 3))
+  (setq tramp-verbose 3)
+  (setq tramp-terminal-type "dumb")
+
   ;; Set tramp debug buffer to text-mode instead of default outline-mode
   (defun my-tramp-debug-to-text-mode ()
     "Force Tramp debug buffers into text-mode."
