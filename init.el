@@ -615,7 +615,6 @@ The DWIM behaviour of this command is as follows:
 			 '(org-agenda-skip-entry-if 'todo 'done))
 			(org-agenda-overriding-header "\nUpcoming deadlines (+14d)")))
 	    (agenda "" ((org-agenda-start-on-weekday nil)
-			(org-agenda-start-day "+1d")
 			(org-agenda-format-date "%A, %-e %B %Y")
 			(org-agenda-start-day "+4d")
 			(org-agenda-span 14)
