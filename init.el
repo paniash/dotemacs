@@ -1213,7 +1213,7 @@ Works for both local and TRAMP-remote buffers."
     ;; Only run this in an Elfeed Show buffer
     (when (eq major-mode 'elfeed-show-mode)
       (let ((inhibit-read-only t)
-	    (fill-column 90)) ;; <--- Change this number to your desired width
+	    (fill-column 90))
 	(save-excursion
 	  (goto-char (point-min))
 	  ;; Move past the headers (Title, Date, etc.) by finding the first empty line
