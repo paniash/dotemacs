@@ -1114,6 +1114,9 @@ keeping the size stable across `g'/`org-agenda-redo'."
 ;; Python config
 (use-package python
   :ensure nil   ; because this is built-in
+  :hook (inferior-python-mode . (lambda ()
+				  (set-process-query-on-exit-flag
+				   (get-buffer-process (current-buffer)) nil)))
   :bind
   ( :map python-mode-map
     ("C-l" . nil) ; unbind default binding for text view centering
