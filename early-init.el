@@ -18,8 +18,6 @@
 
 (setq inhibit-startup-message t)
 
-(setopt use-package-enable-imenu-support t)
-
 ;; Hack to increase startup speed
 (setq vc-handled-backends '(Git))
 

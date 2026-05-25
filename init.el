@@ -30,6 +30,9 @@
   (setq visible-bell nil
         ring-bell-function #'ignore)
 
+  ;; Enable imenu support for use-package declarations
+  (setopt use-package-enable-imenu-support t)
+
   ;; Modeline format
   (setq-default mode-line-format
 		'("%e" mode-line-front-space
