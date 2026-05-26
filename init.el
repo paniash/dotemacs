@@ -498,6 +498,8 @@ The DWIM behaviour of this command is as follows:
     '((sequence "TODO(t)" "PROG(p)" "WAIT(w)" "|" "DONE(d)" "CANCELLED(c)")))
   ;; org-indent-mode turned on by default
   (setq org-startup-indented t)
+  ;; Only show content and keep rest folded
+  (setq org-startup-folded 'content)
   ;; Emacs identifies sentences with a single space after fullstop.
   (setq sentence-end-double-space nil)
   ;; Start calendar week from Monday
