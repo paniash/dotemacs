@@ -3,6 +3,7 @@
   :ensure nil
   :config
   (setq use-package-always-ensure t)
+  (setq package-install-upgrade-built-in t)
   (setq package-archives '(("melpa" . "https://melpa.org/packages/")
 			   ("non-gnu" . "https://elpa.nongnu.org/nongnu/")
 			   ("elpa" . "https://elpa.gnu.org/packages/")))
