@@ -1122,9 +1122,7 @@ keeping the size stable across `g'/`org-agenda-redo'."
   :ensure nil   ; because this is built-in
   :hook ((inferior-python-mode . (lambda ()
 				  (set-process-query-on-exit-flag
-				   (get-buffer-process (current-buffer)) nil)))
-	 (python-mode . pani/python-maybe-bind-pytest)
-	 (python-ts-mode . pani/python-maybe-bind-pytest))
+				   (get-buffer-process (current-buffer)) nil))))
   :bind
   ( :map python-mode-map
     ("C-l" . nil) ; unbind default binding for text view centering
@@ -1166,24 +1164,6 @@ Works for both local and TRAMP-remote buffers."
 			(file-relative-name (buffer-file-name)))))
 	(compilation-start (format "python %s" file-name)))))
 
-  (defun pani/python-run-pytest ()
-    "Run pytest on the current buffer's .py file in a compilation buffer.
-Works for both local and TRAMP-remote buffers."
-    (interactive)
-    (when (buffer-file-name)
-      (save-buffer)
-      (let ((file-name (shell-quote-argument
-			(file-relative-name (buffer-file-name)))))
-	(compilation-start (format "pytest %s" file-name)))))
-
-  ;; Use pytest for test files, regular execution otherwise
-  (defun pani/python-maybe-bind-pytest ()
-    "Rebind `C-k' to run pytest when visiting a `test*.py' file."
-    (when (and (buffer-file-name)
-	       (string-match-p "\\`test.*\\.py\\'"
-			       (file-name-nondirectory (buffer-file-name))))
-      (local-set-key (kbd "C-k") #'pani/python-run-pytest)))
-
   ;; Force focus to stay put when launching inferior python
   (advice-add 'run-python :around
 	      (lambda (orig-fun &rest args)
@@ -1200,6 +1180,42 @@ Works for both local and TRAMP-remote buffers."
   (add-hook 'inferior-python-mode-hook
             (lambda ()
               (add-hook 'comint-output-filter-functions #'pani/python-scroll-to-bottom nil t))))
+
+;; Custom minor mode for testing python files with pytest
+(use-package pani/python-pytest-binding
+  :ensure nil
+  :no-require t
+  :defer t
+  :init
+  (defun pani/python-run-pytest ()
+    "Run pytest on the current buffer's .py file inside a compilation
+buffer. Works for both local and TRAMP-remote buffers."
+    (interactive)
+    (when (buffer-file-name)
+      (save-buffer)
+      (let ((file-name (shell-quote-argument
+			(file-relative-name (buffer-file-name)))))
+	(compilation-start (format "pytest %s" file-name)))))
+
+  (defvar pani/pytest-mode-map
+    (let ((map (make-sparse-keymap)))
+      (define-key map (kbd "C-k") #'pani/python-run-pytest)
+      map)
+    "Keymap for `pani/pytest-mode'.")
+
+  (define-minor-mode pani/pytest-mode
+    "Minor mode to run pytest with `C-k' in test files."
+    :keymap pani/pytest-mode-map)
+
+  (defun pani/python-maybe-enable-pytest ()
+    "Enable `pani/pytest-mode' when visiting a `test*.py' file."
+    (when (and (buffer-file-name)
+	       (string-match-p "\\`test.*\\.py\\'"
+			       (file-name-nondirectory (buffer-file-name))))
+      (pani/pytest-mode 1)))
+
+  (add-hook 'python-mode-hook #'pani/python-maybe-enable-pytest)
+  (add-hook 'python-ts-mode-hook #'pani/python-maybe-enable-pytest))
 
 ;; code-cells for ipython like behaviour
 (use-package code-cells
