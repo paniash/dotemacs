@@ -1406,6 +1406,7 @@ Works in both search and show mode."
 	  ("http://11de784a.github.io/feed.xml" blog)
 	  ("http://terrytao.wordpress.com/feed/" blog)
 	  ("http://m-malinowski.github.io/feed.xml" blog)
+	  ("https://ashishpanigrahi.com/atom.xml" blog)
 	  ("http://timharek.no/rss.xml" blog)
 	  ("http://matt.might.net/articles/feed.rss" blog)
 	  ("http://protesilaos.com/commentary.xml" blog)
