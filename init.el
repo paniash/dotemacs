@@ -1246,18 +1246,17 @@ buffer. Works for both local and TRAMP-remote buffers."
 	 ("C-c C-v" . elfeed-arxiv-open-pdf)
 	 ("C-c C-b" . (lambda () (interactive)
 			(elfeed-arxiv-open-pdf elfeed-show-entry t))))
-
   :config
-  ;; Wraps text to 80 characters for arxiv abstracts
+  ;; Re-flow arXiv abstracts, which arrive with hard mid-sentence newlines,
+  ;; to `fill-column' (90) right after Elfeed renders the show buffer.
   (defun pani/elfeed-fix-width-after-render (&rest _)
-    "Hard wrap the buffer content to 80 chars immediately after Elfeed renders it."
-    ;; Only run this in an Elfeed Show buffer
+    "Hard wrap the show-buffer body to `fill-column' after Elfeed renders it."
     (when (eq major-mode 'elfeed-show-mode)
       (let ((inhibit-read-only t)
 	    (fill-column 90))
 	(save-excursion
 	  (goto-char (point-min))
-	  ;; Move past the headers (Title, Date, etc.) by finding the first empty line
+	  ;; Skip past the headers (Title, Date, etc.) to the first blank line.
 	  (when (search-forward "\n\n" nil t)
 	    ;; Wrap the remaining text (the abstract)
 	    (fill-region (point) (point-max)))))))
@@ -1280,7 +1279,7 @@ buffer. Works for both local and TRAMP-remote buffers."
       (format "%s et al." (or (plist-get (nth 0 authors-list) :name) "")))
      (t (or (plist-get (nth 0 authors-list) :name) ""))))
 
-  ;; Define a custom color for the authors column
+  ;; Custom color for the authors column.
   (defface elfeed-search-author-face
     '((t :foreground "DarkOliveGreen3"))
     "Face for displaying authors in the elfeed search buffer.")
@@ -1334,36 +1333,33 @@ buffer. Works for both local and TRAMP-remote buffers."
 
   (defun pani/elfeed-unify-fonts ()
     "Remap faces to variable-pitch and scale buffer text by exactly 1.15x."
-    ;; 1. Force fixed-width text (arXiv abstracts) to use the variable-pitch face
+    ;; 1. Force fixed-width text (arXiv abstracts) to use the variable-pitch face.
     (face-remap-add-relative 'fixed-pitch 'variable-pitch)
     (face-remap-add-relative 'shr-code 'variable-pitch)
     (face-remap-add-relative 'shr-abbreviation 'variable-pitch)
-
-    ;; 2. Scale the buffer content by exactly 1.15 (1.05 x 1.15 = 1.20)
-    ;; By remapping 'default' locally, we scale the buffer text
-    ;; but leave the modeline (which uses the unscaled global faces) alone.
+    ;; 2. Scale the buffer content by exactly 1.15 (1.05 x 1.15 = 1.20).
+    ;;    Remapping `default' locally scales the buffer text but leaves the
+    ;;    modeline (which uses the unscaled global faces) alone.
     (face-remap-add-relative 'default :height 1.15)
-
-    ;; 3. Fix olivetti layout for this bigger font
+    ;; 3. Fix olivetti layout for this bigger font.
     (setq-local olivetti-body-width 0.9)
     (setq-local olivetti-minimum-body-width 130)
     (olivetti-mode 1))
-
   (add-hook 'elfeed-show-mode-hook #'pani/elfeed-unify-fonts)
 
-  ;; Removes the horizonal line month separator (see https://github.com/emacs-elfeed/elfeed/issues/602#issuecomment-4472279716)
+  ;; Remove the horizontal-line month separator.
+  ;; (see https://github.com/emacs-elfeed/elfeed/issues/602#issuecomment-4472279716)
   (remove-hook 'elfeed-search-update-hook #'elfeed-search-add-separators)
 
-  ;; arxiv pdf extractor function
+  ;; Open the arXiv PDF (or abstract) for the current entry in a browser.
   (defun elfeed-arxiv-open-pdf (entry &optional open-abstract)
     "Open the arXiv PDF for the current Elfeed ENTRY in a browser.
+With OPEN-ABSTRACT non-nil, open the abstract page instead.
 Works in both search and show mode."
     (interactive
      (list (cond
-	    ;; If in search mode, get selected entry
 	    ((eq major-mode 'elfeed-search-mode)
 	     (elfeed-search-selected :single))
-	    ;; If in show mode, use the shown entry
 	    ((eq major-mode 'elfeed-show-mode)
 	     elfeed-show-entry))))
     (when entry
