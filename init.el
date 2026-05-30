@@ -1273,11 +1273,12 @@ buffer. Works for both local and TRAMP-remote buffers."
       str))
 
   (defun concatenate-authors (authors-list)
-    "Given AUTHORS-LIST, list of plists; return string of all authors
-    concatenated."
-    (if (> (length authors-list) 1)
-	(format "%s et al." (plist-get (nth 0 authors-list) :name))
-      (plist-get (nth 0 authors-list) :name)))
+    "Given AUTHORS-LIST, list of plists; return string of all authors concatenated."
+    (cond
+     ((null authors-list) "")
+     ((> (length authors-list) 1)
+      (format "%s et al." (or (plist-get (nth 0 authors-list) :name) "")))
+     (t (or (plist-get (nth 0 authors-list) :name) ""))))
 
   ;; Define a custom color for the authors column
   (defface elfeed-search-author-face
@@ -1292,7 +1293,7 @@ buffer. Works for both local and TRAMP-remote buffers."
 	   (title-faces (elfeed-search--faces (elfeed-entry-tags entry)))
 	   (entry-authors (concatenate-authors
 			   (elfeed-meta entry :authors)))
-	   (entry-score (number-to-string (elfeed-score-scoring-get-score-from-entry entry)))
+	   (entry-score (number-to-string (or (ignore-errors (elfeed-score-scoring-get-score-from-entry entry)) 0)))
 	   ;; Fixed widths
 	   (date-width 12)
 	   (padding 3)
