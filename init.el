@@ -1351,8 +1351,7 @@ Works in both search and show mode."
 	  ("https://bwestbro.com/rss" blog emacs)
 	  ("https://magnus.therning.org/feed.xml" emacs)
 	  ("http://www.emacs.dyerdwelling.family/index.xml" emacs)
-	  ("http://sachachua.com/blog/category/emacs/feed/index.xml"
-	   emacs)
+	  ("http://sachachua.com/blog/category/emacs/feed/index.xml" emacs)
 	  ("http://karthinks.com/index.xml" emacs)
 	  ("https://feyor.sh/atom.xml" emacs blog)
 	  ("https://thanosapollo.org/tags/emacs/index.xml" emacs)
