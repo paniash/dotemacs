@@ -1351,6 +1351,19 @@ Works in both search and show mode."
 	      (browse-url url))
 	  (message "Not an arXiv link: %s" link)))))
 
+  ;; Toggle between arxiv and non-arxiv entries
+  (defun pani/elfeed-toggle-arxiv-filter ()
+    "Toggle the search filter between arXiv-only and everything but arxiv."
+    (interactive nil elfeed-search-mode)
+    (setq elfeed-search-filter
+	  (if (string-match-p "[+]arxiv" elfeed-search-filter)
+	      "@6-months-ago -arxiv"
+	    "@6-months-ago +arxiv"))
+    (elfeed-search-update :force))
+
+  (evil-define-key 'normal elfeed-search-mode-map
+    (kbd "a") #'pani/elfeed-toggle-arxiv-filter)
+
   (setq elfeed-search-print-entry-function #'pani/elfeed-search-print-entry)
   (setq elfeed-use-curl t)
   (setq elfeed-curl-max-connections 10)
