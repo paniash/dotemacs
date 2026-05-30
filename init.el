@@ -1275,27 +1275,41 @@ buffer. Works for both local and TRAMP-remote buffers."
     "Face for displaying authors in the elfeed search buffer.")
 
   (defun pani/elfeed-search-print-entry (entry)
-    "Print ENTRY: title and authors columns with a right-aligned score."
-    (let* ((title   (or (elfeed-meta entry :title) (elfeed-entry-title entry) ""))
-	   (faces   (elfeed-search--faces (elfeed-entry-tags entry)))
-	   (authors (concatenate-authors (elfeed-meta entry :authors)))
-	   (score   (number-to-string
-		     (or (ignore-errors
-			   (elfeed-score-scoring-get-score-from-entry entry))
-			 0)))
-	   (win-width     (window-width))
-	   (authors-width (elfeed-clamp 10 (/ win-width 4) 40))
-	   ;; title + space + authors + space + score + slack
-	   (title-width   (max 10 (- win-width authors-width 1
-				     (length score) 2))))
-      (insert (propertize (elfeed-format-column title title-width :left)
-			  'face faces 'kbd-help title)
-	      " ")
-      (insert (propertize (elfeed-format-column authors authors-width :left)
-			  'face 'elfeed-search-author-face 'kbd-help authors))
-      ;; Float the score to the right edge — no manual space padding.
-      (insert (propertize " " 'display `(space :align-to (- right ,(length score))))
-	      score)))
+    "Print ENTRY for the `elfeed-search' buffer.
+arXiv entries show: title | authors | right-aligned score.
+All other entries show: title | feed name (no score)."
+    (let* ((title     (or (elfeed-meta entry :title) (elfeed-entry-title entry) ""))
+	   (faces     (elfeed-search--faces (elfeed-entry-tags entry)))
+	   (win-width (window-width)))
+      (if (elfeed-tagged-p 'arxiv entry)
+	  ;; --- arXiv: title | authors | score ---
+	  (let* ((authors (concatenate-authors (elfeed-meta entry :authors)))
+		 (score   (number-to-string
+			   (or (ignore-errors
+				 (elfeed-score-scoring-get-score-from-entry entry))
+			       0)))
+		 (authors-width (elfeed-clamp 10 (/ win-width 4) 40))
+		 (title-width   (max 10 (- win-width authors-width 1
+					   (length score) 2))))
+	    (insert (propertize (elfeed-format-column title title-width :left)
+				'face faces 'kbd-help title)
+		    " ")
+	    (insert (propertize (elfeed-format-column authors authors-width :left)
+				'face 'elfeed-search-author-face 'kbd-help authors))
+	    (insert (propertize " " 'display
+				`(space :align-to (- right ,(length score))))
+		    score))
+	;; --- everything else: title | feed name ---
+	(let* ((feed-name (or (when-let* ((feed (elfeed-entry-feed entry)))
+				(elfeed-meta--title feed))
+			      ""))
+	       (feed-width  (elfeed-clamp 10 (/ win-width 4) 40))
+	       (title-width (max 10 (- win-width feed-width 1 1))))
+	  (insert (propertize (elfeed-format-column title title-width :left)
+			      'face faces 'kbd-help title)
+		  " ")
+	  (insert (propertize (elfeed-format-column feed-name feed-width :left)
+			      'face 'elfeed-search-feed-face 'kbd-help feed-name))))))
 
   (defun pani/elfeed-unify-fonts ()
     "Remap faces to variable-pitch and scale buffer text by exactly 1.15x."
