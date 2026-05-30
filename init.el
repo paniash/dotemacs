@@ -1351,6 +1351,9 @@ buffer. Works for both local and TRAMP-remote buffers."
 
   (add-hook 'elfeed-show-mode-hook #'pani/elfeed-unify-fonts)
 
+  ;; Removes the horizonal line month separator (see https://github.com/emacs-elfeed/elfeed/issues/602#issuecomment-4472279716)
+  (remove-hook 'elfeed-search-update-hook #'elfeed-search-add-separators)
+
   ;; arxiv pdf extractor function
   (defun elfeed-arxiv-open-pdf (entry &optional open-abstract)
     "Open the arXiv PDF for the current Elfeed ENTRY in a browser.
