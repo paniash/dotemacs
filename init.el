@@ -1258,18 +1258,8 @@ buffer. Works for both local and TRAMP-remote buffers."
 	  (goto-char (point-min))
 	  ;; Skip past the headers (Title, Date, etc.) to the first blank line.
 	  (when (search-forward "\n\n" nil t)
-	    ;; Wrap the remaining text (the abstract)
 	    (fill-region (point) (point-max)))))))
-
-  ;; Attach this function to run exactly AFTER elfeed-show-refresh
   (advice-add 'elfeed-show-refresh :after #'pani/elfeed-fix-width-after-render)
-
-  ;; Helper function: safe truncation
-  (defun truncate-string-to-width-safe (str width)
-    "Truncate STR to WIDTH characters if it exceeds it, adding an ellipsis."
-    (if (> (string-width str) width)
-	(concat (substring str 0 (max 0 (- width 1))) "…")
-      str))
 
   (defun concatenate-authors (authors-list)
     "Given AUTHORS-LIST, list of plists; return string of all authors concatenated."
@@ -1319,17 +1309,6 @@ buffer. Works for both local and TRAMP-remote buffers."
 	(insert score-column))))
 
 
-  (defvar elfeed--last-window-width 0
-    "Stores the last known width of the Elfeed search window.")
-
-  (defun elfeed-dynamic-resize-hook ()
-    "Redisplay the Elfeed search buffer only if the window width changed."
-    (when (eq major-mode 'elfeed-search-mode)
-      (let ((current-width (window-width)))
-	(unless (= current-width elfeed--last-window-width)
-	  (setq elfeed--last-window-width current-width)
-	  (let ((inhibit-read-only t))
-	    (elfeed-search-update--force))))))
 
   (defun pani/elfeed-unify-fonts ()
     "Remap faces to variable-pitch and scale buffer text by exactly 1.15x."
@@ -1372,18 +1351,11 @@ Works in both search and show mode."
 	      (browse-url url))
 	  (message "Not an arXiv link: %s" link)))))
 
-  (add-hook 'window-configuration-change-hook #'elfeed-dynamic-resize-hook)
-
-  (setq elfeed-search-print-entry-function #'pani/my-search-print-fn)
   (setq elfeed-use-curl t)
   (setq elfeed-curl-max-connections 10)
   (setq-default elfeed-search-filter "@6-months-ago +arxiv")
   (setq elfeed-db-directory "~/.emacs.d/elfeed/")
   (setq elfeed-enclosure-default-dir "~/downloads/")
-  (setq elfeed-search-date-format '("%Y-%m-%d" 0 :left))
-  (setq elfeed-search-title-max-width 100)
-  (setq elfeed-search-title-min-width 90)
-  (setq elfeed-search-trailing-width 0)
   (setq elfeed-feeds
 	'(("http://export.arxiv.org/api/query?search_query=cat:quant-ph+cond-mat.mes-hall&start=0&max_results=500&sortBy=submittedDate&sortOrder=descending"
 	   arxiv)
