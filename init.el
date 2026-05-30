@@ -1506,7 +1506,8 @@ Info manuals."
   :config
   ;; Remap major modes to treesitter
   (setq major-mode-remap-alist
-	'((python-mode . python-ts-mode)))
+	'((python-mode . python-ts-mode)
+	  (markdown-mode . markdown-ts-mode)))
   ;; Set sources for treesitter grammar
   (setq treesit-language-source-alist
 	'((python "https://github.com/tree-sitter/tree-sitter-python")
