@@ -1274,41 +1274,28 @@ buffer. Works for both local and TRAMP-remote buffers."
     '((t :foreground "DarkOliveGreen3"))
     "Face for displaying authors in the elfeed search buffer.")
 
-  (defun pani/my-search-print-fn (entry)
-    "Print ENTRY to the buffer with dynamic column widths and right-aligned score."
-    (let* ((date (elfeed-search-format-date (elfeed-entry-date entry)))
-	   (title (or (elfeed-meta entry :title)
-		      (elfeed-entry-title entry) ""))
-	   (title-faces (elfeed-search--faces (elfeed-entry-tags entry)))
-	   (entry-authors (concatenate-authors
-			   (elfeed-meta entry :authors)))
-	   (entry-score (number-to-string (or (ignore-errors (elfeed-score-scoring-get-score-from-entry entry)) 0)))
-	   ;; Fixed widths
-	   (date-width 12)
-	   (padding 3)
-	   ;; Available width for title + authors
-	   (total-width (window-width))
-	   (available-width (- total-width date-width padding (length entry-score))))
-      ;; Clamp authors width dynamically so score always aligns
-      (let* ((authors-min-width 10)
-	     (authors-max-width 40)
-	     (authors-width (min authors-max-width
-				 (max authors-min-width (/ available-width 3))))
-	     ;; Title takes remaining space
-	     (title-width (max 10 (- available-width authors-width)))
-	     ;; Format columns
-	     (title-column (elfeed-format-column title title-width :left))
-	     (authors-column (elfeed-format-column entry-authors authors-width :left))
-	     ;; Right-align score by padding spaces
-	     (score-padding (- total-width (+ date-width title-width authors-width padding)))
-	     (score-column (concat (make-string (max 0 score-padding) ? ) entry-score)))
-	;; Insert columns
-	(insert (propertize date 'face 'elfeed-search-date-face) " ")
-	(insert (propertize title-column 'face title-faces 'kbd-help title) " ")
-	(insert (propertize authors-column 'face 'elfeed-search-author-face 'kbd-help entry-authors))
-	(insert score-column))))
-
-
+  (defun pani/elfeed-search-print-entry (entry)
+    "Print ENTRY: title and authors columns with a right-aligned score."
+    (let* ((title   (or (elfeed-meta entry :title) (elfeed-entry-title entry) ""))
+	   (faces   (elfeed-search--faces (elfeed-entry-tags entry)))
+	   (authors (concatenate-authors (elfeed-meta entry :authors)))
+	   (score   (number-to-string
+		     (or (ignore-errors
+			   (elfeed-score-scoring-get-score-from-entry entry))
+			 0)))
+	   (win-width     (window-width))
+	   (authors-width (elfeed-clamp 10 (/ win-width 4) 40))
+	   ;; title + space + authors + space + score + slack
+	   (title-width   (max 10 (- win-width authors-width 1
+				     (length score) 2))))
+      (insert (propertize (elfeed-format-column title title-width :left)
+			  'face faces 'kbd-help title)
+	      " ")
+      (insert (propertize (elfeed-format-column authors authors-width :left)
+			  'face 'elfeed-search-author-face 'kbd-help authors))
+      ;; Float the score to the right edge — no manual space padding.
+      (insert (propertize " " 'display `(space :align-to (- right ,(length score))))
+	      score)))
 
   (defun pani/elfeed-unify-fonts ()
     "Remap faces to variable-pitch and scale buffer text by exactly 1.15x."
@@ -1344,13 +1331,13 @@ Works in both search and show mode."
     (when entry
       (let ((link (elfeed-entry-link entry)))
 	(if (string-match "arxiv\\.org/abs/\\([0-9.]+\\)" link)
-	    (let ((base-id (match-string 1 link))
-		  (url (if open-abstract
+	    (let ((url (if open-abstract
 			   (format "https://arxiv.org/abs/%s" (match-string 1 link))
 			 (format "https://arxiv.org/pdf/%s.pdf" (match-string 1 link)))))
 	      (browse-url url))
 	  (message "Not an arXiv link: %s" link)))))
 
+  (setq elfeed-search-print-entry-function #'pani/elfeed-search-print-entry)
   (setq elfeed-use-curl t)
   (setq elfeed-curl-max-connections 10)
   (setq-default elfeed-search-filter "@6-months-ago +arxiv")
