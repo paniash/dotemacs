@@ -722,14 +722,6 @@ keeping the size stable across `g'/`org-agenda-redo'."
   (setq git-commit-style-convention-checks '(non-empty-second-line))
   (setq magit-diff-refine-hunk 'all))
 
-(use-package markdown-mode
-  :ensure t
-  :mode ("*.md" . gfm-mode)
-  :hook (markdown-mode . visual-line-mode)
-  :init (setq markdown-command "multimarkdown")
-  :config
-  (setq markdown-fontify-code-blocks-natively t))
-
 ;; Marginalia package
 (use-package marginalia
   :ensure t
