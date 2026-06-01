@@ -166,12 +166,14 @@ The DWIM behaviour of this command is as follows:
   (setq auto-save-timeout nil)
   (setq help-window-select t) ; Cursor focus goes to help window when invoked
   (setq help-window-keep-selected t)  ; Keep using the same window for more help buffers
-  (setq-default auto-fill-function 'do-auto-fill) ;; Automatic text wrapping in all major modes
   (setq compilation-scroll-output t) ; scroll compilation buffer as output appears
 
   (column-number-mode 1)
   (global-visual-wrap-prefix-mode 1)
 
+  ;; Have prose modes auto wrap long lines
+  (dolist (hook '(org-mode-hook markdown-mode-hook markdown-ts-mode-hook LaTeX-mode-hook))
+    (add-hook hook #'auto-fill-mode))
   ;; Deletes trailing whitespace upon saving a file
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
