@@ -34,17 +34,6 @@
   ;; Enable imenu support for use-package declarations
   (setopt use-package-enable-imenu-support t)
 
-  ;; Modeline format
-  (setq-default mode-line-format
-		'("%e" mode-line-front-space
-		  (:propertize
-		   ("" mode-line-mule-info mode-line-client mode-line-modified
-		    mode-line-remote)
-		   display (min-width (5.0)))
-		  mode-line-frame-identification mode-line-buffer-identification "   "
-		  mode-line-position (vc-mode vc-mode) "  " mode-line-modes
-		  mode-line-misc-info mode-line-end-spaces))
-
   (setq mode-line-right-align-edge 'right-margin)
 
   ;; Buffer list configuration
