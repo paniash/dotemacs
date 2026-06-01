@@ -174,6 +174,7 @@ The DWIM behaviour of this command is as follows:
   ;; Have prose modes auto wrap long lines
   (dolist (hook '(org-mode-hook markdown-mode-hook markdown-ts-mode-hook LaTeX-mode-hook))
     (add-hook hook #'auto-fill-mode))
+
   ;; Deletes trailing whitespace upon saving a file
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
@@ -269,22 +270,6 @@ The DWIM behaviour of this command is as follows:
   ;; Auto-chmod scripts on save
   (add-hook 'after-save-hook
 	    #'executable-make-buffer-file-executable-if-script-p)
-
-  ;; Text wrapping for specific modes
-  (defun my-add-to-multiple-hooks (function hooks)
-    (mapc (lambda (hook)
-	    (add-hook hook function))
-	  hooks))
-
-  (defun text-wrapper ()
-    (lambda ()
-      (set-fill-column 90)))
-
-  (my-add-to-multiple-hooks
-   'text-wrapper
-   '(org-mode-hook
-     markdown-mode-hook
-     LaTeX-mode-hook))
 
   :bind
   ( :map global-map
