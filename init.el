@@ -1371,6 +1371,7 @@ Works in both search and show mode."
 	  ("http://andreyor.st/feed.xml" blog)
 	  ("http://www.paritybit.ca/feed.xml" blog)
 	  ("http://kishvanchee.com/index.xml" blog)
+	  ("https://www.cosroe.com/feed.atom" blog)
 	  ("http://dataswamp.org/~solene/rss.xml" blog)
 	  ("http://drewdevault.com/blog/index.xml" blog)
 	  ("http://simon.peytonjones.org/feed.xml" blog)
