@@ -853,6 +853,8 @@ keeping the size stable across `g'/`org-agenda-redo'."
   :load-path notmuch-path
   :defer t
   :commands (notmuch notmuch-mua-new-mail)
+  :bind (:map notmuch-hello-mode-map
+	      ("J" . notmuch-jump-search))
   :init
   ;; Search
   (setq notmuch-search-oldest-first nil)
