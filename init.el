@@ -199,7 +199,7 @@ The DWIM behaviour of this command is as follows:
   (mapc
    (lambda (command)
      (put command 'disabled t))
-   '(eshell project-eshell overwrite-mode iconify-frame diary))
+   '(overwrite-mode iconify-frame diary))
 
   ;; Hide minor modes in the modeline
   (when (boundp 'mode-line-collapse-minor-modes)
