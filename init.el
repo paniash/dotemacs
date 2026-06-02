@@ -828,18 +828,6 @@ keeping the size stable across `g'/`org-agenda-redo'."
   ( :map minibuffer-local-map
     ("C-v" . yank)))
 
-;; ;; sending email in emacs
-;; (use-package smtpmail
-;;   :ensure nil
-;;   :after message
-;;   :config
-;;   (setq message-send-mail-function 'smtpmail-send-it)
-;;   (setq send-mail-function 'smtpmail-send-it)
-;;   (setq smtpmail-smtp-server "smtp.migadu.com")
-;;   (setq smtpmail-smtp-service 465)
-;;   (setq smtpmail-debug-info t)
-;;   (setq smtpmail-stream-type 'nil))
-
 (use-package emacs
   :ensure nil
   :config
