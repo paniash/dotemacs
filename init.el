@@ -880,7 +880,8 @@ keeping the size stable across `g'/`org-agenda-redo'."
 	notmuch-message-forwarded-tags '("+forwarded")
 	notmuch-show-mark-read-tags '("-unread")
 	notmuch-draft-tags '("+draft")
-	notmuch-draft-folder "drafts"
+	notmuch-draft-folder "university/Drafts"
+	notmuch-fcc-dirs "university/Sent"
 	notmuch-draft-save-plaintext 'ask)
 
   ; Email composition
