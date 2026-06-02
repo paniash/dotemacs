@@ -841,10 +841,10 @@ keeping the size stable across `g'/`org-agenda-redo'."
   :load-path notmuch-path
   :defer t
   :commands (notmuch notmuch-mua-new-mail)
-  :hook ((notmuch-hello-mode . pani/notmuch-variable-pitch)
-	 (notmuch-search-mode . pani/notmuch-variable-pitch)
-	 (notmuch-tree-mode . pani/notmuch-variable-pitch)
-	 (notmuch-show-mode . pani/notmuch-variable-pitch))
+  :hook ((notmuch-hello-mode . variable-pitch-mode)
+	 (notmuch-search-mode . variable-pitch-mode)
+	 (notmuch-tree-mode . variable-pitch-mode)
+	 (notmuch-show-mode . variable-pitch-mode))
   :init
   ;; Search
   (setq notmuch-search-oldest-first nil)
