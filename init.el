@@ -853,8 +853,6 @@ keeping the size stable across `g'/`org-agenda-redo'."
   :load-path notmuch-path
   :defer t
   :commands (notmuch notmuch-mua-new-mail)
-  :bind (:map notmuch-hello-mode-map
-	      ("J" . notmuch-jump-search))
   :init
   ;; Search
   (setq notmuch-search-oldest-first nil)
@@ -934,7 +932,8 @@ keeping the size stable across `g'/`org-agenda-redo'."
     ("r" . notmuch-show-reply) ; easier to reply to all by default
     ("R" . notmuch-show-reply-sender)
     :map notmuch-hello-mode-map
-    ("C-<tab>" . nil)))
+    ("C-<tab>" . nil)
+    ("J" . notmuch-jump-search)))
 
 ;; GNUS email
 (use-package gnus
