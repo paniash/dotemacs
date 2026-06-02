@@ -1005,11 +1005,8 @@ keeping the size stable across `g'/`org-agenda-redo'."
   :after message
   :config
   (setq send-mail-function 'sendmail-send-it
-        ;; ;; NOTE 2023-08-08: We do not need this if we have the Arch
-        ;; ;; Linux `msmtp-mta' package installed: it replaces the
-        ;; ;; generic sendmail executable with msmtp.
-        ;;
-        ;; sendmail-program (executable-find "msmtp")
+	;; explicitly set sendmail to use msmtp
+	sendmail-program (or (executable-find "msmtp") "/usr/bin/msmtp")
         message-sendmail-envelope-from 'header))
 
 ;; Add direnv integration in emacs
