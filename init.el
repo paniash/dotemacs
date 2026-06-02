@@ -512,7 +512,7 @@ The DWIM behaviour of this command is as follows:
   ;; Org styling
   (setq org-pretty-entities nil
 	org-ellipsis "…"
-	org-auto-align-tags nil)
+	org-auto-align-tags t)
 
   ;; Org-indent settings
   (setq org-adapt-indentation nil)
