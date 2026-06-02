@@ -989,7 +989,7 @@ keeping the size stable across `g'/`org-agenda-redo'."
   (setq mail-header-separator "--text follows this line--")
   (setq message-elide-ellipsis "\n [... %l lines elided]\n")
   (setq compose-mail-user-agent-warnings nil)
-  (setq message-signature "Ashish Panigrahi\nhttps://ashishpanigrahi.com\n"
+  (setq message-signature "Kind regards,\nAshish (Pani)\n"
 	mail-signature message-signature)
   (setq message-citation-line-function #'message-insert-formatted-citation-line)
   (setq message-citation-line-format (concat "> From: %f\n"
