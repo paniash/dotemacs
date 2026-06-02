@@ -853,6 +853,10 @@ keeping the size stable across `g'/`org-agenda-redo'."
   :load-path notmuch-path
   :defer t
   :commands (notmuch notmuch-mua-new-mail)
+  :hook ((notmuch-hello-mode . pani/notmuch-variable-pitch)
+	 (notmuch-search-mode . pani/notmuch-variable-pitch)
+	 (notmuch-tree-mode . pani/notmuch-variable-pitch)
+	 (notmuch-show-mode . pani/notmuch-variable-pitch))
   :init
   ;; Search
   (setq notmuch-search-oldest-first nil)
@@ -915,6 +919,12 @@ keeping the size stable across `g'/`org-agenda-redo'."
   (let ((count most-positive-fixnum)) ; I don't like the buttonisation of long quotes
     (setq notmuch-wash-citation-lines-prefix count
           notmuch-wash-citation-lines-suffix count))
+
+  ;; Increase variable-pitch font (similar to elfeed setup)
+  (defun pani/notmuch-variable-pitch ()
+    "Render notmuch buffers in variable-pitch, scaled 1.15x."
+    (face-remap-add-relative 'default '(:inherit variable-pitch :height 1.15))
+    (face-remap-add-relative 'fixed-pitch 'variable-pitch))
 
   :bind
   ( :map global-map
