@@ -730,6 +730,13 @@ keeping the size stable across `g'/`org-agenda-redo'."
   :config
   (setq markdown-fontify-code-blocks-natively t))
 
+(use-package markdown-ts-mode
+   :mode ("\\.md\\'" . markdown-ts-mode)
+   :defer t
+   :config
+   (add-to-list 'treesit-language-source-alist '(markdown "https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown/src"))
+   (add-to-list 'treesit-language-source-alist '(markdown-inline "https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown-inline/src")))
+
 ;; Marginalia package
 (use-package marginalia
   :ensure t
