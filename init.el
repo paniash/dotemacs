@@ -1210,16 +1210,12 @@ buffer. Works for both local and TRAMP-remote buffers."
   :bind (("C-c e" . elfeed)
 	 :map elfeed-search-mode-map
 	 ("C-c C-c" . elfeed-update)
-	 ("C-c C-v" . elfeed-arxiv-open-pdf)
-	 ("C-c C-b" . (lambda () (interactive)
-			(elfeed-arxiv-open-pdf (elfeed-search-selected :single) t)))
 	 ("C-c C-o" . pani/elfeed-open-link)
+	 ("C-c C-p" . pani/elfeed-arxiv-open-pdf)
 	 :map elfeed-tree-mode-map
 	 ("C-c C-c" . elfeed-update)
 	 :map elfeed-show-mode-map
-	 ("C-c C-v" . elfeed-arxiv-open-pdf)
-	 ("C-c C-b" . (lambda () (interactive)
-			(elfeed-arxiv-open-pdf elfeed-show-entry t))))
+	 ("C-c C-p" . pani/elfeed-arxiv-open-pdf)
 	 ("C-c C-o" . pani/elfeed-open-link))
   :config
   ;; Re-flow arXiv abstracts, which arrive with hard mid-sentence newlines,
@@ -1306,24 +1302,18 @@ All other entries show: title | feed name (no score)."
   ;; (see https://github.com/emacs-elfeed/elfeed/issues/602#issuecomment-4472279716)
   (remove-hook 'elfeed-search-update-hook #'elfeed-search-add-separators)
 
-  ;; Open the arXiv PDF (or abstract) for the current entry in a browser.
-  (defun elfeed-arxiv-open-pdf (entry &optional open-abstract)
+  ;; Open the arXiv PDF for the current entry in a browser.
+  (defun pani/elfeed-arxiv-open-pdf (entry)
     "Open the arXiv PDF for the current Elfeed ENTRY in a browser.
-With OPEN-ABSTRACT non-nil, open the abstract page instead.
-Works in both search and show mode."
+Works in both `elfeed-search-mode' and `elfeed-show-mode'."
     (interactive
      (list (cond
-	    ((eq major-mode 'elfeed-search-mode)
-	     (elfeed-search-selected :single))
-	    ((eq major-mode 'elfeed-show-mode)
-	     elfeed-show-entry))))
+	    ((derived-mode-p 'elfeed-search-mode) (elfeed-search-selected :single))
+	    ((derived-mode-p 'elfeed-show-mode)   elfeed-show-entry))))
     (when entry
       (let ((link (elfeed-entry-link entry)))
 	(if (string-match "arxiv\\.org/abs/\\([0-9.]+\\)" link)
-	    (let ((url (if open-abstract
-			   (format "https://arxiv.org/abs/%s" (match-string 1 link))
-			 (format "https://arxiv.org/pdf/%s.pdf" (match-string 1 link)))))
-	      (browse-url url))
+	    (browse-url (format "https://arxiv.org/pdf/%s.pdf" (match-string 1 link)))
 	  (message "Not an arXiv link: %s" link)))))
 
   ;; Toggle between arxiv and non-arxiv entries
