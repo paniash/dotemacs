@@ -1213,12 +1213,14 @@ buffer. Works for both local and TRAMP-remote buffers."
 	 ("C-c C-v" . elfeed-arxiv-open-pdf)
 	 ("C-c C-b" . (lambda () (interactive)
 			(elfeed-arxiv-open-pdf (elfeed-search-selected :single) t)))
+	 ("C-c C-o" . pani/elfeed-open-link)
 	 :map elfeed-tree-mode-map
 	 ("C-c C-c" . elfeed-update)
 	 :map elfeed-show-mode-map
 	 ("C-c C-v" . elfeed-arxiv-open-pdf)
 	 ("C-c C-b" . (lambda () (interactive)
 			(elfeed-arxiv-open-pdf elfeed-show-entry t))))
+	 ("C-c C-o" . pani/elfeed-open-link))
   :config
   ;; Re-flow arXiv abstracts, which arrive with hard mid-sentence newlines,
   ;; to `fill-column' (90) right after Elfeed renders the show buffer.
@@ -1336,6 +1338,20 @@ Works in both search and show mode."
 
   (evil-define-key 'normal elfeed-search-mode-map
     (kbd "a") #'pani/elfeed-toggle-arxiv-filter)
+
+  (defun pani/elfeed-open-link (entry)
+    "Open ENTRY's main article link in the browser.
+Works in both `elfeed-search-mode' and `elfeed-show-mode'."
+    (interactive
+     (list (cond
+	    ((derived-mode-p 'elfeed-search-mode) (elfeed-search-selected :single))
+	    ((derived-mode-p 'elfeed-show-mode)   elfeed-show-entry))))
+    (unless entry
+      (user-error "No Elfeed entry at point"))
+    (let ((link (elfeed-entry-link entry)))
+      (if link
+	  (browse-url link)
+	(message "Entry has no link"))))
 
   (setq elfeed-search-print-entry-function #'pani/elfeed-search-print-entry)
   (setq elfeed-use-curl t)
