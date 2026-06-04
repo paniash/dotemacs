@@ -1499,7 +1499,7 @@ Info manuals."
 	'((python "https://github.com/tree-sitter/tree-sitter-python")
 	  (markdown "https://github.com/tree-sitter-grammars/tree-sitter-markdown")
 	  (bash "https://github.com/tree-sitter/tree-sitter-bash")
-	  (yaml "https://github.com/tree-sitter-grammers/tree-sitter-yaml")
+	  (yaml "https://github.com/tree-sitter-grammars/tree-sitter-yaml")
 	  (html "https://github.com/tree-sitter/tree-sitter-html")
 	  (javascript "https://github.com/tree-sitter/tree-sitter-javascript")
 	  (typst "https://github.com/uben0/tree-sitter-typst")))
