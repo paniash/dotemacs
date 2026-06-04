@@ -930,6 +930,23 @@ keeping the size stable across `g'/`org-agenda-redo'."
     (face-remap-add-relative 'default '(:inherit variable-pitch :height 1.15))
     (face-remap-add-relative 'fixed-pitch 'variable-pitch))
 
+  (define-advice notmuch-read-query (:around (orig-fun &rest args) pani/notmuch-vertico)
+    "Make `notmuch-read-query' use `completing-read' so Vertico drives completion.
+notmuch reads its query with `read-from-minibuffer' and binds TAB to
+`minibuffer-complete'; Vertico only advises `completing-read', so it never
+engages and you get the default *Completions* buffer.  Intercept notmuch's
+`read-from-minibuffer' call and hand off to `completing-read' (reusing
+notmuch's own dynamic table), restoring the real `read-from-minibuffer' around
+that call so `completing-read' doesn't recurse back into us.  SPC self-inserts
+in `vertico-map', so multi-term queries still work."
+    (let ((real-rfm (symbol-function 'read-from-minibuffer)))
+      (cl-letf (((symbol-function 'read-from-minibuffer)
+		 (lambda (prompt &optional initial-contents _keymap _read hist default &rest _)
+		   (cl-letf (((symbol-function 'read-from-minibuffer) real-rfm))
+		     (completing-read prompt minibuffer-completion-table
+				      nil nil initial-contents hist default)))))
+	(apply orig-fun args))))
+
   :bind
   ( :map global-map
     ("C-c m" . notmuch)
