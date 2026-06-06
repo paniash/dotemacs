@@ -1264,18 +1264,21 @@ buffer. Works for both local and TRAMP-remote buffers."
 	 ("C-c C-o" . pani/elfeed-arxiv-open-pdf)
 	 ("C-c C-l" . pani/elfeed-open-link))
   :config
-  ;; Re-flow arXiv abstracts, which arrive with hard mid-sentence newlines,
-  ;; to `fill-column' (90) right after Elfeed renders the show buffer.
   (defun pani/elfeed-fix-width-after-render (&rest _)
-    "Hard wrap the show-buffer body to `fill-column' after Elfeed renders it."
-    (when (eq major-mode 'elfeed-show-mode)
+    "Re-flow arXiv abstracts to `fill-column' after Elfeed renders them.
+Only arXiv entries need this: their abstracts arrive as plain text with
+hard mid-sentence newlines.  Other feeds deliver real HTML that shr
+already lays out correctly, so re-filling them destroys lists and other
+block structure."
+    (when (and (eq major-mode 'elfeed-show-mode)
+	       (elfeed-tagged-p 'arxiv elfeed-show-entry))
       (let ((inhibit-read-only t)
 	    (fill-column 90))
 	(save-excursion
 	  (goto-char (point-min))
-	  ;; Skip past the headers (Title, Date, etc.) to the first blank line.
 	  (when (search-forward "\n\n" nil t)
 	    (fill-region (point) (point-max)))))))
+
   (advice-add 'elfeed-show-refresh :after #'pani/elfeed-fix-width-after-render)
 
   (defun concatenate-authors (authors-list)
