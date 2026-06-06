@@ -347,7 +347,8 @@ The DWIM behaviour of this command is as follows:
 
 ;;; Vim Bindings Everywhere else
 (use-package evil-collection
-  :ensure t
+  :vc (:url "https://github.com/emacs-evil/evil-collection"
+	    :rev :newest)
   :after evil
   :config
   (setq evil-want-integration t)
