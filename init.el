@@ -950,9 +950,19 @@ in `vertico-map', so multi-term queries still work."
 				      nil nil initial-contents hist default)))))
 	(apply orig-fun args))))
 
+  (defun pani/notmuch-aalto ()
+    "Jump straight to the aalto saved search."
+    (interactive)
+    (notmuch-search
+     (plist-get (cl-find "aalto" notmuch-saved-searches
+			 :key (lambda (s) (plist-get s :name))
+			 :test #'string=)
+		:query)))
+
   :bind
   ( :map global-map
     ("C-c m" . notmuch)
+    ("C-c M" . pani/notmuch-aalto)
     ("C-x m" . notmuch-mua-new-mail) ; override `compose-mail'
     :map notmuch-search-mode-map
     ("a" . nil) ; not archiving so better to disable it
