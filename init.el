@@ -969,15 +969,6 @@ in `vertico-map', so multi-term queries still work."
 				      nil nil initial-contents hist default)))))
 	(apply orig-fun args))))
 
-  (defun pani/notmuch-aalto ()
-    "Jump straight to the aalto saved search."
-    (interactive)
-    (notmuch-search
-     (plist-get (cl-find "aalto" notmuch-saved-searches
-			 :key (lambda (s) (plist-get s :name))
-			 :test #'string=)
-		:query)))
-
   (defun pani/notmuch-inbox ()
     "Jump straight to notmuch inbox."
     (interactive)
