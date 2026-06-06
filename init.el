@@ -548,7 +548,7 @@ The DWIM behaviour of this command is as follows:
   :hook (org-agenda-mode . pani/org-agenda-font-size)
   ;; Don't need to go through org-agenda template for custom agenda
   :bind (:map global-map
-	      ("C-c j" . (lambda () (interactive) (org-agenda nil "j"))))
+	      ("C-c j" . pani/custom-org-agenda))
   :config
   ;; Custom function to resize fonts in org-agenda
   (defun pani/org-agenda-font-size ()
@@ -614,6 +614,11 @@ keeping the size stable across `g'/`org-agenda-redo'."
 			 '(org-agenda-skip-entry-if 'todo 'done))
 			(org-agenda-overriding-header "\nUpcoming schedule (+14d)")))))
 	  ))
+
+  (defun pani/custom-org-agenda ()
+    "Custom function to immediately jump to my custom org-agenda view."
+    (interactive)
+    (org-agenda nil "j"))
 
   ;; Setting org-agenda file
   ;; Eliminates the need for putting org-agenda file to the top everytime
