@@ -981,9 +981,9 @@ in `vertico-map', so multi-term queries still work."
 
   :bind
   ( :map global-map
-    ("C-c m" . notmuch)
-    ("C-c i" . pani/notmuch-inbox)
-    ("C-c M" . pani/notmuch-aalto)
+    ("C-c m m" . notmuch)
+    ("C-c m i" . pani/notmuch-inbox)
+    ("C-c m p" . pani/notmuch-migadu)
     ("C-x m" . notmuch-mua-new-mail) ; override `compose-mail'
     :map notmuch-search-mode-map
     ("a" . nil) ; not archiving so better to disable it
