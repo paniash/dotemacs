@@ -294,6 +294,7 @@ The DWIM behaviour of this command is as follows:
   :ensure nil
   :config
   (setq shr-use-colors nil)
+  (setq shr-ignore-cache t)
   ;; Disable html font size overriding default fonts
   (setq shr-use-fonts nil))
 
