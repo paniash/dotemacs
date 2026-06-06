@@ -1423,6 +1423,7 @@ Works in both `elfeed-search-mode' and `elfeed-show-mode'."
 	  ("http://gregorygundersen.com/feed.xml" blog)
 	  ("http://rosenzweig.io/feed.xml" blog)
 	  ("http://adol.pw/index.xml" blog)
+	  ("https://scottaaronson.blog/?feed=rss2" blog research)
 	  ("https://nicholas.carlini.com/writing/feed.xml" blog research)
 	  ("http://tony-zorman.com/atom.xml" blog)
 	  ("http://andreyor.st/feed.xml" blog)
