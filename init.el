@@ -896,14 +896,14 @@ keeping the size stable across `g'/`org-agenda-redo'."
 			(:name "unread" :query "tag:unread" :key "u")
 			(:name "drafts" :query "tag:draft" :key "d")
 			(:name "all email" :query "*" :key "A")))
-	  (personal '((:name "aalto" :query "tag:aalto and not tag:sent" :key "aa")
-		   (:name "aalto-sent" :query "tag:aalto and tag:sent" :key "as")
-		   (:name "migadu" :query "tag:migadu and not tag:sent" :key "mm")
-		   (:name "migadu-sent" :query "tag:migadu and tag:sent" :key "ms")
-		   (:name "emacs-orgmode" :query "tag:orgmode" :key "o"))))
-	(if (string= (system-name) "d22-0153")
-	    common
-	  (append common personal))))
+	      (personal '((:name "aalto-inbox" :query "tag:aalto and not tag:sent" :key "aa")
+			  (:name "aalto-sent" :query "tag:aalto and tag:sent" :key "as")
+			  (:name "migadu-inbox" :query "tag:migadu and not tag:sent" :key "mm")
+			  (:name "migadu-sent" :query "tag:migadu and tag:sent" :key "ms")
+			  (:name "emacs-orgmode" :query "tag:orgmode" :key "o"))))
+	  (if (string= (system-name) "d22-0153")
+	      common
+	    (append common personal))))
 
   ; Tags
   (setq notmuch-archive-tags nil ; I don't archive email
