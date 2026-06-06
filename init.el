@@ -251,6 +251,7 @@ The DWIM behaviour of this command is as follows:
   ;; Enable line numbers only for programming and text modes
   (add-hook 'prog-mode-hook #'display-line-numbers-mode)
   (add-hook 'text-mode-hook #'display-line-numbers-mode)
+  (add-hook 'conf-mode-hook #'display-line-numbers-mode)
 
   ;; Specify line-spacing (in pixels)
   (setq line-spacing nil)   ;; `nil' is default value
