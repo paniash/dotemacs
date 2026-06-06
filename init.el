@@ -968,9 +968,15 @@ in `vertico-map', so multi-term queries still work."
 			 :test #'string=)
 		:query)))
 
+  (defun pani/notmuch-inbox ()
+    "Jump straight to notmuch inbox."
+    (interactive)
+    (notmuch-search "tag:inbox"))
+
   :bind
   ( :map global-map
     ("C-c m" . notmuch)
+    ("C-c i" . pani/notmuch-inbox)
     ("C-c M" . pani/notmuch-aalto)
     ("C-x m" . notmuch-mua-new-mail) ; override `compose-mail'
     :map notmuch-search-mode-map
