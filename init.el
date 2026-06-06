@@ -112,7 +112,7 @@
 
   ;; Personal details
   (setopt user-full-name "Ashish Panigrahi")
-  (setopt user-mail-address "ashish@ashishpanigrahi.com")
+  (setopt user-mail-address "public@ashishpanigrahi.com")
 
   ;; Always load newest byte code
   (setopt load-prefer-newer t)
