@@ -1256,13 +1256,13 @@ buffer. Works for both local and TRAMP-remote buffers."
   :bind (("C-c e" . elfeed)
 	 :map elfeed-search-mode-map
 	 ("C-c C-c" . elfeed-update)
-	 ("C-c C-o" . pani/elfeed-open-link)
-	 ("C-c C-p" . pani/elfeed-arxiv-open-pdf)
+	 ("C-c C-l" . pani/elfeed-open-link)
+	 ("C-c C-o" . pani/elfeed-arxiv-open-pdf)
 	 :map elfeed-tree-mode-map
 	 ("C-c C-c" . elfeed-update)
 	 :map elfeed-show-mode-map
-	 ("C-c C-p" . pani/elfeed-arxiv-open-pdf)
-	 ("C-c C-o" . pani/elfeed-open-link))
+	 ("C-c C-o" . pani/elfeed-arxiv-open-pdf)
+	 ("C-c C-l" . pani/elfeed-open-link))
   :config
   ;; Re-flow arXiv abstracts, which arrive with hard mid-sentence newlines,
   ;; to `fill-column' (90) right after Elfeed renders the show buffer.
