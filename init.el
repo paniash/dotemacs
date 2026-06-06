@@ -983,6 +983,11 @@ in `vertico-map', so multi-term queries still work."
     (interactive)
     (notmuch-search "tag:inbox"))
 
+  (defun pani/notmuch-migadu ()
+    "Jump straight to personal (migadu) inbox."
+    (interactive)
+    (notmuch-search "tag:migadu"))
+
   :bind
   ( :map global-map
     ("C-c m" . notmuch)
