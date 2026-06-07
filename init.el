@@ -740,7 +740,8 @@ keeping the size stable across `g'/`org-agenda-redo'."
 
 (use-package markdown-ts-mode
    :mode ("\\.md\\'" . markdown-ts-mode)
-   :defer t
+   :ensure nil
+   :defer t)
 
 ;; Marginalia package
 (use-package marginalia
