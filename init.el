@@ -2,7 +2,7 @@
 (use-package package
   :ensure nil
   :config
-  (setq use-package-always-ensure t)
+  (setq use-package-always-ensure nil)
   (setq package-install-upgrade-built-in t)
   (setq package-archives '(("melpa" . "https://melpa.org/packages/")
 			   ("non-gnu" . "https://elpa.nongnu.org/nongnu/")
