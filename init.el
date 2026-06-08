@@ -281,7 +281,7 @@ The DWIM behaviour of this command is as follows:
     ("C-l" . nil) ; never use it
     ("C-k" . nil) ; never use it
     ("C-x <left>" . nil) ; unbind the `previous-buffer' command
-    ("C-x C-p" . previous-buffer)  ; rebind `previous-buffer' command
+    ("C-x C-p" . mode-line-other-buffer)  ; switches between two buffers
     )
   :config
   ;; disable Ispell completion function
