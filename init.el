@@ -860,6 +860,7 @@ keeping the size stable across `g'/`org-agenda-redo'."
 ;; Notmuch for email
 (use-package notmuch
   :load-path notmuch-path
+  :ensure nil
   :defer t
   :commands (notmuch notmuch-mua-new-mail)
   :hook ((notmuch-hello-mode . variable-pitch-mode)
