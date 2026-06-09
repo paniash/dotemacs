@@ -1533,7 +1533,8 @@ Info manuals."
 	  (markdown-mode . markdown-ts-mode)))
   ;; Set sources for treesitter grammar
   (setq treesit-language-source-alist
-	'((python "https://github.com/tree-sitter/tree-sitter-python")
+	`((python "https://github.com/tree-sitter/tree-sitter-python"
+		  ,(when (< (treesit-library-abi-version) 15) "v0.23.6")) ;; use v0.23.6 if treesitter ABI version is < 15.
 	  (markdown "https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown/src")
 	  (markdown-inline "https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown-inline/src")
 	  (bash "https://github.com/tree-sitter/tree-sitter-bash")
