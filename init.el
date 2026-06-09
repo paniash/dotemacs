@@ -828,6 +828,7 @@ keeping the size stable across `g'/`org-agenda-redo'."
   :config
   (setq dired-recursive-copies 'always)
   (setq dired-recursive-deletes 'always)
+  (setq dired-isearch-filenames 'dwim)
   (setq dired-dwim-target t))
 
 (use-package dired-subtree
