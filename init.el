@@ -1546,7 +1546,6 @@ Info manuals."
 		,(when (< (treesit-library-abi-version) 15) "v0.23.3"))
 	  (yaml "https://github.com/tree-sitter-grammars/tree-sitter-yaml")
 	  (html "https://github.com/tree-sitter/tree-sitter-html")
-	  (javascript "https://github.com/tree-sitter/tree-sitter-javascript")
 	  (typst "https://github.com/uben0/tree-sitter-typst")))
   ;; Tree-sitter font lock (4 is highest)
   (setq treesit-font-lock-level 4))
