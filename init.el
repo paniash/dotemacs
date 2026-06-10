@@ -1548,7 +1548,12 @@ Info manuals."
 	  (html "https://github.com/tree-sitter/tree-sitter-html")
 	  (typst "https://github.com/uben0/tree-sitter-typst")))
   ;; Tree-sitter font lock (4 is highest)
-  (setq treesit-font-lock-level 4))
+  (setq treesit-font-lock-level 4)
+
+  ;; Auto-install/repair any configured grammar files that won't load properly
+  (dolist (lang (mapcar #'cat treesit-language-source-alist))
+    (unless (treesit-language-available-p lang)
+      (treesit-install-language-grammar lang))))
 
 ;; Typst support
 (use-package typst-ts-mode
