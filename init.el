@@ -926,7 +926,9 @@ keeping the size stable across `g'/`org-agenda-redo'."
   (setq notmuch-mua-hidden-headers nil)
   (setq notmuch-address-command 'internal)
   (setq notmuch-address-use-company nil)
-  (setq notmuch-always-prompt-for-sender t)
+  (if (string= (system-name) "d22-0153")
+      (setq notmuch-always-prompt-for-sender nil)
+    (setq notmuch-always-prompt-for-sender t))
   (setq notmuch-mua-cite-function
 	'message-cite-original-without-signature)
   (setq notmuch-mua-user-agent-function nil)
