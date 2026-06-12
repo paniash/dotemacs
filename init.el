@@ -981,7 +981,15 @@ in `vertico-map', so multi-term queries still work."
     (interactive)
     (notmuch-search "tag:migadu"))
 
+  (defun pani/notmuch-mua-empty-subject-check ()
+    "Prompt for confirmation before sending a message with empty subject."
+    (when (and (null (message-field-value "Subject"))
+	       (not (y-or-n-p "Subject is empty, send anyway? ")))
+      (error "Sending message cancelled: empty subject.")))
+
   :hook ((message-send . notmuch-mua-attachment-check)
+	 (message-send . pani/notmuch-mua-empty-subject-check))
+
   :bind
   ( :map global-map
     ("C-c m m" . notmuch)
