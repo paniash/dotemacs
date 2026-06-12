@@ -981,6 +981,7 @@ in `vertico-map', so multi-term queries still work."
     (interactive)
     (notmuch-search "tag:migadu"))
 
+  :hook ((message-send . notmuch-mua-attachment-check)
   :bind
   ( :map global-map
     ("C-c m m" . notmuch)
