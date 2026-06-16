@@ -1092,6 +1092,11 @@ in `vertico-map', so multi-term queries still work."
 (use-package envrc
   :ensure t
   :hook (after-init . envrc-global-mode)
+  :config
+  (define-advice envrc-mode (:around (orig &rest args) pani/no-remote-envrc)
+    "Skip direnv in remote buffers. Run it locally as usual."
+    (unless (and buffer-file-name (file-remote-p buffer-file-name))
+      (apply orig args))))
 
 ;; Autocompletion via corfu
 (use-package corfu
