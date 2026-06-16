@@ -1121,13 +1121,18 @@ in `vertico-map', so multi-term queries still work."
 ;; LSP server using eglot
 (use-package eglot
   :ensure nil  ;; built-in
-  :hook ((python-mode . eglot-ensure)
-	 (python-ts-mode . eglot-ensure))   ;; run eglot when opening python files
+  :hook ((python-mode . pani/eglot-ensure-local)
+	 (python-ts-mode . pani/eglot-ensure-local))   ;; run eglot when opening python files
   :config
   (add-to-list 'eglot-server-programs
 	       '((python-ts-mode python-mode)
 		 . ("zuban" "server")))
 
+  ;; Only have eglot work locally and not over remote machines
+  (defun pani/eglot-ensure-local ()
+    "Start eglot, but only for local files."
+    (unless (and buffer-file-name (file-remote-p buffer-file-name))
+      (eglot-ensure)))
 
   ;; Ensure that eglot stays out of flymake
   (setq eglot-stay-out-of '(flymake))
