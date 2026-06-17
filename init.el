@@ -1177,11 +1177,11 @@ in `vertico-map', so multi-term queries still work."
   ( :map python-mode-map
     ("C-l" . nil) ; unbind default binding for text view centering
     ("C-l" . xref-go-back)
-    ("C-k" . pani/python-exec-file)
+    ("C-k" . pani/python-send-or-exec)
     :map python-ts-mode-map
     ("C-l" . nil) ; unbind default binding for text view centering
     ("C-l" . xref-go-back)
-    ("C-k" . pani/python-exec-file)
+    ("C-c C-c" . pani/python-send-or-exec)
     :map inferior-python-mode-map
     ("C-l" . comint-clear-buffer)  ; `C-l' clears the inferior python buffer
     ("<up>" . comint-previous-input)
@@ -1219,6 +1219,19 @@ Works for both local and TRAMP-remote buffers."
 	      (lambda (orig-fun &rest args)
 		(save-selected-window
 		  (apply orig-fun args))))
+
+  ;; Smart C-c C-c bind to run async process if inferior python process is not open
+  (defun pani/python-send-or-exec ()
+    "Smart `C-c C-c' for Python buffers.
+If a window showing the inferior Python process is visible, send the
+current buffer to it (the usual `python-shell-send-buffer' behaviour).
+Otherwise, run the file asynchronously via `pani/python-exec-file'."
+    (interactive)
+    (let* ((proc (python-shell-get-process))
+	   (buf  (and proc (process-buffer proc))))
+      (if (and buf (get-buffer-window buf))
+	  (python-shell-send-buffer)
+	(pani/python-exec-file))))
 
   ;; This ensures that even if the REPL window isn't the active one, it still scrolls
   (defun pani/python-scroll-to-bottom (_string)
