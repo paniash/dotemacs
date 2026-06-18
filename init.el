@@ -663,7 +663,7 @@ keeping the size stable across `g'/`org-agenda-redo'."
 	   "* TODO [#%^{Priority|B|A|C}] %^{Task} %^g\n SCHEDULED: %^t\n" :empty-lines-after 1)
 	  ("td" "Tasks with a deadline" entry
 	   (file+headline "tasks.org" "Tasks with deadline")
-	   "* TODO %^{Task} %^g\n DEADLINE: %^T\n" :empty-lines-after 1)
+	   "* TODO [#%^{Priority|B|A|C}] %^{Task} %^g\n DEADLINE: %^T\n" :empty-lines-after 1)
 	  ("w" "Wishlist" entry
 	   (file+headline "tasks.org" "Wishlist")
 	   "* TODO %^{Task}%? %^g\n" :empty-lines-after 1)
