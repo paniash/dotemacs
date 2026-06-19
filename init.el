@@ -981,6 +981,11 @@ in `vertico-map', so multi-term queries still work."
     (interactive)
     (notmuch-search "tag:migadu"))
 
+  (defun pani/notmuch-jump-orgmode ()
+    "Jump straight to orgmode mailing list inbox."
+    (interactive)
+    (notmuch-search "tag:orgmode"))
+
   (defun pani/notmuch-mua-empty-subject-check ()
     "Prompt for confirmation before sending a message with empty subject."
     (when (and (null (message-field-value "Subject"))
@@ -995,6 +1000,7 @@ in `vertico-map', so multi-term queries still work."
     ("C-c m m" . notmuch)
     ("C-c m i" . pani/notmuch-jump-inbox)
     ("C-c m p" . pani/notmuch-jump-migadu)
+    ("C-c m o" . pani/notmuch-jump-orgmode)
     ("C-x m" . notmuch-mua-new-mail) ; override `compose-mail'
     :map notmuch-search-mode-map
     ("a" . nil) ; not archiving so better to disable it
