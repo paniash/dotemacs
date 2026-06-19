@@ -971,12 +971,12 @@ in `vertico-map', so multi-term queries still work."
 				      nil nil initial-contents hist default)))))
 	(apply orig-fun args))))
 
-  (defun pani/notmuch-inbox ()
+  (defun pani/notmuch-jump-inbox ()
     "Jump straight to notmuch inbox."
     (interactive)
     (notmuch-search "tag:inbox"))
 
-  (defun pani/notmuch-migadu ()
+  (defun pani/notmuch-jump-migadu ()
     "Jump straight to personal (migadu) inbox."
     (interactive)
     (notmuch-search "tag:migadu"))
@@ -993,8 +993,8 @@ in `vertico-map', so multi-term queries still work."
   :bind
   ( :map global-map
     ("C-c m m" . notmuch)
-    ("C-c m i" . pani/notmuch-inbox)
-    ("C-c m p" . pani/notmuch-migadu)
+    ("C-c m i" . pani/notmuch-jump-inbox)
+    ("C-c m p" . pani/notmuch-jump-migadu)
     ("C-x m" . notmuch-mua-new-mail) ; override `compose-mail'
     :map notmuch-search-mode-map
     ("a" . nil) ; not archiving so better to disable it
