@@ -466,6 +466,7 @@ The DWIM behaviour of this command is as follows:
 	 :map org-mode-map
 	 ("C-x a" . org-archive-subtree-default)
 	 ("C-x i" . org-toggle-inline-images)
+	 ("C-c C-p" . org-priority)
 	 ("C-c C-j" . nil))  ;; I don't use `org-goto'
   :config
   ;; Set default pdf-viewer in org-mode
@@ -548,7 +549,9 @@ The DWIM behaviour of this command is as follows:
   :hook (org-agenda-mode . pani/org-agenda-font-size)
   ;; Don't need to go through org-agenda template for custom agenda
   :bind (:map global-map
-	      ("C-c j" . pani/custom-org-agenda))
+	      ("C-c j" . pani/custom-org-agenda)
+	      :map org-agenda-mode-map
+	      ("C-c C-p" . org-agenda-priority))
   :config
   ;; Custom function to resize fonts in org-agenda
   (defun pani/org-agenda-font-size ()
