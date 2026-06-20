@@ -1702,3 +1702,8 @@ Info manuals."
   :defer 5
   :hook ((python-mode . breadcrumb-local-mode)
 	 (python-ts-mode . breadcrumb-local-mode)))
+
+;; Highlight parentheses
+(use-package rainbow-delimiters
+  :ensure t
+  :hook (emacs-lisp-mode . rainbow-delimiters-mode))
