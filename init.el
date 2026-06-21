@@ -546,7 +546,8 @@ The DWIM behaviour of this command is as follows:
 ;; Org-agenda customization (based on Protesilaos Stavrou's config)
 (use-package org-agenda
   :ensure nil
-  :hook (org-agenda-mode . pani/org-agenda-font-size)
+  :hook ((org-agenda-mode . pani/org-agenda-font-size)
+	 (org-agenda-finalize . pani/org-agenda-birthday-emoji))
   ;; Don't need to go through org-agenda template for custom agenda
   :bind (:map global-map
 	      ("C-c j" . pani/custom-org-agenda)
@@ -622,6 +623,16 @@ keeping the size stable across `g'/`org-agenda-redo'."
     "Custom function to immediately jump to my custom org-agenda view."
     (interactive)
     (org-agenda nil "j"))
+
+  (defun pani/org-agenda-birthday-emoji ()
+    "Append a cake emoji for birthday entries."
+    (save-excursion
+      (goto-char (point-min))
+      (while (not (eobp))
+	(when (equal (org-get-at-bol 'org-category) "birthdays")
+	  (end-of-line)
+	  (insert " 🎂"))
+	(forward-line 1))))
 
   ;; Setting org-agenda file
   ;; Eliminates the need for putting org-agenda file to the top everytime
