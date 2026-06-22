@@ -691,7 +691,7 @@ keeping the size stable across `g'/`org-agenda-redo'."
 	   "* %^{Event} MEETING%? %^g\n SCHEDULED: %^T" :empty-lines-after 1)
 	  ("e" "Events" entry
 	   (file+headline "events.org" "Events")
-	   "* %^{Event}%? %^g\n SCHEDULED: %^t" :empty-lines-after 1)
+	   "* %^{Event}%? %^g\n %^t" :empty-lines-after 1)
 	  ("r" "Rendez-vous")
 	  ("rp" "Phone calls" entry
 	   (file+headline "meetings.org" "Phone calls")
