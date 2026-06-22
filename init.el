@@ -281,6 +281,7 @@ The DWIM behaviour of this command is as follows:
     ("C-l" . nil) ; never use it
     ("C-k" . nil) ; never use it
     ("C-x <left>" . nil) ; unbind the `previous-buffer' command
+    ("M-o" . other-window) ; switch between windows
     ("C-x C-p" . mode-line-other-buffer)  ; switches between two buffers
     )
   :config
