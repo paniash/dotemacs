@@ -1529,8 +1529,7 @@ Works in both `elfeed-search-mode' and `elfeed-show-mode'."
   :config
   (setq elfeed-score-rule-stats-file "~/.emacs.d/elfeed.stats")
   (setq elfeed-score-serde-score-file "~/.emacs.d/elfeed.score")
-  (elfeed-score-enable)
-  (define-key elfeed-search-mode-map "=" elfeed-score-map))
+  (elfeed-score-enable))
 
 ;; Olivetti for reducing eye strain
 (use-package olivetti
