@@ -1032,7 +1032,11 @@ in `vertico-map', so multi-term queries still work."
     ("R" . notmuch-show-reply-sender)
     :map notmuch-hello-mode-map
     ("C-<tab>" . nil)
-    ("J" . notmuch-jump-search)))
+    ("J" . notmuch-jump-search))
+  :config
+  (evil-define-key 'normal notmuch-show-mode-map
+    (kbd "C-j") 'notmuch-show-next-message
+    (kbd "C-k") 'notmuch-show-previous-message))
 
 ;; GNUS email
 (use-package gnus
