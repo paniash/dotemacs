@@ -920,6 +920,8 @@ keeping the size stable across `g'/`org-agenda-redo'."
 			  (:name "aalto-sent" :query "tag:aalto and tag:sent" :key "as")
 			  (:name "migadu-inbox" :query "tag:migadu and not tag:sent" :key "mm")
 			  (:name "migadu-sent" :query "tag:migadu and tag:sent" :key "ms")
+			  (:name "niser" :query "tag:niser" :key "n")
+			  (:name "juelich" :query "tag:juelich" :key "j")
 			  (:name "emacs-orgmode" :query "tag:orgmode" :key "o"))))
 	  (if (string= (system-name) "d22-0153")
 	      common
