@@ -960,6 +960,11 @@ keeping the size stable across `g'/`org-agenda-redo'."
   (setq notmuch-message-headers '("To" "Cc" "Subject" "Date"))
   (setq notmuch-message-headers-visible t)
 
+  (setq notmuch-identities
+	'("Ashish Panigrahi <ashish@ashishpanigrahi.com>"
+	  "Panigrahi Ashish <ashish.panigrahi@aalto.fi>"
+	  "Ashish Panigrahi <public@ashishpanigrahi.com>"))
+
   ;; Prot customization
   (let ((count most-positive-fixnum)) ; I don't like the buttonisation of long quotes
     (setq notmuch-wash-citation-lines-prefix count
