@@ -900,6 +900,11 @@ keeping the size stable across `g'/`org-agenda-redo'."
   (setq notmuch-search-result-format
         '(("date" . "%12s  ")
           ("count" . "%-7s  ")
+          ("authors" . "%-40s  ")
+          ("subject" . "%-80s  ")
+          ("tags" . "(%s)")))
+  (setq notmuch-unthreaded-result-format
+        '(("date" . "%12s  ")
           ("authors" . "%-20s  ")
           ("subject" . "%-80s  ")
           ("tags" . "(%s)")))
