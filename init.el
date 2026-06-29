@@ -813,6 +813,7 @@ keeping the size stable across `g'/`org-agenda-redo'."
   (setq world-clock-time-format "%R %z (%Z)	%A %d %B")
   (setq world-clock-buffer-name "*world-clock*") ; Placement handled by `display-buffer-alist'
   (setq world-clock-timer-enable t)
+  (setq world-clock-sort-order "%FT%T")
   (setq world-clock-timer-second 60))
 
 (use-package consult
