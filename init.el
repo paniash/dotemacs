@@ -581,7 +581,13 @@ keeping the size stable across `g'/`org-agenda-redo'."
 		     ;; We don't need the `org-agenda-date-today'
 		     ;; highlight because that only has a practical
 		     ;; utility in multi-day views.
-		     (org-agenda-day-face-function (lambda (date) 'org-agenda-date))
+		     ;; Also, if TODAY is a weekend, display font-face `org-agenda-date-weekend'
+		     ;; else display `org-agenda-date'.
+		     (org-agenda-day-face-function
+		      (lambda (date)
+			(if (member (calendar-day-of-week date) org-agenda-weekend-days)
+			    'org-agenda-date-weekend
+			  'org-agenda-date)))
 		     (org-agenda-format-date "%A, %-e %B %Y")
 		     (org-agenda-overriding-header "\nDaily agenda")))
 	    (agenda "" ((org-agenda-start-on-weekday nil)
