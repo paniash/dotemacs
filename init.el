@@ -1176,6 +1176,8 @@ in `vertico-map', so multi-term queries still work."
   ;; Ensure that eglot stays out of flymake
   (setq eglot-stay-out-of '(flymake))
 
+  ;; LSP documentation now uses `markdown-ts-mode'
+  (setq eglot-documentation-renderer 'markdown-ts-mode)
   ;; (setq eglot-managed-mode-hook (list (lambda () (eldoc-mode -1))))
   (setq eglot-ignored-server-capabilities
 	'(:documentHighlightProvider
