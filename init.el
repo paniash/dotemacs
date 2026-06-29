@@ -1726,6 +1726,7 @@ Info manuals."
   (setq ibuffer-show-empty-filter-groups nil)
   (setq ibuffer-movement-cycle nil)
   (setq ibuffer-use-header-line t)
+  (setq ibuffer-human-readable-size t)
   (setq ibuffer-use-other-window nil))
 
 ;; Highlight TODO keywords in code
