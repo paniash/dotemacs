@@ -1178,6 +1178,10 @@ in `vertico-map', so multi-term queries still work."
 
   ;; LSP documentation now uses `markdown-ts-mode'
   (setq eglot-documentation-renderer 'markdown-ts-mode)
+
+  ;; Disable code-action hints to reduce noise
+  (setq eglot-code-action-indications nil)
+
   ;; (setq eglot-managed-mode-hook (list (lambda () (eldoc-mode -1))))
   (setq eglot-ignored-server-capabilities
 	'(:documentHighlightProvider
