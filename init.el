@@ -283,6 +283,7 @@ The DWIM behaviour of this command is as follows:
     ("C-x <left>" . nil) ; unbind the `previous-buffer' command
     ("M-o" . other-window) ; switch between windows
     ("C-x C-p" . mode-line-other-buffer)  ; switches between two buffers
+    ("C-x w t" . window-layout-transpose) ; switch between vertical and horizontal layout
     )
   :config
   ;; disable Ispell completion function
