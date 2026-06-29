@@ -656,9 +656,10 @@ keeping the size stable across `g'/`org-agenda-redo'."
 
   ;; Provides good color contrast for custom org-agenda
   (custom-set-faces
+   '(org-agenda-structure ((t (:foreground "#689f38" :weight normal))))
    '(org-agenda-date ((t (:foreground "#dc8add" :weight normal))))
    '(org-agenda-date-weekend ((t (:foreground "#3f95f6" :weight normal))))
-   '(org-scheduled-today ((t (:foreground "#84A8A4" :weight normal))))
+   '(org-scheduled-today ((t (:foreground "#84a8a4" :weight normal))))
    '(org-scheduled-previously ((t (:foreground "#e0af68" :weight normal))))
    '(org-deadline-today ((t (:foreground "#f7768e" :weight normal))))
    '(org-tag ((t (:foreground "#56b6c2" :weight light))))
