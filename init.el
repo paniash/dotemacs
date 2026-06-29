@@ -1400,23 +1400,24 @@ All other entries show: title | feed name (no score)."
 	   (faces     (elfeed-search--faces (elfeed-entry-tags entry)))
 	   (win-width (window-width)))
       (if (elfeed-tagged-p 'arxiv entry)
-	  ;; --- arXiv: title | authors | score ---
-	  (let* ((authors (concatenate-authors (elfeed-meta entry :authors)))
-		 (score   (number-to-string
-			   (or (ignore-errors
-				 (elfeed-score-scoring-get-score-from-entry entry))
-			       0)))
-		 (authors-width (elfeed-clamp 10 (/ win-width 4) 40))
+	  ;; --- arXiv: date | title | authors | score ---
+	  (let* ((authors       (concatenate-authors (elfeed-meta entry :authors)))
+		 (score         (number-to-string
+				 (or (ignore-errors
+				       (elfeed-score-scoring-get-score-from-entry entry))
+				     0)))
+		 (score-width   4) ; fixed slot; covers scores up to 9999
+		 (authors-width (elfeed-clamp 10 (/ win-width 2) 25))
 		 (title-width   (max 10 (- win-width authors-width 1
-					   (length score) 2))))
+					   score-width 1))))
 	    (insert (propertize (elfeed-format-column title title-width :left)
 				'face faces 'kbd-help title)
 		    " ")
 	    (insert (propertize (elfeed-format-column authors authors-width :left)
 				'face 'elfeed-search-author-face 'kbd-help authors))
 	    (insert (propertize " " 'display
-				`(space :align-to (- right ,(length score))))
-		    score))
+				`(space :align-to (- right ,score-width)))
+		    (elfeed-format-column score score-width :right)))
 	;; --- everything else: title | feed name ---
 	(let* ((feed-name (or (when-let* ((feed (elfeed-entry-feed entry)))
 				(elfeed-meta--title feed))
