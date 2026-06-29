@@ -1660,6 +1660,7 @@ Info manuals."
 	erc-user-full-name "Ashish Panigrahi"
 	erc-auto-query 'bury
 	erc-fill-column 100
+	erc-log-insert-log-on-open 'erc-log-new-target-buffer-p
 	erc-fill-function 'erc-fill-static
 	erc-fill-static-center 20))
 
