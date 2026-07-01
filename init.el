@@ -1205,9 +1205,7 @@ in `vertico-map', so multi-term queries still work."
   :config
   ;; disables resizing of echo area for automatic eldoc documentation
   ;; under the cursor
-  (setq eldoc-echo-area-use-multiline-p nil)
-  (setq eldoc-help-at-pt t)
-  (setq eldoc-echo-area-prefer-doc-buffer 'maybe))
+  (setq eldoc-echo-area-use-multiline-p nil))
 
 ;; `proced' (process monitor, similar to `top')
 ;; This is a built-in emacs package
