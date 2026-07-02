@@ -1226,7 +1226,7 @@ in `vertico-map', so multi-term queries still work."
   ( :map python-mode-map
     ("C-l" . nil) ; unbind default binding for text view centering
     ("C-l" . xref-go-back)
-    ("C-k" . pani/python-send-or-exec)
+    ("C-c C-c" . pani/python-send-or-exec)
     :map python-ts-mode-map
     ("C-l" . nil) ; unbind default binding for text view centering
     ("C-l" . xref-go-back)
@@ -1311,12 +1311,12 @@ buffer. Works for both local and TRAMP-remote buffers."
 
   (defvar pani/pytest-mode-map
     (let ((map (make-sparse-keymap)))
-      (define-key map (kbd "C-k") #'pani/python-run-pytest)
+      (define-key map (kbd "C-c C-c") #'pani/python-run-pytest)
       map)
     "Keymap for `pani/pytest-mode'.")
 
   (define-minor-mode pani/pytest-mode
-    "Minor mode to run pytest with `C-k' in test files."
+    "Minor mode to run pytest with `C-c C-c' in test files."
     :keymap pani/pytest-mode-map)
 
   (defun pani/python-maybe-enable-pytest ()
