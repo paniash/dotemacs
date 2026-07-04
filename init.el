@@ -1516,7 +1516,7 @@ Works in both `elfeed-search-mode' and `elfeed-show-mode'."
 	  ("http://irreal.org/blog/?tag=emacs&feed=rss2" emacs)
 	  ("http://marci.gunyho.com/rss" blog)
 	  ("http://11de784a.github.io/feed.xml" blog)
-	  ("http://terrytao.wordpress.com/feed/" blog)
+	  ("http://terrytao.wordpress.com/feed/" :title "Terry Tao" blog)
 	  ("http://m-malinowski.github.io/feed.xml" blog)
 	  ("https://ashishpanigrahi.com/atom.xml" blog)
 	  ("https://theprivacydad.com/feed/" blog)
