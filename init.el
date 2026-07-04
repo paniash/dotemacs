@@ -4,7 +4,7 @@
   :config
   (setq use-package-always-ensure nil)
   (setq package-install-upgrade-built-in nil)
-  (setq package-archives '(("melpa" . "https://melpa.org/packages/")
+  (setq package-archives '(("melpa" . "https://snapshots.melpa.org/packages/")
 			   ("non-gnu" . "https://elpa.nongnu.org/nongnu/")
 			   ("elpa" . "https://elpa.gnu.org/packages/")))
   (setq package-archive-priorities
