@@ -1150,7 +1150,20 @@ that and instead tries to complete against dictionary entries."
   (setq mail-header-separator "--text follows this line--")
   (setq message-elide-ellipsis "\n> [... %l lines elided]\n")
   (setq compose-mail-user-agent-warnings nil)
-  (setq message-signature "Kind regards,\nAshish (Pani)\n"
+
+  (defun pani/message-choose-signature ()
+    "Attachs signature depending on email account used."
+    (let ((from (or (message-field-value "From") "")))
+      (cond
+       ((string-match-p "@aalto\\.fi" from)
+	"Kind regards,\nAshish (Pani)\n")
+       ((string-match-p "@ashishpanigrahi\\.com" from)
+	"Kind regards,\nAshish\n")
+       ;; Fallback (also covers the ashish@ vs public@ split if you ever need it)
+       (t
+	"Kind regards,\nAshish (Pani)\n"))))
+
+  (setq message-signature #'pani/message-choose-signature
 	mail-signature message-signature)
   (setq message-citation-line-function #'message-insert-formatted-citation-line)
   (setq message-citation-line-format (concat "> From: %f\n"
