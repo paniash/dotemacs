@@ -1028,6 +1028,12 @@ that and instead tries to complete against dictionary entries."
 		     'indent-relative)))))
 
   (advice-add #'message-tab :override #'pani/notmuch-message-tab)
+
+  ;; Decryption settings
+  (setq notmuch-crypto-process-mime t)
+  (setq notmuch-crypto-get-keys-asynchronously t)
+  (setq notmuch-crypto-gpg-program 'gpg2)
+
   (defun pani/notmuch-jump-inbox ()
     "Jump straight to notmuch inbox."
     (interactive)
