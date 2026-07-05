@@ -1008,6 +1008,26 @@ in `vertico-map', so multi-term queries still work."
 				      nil nil initial-contents hist default)))))
 	(apply orig-fun args))))
 
+  ;; Stolen from Prot's config
+  (defun pani/notmuch-message-tab ()
+    "Override for `message-tab' to enforce header line check.
+More specifically, perform address completion when on a relevant header
+line, because `message-tab' sometimes (not sure when/how) fails to do
+that and instead tries to complete against dictionary entries."
+    (interactive nil message-mode)
+    (cond
+     ((save-excursion
+	(goto-char (line-beginning-position))
+	(looking-at notmuch-address-completion-headers-regexp))
+      (notmuch-address-expand-name)
+      ;; Completion was performed; nothing else to do.
+      nil)
+     (message-tab-body-function (funcall message-tab-body-function))
+     (t (funcall (or (lookup-key text-mode-map "\t")
+		     (lookup-key global-map "\t")
+		     'indent-relative)))))
+
+  (advice-add #'message-tab :override #'pani/notmuch-message-tab)
   (defun pani/notmuch-jump-inbox ()
     "Jump straight to notmuch inbox."
     (interactive)
