@@ -1183,6 +1183,42 @@ that and instead tries to complete against dictionary entries."
 	sendmail-program (or (executable-find "msmtp") "/usr/bin/msmtp")
         message-sendmail-envelope-from 'header))
 
+;; Encryption settings for email
+(use-package mml-sec
+  :ensure nil
+  :config
+  (setq mm-encrypt-option nil
+	mm-sign-option nil)
+
+  (setq mml-secure-openpgp-encrypt-to-self t
+	mml-secure-openpgp-sign-with-sender t)
+
+  (defun pani/message-recipients ()
+    "Return all recipients (To, Cc, Bcc) as `mail-extract-address-components' entries."
+    (mapcan (lambda (header)
+	      (when-let* ((value (message-fetch-field header)))
+		(mail-extract-address-components value t)))
+	    '("To" "Cc" "Bcc")))
+
+  (defun pani/message-all-keys-available-p ()
+    "Non-nil if the local keyring has a public key for every recipient."
+    (let ((context (epg-make-context 'OpenPGP)))
+      (catch 'missing
+        (dolist (recipient (pani/message-recipients) t)
+          (let ((email (cadr recipient)))
+            (when (and email (not (epg-list-keys context email)))
+              (throw 'missing nil)))))))
+
+  (defun pani/message-sign-or-encrypt ()
+    "Prompt to encrypt when possible; otherwise prompt to sign."
+    (if (pani/message-all-keys-available-p)
+	(if (y-or-n-p "Encrypt? ")
+	    (mml-secure-message-sign-encrypt)
+	  (when (y-or-n-p "Sign? ") (mml-secure-message-sign)))
+      (when (y-or-n-p "Sign? ") (mml-secure-message-sign))))
+
+  (add-hook 'message-send-hook #'pani/message-sign-or-encrypt))
+
 ;; Add direnv integration in emacs
 ;; envrc package
 (use-package envrc
