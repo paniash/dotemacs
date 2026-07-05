@@ -963,6 +963,7 @@ keeping the size stable across `g'/`org-agenda-redo'."
   (setq notmuch-mua-cite-function
 	'message-cite-original-without-signature)
   (setq notmuch-mua-user-agent-function nil)
+  (setq notmuch-mua-reply-insert-header-p-function 'notmuch-show-reply-insert-header-p-never)
 
   (setq notmuch-show-relative-dates t)
   (setq notmuch-show-all-multipart/alternative-parts nil)
