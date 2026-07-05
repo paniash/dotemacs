@@ -211,8 +211,8 @@ The DWIM behaviour of this command is as follows:
   ;; Do not use graphical dialogs
   (setq use-dialog-box nil)
 
-  ;; Disable tooltips
-  (tooltip-mode -1)
+  ;; Enable tooltips (default)
+  (tooltip-mode 1)
 
   ;; Disable remote file locks
   (setq remote-file-name-inhibit-locks t)
