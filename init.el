@@ -1146,7 +1146,7 @@ that and instead tries to complete against dictionary entries."
   (setq mail-user-agent 'message-user-agent
 	message-mail-user-agent t)  ; use `mail-user-agent'
   (setq mail-header-separator "--text follows this line--")
-  (setq message-elide-ellipsis "\n [... %l lines elided]\n")
+  (setq message-elide-ellipsis "\n> [... %l lines elided]\n")
   (setq compose-mail-user-agent-warnings nil)
   (setq message-signature "Kind regards,\nAshish (Pani)\n"
 	mail-signature message-signature)
