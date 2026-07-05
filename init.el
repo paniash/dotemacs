@@ -969,6 +969,7 @@ keeping the size stable across `g'/`org-agenda-redo'."
   (setq notmuch-show-indent-messages-width 0)
   (setq notmuch-show-indent-multipart nil)
   (setq notmuch-show-part-button-default-action 'notmuch-show-view-part)
+  (setq notmuch-show-text/html-blocked-images ".") ; block html images
   (setq notmuch-wash-wrap-lines-length 120)
   (setq notmuch-unthreaded-show-out nil)
   (setq notmuch-message-headers '("To" "Cc" "Subject" "Date"))
