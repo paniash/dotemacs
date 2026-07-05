@@ -1140,6 +1140,8 @@ that and instead tries to complete against dictionary entries."
 (use-package message
   :ensure nil
   :defer t
+  :bind (:map message-mode-map
+	      ("C-c C-e" . message-elide-region))
   :hook
   (message-setup . message-sort-headers)
   :config
