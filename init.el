@@ -1049,6 +1049,20 @@ that and instead tries to complete against dictionary entries."
 	       (not (y-or-n-p "Subject is empty, send anyway? ")))
       (error "Sending message cancelled: empty subject.")))
 
+  (defun pani/notmuch-show-ret ()
+    "Expand a wash citation button on the current line; else toggle the message."
+    (interactive)
+    (let* ((eol (line-end-position))
+	   (btn (let ((b (next-button (line-beginning-position) t)))
+		  (and b (< (button-start b) eol) b))))
+      (if btn
+	  (push-button (button-start btn))
+	(notmuch-show-toggle-message))))
+
+  (evil-collection-define-key 'normal 'notmuch-show-mode-map
+    (kbd "RET")      #'pani/notmuch-show-ret
+    (kbd "<return>") #'pani/notmuch-show-ret)
+
   :hook ((message-send . notmuch-mua-attachment-check)
 	 (message-send . pani/notmuch-mua-empty-subject-check))
 
