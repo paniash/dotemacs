@@ -980,7 +980,7 @@ keeping the size stable across `g'/`org-agenda-redo'."
 	  "Ashish Panigrahi <ashish@ashishpanigrahi.com>"))
 
   ;; Prot customization
-  (let ((count most-positive-fixnum)) ; I don't like the buttonisation of long quotes
+  (let ((count 5)) ; Show only 5 lines by default for quoted text
     (setq notmuch-wash-citation-lines-prefix count
           notmuch-wash-citation-lines-suffix count))
 
