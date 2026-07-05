@@ -1629,11 +1629,13 @@ Works in both `elfeed-search-mode' and `elfeed-show-mode'."
 ;; Info-mode config
 (use-package info
   :ensure nil ; built-in
-  :bind
-  (:map Info-mode-map
-	("<SPC>" . nil))  ;; TODO: Fix this binding as its bound to `Info-scroll-up'
   :hook (Info-mode . variable-pitch-mode)
   :config
+  (evil-define-key 'normal Info-mode-map
+    (kbd "SPC") nil
+    (kbd "u") #'Info-up
+    (kbd "C-j") #'Info-next
+    (kbd "C-k") #'Info-prev)
 
   ;; Custom function to resize fonts in Info manuals
   (defun pani/info-font-size ()
