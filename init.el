@@ -953,7 +953,7 @@ keeping the size stable across `g'/`org-agenda-redo'."
 	notmuch-draft-save-plaintext 'ask)
 
   ; Email composition
-  (setq notmuch-mua-compose-in 'new-window)
+  (setq notmuch-mua-compose-in 'current-window)
   (setq notmuch-mua-hidden-headers nil)
   (setq notmuch-address-command 'internal)
   (setq notmuch-address-use-company nil)
