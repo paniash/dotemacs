@@ -1605,6 +1605,7 @@ Works in both `elfeed-search-mode' and `elfeed-show-mode'."
 	  ("http://themkat.net/feed.xml" emacs)
 	  ("https://emacs.stackexchange.com/feeds" :title "Emacs Stackexchange" emacs forum)
 	  ("http://www.reddit.com/r/orgmode.rss" :title "r/orgmode" emacs orgmode forum)
+	  ("http://www.reddit.com/r/emacs.rss" :title "r/emacs" emacs orgmode forum)
 	  ("https://coredumped.dev/index.xml" emacs)
 	  ("http://irreal.org/blog/?tag=emacs&feed=rss2" emacs)
 	  ("http://marci.gunyho.com/rss" blog)
