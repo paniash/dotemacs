@@ -7,6 +7,8 @@
   (:text "gatemon" :value 200 :type s)
   (:text "bolometer" :value 300 :type s)
   (:text "superconducting resonators" :value 300 :type s)
+  (:text "superconducting processor" :value 300 :type s)
+  (:text "microwave resonators" :value 300 :type s)
   (:text "superconducting" :value 75 :type s)
   (:text "Josephson" :value 100 :type s)
   (:text "readout" :value 150 :type s)
