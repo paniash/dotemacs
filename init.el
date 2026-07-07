@@ -1218,11 +1218,10 @@ that and instead tries to complete against dictionary entries."
 
   (defun pani/message-sign-or-encrypt ()
     "Prompt to encrypt when possible; otherwise prompt to sign."
-    (if (pani/message-all-keys-available-p)
-	(if (y-or-n-p "Encrypt? ")
-	    (mml-secure-message-sign-encrypt)
-	  (when (y-or-n-p "Sign? ") (mml-secure-message-sign)))
-      (when (y-or-n-p "Sign? ") (mml-secure-message-sign))))
+    (if (and (pani/message-all-keys-available-p)
+	     (y-or-n-p "Encrypt? "))
+	(mml-secure-message-sign-encrypt)
+      (mml-secure-message-sign)))
 
   (add-hook 'message-send-hook #'pani/message-sign-or-encrypt))
 
