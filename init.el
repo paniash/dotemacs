@@ -1849,3 +1849,12 @@ Info manuals."
 (use-package rainbow-delimiters
   :ensure t
   :hook (emacs-lisp-mode . rainbow-delimiters-mode))
+
+;; Spellchecker
+;; Needs libenchant, pkgconf and dictionaries (aspell and aspell-en)
+;; installed on system
+(use-package jinx
+  :ensure t
+  :defer t
+  :config
+  (setq jinx-languages "en"))
