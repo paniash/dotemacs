@@ -1148,7 +1148,9 @@ that and instead tries to complete against dictionary entries."
   :ensure nil
   :defer t
   :bind (:map message-mode-map
-	      ("C-c C-e" . message-elide-region))
+	      ("C-c C-e" . message-elide-region)
+	      ("C-c C-z" . nil) ;; `message-kill-to-signature' is now bound to `C-c C-l'.
+	      ("C-c C-l" . message-kill-to-signature))
   :hook
   (message-setup . message-sort-headers)
   :config
