@@ -471,9 +471,6 @@ The DWIM behaviour of this command is as follows:
 	 ("C-c C-p" . org-priority)
 	 ("C-c C-j" . nil))  ;; I don't use `org-goto'
   :config
-  ;; Set default pdf-viewer in org-mode
-  (add-to-list 'org-file-apps '("\\.pdf\\'" . "firefox \"%s\""))
-
   (setq org-log-done 'time)
   ;; Collapse the log entries into a "drawer"
   (setq org-log-into-drawer t)
