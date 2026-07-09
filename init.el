@@ -871,6 +871,18 @@ keeping the size stable across `g'/`org-agenda-redo'."
   ( :map minibuffer-local-map
     ("C-v" . yank)))
 
+;; Mailcap settings
+(use-package mailcap
+  :ensure nil
+  :config
+  ;; Prefer librewolf first, otherwise firefox for opening pdfs
+  (defvar pani/pdf-browser
+    (or (seq-find #'executable-find '("librewolf" "firefox")) "firefox"))
+
+  (add-to-list 'mailcap-user-mime-data
+	       `((viewer . ,(concat pani/pdf-browser " %s"))
+		 (type . "application/pdf"))))
+
 (use-package emacs
   :ensure nil
   :config
