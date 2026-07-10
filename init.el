@@ -528,6 +528,7 @@ The DWIM behaviour of this command is as follows:
    '((python . t)
      (emacs-lisp . t)))
 
+  (setq org-babel-python-command python-shell-interpreter)
   ;; List points now use a unicode bullet symbol instead of a generic
   ;; dash or asterisk
   (font-lock-add-keywords 'org-mode
