@@ -529,6 +529,12 @@ The DWIM behaviour of this command is as follows:
      (emacs-lisp . t)))
 
   (setq org-babel-python-command python-shell-interpreter)
+
+  ;; Don't ask me everytime I evaluate a src-block (only for python and elisp)
+  (setq org-confirm-babel-evaluate
+	(lambda (lang _body)
+	  (not (member lang '("python" "emacs-lisp")))))
+
   ;; List points now use a unicode bullet symbol instead of a generic
   ;; dash or asterisk
   (font-lock-add-keywords 'org-mode
