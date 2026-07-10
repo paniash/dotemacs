@@ -454,6 +454,18 @@ The DWIM behaviour of this command is as follows:
   (which-key-mode)
   (setq which-key-idle-delay 1))
 
+;; Image settings inside emacs
+(use-package image
+  :ensure nil
+  :config
+  (defun pani/png-white-bg (orig file-or-data &optional type data-p &rest props)
+    (when (or (eq type 'png)
+              (and (stringp file-or-data) (not data-p)
+                   (string-match-p "\\.png\\'" file-or-data)))
+      (setq props (plist-put props :background "white")))
+    (apply orig file-or-data type data-p props))
+  (advice-add 'create-image :around #'pani/png-white-bg))
+
 ;; Orgmode specific settings
 (use-package org
   :ensure nil  ; org is built-in
