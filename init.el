@@ -464,7 +464,63 @@ The DWIM behaviour of this command is as follows:
                    (string-match-p "\\.png\\'" file-or-data)))
       (setq props (plist-put props :background "white")))
     (apply orig file-or-data type data-p props))
-  (advice-add 'create-image :around #'pani/png-white-bg))
+  (advice-add 'create-image :around #'pani/png-white-bg)
+
+  (defun pani/image--mime-type (image)
+    "Return the MIME type of IMAGE, sniffing its payload where possible.
+The :type property can be `imagemagick' or otherwise unhelpful, so prefer
+detection from the actual bytes."
+    (let* ((data (image-property image :data))
+	   (file (image-property image :file))
+	   (type (or (and data (image-type-from-data data))
+		     (and file (image-type-from-file-header file))
+		     (image-property image :type))))
+      (pcase type
+	('jpeg "image/jpeg")
+	('gif  "image/gif")
+	('tiff "image/tiff")
+	('webp "image/webp")
+	('svg  "image/svg+xml")
+	(_     "image/png"))))
+
+  (defun pani/image--payload-file (image)
+    "Return a file holding IMAGE's bytes, plus non-nil if it's a temp file.
+Images rendered by shr carry their payload in :data, so write it out;
+file-backed images are used in place."
+    (let ((data (image-property image :data))
+          (file (image-property image :file)))
+      (cond
+       (data (let ((tmp (make-temp-file "emacs-image-"))
+                   (coding-system-for-write 'binary))
+               (with-temp-file tmp
+                 (set-buffer-multibyte nil)
+                 (insert data))
+               (cons tmp t)))
+       (file (cons (expand-file-name file) nil))
+       (t (user-error "Image at point has no payload")))))
+
+  (defun pani/image-copy-to-clipboard ()
+    "Copy the image at point to the X clipboard via `xclip'.
+Emacs cannot own a non-text X selection, so xclip is spawned detached and
+lingers as the selection owner."
+    (interactive)
+    (unless (executable-find "xclip")
+      (user-error "`xclip' not found"))
+    (let* ((image (image--get-image))
+           (mime  (pani/image--mime-type image))
+           (payload (pani/image--payload-file image))
+           (file  (car payload))
+           (tempp (cdr payload)))
+      ;; Pass the file as INFILE: Emacs opens it and hands the fd to the child
+      ;; before forking, so unlinking it afterwards is safe.  DESTINATION 0
+      ;; means "don't wait" -- xclip must stay alive to serve the selection.
+      (call-process "xclip" file 0 nil "-selection" "clipboard" "-t" mime)
+      (when tempp
+        (ignore-errors (delete-file file)))
+      (message "Copied image (%s) to clipboard" mime)))
+
+  ;; `i o' is `image-save'; give it a sibling.  `i c' is taken by `image-crop'.
+  (keymap-set image-map "i w" #'pani/image-copy-to-clipboard))
 
 ;; Orgmode specific settings
 (use-package org
