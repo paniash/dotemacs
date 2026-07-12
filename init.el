@@ -767,20 +767,20 @@ keeping the size stable across `g'/`org-agenda-redo'."
 	  ("m" "Meetings")
 	  ("mi" "One-to-one" entry
 	   (file+headline "meetings.org" "One-to-one meetings")
-	   "* MEETING with %^{With whom} at %^{Place} %^g\n SCHEDULED: %^T" :empty-lines-after 1)
+	   "* MEETING with %^{With whom} at %^{Place} %^g\n %^T" :empty-lines-after 1)
 	  ("mg" "Group" entry
 	   (file+headline "meetings.org" "Group meetings")
-	   "* %^{Event} MEETING%? %^g\n SCHEDULED: %^T" :empty-lines-after 1)
+	   "* %^{Event} MEETING%? %^g\n %^T" :empty-lines-after 1)
 	  ("e" "Events" entry
 	   (file+headline "events.org" "Events")
 	   "* %^{Event}%? %^g\n %^t" :empty-lines-after 1)
 	  ("r" "Rendez-vous")
 	  ("rp" "Phone calls" entry
 	   (file+headline "meetings.org" "Phone calls")
-	   "* CALL with %^{With whom}%?\n SCHEDULED: %^t" :empty-lines-after 1)
+	   "* CALL with %^{With whom}%?\n %^T" :empty-lines-after 1)
 	  ("ri" "Rendezvous in-person" entry
 	   (file+headline "meetings.org" "Rendezvous in-person")
-	   "* HANGOUT with %^{With whom} at %^{Place}\n SCHEDULED: %^t" :empty-lines-after 1))))
+	   "* HANGOUT with %^{With whom} at %^{Place}\n %^T" :empty-lines-after 1))))
 
 
 ;; Denote package by Protesilaos
