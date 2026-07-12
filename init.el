@@ -604,6 +604,8 @@ keeping the size stable across `g'/`org-agenda-redo'."
 			(if (member (calendar-day-of-week date) org-agenda-weekend-days)
 			    'org-agenda-date-weekend
 			  'org-agenda-date)))
+		     (org-agenda-skip-function
+		      '(org-agenda-skip-entry-if 'todo '("PROG")))
 		     (org-agenda-format-date "%A, %-e %B %Y")
 		     (org-agenda-overriding-header "\nDaily agenda")))
 	    (agenda "" ((org-agenda-start-on-weekday nil)
