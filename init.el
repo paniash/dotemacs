@@ -1035,13 +1035,13 @@ keeping the size stable across `g'/`org-agenda-redo'."
 
   ; Tags
   (setq notmuch-archive-tags nil ; I don't archive email
-	notmuch-message-replied-tags '("+replied")
-	notmuch-message-forwarded-tags '("+forwarded")
+	notmuch-message-replied-tags '("+replied" "-unread")
+	notmuch-message-forwarded-tags '("+forwarded" "-unread")
 	notmuch-show-mark-read-tags '("-unread")
-	notmuch-draft-tags '("+draft")
+	notmuch-draft-tags '("+draft" "-unread")
 	notmuch-draft-folder "university/Drafts"
-	notmuch-fcc-dirs '(("ashish\\.panigrahi@aalto\\.fi" . "university/Sent")
-			   ("@ashishpanigrahi\\.com" . "migadu/Sent"))
+	notmuch-fcc-dirs '(("ashish\\.panigrahi@aalto\\.fi" . "university/Sent -unread")
+			   ("@ashishpanigrahi\\.com" . "migadu/Sent -unread"))
 	notmuch-draft-save-plaintext 'ask)
 
   ; Email composition
