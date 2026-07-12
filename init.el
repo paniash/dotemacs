@@ -748,6 +748,9 @@ keeping the size stable across `g'/`org-agenda-redo'."
    '(org-tag ((t (:foreground "#56b6c2" :weight light))))
    )
 
+  ;; Change text for past scheduled items
+  (setq org-agenda-scheduled-leaders '("Scheduled: " "Late%2dd:   "))
+
   ;; Hides DONE items in org-agenda for schedules and deadlines
   (setq org-agenda-skip-scheduled-if-done t)
   (setq org-agenda-skip-deadline-if-done t))
