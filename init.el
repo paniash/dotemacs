@@ -734,6 +734,9 @@ keeping the size stable across `g'/`org-agenda-redo'."
 	  (tags   . " %i %-12:c")
 	  (search . " %i %-12:c")))
 
+  ;; Don't run emacs diary when invoking org-agenda
+  (setq org-agenda-include-diary nil)
+
   ;; User-defined colors for custom org-agenda
   (custom-set-faces
    '(org-agenda-structure ((t (:foreground "#689f38" :weight normal))))
