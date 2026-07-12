@@ -724,7 +724,7 @@ keeping the size stable across `g'/`org-agenda-redo'."
 	  "meetings.org"
 	  "events.org"
 	  "personal.org"
-	  "birthdays.org"))
+	  "calendar.org"))
 
   ;; Sets TODO items to not have a prefix at the left hand side of the
   ;; org-agenda window (typically the filename where the TODO item was created).
