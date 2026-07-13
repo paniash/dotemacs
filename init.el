@@ -1741,6 +1741,7 @@ Works in both `elfeed-search-mode' and `elfeed-show-mode'."
 	  ("http://www.noendcomic.com/rss.php" comics)
 	  ("http://xkcd.com/atom.xml" :title "xkcd" comics)
 	  ("http://www.smbc-comics.com/comic/rss" :title "SMBC" comics)
+	  ("https://warandpeas.com/feed/" :title "War and Peas" comics)
 	  ("http://www.commitstrip.com/en/feed/" comics))))
 
 (use-package elfeed-score
