@@ -914,7 +914,11 @@ keeping the size stable across `g'/`org-agenda-redo'."
 	      ("C-c l r" . consult-ripgrep)
 	      ("C-c l d" . consult-fd)
 	      ("C-c l i" . consult-imenu)
-	      ("C-c l l" . consult-line)))
+	      ("C-c l l" . consult-line)
+
+	      :map org-mode-map
+	      ("C-c l o" . consult-org-heading)
+	      ("C-c l a" . consult-org-agenda)))
 
 ;;;; Emacs server (allow emacsclient to connect to running session)
 (use-package server
