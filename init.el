@@ -1139,6 +1139,11 @@ that and instead tries to complete against dictionary entries."
     (interactive)
     (notmuch-search "tag:inbox"))
 
+  (defun pani/notmuch-jump-unread ()
+    "Jump straight to notmuch unread tags."
+    (interactive)
+    (notmuch-search "tag:unread"))
+
   (defun pani/notmuch-jump-migadu ()
     "Jump straight to personal (migadu) inbox."
     (interactive)
@@ -1176,6 +1181,7 @@ that and instead tries to complete against dictionary entries."
   ( :map global-map
     ("C-c m m" . notmuch)
     ("C-c m i" . pani/notmuch-jump-inbox)
+    ("C-c m u" . pani/notmuch-jump-unread)
     ("C-c m p" . pani/notmuch-jump-migadu)
     ("C-c m o" . pani/notmuch-jump-orgmode)
     ("C-x m" . notmuch-mua-new-mail) ; override `compose-mail'
