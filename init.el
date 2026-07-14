@@ -1053,8 +1053,8 @@ keeping the size stable across `g'/`org-agenda-redo'."
 	notmuch-show-mark-read-tags '("-unread")
 	notmuch-draft-tags '("+draft" "-unread")
 	notmuch-draft-folder "university/Drafts"
-	notmuch-fcc-dirs '(("ashish\\.panigrahi@aalto\\.fi" . "university/Sent -unread")
-			   ("@ashishpanigrahi\\.com" . "migadu/Sent -unread"))
+	notmuch-fcc-dirs '(("ashish\\.panigrahi@aalto\\.fi" . "university/Sent -inbox -unread +sent +aalto")
+			   ("@ashishpanigrahi\\.com" . "migadu/Sent -inbox -unread +sent +migadu"))
 	notmuch-draft-save-plaintext 'ask)
 
   ; Email composition
