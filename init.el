@@ -1973,3 +1973,38 @@ Info manuals."
   :defer t
   :config
   (setq jinx-languages "en"))
+
+;; Templates for faster text
+(use-package tempel
+  :ensure t
+  :bind (("M-+" . tempel-complete) ;; Alternative tempel-expand
+	 ("M-*" . tempel-insert)
+	 :map tempel-map
+	 ("TAB" . tempel-next)
+	 ("<tab>" . tempel-next)
+	 ("S-TAB" . tempel-previous)
+	 ("<backtab>" . tempel-previous)
+	 ("C-g" . tempel-done))
+  :init
+  ;; Setup completion at point
+  (defun pani/tempel-setup-capf ()
+    ;; Add the Tempel Capf to `completion-at-point-functions'.  `tempel-expand'
+    ;; only triggers on exact matches. We add `tempel-expand' *before* the main
+    ;; programming mode Capf, such that it will be tried first.
+    (setq-local completion-at-point-functions
+		(cons #'tempel-expand completion-at-point-functions)))
+
+  (dolist (hook '(conf-mode-hook prog-mode-hook text-mode-hook))
+    (add-hook hook #'pani/tempel-setup-capf))
+
+  (defun pani/org-tempel-tab ()
+    "Expand the template at point. Non-nil if one was expanded."
+    (condition-case nil
+	(tempel-complete t)
+      (user-error nil)))
+
+  (with-eval-after-load 'org
+    (add-hook 'org-cycle-tab-first-hook #'pani/org-tempel-tab))
+
+  :config
+  (setq tempel-path (expand-file-name "templates" user-emacs-directory)))
