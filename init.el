@@ -1229,6 +1229,44 @@ that and instead tries to complete against dictionary entries."
   :hook ((message-send . notmuch-mua-attachment-check)
 	 (message-send . pani/notmuch-mua-empty-subject-check))
 
+  :config
+  (defun pani/notmuch-poll-async ()
+    "Run `mbsync -a' asynchronously, then `notmuch new' and refresh the notmuch buffer."
+    (interactive)
+    (if (process-live-p (get-process "mbsync"))
+	(message "mbsync is already running")
+      (let ((buffer (current-buffer)))
+	(message "Syncing mail...")
+	(make-process
+	 :name "mbsync"
+	 :buffer "*mbsync*"
+	 :command (list (or (executable-find "mbsync") "mbsync")
+			"-c" (expand-file-name "mbsync/mbsyncrc"
+					       (or (getenv "XDG_CONFIG_HOME")
+						   "~/.config"))
+			"-a")
+	 :noquery t
+	 :sentinel
+	 (lambda (proc event)
+	   (when (memq (process-status proc) '(exit signal))
+	     (if (zerop (process-exit-status proc))
+		 (progn
+		   (if (buffer-live-p buffer)
+		       (with-current-buffer buffer
+			 (notmuch-poll-and-refresh-this-buffer))
+		     (notmuch-poll))
+		   (message "Mail synced."))
+	       (message "mbsync failed (%s) — see *mbsync*"
+			(string-trim event)))))))))
+
+  (with-eval-after-load 'evil-collection
+    (evil-collection-define-key 'normal 'notmuch-hello-mode-map
+      "gR" #'pani/notmuch-poll-async)
+    (evil-collection-define-key 'normal 'notmuch-search-mode-map
+      "gR" #'pani/notmuch-poll-async)
+    (evil-collection-define-key 'normal 'notmuch-tree-mode-map
+      "gR" #'pani/notmuch-poll-async))
+
   :bind
   ( :map global-map
     ("C-c m m" . notmuch)
