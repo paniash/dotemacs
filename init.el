@@ -746,7 +746,7 @@ keeping the size stable across `g'/`org-agenda-redo'."
    '(org-agenda-calendar-daterange ((t (:foreground "#a8a8a8" :weight normal))))
    '(org-scheduled ((t (:foreground "#84a8a4" :weight normal))))
    '(org-scheduled-today ((t (:foreground "#84a8a4" :weight normal))))
-   '(org-scheduled-previously ((t (:foreground "#7986cb" :weight bold))))
+   '(org-scheduled-previously ((t (:foreground "#7986cb" :weight normal))))
    '(org-deadline-today ((t (:foreground "#f7768e" :weight normal))))
    '(org-tag ((t (:foreground "#56b6c2" :weight light))))
    )
