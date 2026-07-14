@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 ;; Initialize package sources
 (use-package package
   :ensure nil
