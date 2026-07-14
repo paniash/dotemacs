@@ -64,6 +64,12 @@
 	    display-buffer-pop-up-window)
 	   (window-height . fit-window-to-buffer))
 
+	  ;; vc-compilation mode settings
+	  ((derived-mode . vc-compilation-mode)
+	   (display-buffer-reuse-mode-window
+	    display-buffer-pop-up-window)
+	   (window-height . fit-window-to-buffer))
+
 	  ;; help-mode settings
 	  ((derived-mode . help-mode)
 	   (display-buffer-reuse-mode-window
