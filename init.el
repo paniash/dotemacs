@@ -1180,6 +1180,51 @@ that and instead tries to complete against dictionary entries."
     (kbd "RET")      #'pani/notmuch-show-ret
     (kbd "<return>") #'pani/notmuch-show-ret)
 
+  ;; View attachments without hunting for the part button
+  (defun pani/notmuch-show--attachments ()
+    "Return an alist of (LABEL . POSITION) for attachments of the message at point."
+    (let ((id (plist-get (notmuch-show-get-message-properties) :id))
+	  (pos (point-min))
+	  (seen nil)
+	  (parts nil))
+      (save-excursion
+	(while pos
+	  (when-let* ((part (get-text-property pos :notmuch-part))
+		      (part-id (plist-get part :id))
+		      (filename (plist-get part :filename)))
+	    (goto-char pos)
+	    ;; Restrict to the message point was in, and take each part once:
+	    ;; a part's region can be split into several property runs.
+	    (when (and (equal id (plist-get (notmuch-show-get-message-properties) :id))
+		       (not (member part-id seen)))
+	      (push part-id seen)
+	      (push (cons (format "%s [%s]"
+				  filename
+				  (or (plist-get part :content-type) "?"))
+			  pos)
+		    parts)))
+	  (setq pos (next-single-property-change pos :notmuch-part))))
+      (nreverse parts)))
+
+  (defun pani/notmuch-show-view-attachment (&optional choose-viewer)
+    "View an attachment of the message at point in an external viewer."
+    (interactive "P" notmuch-show-mode)
+    (let ((attachments (pani/notmuch-show--attachments)))
+      (unless attachments
+	(user-error "No attachment in this message"))
+      (let ((choice (if (= (length attachments) 1)
+			(car attachments)
+		      (assoc (completing-read "View attachment: " attachments nil t)
+			     attachments))))
+	(save-excursion
+	  (goto-char (cdr choice))
+	  (if choose-viewer
+	      (notmuch-show-interactively-view-part)
+	    (notmuch-show-view-part))))))
+
+  (evil-collection-define-key 'normal 'notmuch-show-mode-map
+    (kbd "P") #'pani/notmuch-show-view-attachment)
+
   :hook ((message-send . notmuch-mua-attachment-check)
 	 (message-send . pani/notmuch-mua-empty-subject-check))
 
@@ -1202,6 +1247,7 @@ that and instead tries to complete against dictionary entries."
     ("A" . nil)
     ("r" . notmuch-show-reply) ; easier to reply to all by default
     ("R" . notmuch-show-reply-sender)
+    ("C-c C-o" . pani/notmuch-show-view-attachment)
     :map notmuch-hello-mode-map
     ("C-<tab>" . nil)
     ("J" . notmuch-jump-search))
