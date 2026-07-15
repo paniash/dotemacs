@@ -1815,6 +1815,7 @@ Works in both `elfeed-search-mode' and `elfeed-show-mode'."
 	  ("http://timharek.no/rss.xml" blog)
 	  ("http://matt.might.net/articles/feed.rss" blog)
 	  ("http://protesilaos.com/commentary.xml" blog)
+	  ("https://karpathy.bearblog.dev/feed/" :title "Karpathy AI" blog)
 	  ("http://gregorygundersen.com/feed.xml" blog)
 	  ("http://rosenzweig.io/feed.xml" blog)
 	  ("http://adol.pw/index.xml" blog)
