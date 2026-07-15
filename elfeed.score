@@ -72,6 +72,7 @@
   (:text "\\(?:V\\(?:\\(?:\\.\\|alla\\) Fatemi\\)\\)" :value 500 :type R :tags (t arxiv))
   (:text "\\(?:D\\(?:\\(?:\\.\\|aniel\\) Bothner\\)\\)" :value 450 :type R :tags (t arxiv))
   (:text "\\(?:Y\\(?:\\(?:\\.\\|iwen\\) Chu\\)\\)" :value 500 :type R :tags (t arxiv))
+  (:text "\\(?:J\\(?:\\(?:\\.\\|oel\\) Ullom\\)\\)" :value 500 :type R :tags (t arxiv))
   (:text "Mohammad Mirhosseini" :value 500 :type w :tags (t arxiv))
   (:text "Mustafa Bakr" :value 500 :type w :tags (t arxiv))
   (:text "\\(?:S\\(?:\\(?:\\. M\\.\\|ergey\\(?: M\\.\\)?\\) Frolov\\)\\)" :value 500 :type R :tags (t arxiv))
