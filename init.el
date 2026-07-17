@@ -966,7 +966,9 @@ keeping the size stable across `g'/`org-agenda-redo'."
   :ensure nil
   :bind
   ( :map minibuffer-local-map
-    ("C-v" . yank)))
+    ("C-v" . yank))
+  :config
+  (setq enable-recursive-minibuffers t))
 
 ;; Mailcap settings
 (use-package mailcap
