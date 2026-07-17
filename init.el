@@ -947,6 +947,13 @@ keeping the size stable across `g'/`org-agenda-redo'."
 	 :map vertico-map
 	      ("C-c C-d" . pani/fd-jump))
   :init
+  (defun pani/fd-executable ()
+    "Return the local fd binary (`fd' or `fdfind')."
+    (let ((default-directory "~/"))   ; force a local lookup, not over TRAMP
+      (or (executable-find "fd")
+	  (executable-find "fdfind")
+	  (user-error "Neither `fd' nor `fdfind' found"))))
+
   ;; Custom function to mimick fzf+fd fuzzy-style `cd'
   (defun pani/fd-jump ()
     "Fuzzy-jump into a directory below a root via fd.
@@ -958,8 +965,7 @@ or completing a filename there.  Otherwise, open dired at the chosen directory."
     (let* ((in-file-mb (pani/fd--file-name-mb-p))
 	   (root (pani/fd--root))
 	   (default-directory root)
-	   (dirs (process-lines "fd" "--type" "directory"
-				"--no-ignore" "--strip-cwd-prefix"))
+	   (dirs (process-lines (pani/fd-executable) "--type" "directory" "--strip-cwd-prefix"))
 	   (target (completing-read
 		    (format "Directory (under %s): " (abbreviate-file-name root))
 		    dirs nil t))
