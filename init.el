@@ -942,6 +942,52 @@ keeping the size stable across `g'/`org-agenda-redo'."
   :commands (dired)
   :hook ((dired-mode . dired-hide-details-mode)
 	 (dired-mode . hl-line-mode))
+  :bind (:map global-map
+	      ("C-c C-d" . pani/fd-jump)
+	 :map vertico-map
+	      ("C-c C-d" . pani/fd-jump))
+  :init
+  ;; Custom function to mimick fzf+fd fuzzy-style `cd'
+  (defun pani/fd-jump ()
+    "Fuzzy-jump into a directory below a root via fd.
+
+When called from a file-name minibuffer (an unconfirmed `C-x C-f' prompt),
+replace the path being edited with the chosen directory, so you keep typing
+or completing a filename there.  Otherwise, open dired at the chosen directory."
+    (interactive)
+    (let* ((in-file-mb (pani/fd--file-name-mb-p))
+	   (root (pani/fd--root))
+	   (default-directory root)
+	   (dirs (process-lines "fd" "--type" "directory"
+				"--no-ignore" "--strip-cwd-prefix"))
+	   (target (completing-read
+		    (format "Directory (under %s): " (abbreviate-file-name root))
+		    dirs nil t))
+	   (abs (file-name-as-directory (expand-file-name target root))))
+      (if in-file-mb
+	  (progn
+	    (delete-minibuffer-contents)
+	    (insert abs))
+	(dired abs))))
+
+  (defun pani/fd--file-name-mb-p ()
+    "Non-nil if the active minibuffer is reading a file name."
+    (and (minibufferp)
+	 (bound-and-true-p minibuffer-completing-file-name)))
+
+  (defun pani/fd--root ()
+    "Return the fd search root.
+In a file-name minibuffer, use the directory of the path being edited;
+otherwise use the current buffer's `default-directory'."
+    (if (pani/fd--file-name-mb-p)
+	(let* ((expanded (expand-file-name (minibuffer-contents-no-properties)))
+	       (dir (if (directory-name-p expanded)
+			expanded
+		      (file-name-directory expanded))))
+	  (or (and dir (file-directory-p dir) (file-name-as-directory dir))
+	      default-directory))
+      default-directory))
+
   :config
   (setq dired-recursive-copies 'always)
   (setq dired-recursive-deletes 'always)
