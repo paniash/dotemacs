@@ -965,7 +965,8 @@ or completing a filename there.  Otherwise, open dired at the chosen directory."
     (let* ((in-file-mb (pani/fd--file-name-mb-p))
 	   (root (pani/fd--root))
 	   (default-directory root)
-	   (dirs (process-lines (pani/fd-executable) "--type" "directory" "--strip-cwd-prefix"))
+	   (dirs (process-lines (pani/fd-executable) "--type" "directory" "--strip-cwd-prefix"
+				"--max-depth" "3"))
 	   (target (completing-read
 		    (format "Directory (under %s): " (abbreviate-file-name root))
 		    dirs nil t))
