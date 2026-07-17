@@ -940,9 +940,8 @@ keeping the size stable across `g'/`org-agenda-redo'."
 (use-package dired
   :ensure nil
   :commands (dired)
-  :hook
-  ((dired-mode . dired-hide-details-mode)
-   (dired-mode . hl-line-mode))
+  :hook ((dired-mode . dired-hide-details-mode)
+	 (dired-mode . hl-line-mode))
   :config
   (setq dired-recursive-copies 'always)
   (setq dired-recursive-deletes 'always)
