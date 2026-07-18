@@ -573,7 +573,7 @@ lingers as the selection owner."
   (setq org-todo-keyword-faces
 	'(("PROG" . (:foreground "orange" :weight bold))
 	  ("TODO" . (:foreground "#EA4E34" :weight bold))
-	  ("WAIT" . (:foreground "#ff64bf" :weight bold))
+	  ("WAIT" . (:foreground "#8E97ED" :weight bold))
 	  ("CANCELLED" . (:foreground "#B50741" :weight bold))))
 
   ;; Block parent TODO to DONE if children are undone
