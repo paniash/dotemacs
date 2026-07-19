@@ -342,6 +342,9 @@ The DWIM behaviour of this command is as follows:
   (evil-define-key nil 'global
     (kbd "<leader>v") 'consult-project-buffer)
 
+  ;; Mute echo area message when entering insert mode
+  (setq evil-echo-state nil)
+
   ;; Set `t' as a prefix key for tab manipulation commands
   (define-prefix-command 'pani/t-key)
   (define-key evil-normal-state-map (kbd "t") 'pani/t-key)
