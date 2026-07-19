@@ -2168,6 +2168,7 @@ Info manuals."
 (use-package emms
   :ensure t
   :commands (emms emms-play-directory-tree emms-browser)
+  :hook (emms-browser-mode . hl-line-mode)
   :config
   (setq emms-player-list '(emms-player-mpv)
 	emms-info-functions '(emms-info-native)
