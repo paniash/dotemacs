@@ -1040,7 +1040,7 @@ otherwise use the current buffer's `default-directory'."
   :config
   (defvar notmuch-path
     (if (string=(system-name) "d22-0153")
-	"/usr/share/emacs/site-lisp/elpa/notmuch-0.38.3/"
+	(file-expand-wildcards "/usr/share/emacs/site-lisp/elpa/notmuch-*/")
       "/usr/share/emacs/site-lisp/")))
 
 ;; Notmuch for email
