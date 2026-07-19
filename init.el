@@ -2155,3 +2155,14 @@ Info manuals."
 
   :config
   (setq tempel-path (expand-file-name "templates" user-emacs-directory)))
+
+;; Music management with EMMS
+(use-package emms
+  :ensure t
+  :commands (emms emms-play-directory-tree emms-browser)
+  :config
+  (setq emms-player-list '(emms-player-mpv)
+	emms-info-functions '(emms-info-native)
+	emms-browser-covers #'emms-browser-cache-thumbnail-async)
+  (setq emms-source-file-default-directory "/l/music/")
+  (emms-all))

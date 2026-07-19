@@ -25,3 +25,4 @@ tree-sitter/
 *.eld
 games/
 .authinfo
+emms/
