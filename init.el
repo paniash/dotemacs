@@ -2180,3 +2180,16 @@ Info manuals."
       "~/music/"))
   (setq emms-source-file-default-directory 'pani/emms-music-directory)
   (emms-all))
+
+;; Sleek modeline
+(use-package sleek-modeline
+  :ensure t
+  :config
+  (setq sleek-modeline-highlight-modified-buffer-name nil)
+  (setq sleek-modeline-show-modal-state 'evil)
+  (setq sleek-modeline-hide-inactive nil)
+  (setq sleek-modeline-size 'small)
+
+  ;; Segments
+  (setq sleek-modeline-enable-diagnostics nil)
+  (sleek-modeline-mode 1))
