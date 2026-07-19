@@ -2172,5 +2172,10 @@ Info manuals."
   (setq emms-player-list '(emms-player-mpv)
 	emms-info-functions '(emms-info-native)
 	emms-browser-covers #'emms-browser-cache-thumbnail-async)
-  (setq emms-source-file-default-directory "/l/music/")
+
+  (defvar pani/emms-music-directory
+    (if (string= (system-name) "d22-0153")
+	"/l/music/"
+      "~/music/"))
+  (setq emms-source-file-default-directory 'pani/emms-music-directory)
   (emms-all))
