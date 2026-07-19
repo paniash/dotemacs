@@ -952,40 +952,10 @@ keeping the size stable across `g'/`org-agenda-redo'."
   :hook ((dired-mode . dired-hide-details-mode)
 	 (dired-mode . hl-line-mode))
   :bind (:map global-map
-	      ("C-c C-d" . pani/fd-jump)
-	 :map vertico-map
-	      ("C-c C-d" . pani/fd-jump))
+	      ("C-c C-d" . pani/consult-fd)
+	      :map minibuffer-local-completion-map
+	      ("C-c C-d" . pani/consult-fd))
   :init
-  (defun pani/fd-executable ()
-    "Return the local fd binary (`fd' or `fdfind')."
-    (let ((default-directory "~/"))   ; force a local lookup, not over TRAMP
-      (or (executable-find "fd")
-	  (executable-find "fdfind")
-	  (user-error "Neither `fd' nor `fdfind' found"))))
-
-  ;; Custom function to mimick fzf+fd fuzzy-style `cd'
-  (defun pani/fd-jump ()
-    "Fuzzy-jump into a directory below a root via fd.
-
-When called from a file-name minibuffer (an unconfirmed `C-x C-f' prompt),
-replace the path being edited with the chosen directory, so you keep typing
-or completing a filename there.  Otherwise, open dired at the chosen directory."
-    (interactive)
-    (let* ((in-file-mb (pani/fd--file-name-mb-p))
-	   (root (pani/fd--root))
-	   (default-directory root)
-	   (dirs (process-lines (pani/fd-executable) "--type" "directory" "--strip-cwd-prefix"
-				"--max-depth" "3"))
-	   (target (completing-read
-		    (format "Directory (under %s): " (abbreviate-file-name root))
-		    dirs nil t))
-	   (abs (file-name-as-directory (expand-file-name target root))))
-      (if in-file-mb
-	  (progn
-	    (delete-minibuffer-contents)
-	    (insert abs))
-	(dired abs))))
-
   (defun pani/fd--file-name-mb-p ()
     "Non-nil if the active minibuffer is reading a file name."
     (and (minibufferp)
@@ -1003,6 +973,30 @@ otherwise use the current buffer's `default-directory'."
 	  (or (and dir (file-directory-p dir) (file-name-as-directory dir))
 	      default-directory))
       default-directory))
+
+  (defvar pani/consult-fd--pending-root nil
+    "Root handed to `consult-fd' after exiting a file-name minibuffer.")
+
+  (defun pani/consult-fd ()
+    "Run `consult-fd' rooted at the directory in the current file-name prompt.
+When called from an unconfirmed `C-x C-f' prompt, abort that prompt and run
+`consult-fd' from the directory being edited there.  Otherwise run it from
+the current buffer's `default-directory'."
+    (interactive)
+    (let ((root (pani/fd--root)))
+      (if (pani/fd--file-name-mb-p)
+	  (progn
+	    (setq pani/consult-fd--pending-root root)
+	    ;; Defer: `consult-fd' calls `find-file', which can't run while the
+	    ;; file-name minibuffer is still active.  Schedule it, then abort.
+	    (run-with-timer
+	     0 nil
+	     (lambda ()
+	       (let ((dir pani/consult-fd--pending-root))
+		 (setq pani/consult-fd--pending-root nil)
+		 (consult-fd dir))))
+	    (abort-recursive-edit))
+	(consult-fd root))))
 
   :config
   (setq dired-recursive-copies 'always)
