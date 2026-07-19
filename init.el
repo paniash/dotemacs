@@ -406,9 +406,15 @@ The DWIM behaviour of this command is as follows:
 	modus-themes-bold-constructs t
 	modus-themes-variable-pitch-ui t)
 
-  ;; Sets line number color back to white
+  (defvar pani/modeline-bg-color "#221920")
+
   (setq modus-themes-common-palette-overrides
-	'((fg-line-number-active fg-main)))
+	'((fg-line-number-active fg-main) ;; Sets line number color back to white
+	  (pani-modeline-bg "#221920")
+	  (bg-mode-line-inactive pani-modeline-bg)
+	  (border-mode-line-inactive pani-modeline-bg)
+	  (bg-mode-line-active pani-modeline-bg)
+	  (border-mode-line-active pani-modeline-bg)))
 
   ;; Minibuffer completions are bold by default. This fixes it.
   (setq modus-themes-completions
