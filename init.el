@@ -1893,7 +1893,6 @@ Works in both `elfeed-search-mode' and `elfeed-show-mode'."
 	  ("http://simon.peytonjones.org/feed.xml" blog)
 	  ("http://jvns.ca/atom.xml" blog)
 	  ("http://100r.co/links/rss.xml" blog)
-	  ("http://anchor.fm/s/c761a04/podcast/rss" blog)
 	  ("http://www.romanzolotarev.com/rss.xml" tech)
 	  ("http://www.unixsheikh.com/feed.rss" tech)
 	  ("http://nullprogram.com/feed/" tech)
