@@ -416,10 +416,6 @@ The DWIM behaviour of this command is as follows:
 	  (bg-mode-line-active pani-modeline-bg)
 	  (border-mode-line-active pani-modeline-bg)))
 
-  ;; Custom color for `secondary-selection'
-  (set-face-attribute 'secondary-selection nil
-		      :background "#221920")
-
   ;; Minibuffer completions are bold by default. This fixes it.
   (setq modus-themes-completions
 	'((selection regular)))
@@ -440,7 +436,10 @@ The DWIM behaviour of this command is as follows:
   ;; Disable all other themes to avoid awkward blending:
   (mapc #'disable-theme custom-enabled-themes)
   (load-theme 'ef-symbiosis :no-confirm)
-  (set-face-attribute 'minibuffer-prompt nil :weight 'normal))
+  (set-face-attribute 'minibuffer-prompt nil :weight 'normal)
+  ;; Custom color for `secondary-selection'
+  (set-face-attribute 'secondary-selection nil
+		      :background "#221920"))
 
 ;;; Vertico
 (use-package vertico
