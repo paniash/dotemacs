@@ -416,6 +416,10 @@ The DWIM behaviour of this command is as follows:
 	  (bg-mode-line-active pani-modeline-bg)
 	  (border-mode-line-active pani-modeline-bg)))
 
+  ;; Custom color for `secondary-selection'
+  (set-face-attribute 'secondary-selection nil
+		      :background "#221920")
+
   ;; Minibuffer completions are bold by default. This fixes it.
   (setq modus-themes-completions
 	'((selection regular)))
