@@ -1212,7 +1212,7 @@ that and instead tries to complete against dictionary entries."
   (defun pani/notmuch-jump-today ()
     "Jump straight to notmuch unread tags."
     (interactive)
-    (notmuch-search "date:today"))
+    (notmuch-search "date:today and tag:inbox"))
 
   (defun pani/notmuch-jump-migadu ()
     "Jump straight to personal (migadu) inbox."
