@@ -2180,7 +2180,8 @@ Info manuals."
 
 ;; Sleek modeline
 (use-package sleek-modeline
-  :ensure t
+  :vc (:url "https://github.com/abidanBrito/sleek-modeline"
+	    :rev "e5981c0")
   :config
   (setq sleek-modeline-highlight-modified-buffer-name nil)
   (setq sleek-modeline-show-modal-state 'evil)
