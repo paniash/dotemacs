@@ -2181,12 +2181,15 @@ Info manuals."
 ;; Sleek modeline
 (use-package sleek-modeline
   :vc (:url "https://github.com/abidanBrito/sleek-modeline"
-	    :rev "e5981c0")
+	    :branch "develop"
+	    :rev :newest)
   :config
   (setq sleek-modeline-highlight-modified-buffer-name nil)
   (setq sleek-modeline-show-modal-state 'evil)
   (setq sleek-modeline-hide-inactive nil)
   (setq sleek-modeline-size 'small)
+
+  (setq sleek-modeline-background pani/modeline-bg-color)
 
   ;; Segments
   (setq sleek-modeline-enable-diagnostics nil)
