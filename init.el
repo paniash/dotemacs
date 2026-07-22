@@ -792,7 +792,7 @@ keeping the size stable across `g'/`org-agenda-redo'."
 	   "* TODO [#%^{Priority|B|A|C}] %^{Task} %^g\n DEADLINE: %^T\n" :empty-lines-after 1)
 	  ("i" "Inbox" entry
 	   (file+headline "inbox.org" "Inbox")
-	   "* TODO [#%^{Priority|B|A|C}] %^{Title} :mail:\n%^t\n %a\n")
+	   "* TODO [#%^{Priority|B|A|C}] %^{Title} :mail:\n SCHEDULED: %^t\n %a\n")
 	  ("w" "Wishlist" entry
 	   (file+headline "tasks.org" "Wishlist")
 	   "* TODO %^{Task}%? %^g\n" :empty-lines-after 1)
