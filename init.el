@@ -1362,6 +1362,11 @@ that and instead tries to complete against dictionary entries."
     (kbd "C-j") 'notmuch-show-next-message
     (kbd "C-k") 'notmuch-show-previous-message))
 
+;; Orgmode integration for notmuch
+(use-package ol-notmuch
+  :ensure t
+  :after notmuch)
+
 ;; GNUS email
 (use-package gnus
   :ensure nil
