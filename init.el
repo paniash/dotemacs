@@ -742,6 +742,7 @@ keeping the size stable across `g'/`org-agenda-redo'."
 	  "tasks.org"
 	  "meetings.org"
 	  "events.org"
+	  "inbox.org"
 	  "personal.org"
 	  "calendar.org"))
 
@@ -789,6 +790,9 @@ keeping the size stable across `g'/`org-agenda-redo'."
 	  ("td" "Tasks with a deadline" entry
 	   (file+headline "tasks.org" "Tasks with deadline")
 	   "* TODO [#%^{Priority|B|A|C}] %^{Task} %^g\n DEADLINE: %^T\n" :empty-lines-after 1)
+	  ("i" "Inbox" entry
+	   (file+headline "inbox.org" "Inbox")
+	   "* TODO [#%^{Priority|B|A|C}] %^{Title} :mail:\n%^t\n %a\n")
 	  ("w" "Wishlist" entry
 	   (file+headline "tasks.org" "Wishlist")
 	   "* TODO %^{Task}%? %^g\n" :empty-lines-after 1)
