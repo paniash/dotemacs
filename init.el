@@ -795,10 +795,10 @@ keeping the size stable across `g'/`org-agenda-redo'."
 	  ("m" "Meetings")
 	  ("mi" "One-to-one" entry
 	   (file+headline "meetings.org" "One-to-one meetings")
-	   "* MEETING with %^{With whom} at %^{Place} %^g :discussion:\n %^T" :empty-lines-after 1)
+	   "* MEETING with %^{With whom} at %^{Place} :discussion:\n %^T" :empty-lines-after 1)
 	  ("mg" "Group" entry
 	   (file+headline "meetings.org" "Group meetings")
-	   "* %^{Event} MEETING%? %^g :meeting:\n %^T" :empty-lines-after 1)
+	   "* %^{Event} MEETING%? :meeting:\n %^T" :empty-lines-after 1)
 	  ("e" "Events" entry
 	   (file+headline "events.org" "Events")
 	   "* %^{Event}%? %^g\n %^t" :empty-lines-after 1)
