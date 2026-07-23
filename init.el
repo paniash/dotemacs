@@ -52,6 +52,11 @@
 	   (display-buffer-no-window)
 	   (allow-no-window . t))
 
+	  ;; vc-compilation mode settings
+	  ("\\*vc-\\(git\\|hg\\|bzr\\|svn\\)"
+	   (display-buffer-no-window)
+	   (allow-no-window . t))
+
 	  ;; Compilation mode buffers occupy small fraction of the screen
 	  ((derived-mode . compilation-mode)
 	   (display-buffer-reuse-window
@@ -64,13 +69,6 @@
 	   (display-buffer-reuse-mode-window
 	    display-buffer-pop-up-window)
 	   (window-height . fit-window-to-buffer))
-
-	  ;; vc-compilation mode settings
-	  ((derived-mode . vc-compilation-mode)
-	   (display-buffer-reuse-mode-window
-	    display-buffer-pop-up-window)
-	   (window-height . fit-window-to-buffer))
-
 	  ;; help-mode settings
 	  ((derived-mode . help-mode)
 	   (display-buffer-reuse-mode-window
