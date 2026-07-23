@@ -18,6 +18,10 @@
 	  package-review-diff-command '("git" "diff" "--no-index"
 					"--color=never"
 					"--diff-filter=d")))
+
+  ;; Popup the vc-compilation buffer if vc-upgrade fails
+  (setq vc-display-failed-async-commands t)
+
   ;; Initialize all packages after package.el is loaded
   (package-initialize)
   (unless package-archive-contents
