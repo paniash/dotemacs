@@ -114,6 +114,18 @@
 	   (window-height . (lambda (window)
 			      (fit-window-to-buffer window (floor (* 0.65 (frame-height)))))))))
 
+  ;; Kill vc-compilation command once successfully run
+  (defun pani/kill-vc-output-buffer (_command _file-or-list _flags)
+    "Kill an undisplayed *vc-…* output buffer once its command has finished."
+    (let ((buffer (current-buffer)))
+      (when (and (string-match-p "\\`\\*vc-" (buffer-name buffer))
+		 (not (get-buffer-window buffer t))
+		 (let ((proc (get-buffer-process buffer)))
+                   (or (null proc) (zerop (process-exit-status proc)))))
+	(run-at-time 0.5 nil #'kill-buffer buffer))))
+
+  (add-hook 'vc-post-command-functions #'pani/kill-vc-output-buffer)
+
   ;; Fonts
   (set-face-attribute 'default nil :font "Hack" :height 115)
   (set-face-attribute 'fixed-pitch nil :font "Hack" :height 1.0)
