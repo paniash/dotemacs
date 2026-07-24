@@ -752,8 +752,7 @@ keeping the size stable across `g'/`org-agenda-redo'."
   ;; Setting org-agenda file
   ;; Eliminates the need for putting org-agenda file to the top everytime
   (setq org-agenda-files
-	'("agenda.org"
-	  "tasks.org"
+	'("tasks.org"
 	  "meetings.org"
 	  "events.org"
 	  "inbox.org"
