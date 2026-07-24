@@ -1556,6 +1556,13 @@ that and instead tries to complete against dictionary entries."
   :init
   (global-corfu-mode))
 
+;; Completion extensions
+(use-package cape
+  :ensure t
+  :init
+  (add-hook 'completion-at-point-functions #'cape-dabbrev)
+  (add-hook 'completion-at-point-functions #'cape-file))
+
 ;; LSP server using eglot
 (use-package eglot
   :ensure nil  ;; built-in
