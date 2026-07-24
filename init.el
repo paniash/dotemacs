@@ -658,6 +658,7 @@ lingers as the selection owner."
   ;; Don't need to go through org-agenda template for custom agenda
   :bind (:map global-map
 	      ("C-c j" . pani/custom-org-agenda)
+	      ("C-c w" . pani/done-items-prev-week-org-agenda)
 	      :map org-agenda-mode-map
 	      ("C-c C-p" . org-agenda-priority))
   :config
@@ -732,12 +733,24 @@ keeping the size stable across `g'/`org-agenda-redo'."
 			(org-agenda-skip-function
 			 '(org-agenda-skip-entry-if 'todo '("PROG")))
 			(org-agenda-overriding-header "\nUpcoming schedule (+14d)")))))
-	  ))
+
+	  ("w" "Finished tasks from last week" tags "CLOSED>=\"<-7d>\""
+	   ((org-agenda-overriding-header "Finished tasks from last week")
+	    (org-agenda-archives-mode t)
+	    (org-agenda-tag-filter-preset '("-emacs" "-personal" "-email"))
+	    (org-agenda-prefix-format '((tags . " %i ")))
+	    (org-agenda-remove-tags nil)))))
+
 
   (defun pani/custom-org-agenda ()
     "Custom function to immediately jump to my custom org-agenda view."
     (interactive)
     (org-agenda nil "j"))
+
+  (defun pani/done-items-prev-week-org-agenda ()
+    "Custom function to immediately jump to my custom org-agenda view."
+    (interactive)
+    (org-agenda nil "w"))
 
   (defun pani/org-agenda-birthday-emoji ()
     "Append a cake emoji for birthday entries."
