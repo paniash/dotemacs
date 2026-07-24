@@ -671,7 +671,7 @@ keeping the size stable across `g'/`org-agenda-redo'."
 			   (list :inherit 'variable-pitch
 				 :height (round (* global-height 1.17))))))
 
-  ;; Basic agenda setup
+  ;; Custom agenda setup
   (setq org-agenda-custom-commands
 	'(
 	  ("j" "Daily agenda and top priority tasks"
@@ -704,7 +704,7 @@ keeping the size stable across `g'/`org-agenda-redo'."
 			(org-deadline-warning-days 0)
 			(org-agenda-block-separator nil)
 			(org-agenda-skip-function
-			 '(org-agenda-skip-entry-if 'todo 'done))
+			 '(org-agenda-skip-entry-if 'todo '("PROG")))
 			(org-agenda-overriding-header "\nNext three days")))
 	    (agenda "" ((org-agenda-time-grid nil)
 			(org-agenda-start-on-weekday nil)
@@ -719,7 +719,7 @@ keeping the size stable across `g'/`org-agenda-redo'."
 			(org-agenda-block-separator nil)
 			(org-agenda-entry-types '(:deadline))
 			(org-agenda-skip-function
-			 '(org-agenda-skip-entry-if 'todo 'done))
+			 '(org-agenda-skip-entry-if 'todo '("PROG")))
 			(org-agenda-overriding-header "\nUpcoming deadlines (+14d)")))
 	    (agenda "" ((org-agenda-start-on-weekday nil)
 			(org-agenda-format-date "%A, %-e %B %Y")
@@ -730,7 +730,7 @@ keeping the size stable across `g'/`org-agenda-redo'."
 			(org-agenda-block-separator nil)
 			(org-agenda-entry-types '(:scheduled :timestamp :sexp))
 			(org-agenda-skip-function
-			 '(org-agenda-skip-entry-if 'todo 'done))
+			 '(org-agenda-skip-entry-if 'todo '("PROG")))
 			(org-agenda-overriding-header "\nUpcoming schedule (+14d)")))))
 	  ))
 
