@@ -1261,7 +1261,7 @@ that and instead tries to complete against dictionary entries."
     "Prompt for confirmation before sending a message with empty subject."
     (when (and (null (message-field-value "Subject"))
 	       (not (y-or-n-p "Subject is empty, send anyway? ")))
-      (error "Sending message cancelled: empty subject.")))
+      (error "Sending message cancelled: empty subject")))
 
   (defun pani/notmuch-show-ret ()
     "Expand a wash citation button on the current line; else toggle the message."
@@ -2209,3 +2209,7 @@ Info manuals."
   ;; Segments
   (setq sleek-modeline-enable-diagnostics nil)
   (sleek-modeline-mode 1))
+
+(provide 'init)
+
+;;; init.el ends here
