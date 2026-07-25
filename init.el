@@ -425,6 +425,14 @@ The DWIM behaviour of this command is as follows:
   (setq modus-themes-common-palette-overrides
 	'((fg-line-number-active fg-main) ;; Sets line number color back to white
 	  (pani-modeline-bg "#221920")
+	  (pani-tab-current-bg "#130911")
+
+	  ;; Tab bar
+	  (bg-tab-bar pani-modeline-bg)
+	  (bg-tab-current pani-tab-current-bg)
+	  (bg-tab-other pani-modeline-bg)
+
+	  ;; Modeline
 	  (bg-mode-line-inactive pani-modeline-bg)
 	  (border-mode-line-inactive pani-modeline-bg)
 	  (bg-mode-line-active pani-modeline-bg)
