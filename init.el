@@ -1397,50 +1397,6 @@ that and instead tries to complete against dictionary entries."
   :ensure t
   :after notmuch)
 
-;; GNUS email
-(use-package gnus
-  :ensure nil
-  :bind (:map global-map
-	      ("C-c g" . gnus))
-  :config
-  (setq gnus-select-method '(nnnil ""))
-  (setq gnus-secondary-select-methods
-	'((nnimap "migadu"
-		  (nnimap-stream tls)
-		  (nnimap-server-port nil)
-		  (nnimap-address "imap.migadu.com")
-		  (nnimap-authenticator plain)
-		  (nnimap-use "ap@ashishpanigrahi.com"))
-	  (nntp "gwene" (nntp-address "news.gwene.org"))
-	  (nnatom "xkcd.com/atom.xml")
-	  (nntp "news.yhetil.org")))
-
-  ;; Turn on adaptive scoring
-  (setq gnus-use-adaptive-scoring t)
-
-  ;; Don't prompt when exiting with `q'
-  (setopt gnus-interactive-exit nil)
-
-  (setopt gnus-home-directory "~/.emacs.d/gnus/"
-	  gnus-directory "~/.emacs.d/gnus/news/"
-	  gnus-newsgroup-last-folder "~/.emacs.d/gnus/news/"
-	  gnus-newsgroup-last-directory "~/.emacs.d/gnus/news/"
-	  message-directory "~/.emacs.d/gnus/mail/"
-	  nndraft-directory "~/.emacs.d/gnus/drafts/")
-
-  ;; Always display certain groups
-  (setopt gnus-permanently-visible-groups ":INBOX$")
-
-  ;; Don't bother with .newsrc, use .newsrc.eld instead
-  (setopt gnus-save-newsrc-file nil
-	  gnus-read-newsrc-file nil)
-
-  (setopt read-mail-command #'gnus)
-
-  ;; Start daemon to automatically check email
-  (gnus-demon-add-rescan)
-  (gnus-demon-init))
-
 ;; Message composition for email
 (use-package message
   :ensure nil
