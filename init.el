@@ -126,6 +126,18 @@
 
   (add-hook 'vc-post-command-functions #'pani/kill-vc-output-buffer)
 
+  (defun pani/require-existing-buffer (orig &rest args)
+    "Don't make a new buffer when mistyping during `switch-to-buffer'
+    or `consult-switch-to-buffer'."
+    (cl-letf (((symbol-function 'confirm-nonexistent-file-or-buffer)
+	       (lambda () t)))
+      (apply orig args)))
+
+  (advice-add 'read-buffer-to-switch :around #'pani/require-existing-buffer)
+
+  (with-eval-after-load 'consult
+    (advice-add 'consult-buffer :around #'pani/require-existing-buffer))
+
   ;; Fonts
   (set-face-attribute 'default nil :font "Hack" :height 115)
   (set-face-attribute 'fixed-pitch nil :font "Hack" :height 1.0)
