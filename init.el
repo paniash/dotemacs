@@ -1571,6 +1571,22 @@ that and instead tries to complete against dictionary entries."
   (setq proced-descend t)
   (setq proced-filter 'user))
 
+;; Project.el config
+(use-package project
+  :ensure nil
+  :bind (:map global-map
+	      ("C-x p C-g" . keyboard-quit))
+  :config
+  (setopt project-switch-commands
+	  '((project-find-file "Find file")
+	    (project-find-regexp "Find regexp")
+	    (project-find-dir "Find directory")
+	    (project-vc-dir "VC-Dir")
+	    (project-eshell "Eshell")
+	    (keyboard-quit "Quit")))
+
+  (setq project-key-prompt-style t))
+
 ;; Python config
 (use-package python
   :ensure nil   ; because this is built-in
