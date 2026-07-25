@@ -1948,6 +1948,7 @@ Works in both `elfeed-search-mode' and `elfeed-show-mode'."
 (use-package autorevert
   :ensure nil
   :config
+  (setq auto-revert-verbose nil)  ;; don't clobber the echo area when an inactive buffer changes
   (global-auto-revert-mode 1))
 
 ;; Info-mode config
