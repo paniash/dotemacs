@@ -1,4 +1,7 @@
+;;; init.el --- My personal config for emacs
 ;;; -*- lexical-binding: t; -*-
+;;; Code:
+
 ;; Initialize package sources
 (use-package package
   :ensure nil
