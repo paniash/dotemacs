@@ -758,7 +758,7 @@ keeping the size stable across `g'/`org-agenda-redo'."
 	   ((org-agenda-overriding-header "Finished tasks from last week")
 	    (org-agenda-archives-mode t)
 	    (org-agenda-tag-filter-preset '("-emacs" "-personal" "-email"))
-	    (org-agenda-prefix-format '((tags . " %i ")))
+	    (org-agenda-prefix-format '((tags . " ")))
 	    (org-agenda-remove-tags nil)))))
 
 
