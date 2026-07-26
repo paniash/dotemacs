@@ -2215,7 +2215,7 @@ Info manuals."
 
 ;; Sleek modeline
 (use-package sleek-modeline
-  :vc (:url "https://github.com/abidanBrito/sleek-modeline"
+  :vc (:url "https://github.com/paniash/sleek-modeline"
 	    :branch "develop"
 	    :rev :newest)
   :config
