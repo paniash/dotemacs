@@ -1920,7 +1920,7 @@ Works in both `elfeed-search-mode' and `elfeed-show-mode'."
 	  ("http://matt.might.net/articles/feed.rss" blog)
 	  ("http://protesilaos.com/commentary.xml" blog)
 	  ("https://karpathy.bearblog.dev/feed/" :title "Karpathy AI" blog)
-	  ("http://gregorygundersen.com/feed.xml" blog)
+	  ("http://gregorygundersen.com/feed.xml" :title "Gregory Gundersen" blog)
 	  ("http://rosenzweig.io/feed.xml" blog)
 	  ("http://adol.pw/index.xml" blog)
 	  ("https://stackoverflow.com/feeds/question/77369042" forum)
