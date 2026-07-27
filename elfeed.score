@@ -96,6 +96,7 @@
   (:text "\\(?:N\\(?:\\(?:\\.\\|icolas\\) Roch\\)\\)" :value 500 :type R :tags (t arxiv))
   (:text "\\(?:V\\(?:\\. E\\. M\\(?:\\.\\|anucharyan\\)\\|ladimir E\\. Manucharyan\\)\\)" :value 500 :type R :tags (t arxiv))
   (:text "Benjamin Sacépé" :value 500 :type w :tags (t arxiv))
+  (:text "Francesco Giazotto" :value 500 :type w :tags (t arxiv))
   (:text "\\(?:B\\(?:\\(?:\\.\\|enjamin\\) Huard\\)\\)" :value 500 :type R :tags (t arxiv))
   (:text "Jian-Wei Pan" :value 500 :type w :tags (t arxiv))
   (:text "\\(?:S\\(?:\\(?:\\.\\|imone\\) Gasparinetti\\)\\)" :value 800 :type R :tags (t arxiv))
