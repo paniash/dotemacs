@@ -98,7 +98,7 @@
   (:text "Benjamin Sacépé" :value 500 :type w :tags (t arxiv))
   (:text "\\(?:B\\(?:\\(?:\\.\\|enjamin\\) Huard\\)\\)" :value 500 :type R :tags (t arxiv))
   (:text "Jian-Wei Pan" :value 500 :type w :tags (t arxiv))
-  (:text "\\(?:S\\(?:\\(?:\\.\\|imone\\) Gasparinetti\\)\\)" :value 500 :type R :tags (t arxiv))
+  (:text "\\(?:S\\(?:\\(?:\\.\\|imone\\) Gasparinetti\\)\\)" :value 800 :type R :tags (t arxiv))
   (:text "\\(?:C\\(?:\\(?:\\.\\|hristopher\\) Eichler\\)\\)" :value 500 :type R :tags (t arxiv))
   (:text "Angela Kou" :value 500 :type w :tags (t arxiv))
   (:text "Javad Shabani" :value 500 :type w :tags (t arxiv))
