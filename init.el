@@ -373,6 +373,9 @@ The DWIM behaviour of this command is as follows:
   (setq evil-operator-state-tag " [O] ")
   (setq evil-motion-state-tag   " [M] ")
   (setq evil-emacs-state-tag    " [E] ")
+
+  (setq evil-mode-line-format '(before . mode-line-buffer-identification))
+
   :config
   (evil-mode 1)
   (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
