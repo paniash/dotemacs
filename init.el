@@ -364,6 +364,15 @@ The DWIM behaviour of this command is as follows:
   (setq evil-want-Y-yank-to-eol t)  ;; yanks to end of line instead of whole line
   ;; no vim insert bindings
   (setq evil-undo-system 'undo-fu)
+
+  ;; Set evil-mode indicator modeline format
+  (setq evil-normal-state-tag   " [N] ")
+  (setq evil-insert-state-tag   " [I] ")
+  (setq evil-visual-state-tag   " [V] ")
+  (setq evil-replace-state-tag  " [R] ")
+  (setq evil-operator-state-tag " [O] ")
+  (setq evil-motion-state-tag   " [M] ")
+  (setq evil-emacs-state-tag    " [E] ")
   :config
   (evil-mode 1)
   (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
