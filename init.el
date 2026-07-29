@@ -2228,23 +2228,6 @@ Info manuals."
   (setq emms-source-file-default-directory 'pani/emms-music-directory)
   (emms-all))
 
-;; Sleek modeline
-(use-package sleek-modeline
-  :vc (:url "https://github.com/paniash/sleek-modeline"
-	    :branch "develop"
-	    :rev :newest)
-  :config
-  (setq sleek-modeline-highlight-modified-buffer-name nil)
-  (setq sleek-modeline-show-modal-state 'evil)
-  (setq sleek-modeline-hide-inactive nil)
-  (setq sleek-modeline-size 'small)
-
-  (setq sleek-modeline-background pani/modeline-bg-color)
-
-  ;; Segments
-  (setq sleek-modeline-enable-diagnostics nil)
-  (sleek-modeline-mode 1))
-
 (provide 'init)
 
 ;;; init.el ends here
