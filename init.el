@@ -1935,6 +1935,7 @@ Works in both `elfeed-search-mode' and `elfeed-show-mode'."
 	  ("http://gregorygundersen.com/feed.xml" :title "Gregory Gundersen" blog)
 	  ("http://rosenzweig.io/feed.xml" blog)
 	  ("http://adol.pw/index.xml" blog)
+	  ("https://www.wheresyoured.at/rss" blog ai)
 	  ("https://stackoverflow.com/feeds/question/77369042" forum)
 	  ("https://scottaaronson.blog/?feed=rss2" :title "Scott Aaronson" blog research)
 	  ("https://nicholas.carlini.com/writing/feed.xml" blog research)
