@@ -1759,8 +1759,7 @@ buffer. Works for both local and TRAMP-remote buffers."
 
 ;; Elfeed for RSS
 (use-package elfeed
-  :vc (:url "https://github.com/emacs-elfeed/elfeed"
-       :rev :newest)
+  :ensure t
   :defer t
   :hook ((elfeed-search-mode . variable-pitch-mode)
 	 (elfeed-show-mode . variable-pitch-mode))
