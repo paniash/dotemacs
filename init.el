@@ -42,20 +42,6 @@
   ;; Enable imenu support for use-package declarations
   (setopt use-package-enable-imenu-support t)
 
-  (setq-default mode-line-format
-		'("%e" mode-line-front-space mode-line-mule-info
-		  mode-line-client mode-line-modified mode-line-remote
-		  mode-line-window-dedicated
-		  mode-line-frame-identification
-		  mode-line-buffer-identification " "
-		  mode-line-position evil-mode-line-tag
-		  (project-mode-line project-mode-line-format)
-		  mode-line-format-right-align (vc-mode vc-mode) " "
-		  mode-line-modes mode-line-misc-info
-		  mode-line-end-spaces))
-
-  (setq mode-line-right-align-edge 'right-margin)
-
   ;; Buffer list configuration
   (setq display-buffer-alist
 	'(
@@ -339,6 +325,99 @@ The DWIM behaviour of this command is as follows:
   ;; Hide commands in M-x which do not work in current buffer
   (setq read-extended-command-predicate
 	#'command-completion-default-include-p))
+
+(use-package pani/modeline
+  :no-require t
+  :config
+  (defun pani/modeline-vc-encoding ()
+    "Mode-line segment: [backend<sep>branch] LF UTF-8."
+    (let* ((vc (when (and vc-mode (stringp vc-mode)
+			  (string-match "\\`\\s-*[A-Za-z]+[:-]\\(.*\\)" vc-mode))
+		 (concat "["
+			 (propertize (string-trim (match-string 1 vc-mode))
+				     'face 'pani/modeline-vc-face)
+			 "]")))
+	   (eol (when buffer-file-name
+		  (pcase (coding-system-eol-type buffer-file-coding-system)
+		    (0 "LF") (1 "CRLF") (2 "CR"))))
+	   (coding (when buffer-file-name
+		     (if (memq (plist-get (coding-system-plist buffer-file-coding-system)
+					  :category)
+			       '(coding-category-undecided coding-category-utf-8))
+			 "UTF-8"
+		       (upcase (symbol-name
+				(coding-system-base buffer-file-coding-system))))))
+	   (parts (delq nil (list vc eol coding))))
+      (when parts
+	(concat (mapconcat #'identity parts " ")
+		(if (and (fboundp 'eglot-managed-p) (eglot-managed-p)) "  " "   ")))))
+
+  (defface pani/modeline-minor-count-face
+    '((t :inherit shadow))
+    "Face for the +N active-minor-mode counter in the mode line.")
+
+  (defun pani/modeline--minor-mode-hidden-p (mode)
+    "Non-nil if MODE is collapsed/hidden per `mode-line-collapse-minor-modes'."
+    (let ((c mode-line-collapse-minor-modes))
+      (cond
+       ((not c) nil)                                      ; hide none
+       ((eq 'not (car-safe c)) (not (memq mode (cdr c)))) ; hide all but listed
+       ((listp c) (memq mode c))                          ; hide only listed
+       (t t))))                                            ; t -> hide all
+
+  (defun pani/modeline--hidden-lighters ()
+    "Return the hidden `minor-mode-alist' entries that are active with a lighter.
+Reads `minor-mode-alist' without mutating it."
+    (seq-filter
+     (lambda (item)
+       (and (pani/modeline--minor-mode-hidden-p (car item))
+	    (boundp (car item)) (symbol-value (car item))
+	    (not (string= (format-mode-line `("" ,@(cdr-safe item))) ""))))
+     minor-mode-alist))
+
+  (defun pani/modeline-major-mode ()
+    "Major mode as `Python (+N)', where +N counts hidden lighter-bearing minor modes.
+Clicking +N pops up the same minor-mode menu as the stock collapsed `…'."
+    (let* ((n (length (pani/modeline--hidden-lighters)))
+	   (mm (propertize (format-mode-line mode-name)
+			   'face 'pani/modeline-major-mode-face
+			   'help-echo "Major mode\nmouse-1: menu  mouse-2: help"
+			   'mouse-face 'mode-line-highlight
+			   'local-map mode-line-major-mode-keymap)))
+      (if (zerop n)
+	  mm
+	(concat mm " "
+		(propertize (format "(+%d)" n)
+			    'face 'pani/modeline-minor-count-face
+			    'mouse-face 'mode-line-highlight
+			    'help-echo "Hidden minor modes\nmouse-1: list them\nmouse-2: help"
+			    'local-map (define-keymap
+					 :parent mode-line-minor-mode-keymap
+					 "<mode-line> <down-mouse-1>" #'pani/modeline-minor-modes-menu
+					 "<mode-line> <mouse-2>" #'describe-mode))))))
+
+  (defun pani/modeline-minor-modes-menu (event)
+    "Pop up the menu of hidden active minor modes."
+    (interactive "@e")
+    (if-let* ((m (mode-line--make-lighter-menu (pani/modeline--hidden-lighters))))
+	(popup-menu m event)
+      (message "No active minor modes")))
+
+  (setq-default mode-line-format
+		'("%e"
+		  mode-line-buffer-identification
+		  "  "
+		  mode-line-position
+		  (project-mode-line project-mode-line-format)
+		  mode-line-format-right-align
+		  (:eval (pani/modeline-vc-encoding))
+		  mode-line-misc-info
+		  (:eval (pani/modeline-major-mode))
+		  mode-line-end-spaces " "))
+  (setq mode-line-right-align-edge 'right-margin)
+  :custom-face
+  (pani/modeline-major-mode-face ((t :foreground "#c3a6f7" :weight bold)))
+  (pani/modeline-vc-face ((t :foreground "#bf9032" :weight bold))))
 
 (use-package shr
   :ensure nil
