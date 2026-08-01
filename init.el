@@ -273,9 +273,6 @@ The DWIM behaviour of this command is as follows:
   ;; Replace "yes or no" with "y or n"
   (setq use-short-answers t)
 
-  ;; ;; Enable `completion-preview-mode' for certain hooks
-  ;; :hook (python-mode . completion-preview-mode)
-
   (setq display-line-numbers-type 'relative)
 
   ;; Disable bidirectional text scanning
