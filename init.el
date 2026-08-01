@@ -444,14 +444,18 @@ Clicking +N pops up the same minor-mode menu as the stock collapsed `…'."
   ;; no vim insert bindings
   (setq evil-undo-system 'undo-fu)
 
-  ;; Set evil-mode indicator modeline format
-  (setq evil-normal-state-tag   " [N] ")
-  (setq evil-insert-state-tag   " [I] ")
-  (setq evil-visual-state-tag   " [V] ")
-  (setq evil-replace-state-tag  " [R] ")
-  (setq evil-operator-state-tag " [O] ")
-  (setq evil-motion-state-tag   " [M] ")
-  (setq evil-emacs-state-tag    " [E] ")
+  (defface pani/evil-normal-face  '((t :foreground "#89b4fa" :weight bold)) "face for normal mode")
+  (defface pani/evil-insert-face  '((t :foreground "#a6e3a1" :weight bold)) "face for insert mode")
+  (defface pani/evil-visual-face  '((t :foreground "#cba6f7" :weight bold)) "face for visual mode")
+  (defface pani/evil-other-face   '((t :foreground "#f38ba8" :weight bold)) "face for other modes")
+
+  (setq evil-normal-state-tag   (propertize " [N] " 'face 'pani/evil-normal-face))
+  (setq evil-insert-state-tag   (propertize " [I] " 'face 'pani/evil-insert-face))
+  (setq evil-visual-state-tag   (propertize " [V] " 'face 'pani/evil-visual-face))
+  (setq evil-replace-state-tag  (propertize " [R] " 'face 'pani/evil-other-face))
+  (setq evil-operator-state-tag (propertize " [O] " 'face 'pani/evil-other-face))
+  (setq evil-motion-state-tag   (propertize " [M] " 'face 'pani/evil-other-face))
+  (setq evil-emacs-state-tag    (propertize " [E] " 'face 'pani/evil-other-face))
 
   (setq evil-mode-line-format '(before . mode-line-buffer-identification))
 
