@@ -265,6 +265,9 @@ The DWIM behaviour of this command is as follows:
   ;; Disable remote file locks
   (setq remote-file-name-inhibit-locks t)
 
+  ;; Disable lockfiles entirely
+  (setq create-lockfiles nil)
+
   ;; Put autosave files in one folder
   (setq backup-directory-alist `(("." . "~/.autosaves")))
   (setq backup-inhibited t)
