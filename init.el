@@ -1659,6 +1659,19 @@ that and instead tries to complete against dictionary entries."
 	       '((python-ts-mode python-mode)
 		 . ("zuban" "server")))
 
+  ;; Modeline customizations for eglot indicator
+  (defface pani/modeline-lsp-face
+    '((t :inherit bold :foreground "#8ec07c"))
+    "Face for the LSP-active indicator in the mode line.")
+
+  (defvar pani/eglot-lsp-segment
+    '(:eval (propertize "LSP" 'face 'pani/modeline-lsp-face))
+    "Eglot mode-line segment string.")
+
+  (put 'pani/eglot-lsp-segment 'risky-local-variable t)
+
+  (setq eglot-mode-line-format '(pani/eglot-lsp-segment))
+
   ;; Only have eglot work locally and not over remote machines
   (defun pani/eglot-ensure-local ()
     "Start eglot, but only for local files."
