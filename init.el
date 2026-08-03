@@ -2157,7 +2157,7 @@ Info manuals."
   (setq treesit-font-lock-level 4)
 
   ;; Auto-install/repair any configured grammar files that won't load properly
-  (dolist (lang (mapcar #'cat treesit-language-source-alist))
+  (dolist (lang (mapcar #'car treesit-language-source-alist))
     (unless (treesit-language-available-p lang)
       (treesit-install-language-grammar lang))))
 
