@@ -1380,7 +1380,7 @@ that and instead tries to complete against dictionary entries."
   (defun pani/notmuch-jump-migadu ()
     "Jump straight to personal (migadu) inbox."
     (interactive)
-    (notmuch-search "tag:migadu"))
+    (notmuch-search "tag:migadu and not tag:sent"))
 
   (defun pani/notmuch-jump-orgmode ()
     "Jump straight to orgmode mailing list inbox."
