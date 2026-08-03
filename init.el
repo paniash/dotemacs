@@ -450,13 +450,13 @@ Clicking +N pops up the same minor-mode menu as the stock collapsed `…'."
   (defface pani/evil-visual-face  '((t :foreground "#cba6f7" :weight bold)) "face for visual mode")
   (defface pani/evil-other-face   '((t :foreground "#f38ba8" :weight bold)) "face for other modes")
 
-  (setq evil-normal-state-tag   (propertize " [N] " 'face 'pani/evil-normal-face))
-  (setq evil-insert-state-tag   (propertize " [I] " 'face 'pani/evil-insert-face))
-  (setq evil-visual-state-tag   (propertize " [V] " 'face 'pani/evil-visual-face))
-  (setq evil-replace-state-tag  (propertize " [R] " 'face 'pani/evil-other-face))
-  (setq evil-operator-state-tag (propertize " [O] " 'face 'pani/evil-other-face))
-  (setq evil-motion-state-tag   (propertize " [M] " 'face 'pani/evil-other-face))
-  (setq evil-emacs-state-tag    (propertize " [E] " 'face 'pani/evil-other-face))
+  (setq evil-normal-state-tag   (propertize " NOR " 'face 'pani/evil-normal-face))
+  (setq evil-insert-state-tag   (propertize " INS " 'face 'pani/evil-insert-face))
+  (setq evil-visual-state-tag   (propertize " VIS " 'face 'pani/evil-visual-face))
+  (setq evil-replace-state-tag  (propertize " REP " 'face 'pani/evil-other-face))
+  (setq evil-operator-state-tag (propertize " OPE " 'face 'pani/evil-other-face))
+  (setq evil-motion-state-tag   (propertize " MOT " 'face 'pani/evil-other-face))
+  (setq evil-emacs-state-tag    (propertize " EMA " 'face 'pani/evil-other-face))
 
   (setq evil-mode-line-format '(before . mode-line-buffer-identification))
 
