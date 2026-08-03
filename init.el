@@ -2,7 +2,7 @@
 ;;; -*- lexical-binding: t; -*-
 ;;; Code:
 
-;; Initialize package sources
+;;; Initialize package sources
 (use-package package
   :ensure nil
   :config
@@ -326,6 +326,7 @@ The DWIM behaviour of this command is as follows:
   (setq read-extended-command-predicate
 	#'command-completion-default-include-p))
 
+;;; Modeline customizations
 (use-package pani/modeline
   :no-require t
   :config
@@ -610,14 +611,14 @@ Clicking +N pops up the same minor-mode menu as the stock collapsed `…'."
   ;; already arrived directory
   (add-hook 'rfn-eshadow-update-overlay-hook #'vertico-directory-tidy))
 
-;; Which-key (to show available commands when typing a prefix say 'C-c')
+;;; Which-key (to show available commands when typing a prefix say 'C-c')
 (use-package which-key
   :ensure nil  ; built-in
   :config
   (which-key-mode)
   (setq which-key-idle-delay 1))
 
-;; Image settings inside emacs
+;;; Image settings inside emacs
 (use-package image
   :ensure nil
   :config
@@ -685,7 +686,7 @@ lingers as the selection owner."
   ;; `i o' is `image-save'; give it a sibling.  `i c' is taken by `image-crop'.
   (keymap-set image-map "i w" #'pani/image-copy-to-clipboard))
 
-;; Orgmode specific settings
+;;; Orgmode specific settings
 (use-package org
   :ensure nil  ; org is built-in
   :defer t
@@ -780,7 +781,7 @@ lingers as the selection owner."
 
   (org-link-set-parameters "zotero" :follow #'org-zotero-open-link))
 
-;; Org-agenda customization (based on Protesilaos Stavrou's config)
+;;; Org-agenda customization (based on Protesilaos Stavrou's config)
 (use-package org-agenda
   :ensure nil
   :hook ((org-agenda-mode . pani/org-agenda-font-size)
@@ -934,7 +935,7 @@ keeping the size stable across `g'/`org-agenda-redo'."
   (setq org-agenda-skip-scheduled-if-done t)
   (setq org-agenda-skip-deadline-if-done t))
 
-;; Org-capture templates
+;;; Org-capture templates
 (use-package org-capture
   :ensure nil
   :config
@@ -971,8 +972,7 @@ keeping the size stable across `g'/`org-agenda-redo'."
 	   "* HANGOUT with %^{With whom} at %^{Place} :social:\n %^T" :empty-lines-after 1))))
 
 
-;; Denote package by Protesilaos
-;; Experimenting with it at the moment
+;;; Denote package by Protesilaos
 (use-package denote
   :ensure t
   :hook (dired-mode . denote-dired-mode)
@@ -993,7 +993,7 @@ keeping the size stable across `g'/`org-agenda-redo'."
   ;; `denote-rename-buffer-format' for how to modify this.
   (denote-rename-buffer-mode 1))
 
-;; Magit
+;;; Magit
 (use-package magit
   :ensure t
   :bind
@@ -1028,13 +1028,13 @@ keeping the size stable across `g'/`org-agenda-redo'."
    :ensure nil
    :defer t)
 
-;; Marginalia package
+;;; Marginalia package
 (use-package marginalia
   :ensure t
   :init
   (marginalia-mode))
 
-;; TeX config
+;;; TeX config
 (use-package tex-site
   :ensure auctex
   :hook ((LaTeX-mode . electric-pair-mode)
@@ -1062,7 +1062,7 @@ keeping the size stable across `g'/`org-agenda-redo'."
 						     partial-completion))))
   (setq completion-pcm-leading-wildcard t))
 
-;; World-clock customization
+;;; World-clock customization
 ;;;; World clock (M-x world-clock)
 (use-package time
   :ensure nil
@@ -1099,7 +1099,7 @@ keeping the size stable across `g'/`org-agenda-redo'."
 	      ("C-c l o" . consult-org-heading)
 	      ("C-c l a" . consult-org-agenda)))
 
-;;;; Emacs server (allow emacsclient to connect to running session)
+;;; Emacs server (allow emacsclient to connect to running session)
 (use-package server
   :ensure nil
   :defer 1
@@ -1108,7 +1108,7 @@ keeping the size stable across `g'/`org-agenda-redo'."
   (unless (server-running-p)
     (server-start)))
 
-;;;; Dired (Directory Editor) customizations
+;;; Dired (Directory Editor) customizations
 (use-package dired
   :ensure nil
   :commands (dired)
@@ -1179,7 +1179,7 @@ the current buffer's `default-directory'."
   :config
   (setq dired-subtree-use-backgrounds nil))
 
-;; Minibuffer settings
+;;; Minibuffer settings
 (use-package minibuffer
   :ensure nil
   :bind
@@ -1189,7 +1189,7 @@ the current buffer's `default-directory'."
   (setq enable-recursive-minibuffers t)
   (setq minibuffer-depth-indicate-mode 1))
 
-;; Mailcap settings
+;;; Mailcap settings
 (use-package mailcap
   :ensure nil
   :config
@@ -1209,7 +1209,7 @@ the current buffer's `default-directory'."
 	(file-expand-wildcards "/usr/share/emacs/site-lisp/elpa/notmuch-*/")
       "/usr/share/emacs/site-lisp/")))
 
-;; Notmuch for email
+;;; Notmuch for email
 (use-package notmuch
   :load-path notmuch-path
   :ensure nil
@@ -1522,12 +1522,12 @@ that and instead tries to complete against dictionary entries."
     (kbd "C-j") 'notmuch-show-next-message
     (kbd "C-k") 'notmuch-show-previous-message))
 
-;; Orgmode integration for notmuch
+;;; Orgmode integration for notmuch
 (use-package ol-notmuch
   :ensure t
   :after notmuch)
 
-;; Message composition for email
+;;; Message composition for email
 (use-package message
   :ensure nil
   :defer t
@@ -1576,7 +1576,7 @@ that and instead tries to complete against dictionary entries."
 	sendmail-program (or (executable-find "msmtp") "/usr/bin/msmtp")
         message-sendmail-envelope-from 'header))
 
-;; Encryption settings for email
+;;; Encryption settings for email
 (use-package mml-sec
   :ensure nil
   :config
@@ -1611,8 +1611,7 @@ that and instead tries to complete against dictionary entries."
 
   (add-hook 'message-send-hook #'pani/message-sign-or-encrypt))
 
-;; Add direnv integration in emacs
-;; envrc package
+;;; Add direnv integration in emacs
 (use-package envrc
   :ensure t
   :hook (after-init . envrc-global-mode)
@@ -1622,7 +1621,7 @@ that and instead tries to complete against dictionary entries."
     (unless (and buffer-file-name (file-remote-p buffer-file-name))
       (apply orig args))))
 
-;; Autocompletion via corfu
+;;; Autocompletion via corfu
 (use-package corfu
   :ensure t
   :config
@@ -1642,14 +1641,14 @@ that and instead tries to complete against dictionary entries."
   :init
   (global-corfu-mode))
 
-;; Completion extensions
+;;; Completion extensions
 (use-package cape
   :ensure t
   :init
   (add-hook 'completion-at-point-functions #'cape-dabbrev)
   (add-hook 'completion-at-point-functions #'cape-file))
 
-;; LSP server using eglot
+;;; LSP server using eglot
 (use-package eglot
   :ensure nil  ;; built-in
   :hook ((python-mode . pani/eglot-ensure-local)
@@ -1694,7 +1693,7 @@ that and instead tries to complete against dictionary entries."
 	  :publishDiagnostics
 	  :documentLinkProvider))) ;; disables highlighting words under active cursor
 
-;; Eldoc config
+;;; Eldoc config
 (use-package eldoc
   :ensure nil  ;; built-in
   :config
@@ -1702,8 +1701,7 @@ that and instead tries to complete against dictionary entries."
   ;; under the cursor
   (setq eldoc-echo-area-use-multiline-p nil))
 
-;; `proced' (process monitor, similar to `top')
-;; This is a built-in emacs package
+;;; `proced' (process monitor, similar to `top')
 (use-package proced
   :ensure nil
   :commands (proced)
@@ -1714,7 +1712,7 @@ that and instead tries to complete against dictionary entries."
   (setq proced-descend t)
   (setq proced-filter 'user))
 
-;; Project.el config
+;;; Project.el config
 (use-package project
   :ensure nil
   :bind (:map global-map
@@ -1730,7 +1728,7 @@ that and instead tries to complete against dictionary entries."
 
   (setq project-key-prompt-style t))
 
-;; Python config
+;;; Python config
 (use-package python
   :ensure nil   ; because this is built-in
   :hook ((inferior-python-mode . (lambda ()
@@ -1807,7 +1805,7 @@ Otherwise, run the file asynchronously via `pani/python-exec-file'."
             (lambda ()
               (add-hook 'comint-output-filter-functions #'pani/python-scroll-to-bottom nil t))))
 
-;; Custom minor mode for testing python files with pytest
+;;; Custom minor mode for testing python files with pytest
 (use-package pani/python-pytest-binding
   :ensure nil
   :no-require t
@@ -1843,7 +1841,7 @@ buffer. Works for both local and TRAMP-remote buffers."
   (add-hook 'python-mode-hook #'pani/python-maybe-enable-pytest)
   (add-hook 'python-ts-mode-hook #'pani/python-maybe-enable-pytest))
 
-;; code-cells for ipython like behaviour
+;;; code-cells for ipython like behaviour
 (use-package code-cells
   :ensure t
   :init
@@ -1853,7 +1851,7 @@ buffer. Works for both local and TRAMP-remote buffers."
   (:map code-cells-mode-map
     ("C-c C-c" . code-cells-eval)))
 
-;; Elfeed for RSS
+;;; Elfeed for RSS
 (use-package elfeed
   :ensure t
   :defer t
@@ -2077,7 +2075,7 @@ Works in both `elfeed-search-mode' and `elfeed-show-mode'."
   (setq elfeed-score-serde-score-file "~/.emacs.d/elfeed.score")
   (elfeed-score-enable))
 
-;; Olivetti for reducing eye strain
+;;; Olivetti for reducing eye strain
 (use-package olivetti
   :ensure t
   :hook
@@ -2087,14 +2085,14 @@ Works in both `elfeed-search-mode' and `elfeed-show-mode'."
   (setq olivetti-minimum-body-width 180)
   (setq olivetti-body-width 100))
 
-;; Hide autorevert mode in modeline
+;;; Hide autorevert mode in modeline
 (use-package autorevert
   :ensure nil
   :config
   (setq auto-revert-verbose nil)  ;; don't clobber the echo area when an inactive buffer changes
   (global-auto-revert-mode 1))
 
-;; Info-mode config
+;;; Info-mode config
 (use-package info
   :ensure nil ; built-in
   :hook (Info-mode . variable-pitch-mode)
@@ -2131,7 +2129,7 @@ Info manuals."
   (add-to-list 'tramp-remote-path
 	       "/c/Users/PXI05/qcodes-experiments/panigrahi/xilinx-venv/Scripts"))
 
-;; Treesitter config
+;;; Treesitter config
 (use-package treesit
   :ensure nil ; built-in
   :config
@@ -2163,7 +2161,7 @@ Info manuals."
     (unless (treesit-language-available-p lang)
       (treesit-install-language-grammar lang))))
 
-;; Typst support
+;;; Typst support
 (use-package typst-ts-mode
   :ensure t
   :defer t
@@ -2172,7 +2170,7 @@ Info manuals."
   (setq typst-ts-math-script-display '((raise 0.0) raise 0.0))
   (add-to-list 'auto-mode-alist '("\\.typ\\'" . typst-ts-mode)))
 
-;; IRC inside emacs
+;;; IRC inside emacs
 (use-package erc
   :ensure nil
   :config
@@ -2208,7 +2206,7 @@ Info manuals."
   (setq make-cursor-line-fully-visible t)
   (ultra-scroll-mode 1))
 
-;; ediff configuration
+;;; ediff configuration
 (use-package ediff
   :ensure nil ; built-in
   :config
@@ -2219,7 +2217,7 @@ Info manuals."
   (setq ediff-split-window-function 'split-window-sensibly)
   (setq ediff-window-setup-function 'ediff-setup-windows-plain))
 
-;; isearch config
+;;; isearch config
 (use-package isearch
   :ensure nil ; built-in
   :bind (:map global-map
@@ -2240,7 +2238,7 @@ Info manuals."
   (setq lazy-count-suffix-format nil)
   (setq isearch-wrap-pause 'no-ding)) ; Jump to top/bottom without asking
 
-;; ibuffer settings
+;;; ibuffer settings
 (use-package ibuffer
   :ensure nil ; built-in
   :hook
@@ -2270,21 +2268,21 @@ Info manuals."
   :hook ((python-mode . breadcrumb-local-mode)
 	 (python-ts-mode . breadcrumb-local-mode)))
 
-;; Highlight parentheses
+;;; Highlight parentheses
 (use-package rainbow-delimiters
   :ensure t
   :hook (emacs-lisp-mode . rainbow-delimiters-mode))
 
-;; Spellchecker
-;; Needs libenchant, pkgconf and dictionaries (aspell and aspell-en)
-;; installed on system
+;;; Spellchecker
+;;; Needs libenchant, pkgconf and dictionaries (aspell and aspell-en)
+;;; installed on system
 (use-package jinx
   :ensure t
   :defer t
   :config
   (setq jinx-languages "en"))
 
-;; Templates for faster text
+;;; Templates for faster text
 (use-package tempel
   :ensure t
   :bind (("M-+" . tempel-complete) ;; Alternative tempel-expand
@@ -2319,7 +2317,7 @@ Info manuals."
   :config
   (setq tempel-path (expand-file-name "templates" user-emacs-directory)))
 
-;; Music management with EMMS
+;;; Music management with EMMS
 (use-package emms
   :ensure t
   :commands (emms emms-play-directory-tree emms-browser)
