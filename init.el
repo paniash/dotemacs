@@ -5,6 +5,7 @@
 ;;; Initialize package sources
 (use-package package
   :ensure nil
+  :hook (package-menu-mode . hl-line-mode)
   :config
   (setq use-package-always-ensure nil)
   (setq package-install-upgrade-built-in nil)
