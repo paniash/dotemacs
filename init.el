@@ -2317,23 +2317,6 @@ Info manuals."
   :config
   (setq tempel-path (expand-file-name "templates" user-emacs-directory)))
 
-;;; Music management with EMMS
-(use-package emms
-  :ensure t
-  :commands (emms emms-play-directory-tree emms-browser)
-  :hook (emms-browser-mode . hl-line-mode)
-  :config
-  (setq emms-player-list '(emms-player-mpv)
-	emms-info-functions '(emms-info-native)
-	emms-browser-covers #'emms-browser-cache-thumbnail-async)
-
-  (defvar pani/emms-music-directory
-    (if (string= (system-name) "d22-0153")
-	"/l/music/"
-      "~/music/"))
-  (setq emms-source-file-default-directory 'pani/emms-music-directory)
-  (emms-all))
-
 (provide 'init)
 
 ;;; init.el ends here
