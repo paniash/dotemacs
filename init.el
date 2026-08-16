@@ -531,14 +531,9 @@ Clicking +N pops up the same minor-mode menu as the stock collapsed `…'."
   (setq undo-limit (* 3 160000))
   (setq undo-strong-limit (* 3 240000)))
 
-;; Protesilaos' ef-themes
-(use-package ef-themes
-  :vc (:url "https://github.com/protesilaos/ef-themes"
-       :rev :newest)
-  :init
-  (ef-themes-take-over-modus-themes-mode 1)
+(use-package modus-vague
+  :load-path "~/git/modus-vague"
   :config
-  ;; They are nil by default...
   (setq modus-themes-mixed-fonts t
 	modus-themes-italic-constructs t
 	modus-themes-bold-constructs t
