@@ -24,7 +24,7 @@
 (setq-default default-frame-alist '(
 				    ;; Setting the face in here prevents flashes of
 				    ;; color as the theme gets activated
-				    (background-color . "#130911")
+				    (background-color . "#141415")
 				    (foreground-color . "#D0D0D0")
 				    (font . "Hack-11.5")
 				    (ns-appearance . dark)
