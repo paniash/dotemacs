@@ -539,24 +539,6 @@ Clicking +N pops up the same minor-mode menu as the stock collapsed `…'."
 	modus-themes-bold-constructs t
 	modus-themes-variable-pitch-ui t)
 
-  (defvar pani/modeline-bg-color "#221920")
-
-  (setq modus-themes-common-palette-overrides
-	'((fg-line-number-active fg-main) ;; Sets line number color back to white
-	  (pani-modeline-bg "#221920")
-	  (pani-tab-current-bg "#130911")
-
-	  ;; Tab bar
-	  (bg-tab-bar pani-modeline-bg)
-	  (bg-tab-current pani-tab-current-bg)
-	  (bg-tab-other pani-modeline-bg)
-
-	  ;; Modeline
-	  (bg-mode-line-inactive pani-modeline-bg)
-	  (border-mode-line-inactive pani-modeline-bg)
-	  (bg-mode-line-active pani-modeline-bg)
-	  (border-mode-line-active pani-modeline-bg)))
-
   ;; Minibuffer completions are bold by default. This fixes it.
   (setq modus-themes-completions
 	'((selection regular)))
