@@ -558,10 +558,9 @@ Clicking +N pops up the same minor-mode menu as the stock collapsed `…'."
 
   (modus-themes-load-theme 'modus-vague)
 
-  (set-face-attribute 'minibuffer-prompt nil :weight 'normal)
-  ;; Custom color for `secondary-selection'
-  (set-face-attribute 'secondary-selection nil
-		      :background "#221920"))
+  (custom-set-faces
+   '(minibuffer-prompt ((t (:weight normal))))
+   '(font-lock-type-face ((t (:weight normal))))))  ;; disable boldening for "Type" elements in `consult-imenu' command
 
 ;;; Vertico
 (use-package vertico
