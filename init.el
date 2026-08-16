@@ -579,9 +579,8 @@ Clicking +N pops up the same minor-mode menu as the stock collapsed `…'."
 	  (agenda-structure variable-pitch light 1.4)
 	  (t variable-pitch 1.1)))
 
-  ;; Disable all other themes to avoid awkward blending:
-  (mapc #'disable-theme custom-enabled-themes)
-  (load-theme 'ef-symbiosis :no-confirm)
+  (modus-themes-load-theme 'modus-vague)
+
   (set-face-attribute 'minibuffer-prompt nil :weight 'normal)
   ;; Custom color for `secondary-selection'
   (set-face-attribute 'secondary-selection nil
