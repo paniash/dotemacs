@@ -417,6 +417,7 @@ Clicking +N pops up the same minor-mode menu as the stock collapsed `…'."
 		  (:eval (pani/modeline-major-mode))
 		  mode-line-end-spaces " "))
   (setq mode-line-right-align-edge 'right-margin)
+  (setq mode-line-position-column-line-format '(" (%l:%c)"))
   :custom-face
   (pani/modeline-major-mode-face ((t :foreground "#c3a6f7" :weight bold)))
   (pani/modeline-vc-face ((t :foreground "#bf9032" :weight bold))))
