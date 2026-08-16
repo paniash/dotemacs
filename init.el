@@ -452,13 +452,18 @@ Clicking +N pops up the same minor-mode menu as the stock collapsed `…'."
   (defface pani/evil-visual-face  '((t :foreground "#cba6f7" :weight bold)) "face for visual mode")
   (defface pani/evil-other-face   '((t :foreground "#f38ba8" :weight bold)) "face for other modes")
 
-  (setq evil-normal-state-tag   (propertize " NOR " 'face 'pani/evil-normal-face))
-  (setq evil-insert-state-tag   (propertize " INS " 'face 'pani/evil-insert-face))
-  (setq evil-visual-state-tag   (propertize " VIS " 'face 'pani/evil-visual-face))
-  (setq evil-replace-state-tag  (propertize " REP " 'face 'pani/evil-other-face))
-  (setq evil-operator-state-tag (propertize " OPE " 'face 'pani/evil-other-face))
-  (setq evil-motion-state-tag   (propertize " MOT " 'face 'pani/evil-other-face))
-  (setq evil-emacs-state-tag    (propertize " EMA " 'face 'pani/evil-other-face))
+  (defun pani/evil-state-tag-concat-lambda (letter face)
+    "Set the evil-state-indicator format with a concatenated lambda character in the modeline."
+    (concat (propertize (format " %s " letter) 'face face)
+	    (propertize "λ " 'face '(:inherit font-lock-comment-face :slant normal :weight bold))))
+
+  (setq evil-normal-state-tag (pani/evil-state-tag-concat-lambda "NOR" 'pani/evil-normal-face))
+  (setq evil-insert-state-tag (pani/evil-state-tag-concat-lambda "INS" 'pani/evil-insert-face))
+  (setq evil-visual-state-tag   (pani/evil-state-tag-concat-lambda "VIS" 'pani/evil-visual-face))
+  (setq evil-replace-state-tag  (pani/evil-state-tag-concat-lambda "REP" 'pani/evil-other-face))
+  (setq evil-operator-state-tag (pani/evil-state-tag-concat-lambda "OPE" 'pani/evil-other-face))
+  (setq evil-motion-state-tag   (pani/evil-state-tag-concat-lambda "MOT" 'pani/evil-other-face))
+  (setq evil-emacs-state-tag    (pani/evil-state-tag-concat-lambda "EMA" 'pani/evil-other-face))
 
   (setq evil-mode-line-format '(before . mode-line-buffer-identification))
 
