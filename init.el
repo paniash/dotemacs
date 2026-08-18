@@ -857,12 +857,12 @@ keeping the size stable across `g'/`org-agenda-redo'."
 
 
   (defun pani/custom-org-agenda ()
-    "Custom function to immediately jump to my custom org-agenda view."
+    "Shows items in progress, daily agenda, agenda for the next 3 days, and scheduled and deadline items for the next 14 days."
     (interactive)
     (org-agenda nil "j"))
 
   (defun pani/done-items-prev-week-org-agenda ()
-    "Custom function to immediately jump to my custom org-agenda view."
+    "Show tasks closed within the last one week. It only displays for the last seven days from the day of invocation."
     (interactive)
     (org-agenda nil "w"))
 
