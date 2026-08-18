@@ -203,6 +203,9 @@ The DWIM behaviour of this command is as follows:
   (setq help-window-keep-selected t)  ; Keep using the same window for more help buffers
   (setq compilation-scroll-output t) ; scroll compilation buffer as output appears
 
+  ;; Always indent with spaces not tabs
+  (setq-default indent-tabs-mode nil)
+
   (column-number-mode 1)
   (global-visual-wrap-prefix-mode 1)
 
