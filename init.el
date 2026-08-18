@@ -679,7 +679,7 @@ lingers as the selection owner."
   :bind (:map global-map
 	      ("C-c a" . org-agenda)
 	      ("C-c c" . org-capture)
-	      ("C-c l" . org-store-link)
+	      ("C-c o" . org-store-link)
 	 :map org-mode-map
 	 ("C-x a" . org-archive-subtree-default)
 	 ("C-x i" . org-toggle-inline-images)
