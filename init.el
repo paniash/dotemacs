@@ -849,7 +849,7 @@ keeping the size stable across `g'/`org-agenda-redo'."
 			(org-agenda-entry-types '(:scheduled :timestamp :sexp))
 			(org-agenda-skip-function
 			 '(org-agenda-skip-entry-if 'todo '("PROG")))
-			(org-agenda-overriding-header "\nUpcoming schedule (+14d)")))))
+			(org-agenda-overriding-header "\nUpcoming scheduled (+14d)")))))
 
 	  ("w" "Finished tasks from last week" tags "CLOSED>=\"<-7d>\""
 	   ((org-agenda-overriding-header "Finished tasks from last week")
