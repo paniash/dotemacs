@@ -518,7 +518,7 @@ Clicking +N pops up the same minor-mode menu as the stock collapsed `…'."
       (comment-or-uncomment-region beg end))
     (evil-define-key 'normal 'global (kbd "gc") 'my-evil-comment-or-uncomment)))
 
-;; Some useful config for emacs-lisp
+;;; Some useful config for emacs-lisp
 (use-package emacs-lisp-mode
   :ensure nil
   :bind (:map emacs-lisp-mode-map
