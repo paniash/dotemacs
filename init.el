@@ -900,20 +900,6 @@ keeping the size stable across `g'/`org-agenda-redo'."
   ;; Don't run emacs diary when invoking org-agenda
   (setq org-agenda-include-diary nil)
 
-  ;; User-defined colors for custom org-agenda
-  (custom-set-faces
-   '(org-agenda-structure ((t (:foreground "#689f38" :weight normal))))
-   '(org-agenda-date ((t (:foreground "#dc8add" :weight normal))))
-   '(org-agenda-date-weekend ((t (:foreground "#3f95f6" :weight normal))))
-   '(org-agenda-calendar-event ((t (:foreground "#a8a8a8" :weight normal))))
-   '(org-agenda-calendar-daterange ((t (:foreground "#a8a8a8" :weight normal))))
-   '(org-scheduled ((t (:foreground "#84a8a4" :weight normal))))
-   '(org-scheduled-today ((t (:foreground "#84a8a4" :weight normal))))
-   '(org-scheduled-previously ((t (:foreground "#7986cb" :weight normal))))
-   '(org-deadline-today ((t (:foreground "#f7768e" :weight normal))))
-   '(org-tag ((t (:foreground "#56b6c2" :weight light))))
-   )
-
   ;; Change text for past scheduled items
   (setq org-agenda-scheduled-leaders '("Scheduled: " "Late%2dd:   "))
 
