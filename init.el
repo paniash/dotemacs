@@ -314,6 +314,7 @@ The DWIM behaviour of this command is as follows:
   ( :map global-map
     ("C-x C-d" . nil) ; never use it
     ("C-x C-z" . nil) ; never use it
+    ("C-x n d" . nil) ; never use `narrow-to-defun' command
     ("C-x C-c" . nil) ; avoid accidentally exiting Emacs
     ("C-h h" . nil) ; never show that "hello" file
     ("C-l" . nil) ; never use it
