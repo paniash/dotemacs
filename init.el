@@ -1695,8 +1695,6 @@ that and instead tries to complete against dictionary entries."
 	  '((project-find-file "Find file")
 	    (project-find-regexp "Find regexp")
 	    (project-find-dir "Find directory")
-	    (project-vc-dir "VC-Dir")
-	    (project-eshell "Eshell")
 	    (keyboard-quit "Quit")))
 
   (setq project-key-prompt-style t))
