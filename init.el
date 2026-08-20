@@ -2290,6 +2290,16 @@ Info manuals."
   :config
   (setq tempel-path (expand-file-name "templates" user-emacs-directory)))
 
+(use-package abbrev
+  :ensure nil
+  :hook (notmuch-message-mode . abbrev-mode)
+  :config
+  (setq save-abbrevs nil) ;; Don't save the abbrev file
+
+  ;; notmuch message composition
+  (define-abbrev-table 'notmuch-message-mode-abbrev-table
+    '(("sig" "Kind regards,\nAshish (Pani)" nil :system t))))
+
 (provide 'init)
 
 ;;; init.el ends here
