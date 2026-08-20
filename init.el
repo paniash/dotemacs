@@ -1491,7 +1491,8 @@ that and instead tries to complete against dictionary entries."
   :config
   (evil-define-key 'normal notmuch-show-mode-map
     (kbd "C-j") 'notmuch-show-next-message
-    (kbd "C-k") 'notmuch-show-previous-message))
+    (kbd "C-k") 'notmuch-show-previous-message
+    (kbd "c d") 'notmuch-show-resume-message))
 
 ;;; Orgmode integration for notmuch
 (use-package ol-notmuch
