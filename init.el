@@ -1246,7 +1246,7 @@ the current buffer's `default-directory'."
 	notmuch-message-replied-tags '("+replied" "-unread")
 	notmuch-message-forwarded-tags '("+forwarded" "-unread")
 	notmuch-show-mark-read-tags '("-unread")
-	notmuch-draft-tags '("+draft" "-unread")
+	notmuch-draft-tags '("+draft" "-unread" "-inbox")
 	notmuch-draft-folder "university/Drafts"
 	notmuch-fcc-dirs '(("ashish\\.panigrahi@aalto\\.fi" . "university/Sent -inbox -unread +sent +aalto")
 			   ("@ashishpanigrahi\\.com" . "migadu/Sent -inbox -unread +sent +migadu"))
