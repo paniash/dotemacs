@@ -1484,8 +1484,6 @@ that and instead tries to complete against dictionary entries."
     :map notmuch-show-mode-map
     ("a" . nil) ; not archiving so better to disable it
     ("A" . nil)
-    ("r" . notmuch-show-reply) ; easier to reply to all by default
-    ("R" . notmuch-show-reply-sender)
     ("C-c C-o" . pani/notmuch-show-view-attachment)
     :map notmuch-hello-mode-map
     ("C-<tab>" . nil)
