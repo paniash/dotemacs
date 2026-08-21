@@ -1236,6 +1236,7 @@ the current buffer's `default-directory'."
 			  (:name "migadu-sent" :query "tag:migadu and tag:sent" :key "ms")
 			  (:name "niser" :query "tag:niser" :key "n")
 			  (:name "juelich" :query "tag:juelich" :key "j")
+                          (:name "mailing-lists" :query "tag:list" :key "l")
 			  (:name "emacs-orgmode" :query "tag:orgmode" :key "o"))))
 	  (if (string= (system-name) "d22-0153")
 	      common
@@ -1360,6 +1361,11 @@ that and instead tries to complete against dictionary entries."
     (interactive)
     (notmuch-search "tag:orgmode"))
 
+  (defun pani/notmuch-jump-mailing-list ()
+    "Jump straight to all mailing list inbox."
+    (interactive)
+    (notmuch-search "tag:list"))
+
   (defun pani/notmuch-mua-empty-subject-check ()
     "Prompt for confirmation before sending a message with empty subject."
     (when (and (null (message-field-value "Subject"))
@@ -1474,6 +1480,7 @@ that and instead tries to complete against dictionary entries."
     ("C-c m t" . pani/notmuch-jump-today)
     ("C-c m p" . pani/notmuch-jump-migadu)
     ("C-c m o" . pani/notmuch-jump-orgmode)
+    ("C-c m l" . pani/notmuch-jump-mailing-list)
     ("C-x m" . notmuch-mua-new-mail) ; override `compose-mail'
     :map notmuch-search-mode-map
     ("a" . nil) ; not archiving so better to disable it
