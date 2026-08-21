@@ -800,7 +800,7 @@ keeping the size stable across `g'/`org-agenda-redo'."
 		    ((org-agenda-block-separator nil)
 		     (org-agenda-span 1)
 		     (org-deadline-warning-days 0)
-		     (org-scheduled-past-days 2)
+		     (org-scheduled-past-days 3)
 
 		     ;; We don't need the `org-agenda-date-today'
 		     ;; highlight because that only has a practical
