@@ -720,6 +720,10 @@ lingers as the selection owner."
 	  ("WAIT" . (:foreground "#8E97ED" :weight bold))
 	  ("CANCELLED" . (:foreground "#B50741" :weight bold))))
 
+  ;; Faces for org-priority
+  (setq org-priority-faces
+        '((?A . (:background "#C2A7C4" :foreground "black"))))
+
   ;; Block parent TODO to DONE if children are undone
   (setq org-enforce-todo-dependencies t)
 
