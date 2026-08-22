@@ -2065,7 +2065,7 @@ Works in both `elfeed-search-mode' and `elfeed-show-mode'."
   ((elfeed-search-mode . olivetti-mode)
    (elfeed-show-mode . olivetti-mode))
   :config
-  (setq olivetti-minimum-body-width 180)
+  (setq olivetti-minimum-body-width 140)
   (setq olivetti-body-width 100))
 
 ;;; Hide autorevert mode in modeline
