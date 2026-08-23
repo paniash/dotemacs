@@ -2304,6 +2304,7 @@ Info manuals."
   :config
   (setq tempel-path (expand-file-name "templates" user-emacs-directory)))
 
+;;; For quick expansions of commonly used words/phrases
 (use-package abbrev
   :ensure nil
   :hook (notmuch-message-mode . abbrev-mode)
