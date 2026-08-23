@@ -2165,7 +2165,11 @@ Info manuals."
 	erc-fill-column 100
 	erc-log-insert-log-on-open 'erc-log-new-target-buffer-p
 	erc-fill-function 'erc-fill-static
-	erc-fill-static-center 20))
+	erc-fill-static-center 20)
+
+  ;; No window splitting
+  (setq erc-interactive-display 'buffer
+        erc-join-buffer 'buffer))
 
 ;; ;; Smooth scrolling
 ;; (use-package pixel-scroll
