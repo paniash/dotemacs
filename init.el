@@ -519,6 +519,7 @@ Clicking +N pops up the same minor-mode menu as the stock collapsed `…'."
   (evil-set-initial-state 'dashboard-mode 'normal)
   (evil-set-initial-state 'slime-repl-mode 'emacs)
   (evil-set-initial-state 'comint-mode 'normal)
+  (evil-set-initial-state 'erc-mode 'emacs)
   (evil-set-initial-state 'inferior-python-mode 'emacs))
 
 ;;; Vim Bindings Everywhere else
