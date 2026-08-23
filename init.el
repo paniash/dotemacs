@@ -70,6 +70,19 @@
 	   (dedicated . t)
 	   (window-height . 0.15))
 
+          ;; Only allow 25% of the window to be occupied by SLIME
+	  ((derived-mode . slime-repl-mode)
+	   (display-buffer-reuse-window
+	    display-buffer-at-bottom)
+	   (dedicated . t)
+	   (window-height . 0.30))
+
+          ;; Don't display the inferior-lisp buffer in the SLIME window
+          ;; It still exists in the buffer list
+	  ("\\*inferior-lisp\\*"
+           (display-buffer-no-window)
+           (allow-no-window . t))
+
 	  ;; Typst ts compilation mode settings
 	  ((derived-mode . typst-ts-compilation-mode)
 	   (display-buffer-reuse-mode-window
@@ -504,6 +517,8 @@ Clicking +N pops up the same minor-mode menu as the stock collapsed `…'."
 
   (evil-set-initial-state 'messages-buffer-mode 'normal)
   (evil-set-initial-state 'dashboard-mode 'normal)
+  (evil-set-initial-state 'slime-repl-mode 'emacs)
+  (evil-set-initial-state 'comint-mode 'normal)
   (evil-set-initial-state 'inferior-python-mode 'emacs))
 
 ;;; Vim Bindings Everywhere else
@@ -2314,6 +2329,27 @@ Info manuals."
   ;; notmuch message composition
   (define-abbrev-table 'notmuch-message-mode-abbrev-table
     '(("sig" "Kind regards,\nAshish (Pani)" nil :system t))))
+
+;;; Editor integration for common lisp
+(use-package slime
+  :ensure t
+  :bind (:map slime-mode-indirect-map
+              ("C-c C-q" . slime-close-all-parens-in-sexp))
+  :config
+  (setq inferior-lisp-program "sbcl")
+  (setq slime-kill-without-query-p t)
+
+  (defun pani/slime-keep-focus (orig &rest args)
+    "Show the SLIME REPL without selecting its window."
+    (save-selected-window (apply orig args)))
+
+  (advice-add 'slime-hide-inferior-lisp-buffer :around #'pani/slime-keep-focus))
+
+(use-package slime-repl
+  :ensure nil
+  :after slime
+  :bind (:map slime-repl-mode-map
+              ("C-l" . slime-repl-clear-buffer)))
 
 (provide 'init)
 
