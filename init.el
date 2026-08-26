@@ -1688,6 +1688,16 @@ that and instead tries to complete against dictionary entries."
   ;; Disable code-action hints to reduce noise
   (setq eglot-code-action-indications nil)
 
+  ;; Some eglot optimizations
+  (setq eglot-sync-connect 0)
+  (setq eglot-autoshutdown t)
+
+  ;; Don't log LSP events
+  (setq eglot-events-buffer-config '(:size 0 :format short))
+
+  ;; Disable JSON-RPC event hook to reduce memory
+  (setq jsonrpc-event-hook nil)
+
   ;; (setq eglot-managed-mode-hook (list (lambda () (eldoc-mode -1))))
   (setq eglot-ignored-server-capabilities
 	'(:documentHighlightProvider
