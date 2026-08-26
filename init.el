@@ -10,13 +10,13 @@
   (setq use-package-always-ensure nil)
   (setq package-install-upgrade-built-in nil)
   (setq package-archives '(("melpa" . "https://snapshots.melpa.org/packages/")
-			   ("non-gnu" . "https://elpa.nongnu.org/nongnu/")
+			   ("nongnu" . "https://elpa.nongnu.org/nongnu/")
 			   ("elpa" . "https://elpa.gnu.org/packages/")))
   (setq package-archive-priorities
-	'(("gnu-elpa" . 3)
+	'(("elpa" . 3)
 	  ("nongnu" . 2)
 	  ("melpa" . 1)))
-  ; check package-review-policy only if this variable exists (available only after emacs 31)
+  ;; check package-review-policy only if this variable exists (available only after emacs 31)
   (when (boundp 'package-review-policy)
     (setq package-review-policy nil  ; very manual at this point (needs automation)
 	  package-review-diff-command '("git" "diff" "--no-index"
