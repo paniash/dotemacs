@@ -34,6 +34,7 @@
 ;;; Some standard emacs config
 (use-package emacs
   :ensure nil
+  :hook (emacs-lisp-mode . prettify-symbols-mode)
   :demand t
   :init
   ;; Remove visible bell
@@ -322,6 +323,9 @@ The DWIM behaviour of this command is as follows:
   ;; Auto-chmod scripts on save
   (add-hook 'after-save-hook
 	    #'executable-make-buffer-file-executable-if-script-p)
+
+  ;; Replace "lambda" with "λ"
+  (setq prettify-symbols-unprettify-at-point 'right-edge)
 
   :bind
   ( :map global-map
@@ -1748,7 +1752,9 @@ that and instead tries to complete against dictionary entries."
   :ensure nil   ; because this is built-in
   :hook ((inferior-python-mode . (lambda ()
 				  (set-process-query-on-exit-flag
-				   (get-buffer-process (current-buffer)) nil))))
+				   (get-buffer-process (current-buffer)) nil)))
+         (python-mode . prettify-symbols-mode)
+         (python-ts-mode . prettify-symbols-mode))
   :bind
   ( :map python-mode-map
     ("C-l" . nil) ; unbind default binding for text view centering
@@ -2350,6 +2356,7 @@ Info manuals."
 ;;; Editor integration for common lisp
 (use-package slime
   :ensure t
+  :hook (lisp-mode . prettify-symbols-mode)
   :bind (:map slime-mode-indirect-map
               ("C-c C-q" . slime-close-all-parens-in-sexp))
   :config
