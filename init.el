@@ -1870,7 +1870,9 @@ buffer. Works for both local and TRAMP-remote buffers."
   (add-hook 'python-mode-hook 'code-cells-mode-maybe)
   :bind
   (:map code-cells-mode-map
-    ("C-c C-c" . code-cells-eval)))
+        ("C-c C-c" . code-cells-eval)
+        ("C-j" . code-cells-forward-cell)
+        ("C-k" . code-cells-backward-cell)))
 
 ;;; Elfeed for RSS
 (use-package elfeed
