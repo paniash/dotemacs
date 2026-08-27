@@ -5,6 +5,7 @@
 ;;; Initialize package sources
 (use-package package
   :ensure nil
+  :demand t
   :hook (package-menu-mode . hl-line-mode)
   :config
   (setq use-package-always-ensure nil)
@@ -453,6 +454,7 @@ Clicking +N pops up the same minor-mode menu as the stock collapsed `…'."
 
 ;;; Vim Bindings
 (use-package evil
+  :pin melpa
   :ensure t
   :demand t
   :bind (:map global-map
