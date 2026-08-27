@@ -1374,7 +1374,7 @@ that and instead tries to complete against dictionary entries."
   (defun pani/notmuch-jump-unread ()
     "Jump straight to notmuch unread tags."
     (interactive)
-    (notmuch-search "tag:unread"))
+    (notmuch-search "tag:unread and tag:inbox"))
 
   (defun pani/notmuch-jump-today ()
     "Jump straight to notmuch unread tags."
