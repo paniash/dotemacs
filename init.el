@@ -564,6 +564,8 @@ Clicking +N pops up the same minor-mode menu as the stock collapsed `…'."
   (setq undo-strong-limit (* 3 240000)))
 
 (use-package modus-vague
+  :init
+  (require-theme 'modus-themes)
   :load-path "~/git/modus-vague"
   :config
   (setq modus-themes-mixed-fonts t
