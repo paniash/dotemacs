@@ -1418,7 +1418,8 @@ that and instead tries to complete against dictionary entries."
 
   (evil-collection-define-key 'normal 'notmuch-show-mode-map
     (kbd "RET")      #'pani/notmuch-show-ret
-    (kbd "<return>") #'pani/notmuch-show-ret)
+    (kbd "<return>") #'pani/notmuch-show-ret
+    (kbd "H")        #'evil-window-top)
 
   ;; View attachments without hunting for the part button
   (defun pani/notmuch-show--attachments ()
