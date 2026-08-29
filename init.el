@@ -1630,6 +1630,10 @@ that and instead tries to complete against dictionary entries."
   :ensure t
   :hook (after-init . envrc-global-mode)
   :config
+
+  ;; Enable async support
+  (setq envrc-async t)
+
   (define-advice envrc-mode (:around (orig &rest args) pani/no-remote-envrc)
     "Skip direnv in remote buffers. Run it locally as usual."
     (unless (and buffer-file-name (file-remote-p buffer-file-name))
