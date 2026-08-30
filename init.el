@@ -502,6 +502,12 @@ Clicking +N pops up the same minor-mode menu as the stock collapsed `…'."
   (evil-global-set-key 'motion "j" 'evil-next-visual-line)
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
 
+  ;; Disable visual mode when dragging mouse
+  (define-key evil-motion-state-map [down-mouse-1] 'ignore)
+  (progn
+    (global-set-key [down-mouse-1] 'mouse-set-point)
+    (global-unset-key [drag-mouse-1]))
+
   ;; Setting leader key in emacs
   (evil-set-leader 'normal (kbd "SPC"))
   (evil-define-key nil 'global
