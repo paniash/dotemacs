@@ -1026,7 +1026,14 @@ keeping the size stable across `g'/`org-agenda-redo'."
   ;; probably not very good for the CPU
   (setq auto-revert-check-vc-info t)
   (setq git-commit-style-convention-checks '(non-empty-second-line))
-  (setq magit-diff-refine-hunk 'all))
+  (setq magit-diff-refine-hunk 'all)
+
+  ;; An advice function to change behaviour of `magit-diff-visit-worktree-file'
+  ;; By default, it opens the changes in the file in the same window as the `magit-status'
+  ;; buffer which I do not like. I would like it to use the `other-window'.
+  (define-advice magit-diff-visit-worktree-file
+      (:filter-args (_args) pani/visit-worktree-other-window)
+    (list t)))
 
 (use-package markdown-mode
   :ensure t
