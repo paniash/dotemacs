@@ -2390,6 +2390,18 @@ Info manuals."
   :bind (:map slime-repl-mode-map
               ("C-l" . slime-repl-clear-buffer)))
 
+;;; C-mode configuration
+(use-package cc-mode
+  :ensure nil
+  :init
+  (defun pani/c-indent-four-spaces ()
+    (setq c-basic-offset 4
+          indent-tabs-mode nil))
+  :hook (c-mode . pani/c-indent-four-spaces)
+  :config
+  (setq c-default-style "linux"))
+
+
 (provide 'init)
 
 ;;; init.el ends here
