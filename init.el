@@ -1057,7 +1057,7 @@ keeping the size stable across `g'/`org-agenda-redo'."
 ;;; TeX config
 (use-package tex-site
   :ensure auctex
-  :hook ((LaTeX-mode . electric-pair-mode)
+  :hook ((LaTeX-mode . electric-pair-local-mode)
 	 (LaTeX-mode . cdlatex-mode)
 	 (LaTeX-mode . reftex-mode))  ;; Turn on reftex by default in .tex files
   :config
