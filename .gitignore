@@ -4,6 +4,7 @@ gnus/
 straight/
 elpaca/
 transient/
+request/
 *~
 eshell/
 tutorial/
