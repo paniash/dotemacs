@@ -847,7 +847,7 @@ keeping the size stable across `g'/`org-agenda-redo'."
 			    'org-agenda-date-weekend
 			  'org-agenda-date)))
 		     (org-agenda-skip-function
-		      '(org-agenda-skip-entry-if 'todo '("PROG")))
+		      '(org-agenda-skip-entry-if 'todo '("PROG" "WAIT")))
 		     (org-agenda-format-date "%A, %-e %B %Y")
 		     (org-agenda-overriding-header "\nDaily agenda")))
 	    (agenda "" ((org-agenda-start-on-weekday nil)
@@ -857,7 +857,7 @@ keeping the size stable across `g'/`org-agenda-redo'."
 			(org-deadline-warning-days 0)
 			(org-agenda-block-separator nil)
 			(org-agenda-skip-function
-			 '(org-agenda-skip-entry-if 'todo '("PROG")))
+			 '(org-agenda-skip-entry-if 'todo '("PROG" "WAIT")))
 			(org-agenda-overriding-header "\nNext three days")))
 	    (agenda "" ((org-agenda-time-grid nil)
 			(org-agenda-start-on-weekday nil)
@@ -872,7 +872,7 @@ keeping the size stable across `g'/`org-agenda-redo'."
 			(org-agenda-block-separator nil)
 			(org-agenda-entry-types '(:deadline))
 			(org-agenda-skip-function
-			 '(org-agenda-skip-entry-if 'todo '("PROG")))
+			 '(org-agenda-skip-entry-if 'todo '("PROG" "WAIT")))
 			(org-agenda-overriding-header "\nUpcoming deadlines (+14d)")))
 	    (agenda "" ((org-agenda-start-on-weekday nil)
 			(org-agenda-format-date "%A, %-e %B %Y")
@@ -883,7 +883,7 @@ keeping the size stable across `g'/`org-agenda-redo'."
 			(org-agenda-block-separator nil)
 			(org-agenda-entry-types '(:scheduled :timestamp :sexp))
 			(org-agenda-skip-function
-			 '(org-agenda-skip-entry-if 'todo '("PROG")))
+			 '(org-agenda-skip-entry-if 'todo '("PROG" "WAIT")))
 			(org-agenda-overriding-header "\nUpcoming scheduled (+14d)")))))
 
 	  ("w" "Finished tasks from last week" tags "CLOSED>=\"<-7d>\""
