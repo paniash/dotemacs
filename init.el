@@ -2269,7 +2269,8 @@ Info manuals."
 (use-package isearch
   :ensure nil ; built-in
   :bind (:map global-map
-	      ("C-s" . isearch-forward))
+	      ("C-s" . isearch-forward)
+              ("C-S-s" . isearch-forward-regexp))
   :config
   ;; Search for words not necessarily one after the other
   (setq search-whitespace-regexp ".*?")
