@@ -85,11 +85,19 @@
            (display-buffer-no-window)
            (allow-no-window . t))
 
+          ;; Display TeX Help window only upto fill height
+	  ("\\*TeX Help\\*"
+	   (display-buffer-reuse-mode-window display-buffer-below-selected)
+           (window-height . fit-window-to-buffer)
+           (dedicated . t)
+           (preserve-size . (nil . t)))
+
 	  ;; Typst ts compilation mode settings
 	  ((derived-mode . typst-ts-compilation-mode)
 	   (display-buffer-reuse-mode-window
 	    display-buffer-pop-up-window)
 	   (window-height . fit-window-to-buffer))
+
 	  ;; help-mode settings
 	  ((derived-mode . help-mode)
 	   (display-buffer-reuse-mode-window
