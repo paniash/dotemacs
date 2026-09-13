@@ -41,6 +41,7 @@
   (:text "\\(?:J\\(?:\\(?:\\.\\|onas\\) Bylander\\)\\)" :value 500 :type R :tags (t arxiv))
   (:text "\\(?:C\\(?:\\(?:\\. K\\.\\|hristian\\(?: K\\(?:\\.\\|raglund\\)\\)?\\) Andersen\\)\\)" :value 500 :type R :tags (t arxiv))
   (:text "Guo-Ping Guo" :value 500 :type w :tags (t arxiv))
+  (:text "\\(?:P\\(?:\\(?:\\.\\|atrice\\) Bertet\\)\\)" :value 500 :type R :tags (t arxiv))
   (:text "Kristiaan De Greve" :value 500 :type w :tags (t arxiv))
   (:text "Gulzat Jaliel" :value 300 :type w :tags (t arxiv))
   (:text "Andreas Wallraff" :value 800 :type w :tags (t arxiv))
