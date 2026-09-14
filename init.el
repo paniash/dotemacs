@@ -1767,11 +1767,14 @@ that and instead tries to complete against dictionary entries."
   :ensure nil
   :bind (:map global-map
 	      ("C-x p C-g" . keyboard-quit)
-              ("C-x p m"  . magit-project-status))
+              ("C-x p m"  . magit-project-status)
+              ("C-x p d" . project-dired)
+              ("C-x p D" . project-find-dir))
   :config
   (setopt project-switch-commands
 	  '((project-find-file "Find file")
 	    (project-find-regexp "Find regexp")
+            (project-dired "Dired-project")
 	    (project-find-dir "Find directory")
 	    (magit-project-status "Magit-project")
 	    (keyboard-quit "Quit")))
