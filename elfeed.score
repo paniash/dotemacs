@@ -45,6 +45,7 @@
   (:text "Kristiaan De Greve" :value 500 :type w :tags (t arxiv))
   (:text "Gulzat Jaliel" :value 300 :type w :tags (t arxiv))
   (:text "Andreas Wallraff" :value 800 :type w :tags (t arxiv))
+  (:text "\\(?:M\\(?:\\(?:\\.\\|ichele\\) Piscitelli\\)\\)" :value 300 :type R :tags (t arxiv))
   (:text "\\(?:A\\(?:\\(?:\\.\\|lexandre\\) Blais\\)\\)" :value 800 :type R :tags (t arxiv))
   (:text "\\(?:F\\(?:\\(?:\\.\\|abrizio\\) Berritta\\)\\)" :value 400 :type R :tags (t arxiv))
   (:text "\\(?:F\\(?:\\(?:\\.\\|erdinand\\) Kuemmeth\\)\\)" :value 400 :type R :tags (t arxiv))
