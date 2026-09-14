@@ -2084,6 +2084,7 @@ Works in both `elfeed-search-mode' and `elfeed-show-mode'."
 	  ("http://terrytao.wordpress.com/feed/" :title "Terry Tao" blog)
 	  ("http://m-malinowski.github.io/feed.xml" blog)
 	  ("https://ashishpanigrahi.com/atom.xml" blog)
+          ("https://whhone.com/index.xml" blog emacs)
 	  ("https://theprivacydad.com/feed/" blog)
 	  ("http://timharek.no/rss.xml" blog)
 	  ("http://matt.might.net/articles/feed.rss" blog)
