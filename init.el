@@ -791,6 +791,9 @@ lingers as the selection owner."
 
   (setq org-babel-python-command python-shell-interpreter)
 
+  ;; Disable persistent cache between emacs sessions for org
+  (setq org-element-cache-persistent nil)
+
   ;; Don't ask me everytime I evaluate a src-block (only for python and elisp)
   (setq org-confirm-babel-evaluate
 	(lambda (lang _body)
