@@ -2321,6 +2321,7 @@ Info manuals."
   :ensure t
   :hook ((python-mode . hl-todo-mode)
 	 (python-ts-mode . hl-todo-mode)
+         (emacs-lisp-mode . hl-todo-mode)
 	 (typst-ts-mode . hl-todo-mode))
   :config
   (setq hl-todo-keyword-faces
