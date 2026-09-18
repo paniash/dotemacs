@@ -549,8 +549,7 @@ Clicking +N pops up the same minor-mode menu as the stock collapsed `…'."
 
 ;;; Vim Bindings Everywhere else
 (use-package evil-collection
-  :vc (:url "https://github.com/emacs-evil/evil-collection"
-	    :rev :newest)
+  :ensure t
   :after evil
   :config
   (setq evil-want-integration t)
