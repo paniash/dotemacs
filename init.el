@@ -955,9 +955,10 @@ It only displays for the last seven days from the day of invocation."
   ;; Change text for past scheduled items
   (setq org-agenda-scheduled-leaders '("Scheduled: " "Late%2dd:   "))
 
-  ;; Hides DONE items in org-agenda for schedules and deadlines
+  ;; Hides DONE items in org-agenda for schedules, deadlines and timestamps
   (setq org-agenda-skip-scheduled-if-done t)
-  (setq org-agenda-skip-deadline-if-done t))
+  (setq org-agenda-skip-deadline-if-done t)
+  (setq org-agenda-skip-timestamp-if-done t))
 
 ;;; Org-capture templates
 (use-package org-capture
