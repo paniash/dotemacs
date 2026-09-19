@@ -316,9 +316,6 @@ The DWIM behaviour of this command is as follows:
 
   ;; Specify line-spacing (in pixels)
   (setq line-spacing nil)   ;; `nil' is default value
-  (setq tab-bar-show 1) ; turns off `tab-bar-mode' when only 1 tab is present.
-  (setq tab-bar-close-button-show nil) ; removes 'x' button from the tabs.
-  (setq tab-bar-new-button-show nil) ; removes '+' button for new tab.
 
   ;; Specify gpg executable
   (setq epg-gpg-program "gpg2")
@@ -451,6 +448,14 @@ Clicking +N pops up the same minor-mode menu as the stock collapsed `…'."
   :custom-face
   (pani/modeline-major-mode-face ((t :foreground "#c3a6f7" :weight bold)))
   (pani/modeline-vc-face ((t :foreground "#bf9032" :weight bold))))
+
+(use-package tab-bar
+  :ensure nil
+  :config
+  (setq tab-bar-show 1) ; turns off `tab-bar-mode' when only 1 tab is present.
+  (setq tab-bar-close-button-show nil) ; removes 'x' button from the tabs.
+  (setq tab-bar-new-button-show nil) ; removes '+' button for new tab.
+  (setq tab-bar-select-restore-windows nil))
 
 (use-package shr
   :ensure nil
