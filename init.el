@@ -2292,8 +2292,27 @@ Info manuals."
 	      ("C-s" . isearch-forward)
               ("C-S-s" . isearch-forward-regexp)
               :map isearch-mode-map
+              ("C-o" . pani/isearch-occur)
               ("C-g" . isearch-cancel))
   :config
+  (defun pani/isearch-occur ()
+    "Finish isearch in the search buffer, then `occur' on its string.
+Mirrors isearch's own case and lax-whitespace handling so occur shows the
+same matches."
+    (interactive)
+    (let ((regexp (if isearch-regexp
+                      isearch-string
+                    (regexp-quote isearch-string)))
+          (case-fold-search isearch-case-fold-search)
+          (search-upper-case nil)
+          (search-spaces-regexp
+           (when (if isearch-regexp
+                     isearch-regexp-lax-whitespace
+                   isearch-lax-whitespace)
+             search-whitespace-regexp)))
+      (isearch-done)
+      (occur regexp)))
+
   ;; Search for words not necessarily one after the other
   (setq search-whitespace-regexp ".*?")
   (setq isearch-lax-whitespace t)
