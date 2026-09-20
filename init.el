@@ -826,6 +826,7 @@ lingers as the selection owner."
   :bind (:map global-map
 	      ("C-c j" . pani/custom-org-agenda)
 	      ("C-c w" . pani/done-items-prev-week-org-agenda)
+	      ("C-c v" . pani/done-items-since-meeting-org-agenda)
 	      :map org-agenda-mode-map
 	      ("C-c C-p" . org-agenda-priority))
   :config
@@ -906,8 +907,19 @@ keeping the size stable across `g'/`org-agenda-redo'."
 	    (org-agenda-archives-mode t)
 	    (org-agenda-tag-filter-preset '("-emacs" "-personal" "-email" "-misc"))
 	    (org-agenda-prefix-format '((tags . " ")))
-	    (org-agenda-remove-tags nil)))))
+	    (org-agenda-remove-tags nil)))
 
+          ("v" "Finished tasks since last group meeting"
+           tags
+           (format "CLOSED>=\"<%s>\""
+                   (setq pani/last-group-meeting-date
+                         (org-read-date nil nil nil "Last group meeting: ")))
+           ((org-agenda-overriding-header
+             (format "Finished tasks since %s" pani/last-group-meeting-date))
+            (org-agenda-archives-mode t)
+            (org-agenda-tag-filter-preset '("-emacs" "-personal" "-email" "-misc"))
+            (org-agenda-prefix-format '((tags . " ")))
+            (org-agenda-remove-tags nil)))))
 
   (defun pani/custom-org-agenda ()
     "Shows items in progress, daily agenda, agenda for the next 3 days."
@@ -919,6 +931,14 @@ keeping the size stable across `g'/`org-agenda-redo'."
 It only displays for the last seven days from the day of invocation."
     (interactive)
     (org-agenda nil "w"))
+
+  (defvar pani/last-group-meeting-date nil)
+
+  (defun pani/done-items-since-meeting-org-agenda ()
+    "Prompt for the date of the last group meeting and show completed tasks since then.
+It displays every DONE item closed from the chosen day upto today."
+    (interactive)
+    (org-agenda nil "v"))
 
   (defun pani/org-agenda-birthday-emoji ()
     "Append a cake emoji for birthday entries."
