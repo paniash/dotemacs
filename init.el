@@ -2431,6 +2431,12 @@ Info manuals."
   :config
   (setq c-default-style "linux"))
 
+;;; Ensure that certain config files start in conf-mode
+(use-package conf-mode
+  :ensure nil
+  :mode (("\\mbsyncrc\\'" . conf-space-mode)
+         ("\\notmuch-config\\'" . conf-unix-mode)))
+
 
 (provide 'init)
 
