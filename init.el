@@ -214,8 +214,16 @@ The DWIM behaviour of this command is as follows:
      (t
       (keyboard-quit))))
 
+  (defun pani/kill-current-buffer ()
+    "Kill current BUFFER without confirmation."
+    (interactive)
+    (let ((kill-buffer-query-functions nil))
+      (kill-buffer (current-buffer))))
+
   :bind
   ("C-g" . pani/keyboard-quit-dwim)
+  ("C-x k" . pani/kill-current-buffer)
+  ("C-x K" . kill-buffer)
 
   :config
   (setq kill-do-not-save-duplicates t)
