@@ -64,6 +64,12 @@
 	  ("\\*vc-\\(git\\|hg\\|bzr\\|svn\\)"
 	   (display-buffer-no-window)
 	   (allow-no-window . t))
+          ;; grep buffers get half the frame
+          ((derived-mode . grep-mode)
+           (display-buffer-reuse-window display-buffer-at-bottom)
+           (dedicated . t)
+           (body-function . (lambda (window) (select-window window)))
+           (window-height . 0.5))
 
 	  ;; Compilation mode buffers occupy small fraction of the screen
 	  ((derived-mode . compilation-mode)
