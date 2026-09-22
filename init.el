@@ -2486,6 +2486,15 @@ same matches."
   :mode (("\\mbsyncrc\\'" . conf-space-mode)
          ("\\notmuch-config\\'" . conf-unix-mode)))
 
+;;; Editable grep-mode buffers
+(use-package wgrep
+  :ensure t
+  :bind (:map global-map
+              ("C-S-g" . grep)
+              ("C-S-l" . lgrep))
+  :config
+  (setq wgrep-auto-save-buffer nil)
+  (setq wgrep-change-readonly-file nil))
 
 (provide 'init)
 
