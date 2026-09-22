@@ -1150,6 +1150,7 @@ It displays every DONE item closed from the chosen day upto today."
   (setq world-clock-sort-order "%FT%T")
   (setq world-clock-timer-second 60))
 
+;;; Consult package for searching
 (use-package consult
   :ensure t
   :bind (:map global-map
