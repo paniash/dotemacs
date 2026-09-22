@@ -62,8 +62,19 @@
 
 	  ;; vc-compilation mode settings
 	  ("\\*vc-\\(git\\|hg\\|bzr\\|svn\\)"
-	   (display-buffer-no-window)
-	   (allow-no-window . t))
+           (display-buffer-no-window)
+           (allow-no-window . t))
+
+          ;; Jumping to grep/compilation matches reuses one window instead of
+          ;; splitting a new one per source file. Covers grep-mode and grep-edit-mode.
+          ((lambda (buffer _alist)
+             (and (derived-mode-p '(compilation-mode grep-edit-mode))
+                  (buffer-file-name (get-buffer buffer))))
+           (display-buffer-reuse-window
+            display-buffer-reuse-mode-window
+            display-buffer-use-some-window)
+           (inhibit-same-window . t))
+
           ;; grep buffers get half the frame
           ((derived-mode . grep-mode)
            (display-buffer-reuse-window display-buffer-at-bottom)
