@@ -2313,7 +2313,6 @@ Info manuals."
 (use-package ultra-scroll
   :ensure t
   :init
-  (setq scroll-conservatively 101)
   (setq scroll-margin 0)
   (setq pixel-scroll-precision-interpolate-page t)
   :config
