@@ -1912,6 +1912,10 @@ Otherwise, run the file asynchronously via `pani/python-exec-file'."
 
   (add-hook 'inferior-python-mode-hook
             (lambda ()
+              ;; `inferior-python-mode' sets a buffer-local `scroll-conservatively' of 1.
+              ;; This setting effectively kills it to keep python buffers from behaving jankily
+              ;; when moving around the buffer with the cursor
+              (kill-local-variable 'scroll-conservatively)
               (add-hook 'comint-output-filter-functions #'pani/python-scroll-to-bottom nil t))))
 
 ;;; Custom minor mode for testing python files with pytest
