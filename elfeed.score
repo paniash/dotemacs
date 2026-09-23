@@ -71,6 +71,8 @@
   (:text "\\(?:C\\(?:\\(?:\\. J\\.\\|hristopher\\(?: J\\.\\)?\\) Palmstrøm\\)\\)" :value 400 :type R :tags (t arxiv))
   (:text "\\(?:G\\(?:\\(?:\\. S\\.\\|heorghe S\\(?:\\.\\|orin\\)\\) Paraoanu\\)\\)" :value 500 :type R :tags (t arxiv))
   (:text "Giovanna Tancredi" :value 500 :type w :tags (t arxiv))
+  (:text "\\(?:R\\(?:\\(?:\\.\\|obert\\) McDermott\\)\\)" :value 500 :type R :tags (t arxiv))
+  (:text "\\(?:B\\(?:\\(?:\\. L\\. T\\.\\|ritton\\(?: L\\.T\\.\\)?\\) Plourde\\)\\)" :value 500 :type R :tags (t arxiv))
   (:text "\\(?:P\\(?:\\(?:\\.\\|er\\) Delsing\\)\\)" :value 800 :type R :tags (t arxiv))
   (:text "\\(?:C\\(?:\\(?:\\. M\\.\\|hris\\(?: M\\.\\)?\\) Wilson\\)\\)" :value 500 :type R :tags (t arxiv))
   (:text "Alexandru Petrescu" :value 500 :type w :tags (t arxiv))
