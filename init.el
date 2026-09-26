@@ -1052,9 +1052,19 @@ It displays every DONE item closed from the chosen day upto today."
    ("C-c n l" . denote-link)
    ("C-c n b" . denote-backlinks)
    ("C-c n d" . denote-dired)
+   ("C-c n f" . pani/denote-find-file)
    ("C-c n g" . denote-grep))
   :config
   (setq denote-directory (expand-file-name "~/org/notes/"))
+
+  ;; Custom function to find-file within our denote directory
+  ;; Taken from Prot's codelog
+  (defun pani/denote-find-file ()
+    "Open a file in the variable `denote-directory'."
+    (declare (interactive-only t))
+    (interactive)
+    (when-let* ((file (denote-file-prompt)))
+      (find-file file)))
 
   ;; Automatically rename Denote buffers when opening them so that
   ;; instead of their long file name they have, for example, a literal
