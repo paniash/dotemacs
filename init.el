@@ -2336,13 +2336,30 @@ Info manuals."
 ;;; ediff configuration
 (use-package ediff
   :ensure nil ; built-in
+  :hook (ediff-before-setup . pani/ediff-save-window-config)
   :config
-  (setq ediff-keep-variants nil)
+  (setq ediff-keep-variants t)
   (setq ediff-make-buffers-readonly-at-startup nil)
   (setq ediff-show-clashes-only t)
 
   (setq ediff-split-window-function 'split-window-sensibly)
-  (setq ediff-window-setup-function 'ediff-setup-windows-plain))
+  (setq ediff-window-setup-function 'ediff-setup-windows-plain)
+
+  ;; Save window layout to restore it back after quitting out of ediff
+  (defvar pani/ediff-window-config nil
+    "Window configuration saved before the current ediff session.")
+
+  (defun pani/ediff-save-window-config ()
+    "Save the current window configuration before ediff session."
+    (setq pani/ediff-window-config (current-window-configuration)))
+
+  (defun pani/ediff-restore-window-config ()
+    "Restore the window configuration saved before the ediff session begins."
+    (when (window-configuration-p pani/ediff-window-config)
+      (set-window-configuration pani/ediff-window-config)
+      (setq pani/ediff-window-config nil)))
+
+  (add-hook 'ediff-quit-hook #'pani/ediff-restore-window-config 'append))
 
 ;;; isearch config
 (use-package isearch
