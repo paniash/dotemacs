@@ -1186,6 +1186,7 @@ It displays every DONE item closed from the chosen day upto today."
 	      ("C-c l r" . consult-ripgrep)
 	      ("C-c l d" . consult-fd)
 	      ("C-c l i" . consult-imenu)
+	      ("C-c l o" . consult-outline)
 	      ("C-c l l" . consult-line)
 
 	      :map org-mode-map
