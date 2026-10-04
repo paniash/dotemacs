@@ -576,6 +576,9 @@ Clicking +N pops up the same minor-mode menu as the stock collapsed `…'."
 (use-package evil-collection
   :ensure t
   :after evil
+  :init
+  ;; unbind SPC in evil-mode since I use it as a leader key
+  (setq evil-collection-key-blacklist '("SPC"))
   :config
   (setq evil-want-integration t)
   (evil-collection-init)
