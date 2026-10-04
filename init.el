@@ -367,6 +367,7 @@ The DWIM behaviour of this command is as follows:
     ("C-h h" . nil) ; never show that "hello" file
     ("C-l" . nil) ; never use it
     ("C-k" . nil) ; never use it
+    ("C-x v" . nil) ; I don't use vc-mode
     ("C-x <left>" . nil) ; unbind the `previous-buffer' command
     ("M-o" . other-window) ; switch between windows
     ("C-x C-p" . mode-line-other-buffer)  ; switches between two buffers
