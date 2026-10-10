@@ -2477,9 +2477,10 @@ same matches."
 
   (defun pani/org-tempel-tab ()
     "Expand the template at point. Non-nil if one was expanded."
-    (condition-case nil
-	(tempel-complete t)
-      (user-error nil)))
+    (unless (org-at-heading-p)
+      (condition-case nil
+          (tempel-complete t)
+        (user-error nil))))
 
   (with-eval-after-load 'org
     (add-hook 'org-cycle-tab-first-hook #'pani/org-tempel-tab))
