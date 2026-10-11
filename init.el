@@ -1119,11 +1119,6 @@ It displays every DONE item closed from the chosen day upto today."
   :config
   (setq markdown-fontify-code-blocks-natively t))
 
-(use-package markdown-ts-mode
-   :mode ("\\.md\\'" . markdown-ts-mode)
-   :ensure nil
-   :defer t)
-
 ;;; Marginalia package
 (use-package marginalia
   :ensure t
@@ -2263,7 +2258,6 @@ Info manuals."
   ;; Remap major modes to treesitter
   (setq major-mode-remap-alist
 	'((python-mode . python-ts-mode)
-	  (markdown-mode . markdown-ts-mode)
 	  (conf-toml-mode . toml-ts-mode)))
   ;; Set sources for treesitter grammar
   (setq treesit-language-source-alist
