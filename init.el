@@ -610,6 +610,11 @@ Clicking +N pops up the same minor-mode menu as the stock collapsed `…'."
   (setq undo-limit (* 3 160000))
   (setq undo-strong-limit (* 3 240000)))
 
+(use-package modus-themes
+  :vc (:url "https://github.com/protesilaos/modus-themes"
+            :rev :newest
+            :branch "main"))
+
 (use-package modus-vague
   :init
   (require-theme 'modus-themes)
