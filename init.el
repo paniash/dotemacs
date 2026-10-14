@@ -789,6 +789,9 @@ lingers as the selection owner."
   ;; Set renderer for LaTeX preview in orgmode
   (setq org-preview-latex-default-process 'dvisvgm)
 
+  ;; Make latex previews slightly smaller
+  (plist-put org-format-latex-options :scale 0.9)
+
   ;; Faces for TODO keywords
   (setq org-todo-keyword-faces
 	'(("PROG" . (:foreground "orange" :weight bold))
