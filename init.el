@@ -787,7 +787,7 @@ lingers as the selection owner."
   ;; See https://orgmode.org/manual/CDLaTeX-mode.html for details
   (add-hook 'org-mode-hook #'turn-on-org-cdlatex)
   ;; Set renderer for LaTeX preview in orgmode
-  (setq org-preview-latex-default-process 'imagemagick)
+  (setq org-preview-latex-default-process 'dvisvgm)
 
   ;; Faces for TODO keywords
   (setq org-todo-keyword-faces
