@@ -1484,10 +1484,10 @@ that and instead tries to complete against dictionary entries."
     (interactive)
     (notmuch-search "tag:migadu and not tag:sent"))
 
-  (defun pani/notmuch-jump-orgmode ()
-    "Jump straight to orgmode mailing list inbox."
+  (defun pani/notmuch-jump-sent ()
+    "Jump straight to sent emails."
     (interactive)
-    (notmuch-search "tag:orgmode"))
+    (notmuch-search "tag:sent"))
 
   (defun pani/notmuch-jump-mailing-list ()
     "Jump straight to all mailing list inbox."
@@ -1608,7 +1608,7 @@ that and instead tries to complete against dictionary entries."
     ("C-c m u" . pani/notmuch-jump-unread)
     ("C-c m t" . pani/notmuch-jump-today)
     ("C-c m p" . pani/notmuch-jump-migadu)
-    ("C-c m o" . pani/notmuch-jump-orgmode)
+    ("C-c m s" . pani/notmuch-jump-sent)
     ("C-c m l" . pani/notmuch-jump-mailing-list)
     ("C-x m" . notmuch-mua-new-mail) ; override `compose-mail'
     :map notmuch-search-mode-map
