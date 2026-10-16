@@ -1838,14 +1838,17 @@ that and instead tries to complete against dictionary entries."
 (use-package project
   :ensure nil
   :bind (:map global-map
-	      ("C-x p C-g" . keyboard-quit)
-              ("C-x p m"  . magit-project-status)
               ("C-x p d" . project-dired)
-              ("C-x p D" . project-find-dir))
+              ("C-x p D" . project-find-dir)
+
+              :map project-prefix-map
+              ("C-g" . keyboard-quit)
+              ("r" . consult-ripgrep)
+              ("m" . magit-project-status))
   :config
   (setopt project-switch-commands
 	  '((project-find-file "Find file")
-	    (project-find-regexp "Find regexp")
+            (consult-ripgrep "Ripgrep")
             (project-dired "Dired-project")
 	    (project-find-dir "Find directory")
 	    (magit-project-status "Magit-project")
