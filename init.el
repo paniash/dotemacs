@@ -2412,6 +2412,20 @@ same matches."
   (setq lazy-count-suffix-format nil)
   (setq isearch-wrap-pause 'no-ding)) ; Jump to top/bottom without asking
 
+;;; replace.el specific settings
+(use-package replace
+  :ensure nil
+  :config
+  (setq query-replace-from-to-separator " > ")
+  (defun pani/query-replace-preview (match replacement)
+    "Do the work of `query-replace-show-preview'."
+    (format "%s%s%s"
+            (propertize match 'face 'query-replace-preview-match)
+            (propertize query-replace-from-to-separator 'face 'secondary-selection)
+            (propertize replacement 'face 'query-replace-preview)))
+  ;; `query-replace-show-preview' only exists since Emacs 32
+  (setq query-replace-show-preview #'pani/query-replace-preview))
+
 ;;; ibuffer settings
 (use-package ibuffer
   :ensure nil ; built-in
