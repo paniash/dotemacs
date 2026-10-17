@@ -2543,6 +2543,12 @@ same matches."
   :mode (("\\mbsyncrc\\'" . conf-space-mode)
          ("\\notmuch-config\\'" . conf-unix-mode)))
 
+;;; CSS specific settings
+(use-package css-mode
+  :ensure nil
+  :config
+  (setq css-indent-offset 2))
+
 ;;; Editable grep-mode buffers
 (use-package wgrep
   :ensure t
