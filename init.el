@@ -2155,7 +2155,6 @@ Works in both `elfeed-search-mode' and `elfeed-show-mode'."
 	  ("http://protesilaos.com/news.xml" :title "Prot: News" blog)
 	  ("http://protesilaos.com/poems.xml" :title "Prot: Poems" blog)
 	  ("http://themkat.net/feed.xml" emacs)
-	  ("http://www.reddit.com/r/orgmode.rss" :title "r/orgmode" emacs orgmode forum)
 	  ("https://coredumped.dev/index.xml" emacs)
 	  ("http://irreal.org/blog/?tag=emacs&feed=rss2" emacs)
 	  ("https://ray-on-emacs.blogspot.com/feeds/posts/default" :title "Ray on Emacs" emacs)
