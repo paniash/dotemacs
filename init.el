@@ -1081,6 +1081,10 @@ It displays every DONE item closed from the chosen day upto today."
     (when-let* ((file (denote-file-prompt)))
       (find-file file)))
 
+  ;; Setup a custom notes template for reading papers and taking notes
+  (setq denote-templates
+        '((paper . "* Summary\n\n* Claims\n\n* Methods\n\n* Relevance to my work\n\n* Open questions\n")))
+
   ;; Automatically rename Denote buffers when opening them so that
   ;; instead of their long file name they have, for example, a literal
   ;; "[D]" followed by the file's title.  Read the doc string of
@@ -1129,6 +1133,8 @@ It displays every DONE item closed from the chosen day upto today."
   (setq citar-denote-keyword "bibliography")
   (setq citar-denote-title-format "author-year-title")
   (setq citar-denote-use-bib-keywords t)
+  ;; Template for writing notes while reading papers from zotero
+  (setq citar-denote-template 'paper)
 
   (defun pani/yank-zotero-note ()
     "Insert clipboard HTML (e.g. a Zotero note) at point as Org."
