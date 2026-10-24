@@ -1087,7 +1087,31 @@ It displays every DONE item closed from the chosen day upto today."
   ;; `denote-rename-buffer-format' for how to modify this.
   (denote-rename-buffer-mode 1))
 
+;;; Citar for bibliography and note-taking
+(use-package citar
   :ensure t
+  :hook (org-mode . citar-capf-setup)
+  :config
+  (setq citar-bibliography '("~/.local/zotero/references.bib"))
+  (setq citar-library-paths '("~/.local/zotero/storage/"))
+  (setq org-cite-global-bibliography citar-bibliography)
+  (setq org-cite-insert-processor 'citar)
+  (setq org-cite-follow-processor 'citar)
+  (setq org-cite-activate-processor 'citar))
+
+;;; Citar integration with denote
+(use-package citar-denote
+  :ensure t
+  :after (citar denote)
+  :config
+  (setq citar-denote-file-type 'org)
+  (setq citar-denote-subdir "literature")
+  (setq citar-denote-keyword "bib")
+  (setq citar-denote-title-format "author-year-title")
+  (setq citar-denote-use-bib-keywords t)
+
+
+  (citar-denote-mode 1))
 
 ;;; Magit
 (use-package magit
