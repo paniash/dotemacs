@@ -1857,6 +1857,9 @@ that and instead tries to complete against dictionary entries."
 	    (magit-project-status "Magit-project")
 	    (keyboard-quit "Quit")))
 
+  ;; Define project root markers
+  (setq project-vc-extra-root-markers '(".project"))
+
   (setq project-key-prompt-style t))
 
 ;;; Python config
