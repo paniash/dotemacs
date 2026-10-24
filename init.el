@@ -1106,7 +1106,7 @@ It displays every DONE item closed from the chosen day upto today."
   :config
   (setq citar-denote-file-type 'org)
   (setq citar-denote-subdir "literature")
-  (setq citar-denote-keyword "bib")
+  (setq citar-denote-keyword "bibliography")
   (setq citar-denote-title-format "author-year-title")
   (setq citar-denote-use-bib-keywords t)
 
