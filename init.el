@@ -1110,6 +1110,14 @@ It displays every DONE item closed from the chosen day upto today."
   (setq citar-denote-title-format "author-year-title")
   (setq citar-denote-use-bib-keywords t)
 
+  (defun pani/yank-zotero-note ()
+    "Insert clipboard HTML (e.g. a Zotero note) at point as Org."
+    (interactive)
+    (insert (with-temp-buffer
+	      (call-process-shell-command
+	       "xclip -selection clipboard -t text/html -o | pandoc -f html -t org --wrap=none"
+	       nil t)
+	      (buffer-string))))
 
   (citar-denote-mode 1))
 
