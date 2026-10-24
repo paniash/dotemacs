@@ -1097,7 +1097,27 @@ It displays every DONE item closed from the chosen day upto today."
   (setq org-cite-global-bibliography citar-bibliography)
   (setq org-cite-insert-processor 'citar)
   (setq org-cite-follow-processor 'citar)
-  (setq org-cite-activate-processor 'citar))
+  (setq org-cite-activate-processor 'citar)
+
+  (defvar pani/zotero-database-dir (expand-file-name "~/.local/zotero/")
+    "Zotero database directory (contains storage/ and zotero.sqlite).")
+
+  ;; Have citar open the PDF in Zotero instead of inside emacs
+  (defun pani/citar-open-in-zotero (file)
+    "Open file in Zotero if it lives in local zotero storage."
+    (let ((storage (expand-file-name "storage/" pani/zotero-database-dir))
+          (dir (file-name-directory (expand-file-name file))))
+      (if (and (string-prefix-p storage dir)
+               (string-match "/\\([A-Z0-9]\\{8\\}\\)/\\'" dir))
+          (call-process "xdg-open" nil 0 nil
+                        (concat "zotero://open-pdf/library/items/"
+                                (match-string 1 dir)))
+        (citar-file-open-external file))))
+
+  (setq citar-file-open-functions
+        '(("html" . citar-file-open-external)
+          ("pdf" . pani/citar-open-in-zotero)
+          (t . find-file))))
 
 ;;; Citar integration with denote
 (use-package citar-denote
