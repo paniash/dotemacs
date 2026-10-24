@@ -792,6 +792,9 @@ lingers as the selection owner."
   ;; Make latex previews slightly smaller
   (plist-put org-format-latex-options :scale 0.9)
 
+  ;; Enable latex previews by default
+  (setq org-startup-with-latex-preview t)
+
   ;; Faces for TODO keywords
   (setq org-todo-keyword-faces
 	'(("PROG" . (:foreground "orange" :weight bold))
