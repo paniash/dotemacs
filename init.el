@@ -1133,6 +1133,8 @@ It displays every DONE item closed from the chosen day upto today."
   (setq citar-denote-keyword "bibliography")
   (setq citar-denote-title-format "author-year-title")
   (setq citar-denote-use-bib-keywords t)
+  (setq citar-denote-open-attachment nil)
+
   ;; Template for writing notes while reading papers from zotero
   (setq citar-denote-template 'paper)
 
