@@ -258,7 +258,7 @@ The DWIM behaviour of this command is as follows:
   (global-visual-wrap-prefix-mode 1)
 
   ;; Have prose modes auto wrap long lines
-  (dolist (hook '(org-mode-hook markdown-mode-hook markdown-ts-mode-hook LaTeX-mode-hook))
+  (dolist (hook '(org-mode-hook text-mode-hook markdown-mode-hook markdown-ts-mode-hook LaTeX-mode-hook))
     (add-hook hook #'auto-fill-mode))
 
   ;; Deletes trailing whitespace upon saving a file
