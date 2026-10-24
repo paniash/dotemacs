@@ -1087,11 +1087,7 @@ It displays every DONE item closed from the chosen day upto today."
   ;; `denote-rename-buffer-format' for how to modify this.
   (denote-rename-buffer-mode 1))
 
-;;; Zotero integration for orgmode
-;; Requires zotxt plugin to be installed in zotero: https://github.com/egh/zotxt
-(use-package zotxt
   :ensure t
-  :hook (org-mode . org-zotxt-mode))
 
 ;;; Magit
 (use-package magit
