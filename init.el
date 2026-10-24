@@ -2415,6 +2415,8 @@ same matches."
   (setq isearch-wrap-pause 'no-ding)) ; Jump to top/bottom without asking
 
 ;;; replace.el specific settings
+;; TODO: Sometimes the preview doesn't work
+;; TODO: Fix it so that typing ! runs it across the entire file
 (use-package replace
   :ensure nil
   :config
