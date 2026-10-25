@@ -1821,9 +1821,20 @@ that and instead tries to complete against dictionary entries."
 ;;; Completion extensions
 (use-package cape
   :ensure t
+  :hook ((python-mode . pani/python-setup-string-file-capf)
+         (python-ts-mode . pani/python-setup-string-file-capf))
   :init
   (add-hook 'completion-at-point-functions #'cape-dabbrev)
-  (add-hook 'completion-at-point-functions #'cape-file))
+  (add-hook 'completion-at-point-functions #'cape-file)
+  (defun pani/python-string-file-capf ()
+    "Complete file names when point is inside a string or comment."
+    (when (nth 8 (syntax-ppss))
+      (cape-file)))
+
+  (defun pani/python-setup-string-file-capf ()
+    "Put `pani/python-string-file-capf' first in the local capf list."
+    (add-hook 'completion-at-point-functions
+              #'pani/python-string-file-capf -90 t)))
 
 ;;; LSP server using eglot
 (use-package eglot
