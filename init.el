@@ -1370,7 +1370,7 @@ the current buffer's `default-directory'."
   :ensure nil
   :config
   (defvar notmuch-path
-    (if (string=(system-name) "d22-0153")
+    (if (string= (system-name) "d22-0153")
 	(file-expand-wildcards "/usr/share/emacs/site-lisp/elpa/notmuch-*/")
       "/usr/share/emacs/site-lisp/")))
 
