@@ -1097,20 +1097,24 @@ It displays every DONE item closed from the chosen day upto today."
   :ensure t
   :hook (org-mode . citar-capf-setup)
   :config
-  (setq citar-bibliography '("~/.local/zotero/references.bib"))
-  (setq citar-library-paths '("~/.local/zotero/storage/"))
+  (defvar pani/zotero-path
+    (expand-file-name
+     (if (string= (system-name) "d22-0153")
+         "~/.local/zotero/"
+       "~/.zotero/")
+     "Zotero database directory (contains storage/ and zotero.sqlite)."))
+
+  (setq citar-bibliography (list (expand-file-name "references.bib" pani/zotero-path)))
+  (setq citar-library-paths (list (expand-file-name "storage/" pani/zotero-path)))
   (setq org-cite-global-bibliography citar-bibliography)
   (setq org-cite-insert-processor 'citar)
   (setq org-cite-follow-processor 'citar)
   (setq org-cite-activate-processor 'citar)
 
-  (defvar pani/zotero-database-dir (expand-file-name "~/.local/zotero/")
-    "Zotero database directory (contains storage/ and zotero.sqlite).")
-
   ;; Have citar open the PDF in Zotero instead of inside emacs
   (defun pani/citar-open-in-zotero (file)
     "Open file in Zotero if it lives in local zotero storage."
-    (let ((storage (expand-file-name "storage/" pani/zotero-database-dir))
+    (let ((storage (expand-file-name "storage/" pani/zotero-path))
           (dir (file-name-directory (expand-file-name file))))
       (if (and (string-prefix-p storage dir)
                (string-match "/\\([A-Z0-9]\\{8\\}\\)/\\'" dir))
