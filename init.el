@@ -246,6 +246,7 @@ The DWIM behaviour of this command is as follows:
   (setq kill-do-not-save-duplicates t)
   (setq echo-keystrokes-help nil) ; Emacs 30
   (setq tab-always-indent 'complete) ; tab for completion and not indenting
+  (setq tab-first-completion 'word-or-paren-or-punct)
   (setq auto-save-timeout nil)
   (setq help-window-select t) ; Cursor focus goes to help window when invoked
   (setq help-window-keep-selected t)  ; Keep using the same window for more help buffers
