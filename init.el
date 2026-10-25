@@ -1723,7 +1723,7 @@ that and instead tries to complete against dictionary entries."
        ((string-match-p "@aalto\\.fi" from)
 	"Kind regards,\nAshish (Pani)\n")
        ((string-match-p "@ashishpanigrahi\\.com" from)
-	"Kind regards,\nAshish\n")
+	"Ashish Panigrahi\nhttps://ashishpanigrahi.com")
        ;; Fallback (also covers the ashish@ vs public@ split if you ever need it)
        (t
 	"Kind regards,\nAshish (Pani)\n"))))
