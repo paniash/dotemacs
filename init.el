@@ -2605,7 +2605,7 @@ same matches."
 
   ;; notmuch message composition
   (define-abbrev-table 'notmuch-message-mode-abbrev-table
-    '(("sig" "Kind regards,\nAshish (Pani)" nil :system t))))
+    '(("br" "Kind regards,\nAshish (Pani)" nil :system t))))
 
 ;;; Editor integration for common lisp
 (use-package slime
