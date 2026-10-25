@@ -2040,6 +2040,26 @@ buffer. Works for both local and TRAMP-remote buffers."
   (add-hook 'python-mode-hook #'pani/python-maybe-enable-pytest)
   (add-hook 'python-ts-mode-hook #'pani/python-maybe-enable-pytest))
 
+;;; Indentation behaviour
+(use-package electric
+  :ensure nil
+  :config
+  (electric-indent-mode 1)
+  (defun pani/python-electric-closer ()
+    "Re-indent the line when a closing bracket is its first non-blank char."
+    (when (and electric-indent-mode
+               (memq last-command-event '(?\) ?\] ?\}))
+               (not (nth 8 (syntax-ppss)))
+               (= (save-excursion (back-to-indentation) (point))
+                  (1- (point))))
+      (indent-according-to-mode)))
+
+  (dolist (hook '(python-mode-hook python-ts-mode-hook))
+    (add-hook hook
+              (lambda ()
+                (add-hook 'post-self-insert-hook
+                          #'pani/python-electric-closer 'append 'local)))))
+
 ;;; code-cells for ipython like behaviour
 (use-package code-cells
   :ensure t
