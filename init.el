@@ -2127,6 +2127,7 @@ buffer. Works for both local and TRAMP-remote buffers."
 	 ("C-c C-c" . elfeed-update)
 	 ("C-c C-l" . pani/elfeed-open-link)
 	 ("C-c C-o" . pani/elfeed-arxiv-open-pdf)
+         ("C-c C-a" . pani/elfeed-search-filter-author)
 	 :map elfeed-tree-mode-map
 	 ("C-c C-c" . elfeed-update)
 	 :map elfeed-show-mode-map
@@ -2245,8 +2246,99 @@ Works in both `elfeed-search-mode' and `elfeed-show-mode'."
 	    "@6-months-ago +arxiv"))
     (elfeed-search-update :force))
 
+  ;; ---- Author filtering for arXiv entries ----
+  ;; Either hit "A" inside the elfeed-search buffer or when filtering
+  ;; searches, filter authors by "au:gunyho" for example.
+  (require 'char-fold)
+
+  (defconst pani/elfeed-author-token-regexp "\\`\\(!?\\)au:\\(.*\\)\\'"
+    "Regexp matching an author token in `elfeed-search-filter'.")
+
+  (defun pani/elfeed--entry-authors (entry)
+    "Return the list of author names of ENTRY."
+    (delq nil (mapcar (lambda (author) (plist-get author :name))
+                      (elfeed-meta entry :authors))))
+
+  (defun pani/elfeed--split-author-tokens (filter)
+    "Split FILTER into (REST . AUTHORS).
+REST is FILTER without author tokens; AUTHORS is a list of
+\(NEGATED . REGEXP) built from the `au:' / `!au:' tokens."
+    (let (rest authors)
+      (dolist (token (split-string filter))
+        (if (string-match pani/elfeed-author-token-regexp token)
+            (let ((negated (string= (match-string 1 token) "!"))
+                  (name (string-replace "_" " " (match-string 2 token))))
+              (unless (string-empty-p name)
+                (push (cons negated (char-fold-to-regexp name)) authors)))
+          (push token rest)))
+      (cons (string-join (nreverse rest) " ") (nreverse authors))))
+
+  (defun pani/elfeed--author-match-p (entry regexp)
+    "Non-nil if any author of ENTRY matches REGEXP."
+    (let ((case-fold-search t))
+      (seq-some (lambda (name) (string-match-p regexp name))
+                (pani/elfeed--entry-authors entry))))
+
+  (define-advice elfeed-search--update-list
+      (:around (orig &rest args) pani/author-filter)
+    "Hide `au:' tokens from elfeed's parser, then filter by author."
+    (pcase-let ((`(,rest . ,authors)
+                 (pani/elfeed--split-author-tokens elfeed-search-filter)))
+      (if (null authors)
+          (apply orig args)
+        (let ((elfeed-search-filter rest))
+          (apply orig args))
+        (setq elfeed-search-entries
+              (seq-filter
+               (lambda (entry)
+                 (seq-every-p
+                  (pcase-lambda (`(,negated . ,regexp))
+                    (xor negated (pani/elfeed--author-match-p entry regexp)))
+                  authors))
+               elfeed-search-entries)))))
+
+  (defun pani/elfeed-search-filter-author (name &optional exclude)
+    "Narrow the current search to entries with an author matching NAME.
+Like notmuch's filter command, this appends to the current filter.
+With prefix argument EXCLUDE, drop matching entries instead.
+Empty NAME removes all author tokens from the filter.
+Candidates are the authors of the entry at point first, then every
+author among the currently listed entries."
+    (interactive
+     (let* ((at-point (when-let* ((entry (elfeed-search-selected :ignore-region)))
+                        (pani/elfeed--entry-authors entry)))
+            (all (sort (delete-dups
+                        (mapcan #'pani/elfeed--entry-authors
+                                elfeed-search-entries))
+                       #'string-collate-lessp))
+            (candidates (delete-dups (append at-point all)))
+            (table (lambda (string pred action)
+                     (if (eq action 'metadata)
+                         '(metadata (display-sort-function . identity)
+                                    (cycle-sort-function . identity))
+                       (complete-with-action action candidates string pred)))))
+       (list (completing-read (if current-prefix-arg
+                                  "Exclude author: "
+                                "Filter by author: ")
+                              table)
+             current-prefix-arg))
+     elfeed-search-mode)
+    (let ((name (string-trim name)))
+      (elfeed-search-set-filter
+       (if (string-empty-p name)
+           (string-join
+            (seq-remove (lambda (token)
+                          (string-match-p pani/elfeed-author-token-regexp token))
+                        (split-string elfeed-search-filter))
+            " ")
+         (format "%s %sau:%s"
+                 (string-trim elfeed-search-filter)
+                 (if exclude "!" "")
+                 (string-replace " " "_" name))))))
+
   (evil-define-key 'normal elfeed-search-mode-map
-    (kbd "a") #'pani/elfeed-toggle-arxiv-filter)
+    (kbd "a") #'pani/elfeed-toggle-arxiv-filter
+    (kbd "A") #'pani/elfeed-search-filter-author)
 
   (defun pani/elfeed-open-link (entry)
     "Open ENTRY's main article link in the browser.
