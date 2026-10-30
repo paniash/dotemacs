@@ -1705,7 +1705,14 @@ that and instead tries to complete against dictionary entries."
   :ensure nil
   :hook (dired-mode . gnus-dired-mode)
   :bind (:map gnus-dired-mode-map
-              ("C-c C-a" . gnus-dired-attach)))
+              ("C-c C-a" . gnus-dired-attach))
+  :config
+  (defun pani/gnus-dired-attach-select-message (&rest _)
+    "Select the message buffer `gnus-dired-attach' that the attachment was made to."
+    (when (derived-mode-p 'message-mode)
+      (pop-to-buffer-same-window (current-buffer))))
+
+  (advice-add 'gnus-dired-attach :after #'pani/gnus-dired-attach-select-message))
 
 ;;; Message composition for email
 (use-package message
