@@ -2567,7 +2567,8 @@ same matches."
 ;;; Highlight parentheses
 (use-package rainbow-delimiters
   :ensure t
-  :hook (emacs-lisp-mode . rainbow-delimiters-mode))
+  :hook ((emacs-lisp-mode . rainbow-delimiters-mode)
+         (python-base-mode . rainbow-delimiters-mode)))
 
 ;;; Spellchecker
 ;;; Needs libenchant, pkgconf and dictionaries (aspell and aspell-en)
