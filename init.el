@@ -1798,12 +1798,7 @@ that and instead tries to complete against dictionary entries."
   :config
 
   ;; Enable async support
-  (setq envrc-async t)
-
-  (define-advice envrc-mode (:around (orig &rest args) pani/no-remote-envrc)
-    "Skip direnv in remote buffers. Run it locally as usual."
-    (unless (and buffer-file-name (file-remote-p buffer-file-name))
-      (apply orig args))))
+  (setq envrc-async t))
 
 ;;; Autocompletion via corfu
 (use-package corfu
@@ -1846,12 +1841,25 @@ that and instead tries to complete against dictionary entries."
 ;;; LSP server using eglot
 (use-package eglot
   :ensure nil  ;; built-in
-  :hook ((python-mode . pani/eglot-ensure-local)
-	 (python-ts-mode . pani/eglot-ensure-local))   ;; run eglot when opening python files
+  :hook ((python-mode . eglot-ensure)
+	 (python-ts-mode . eglot-ensure))   ;; run eglot when opening python files
+  :init
+  (defun pani/remote-envrc-dir ()
+    "Return the remote-local path of the nearest .envrc directory, or nil.
+Only for remote buffers; local buffers are handled by envrc."
+    (when-let* (((file-remote-p default-directory))
+                (dir (locate-dominating-file default-directory ".envrc")))
+      (file-local-name (expand-file-name dir))))
+
   :config
+  (defun pani/zuban-contact (&optional _interactive _project)
+    "Start zuban through `direnv exec' in remote projects with an .envrc."
+    (if-let* ((dir (pani/remote-envrc-dir)))
+        (list "direnv" "exec" dir "zuban" "server")
+      '("zuban" "server")))
+
   (add-to-list 'eglot-server-programs
-	       '((python-ts-mode python-mode)
-		 . ("zuban" "server")))
+               '((python-ts-mode python-mode) . pani/zuban-contact))
 
   ;; Modeline customizations for eglot indicator
   (defface pani/modeline-lsp-face
@@ -1865,12 +1873,6 @@ that and instead tries to complete against dictionary entries."
   (put 'pani/eglot-lsp-segment 'risky-local-variable t)
 
   (setq eglot-mode-line-format '(pani/eglot-lsp-segment))
-
-  ;; Only have eglot work locally and not over remote machines
-  (defun pani/eglot-ensure-local ()
-    "Start eglot, but only for local files."
-    (unless (and buffer-file-name (file-remote-p buffer-file-name))
-      (eglot-ensure)))
 
   ;; Ensure that eglot stays out of flymake
   (setq eglot-stay-out-of '(flymake))
