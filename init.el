@@ -1987,9 +1987,13 @@ Works for both local and TRAMP-remote buffers."
     (interactive)
     (when (buffer-file-name)
       (save-buffer)
-      (let ((file-name (shell-quote-argument
-			(file-relative-name (buffer-file-name)))))
-	(compilation-start (format "python %s" file-name)))))
+      (let* ((file-name (shell-quote-argument
+                         (file-relative-name (buffer-file-name))))
+             (dir (pani/remote-envrc-dir))
+             (prefix (if dir
+                         (format "direnv exec %s " (shell-quote-argument dir))
+                       "")))
+        (compilation-start (format "%spython %s" prefix file-name)))))
 
   ;; Force focus to stay put when launching inferior python
   (advice-add 'run-python :around
