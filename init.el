@@ -2593,9 +2593,10 @@ same matches."
   :init
   ;; Setup completion at point
   (defun pani/tempel-setup-capf ()
-    ;; Add the Tempel Capf to `completion-at-point-functions'.  `tempel-expand'
-    ;; only triggers on exact matches. We add `tempel-expand' *before* the main
-    ;; programming mode Capf, such that it will be tried first.
+    "Add the Tempel Capf to `completion-at-point-functions'.
+`tempel-expand'only triggers on exact matches. We add `tempel-expand'
+*before* the main programming mode Capf, such that it will be tried
+first."
     (setq-local completion-at-point-functions
 		(cons #'tempel-expand completion-at-point-functions)))
 
