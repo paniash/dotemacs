@@ -1729,7 +1729,7 @@ that and instead tries to complete against dictionary entries."
     (let ((from (or (message-field-value "From") "")))
       (cond
        ((string-match-p "@aalto\\.fi" from)
-	"Ashish Panigrahi\nDoctoral Researcher\nQCD Labs")
+	"Ashish Panigrahi\nDoctoral Researcher\nQCD Labs, Dept. of Applied Physics\nAalto University")
        ((string-match-p "@ashishpanigrahi\\.com" from)
 	"Ashish Panigrahi\nhttps://ashishpanigrahi.com")
        ;; Fallback (also covers the ashish@ vs public@ split if you ever need it)
