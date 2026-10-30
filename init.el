@@ -1700,6 +1700,13 @@ that and instead tries to complete against dictionary entries."
   :ensure t
   :after notmuch)
 
+;;; Attach marked dired files to an open message (notmuch in my case) buffer
+(use-package gnus-dired
+  :ensure nil
+  :hook (dired-mode . gnus-dired-mode)
+  :bind (:map gnus-dired-mode-map
+              ("C-c C-a" . gnus-dired-attach)))
+
 ;;; Message composition for email
 (use-package message
   :ensure nil
