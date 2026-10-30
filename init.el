@@ -1721,7 +1721,8 @@ that and instead tries to complete against dictionary entries."
   :bind (:map message-mode-map
 	      ("C-c C-e" . message-elide-region)
 	      ("C-c C-z" . nil) ;; `message-kill-to-signature' is now bound to `C-c C-l'.
-	      ("C-c C-l" . message-kill-to-signature))
+	      ("C-c C-l" . message-kill-to-signature)
+              ([remap mml-attach-file] . pani/mml-attach-file-or-dired))
   :hook
   (message-setup . message-sort-headers)
   :config
@@ -1730,6 +1731,17 @@ that and instead tries to complete against dictionary entries."
   (setq mail-header-separator "--text follows this line--")
   (setq message-elide-ellipsis "\n> [... %l lines elided]\n")
   (setq compose-mail-user-agent-warnings nil)
+
+  (defun pani/mml-attach-file-or-dired (file)
+    "Attach FILE, or open it in Dired if it is a directory.
+From Dired, mark files and use `gnus-dired-attach' to attach several at once."
+    (interactive (list (read-file-name "Attach file: " nil nil t)) message-mode)
+    (if (file-directory-p file)
+        (dired file)
+      (let* ((type (mml-minibuffer-read-type file))
+             (description (mml-minibuffer-read-description))
+             (disposition (mml-minibuffer-read-disposition type nil file)))
+        (mml-attach-file file type description disposition))))
 
   (defun pani/message-choose-signature ()
     "Attachs signature depending on email account used."
