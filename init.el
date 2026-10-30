@@ -1085,7 +1085,7 @@ It displays every DONE item closed from the chosen day upto today."
 
   ;; Setup a custom notes template for reading papers and taking notes
   (setq denote-templates
-        '((paper . "* Summary\n\n* Claims\n\n* Methods\n\n* Relevance to my work\n\n* Open questions\n")))
+        '((paper . "* Summary\n\n* Introduction\n\n* Methods\n\n* Relevance to my work\n\n* Open questions\n")))
 
   ;; Automatically rename Denote buffers when opening them so that
   ;; instead of their long file name they have, for example, a literal
