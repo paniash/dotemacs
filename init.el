@@ -1172,9 +1172,6 @@ It displays every DONE item closed from the chosen day upto today."
   (setq magit-define-global-key-bindings nil)
   :config
   (setq git-commit-summary-max-length 70)
-  ;; updates vc branch info in modeline instantaneously
-  ;; probably not very good for the CPU
-  (setq auto-revert-check-vc-info t)
   (setq git-commit-style-convention-checks '(non-empty-second-line))
   (setq magit-diff-refine-hunk 'all)
 
@@ -2446,6 +2443,9 @@ Works in both `elfeed-search-mode' and `elfeed-show-mode'."
   :ensure nil
   :config
   (setq auto-revert-verbose nil)  ;; don't clobber the echo area when an inactive buffer changes
+  ;; updates vc branch info in modeline instantaneously
+  ;; not very good for the CPU
+  (setq auto-revert-check-vc-info t)
   (global-auto-revert-mode 1))
 
 ;;; Info-mode config
