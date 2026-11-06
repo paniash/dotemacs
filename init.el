@@ -753,7 +753,7 @@ lingers as the selection owner."
 
 ;;; Orgmode specific settings
 (use-package org
-  :ensure nil  ; org is built-in
+  :load-path "~/git/orgmode-git/lisp/"
   :defer t
   :init
   (setq org-directory (expand-file-name "~/org/"))
