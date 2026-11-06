@@ -2446,6 +2446,15 @@ Works in both `elfeed-search-mode' and `elfeed-show-mode'."
   ;; updates vc branch info in modeline instantaneously
   ;; not very good for the CPU
   (setq auto-revert-check-vc-info t)
+
+  (define-advice auto-revert-handler
+      (:around (orig &rest args) pani/skip-remote)
+    "Do nothing for remote buffers.
+The timer can fire while TRAMP is waiting on another command, and the nested
+`vc-refresh-state' round trip then corrupts the connection."
+    (unless (file-remote-p (or buffer-file-name default-directory))
+      (apply orig args)))
+
   (global-auto-revert-mode 1))
 
 ;;; Info-mode config
