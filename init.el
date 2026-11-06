@@ -2520,6 +2520,7 @@ Info manuals."
   :ensure t
   :defer t
   :config
+  (setq typst-ts-indent-offset 2)
   ;; Disable formatting for superscripts and subscripts
   (setq typst-ts-math-script-display '((raise 0.0) raise 0.0))
   (add-to-list 'auto-mode-alist '("\\.typ\\'" . typst-ts-mode)))
