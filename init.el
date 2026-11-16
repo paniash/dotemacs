@@ -2809,6 +2809,18 @@ first."
   (setq wgrep-auto-save-buffer nil)
   (setq wgrep-change-readonly-file nil))
 
+;;; Convenience commands for moving around windows
+(use-package windmove
+  :ensure nil
+  :bind (:map global-map
+              ("C-k" . windmove-up)
+              ("C-j" . windmove-down)
+              ("C-<left>" . windmove-left)
+              ("C-<right>" . windmove-right))
+  :config
+  (setopt windmove-default-keybindings 'control)
+  (setopt windmove-swap-states-default-keybindings '(control shift)))
+
 (provide 'init)
 
 ;;; init.el ends here
