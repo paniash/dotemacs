@@ -2352,6 +2352,39 @@ Works in both `elfeed-search-mode' and `elfeed-show-mode'."
 	  (browse-url link)
 	(message "Entry has no link"))))
 
+  ;; Enable LaTeX previews inside elfeed
+  ;; See here for more details: https://tony-zorman.com/posts/elfeed-latex.html
+  (defun pani/elfeed-latex-preview ()
+    "LaTeX preview the current elfeed buffer."
+    (require 'org-latex-preview)
+    (interactive)
+    (save-excursion
+      (with-syntax-table (copy-syntax-table)
+        (modify-syntax-entry ?- ".") ; $x$-y is valid
+        (when-let* ((entries
+                     (cl-loop
+                      for (_ re pos _) in org-latex-regexps
+                      append (cl-loop
+                              initially (goto-char (point-min))
+                              while (re-search-forward re nil t)
+                              collect (list (match-beginning pos)
+                                            (match-end pos))))))
+          (org-latex-preview-place 'dvisvgm entries)))))
+
+  (defun pani/elfeed-latex (&rest _)
+    "Preview LaTeX in arXiv elfeed search and show buffers."
+    (when (cond
+           ((derived-mode-p 'elfeed-show-mode)
+            (and elfeed-show-entry
+                 (elfeed-tagged-p 'arxiv elfeed-show-entry)))
+           ((derived-mode-p 'elfeed-search-mode)
+            (string-match-p "\\+arxiv\\b" elfeed-search-filter)))
+      (pani/elfeed-latex-preview)))
+
+  (add-hook 'elfeed-search-update-hook #'pani/elfeed-latex)
+  (advice-add 'elfeed-search-update-entry :after #'pani/elfeed-latex)
+  (advice-add 'elfeed-show-refresh :after #'pani/elfeed-latex)
+
   (setq elfeed-search-print-entry-function #'pani/elfeed-search-print-entry)
   (setq elfeed-use-curl t)
   (setq elfeed-curl-max-connections 10)
