@@ -793,7 +793,7 @@ lingers as the selection owner."
   (setq org-preview-latex-default-process 'dvisvgm)
 
   ;; Make latex previews slightly smaller
-  (plist-put org-format-latex-options :scale 0.9)
+  (plist-put org-format-latex-options :scale 1.0)
 
   ;; Enable latex previews by default
   (setq org-startup-with-latex-preview t)
