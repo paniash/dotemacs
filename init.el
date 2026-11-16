@@ -2482,6 +2482,7 @@ Info manuals."
   :config
   (setq tramp-verbose 1)
   (setq tramp-terminal-type "dumb")
+  (setq tramp-use-connection-share nil)
 
   ;; Set tramp debug buffer to text-mode instead of default outline-mode
   (defun my-tramp-debug-to-text-mode ()
