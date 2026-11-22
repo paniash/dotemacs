@@ -1801,11 +1801,15 @@ From Dired, mark files and use `gnus-dired-attach' to attach several at once."
               (throw 'missing nil)))))))
 
   (defun pani/message-sign-or-encrypt ()
-    "Prompt to encrypt when possible; otherwise prompt to sign."
-    (if (and (pani/message-all-keys-available-p)
-	     (y-or-n-p "Encrypt? "))
-	(mml-secure-message-sign-encrypt)
-      (mml-secure-message-sign)))
+    "Prompt to encrypt when possible; otherwise sign.
+Don't do this for work email and calendar replies."
+    (unless (or (string-match-p "@aalto\\.fi\\b"
+                                (or (message-field-value "From") ""))
+                (bound-and-true-p pani/notmuch-calendar-reply-buffer))
+      (if (and (pani/message-all-keys-available-p)
+               (y-or-n-p "Encrypt? "))
+          (mml-secure-message-sign-encrypt)
+        (mml-secure-message-sign))))
 
   (add-hook 'message-send-hook #'pani/message-sign-or-encrypt))
 
