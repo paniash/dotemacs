@@ -258,6 +258,10 @@ The DWIM behaviour of this command is as follows:
   (column-number-mode 1)
   (global-visual-wrap-prefix-mode 1)
 
+  ;; Click only moves point; dragging does nothing
+  (keymap-global-set "<down-mouse-1>" #'mouse-set-point)
+  (keymap-global-unset "<drag-mouse-1>")
+
   ;; Have prose modes auto wrap long lines
   (dolist (hook '(org-mode-hook text-mode-hook markdown-mode-hook markdown-ts-mode-hook LaTeX-mode-hook))
     (add-hook hook #'auto-fill-mode))
@@ -500,99 +504,89 @@ Clicking +N pops up the same minor-mode menu as the stock collapsed `…'."
   :ensure t
   :demand t
   :bind (:map global-map
-	      ("<escape>" . keyboard-escape-quit))
+              ("<escape>" . keyboard-escape-quit))
   :init
-  ;; allows for using cgn
-  (setq evil-search-module 'isearch)
-  (setq evil-want-integration t)
-  (setq evil-want-keybinding nil)
+  (setq evil-search-module 'isearch)     ; allows for using cgn
+  (setq evil-want-keybinding nil)        ; evil-collection handles other modes
   (setq evil-want-C-u-scroll t)
   (setq evil-want-C-i-jump nil)
-  (setq evil-want-Y-yank-to-eol t)  ;; yanks to end of line instead of whole line
-  ;; no vim insert bindings
+  (setq evil-want-Y-yank-to-eol t)       ; yanks to end of line instead of whole line
   (setq evil-undo-system 'undo-fu)
+  (setq evil-echo-state nil)             ; mute echo area message on state change
 
-  (defface pani/evil-normal-face  '((t :foreground "#89b4fa" :weight bold)) "face for normal mode")
-  (defface pani/evil-insert-face  '((t :foreground "#a6e3a1" :weight bold)) "face for insert mode")
-  (defface pani/evil-visual-face  '((t :foreground "#cba6f7" :weight bold)) "face for visual mode")
-  (defface pani/evil-other-face   '((t :foreground "#f38ba8" :weight bold)) "face for other modes")
+  (defface pani/evil-normal-face '((t :foreground "#89b4fa" :weight bold)) "face for normal mode")
+  (defface pani/evil-insert-face '((t :foreground "#a6e3a1" :weight bold)) "face for insert mode")
+  (defface pani/evil-visual-face '((t :foreground "#cba6f7" :weight bold)) "face for visual mode")
+  (defface pani/evil-other-face  '((t :foreground "#f38ba8" :weight bold)) "face for other modes")
 
   (defun pani/evil-state-tag-concat-lambda (letter face)
     "Set the evil-state-indicator format with a concatenated lambda character in the modeline."
     (concat (propertize (format " %s " letter) 'face face)
-	    (propertize "λ " 'face '(:inherit font-lock-comment-face :slant normal :weight bold))))
+            (propertize "λ " 'face '(:inherit font-lock-comment-face :slant normal :weight bold))))
 
-  (setq evil-normal-state-tag (pani/evil-state-tag-concat-lambda "NOR" 'pani/evil-normal-face))
-  (setq evil-insert-state-tag (pani/evil-state-tag-concat-lambda "INS" 'pani/evil-insert-face))
-  (setq evil-visual-state-tag   (pani/evil-state-tag-concat-lambda "VIS" 'pani/evil-visual-face))
-  (setq evil-replace-state-tag  (pani/evil-state-tag-concat-lambda "REP" 'pani/evil-other-face))
-  (setq evil-operator-state-tag (pani/evil-state-tag-concat-lambda "OPE" 'pani/evil-other-face))
-  (setq evil-motion-state-tag   (pani/evil-state-tag-concat-lambda "MOT" 'pani/evil-other-face))
-  (setq evil-emacs-state-tag    (pani/evil-state-tag-concat-lambda "EMA" 'pani/evil-other-face))
-
-  (setq evil-mode-line-format '(before . mode-line-buffer-identification))
+  (setq evil-normal-state-tag   (pani/evil-state-tag-concat-lambda "NOR" 'pani/evil-normal-face)
+        evil-insert-state-tag   (pani/evil-state-tag-concat-lambda "INS" 'pani/evil-insert-face)
+        evil-visual-state-tag   (pani/evil-state-tag-concat-lambda "VIS" 'pani/evil-visual-face)
+        evil-replace-state-tag  (pani/evil-state-tag-concat-lambda "REP" 'pani/evil-other-face)
+        evil-operator-state-tag (pani/evil-state-tag-concat-lambda "OPE" 'pani/evil-other-face)
+        evil-motion-state-tag   (pani/evil-state-tag-concat-lambda "MOT" 'pani/evil-other-face)
+        evil-emacs-state-tag    (pani/evil-state-tag-concat-lambda "EMA" 'pani/evil-other-face)
+        evil-mode-line-format   '(before . mode-line-buffer-identification))
 
   :config
   (evil-mode 1)
-  (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
-  (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
-  (define-key evil-motion-state-map (kbd "C-u") 'evil-scroll-up) ; explicitly bind C-u
-  (define-key evil-motion-state-map (kbd "C-o") 'occur) ; `occur' now bound to C-o
-  (define-key evil-motion-state-map (kbd "C-q") 'query-replace) ; `query-replace' now bound to C-q
 
-  ;; Use visual line motions even outside of visual-line-mode buffers
-  (evil-global-set-key 'motion "j" 'evil-next-visual-line)
-  (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
+  (evil-define-key 'insert 'global
+    (kbd "C-g") #'evil-normal-state
+    (kbd "C-h") #'evil-delete-backward-char-and-join)
 
-  ;; Disable visual mode when dragging mouse
-  (define-key evil-motion-state-map [down-mouse-1] 'ignore)
-  (progn
-    (global-set-key [down-mouse-1] 'mouse-set-point)
-    (global-unset-key [drag-mouse-1]))
+  (evil-define-key 'motion 'global
+    (kbd "C-o") #'occur
+    (kbd "C-q") #'query-replace
+    "j" #'evil-next-visual-line          ; visual line motions everywhere
+    "k" #'evil-previous-visual-line
+    [down-mouse-1] #'ignore)             ; no visual mode when dragging mouse
 
-  ;; Setting leader key in emacs
+  ;; Leader key
   (evil-set-leader 'normal (kbd "SPC"))
   (evil-define-key nil 'global
-    (kbd "<leader>b") 'consult-buffer)
-  (evil-define-key nil 'global
-    (kbd "<leader>v") 'consult-project-buffer)
+    (kbd "<leader>b") #'consult-buffer
+    (kbd "<leader>v") #'consult-project-buffer)
 
-  ;; Mute echo area message when entering insert mode
-  (setq evil-echo-state nil)
+  ;; `t' as a prefix for tab commands
+  (defvar-keymap pani/tab-map
+    :doc "Tab manipulation commands under `t' in normal state."
+    "j" #'tab-previous
+    "k" #'tab-next
+    "n" #'tab-new
+    "x" #'tab-close
+    "X" #'tab-close-other)
+  (evil-define-key 'normal 'global "t" pani/tab-map)
 
-  ;; Set `t' as a prefix key for tab manipulation commands
-  (define-prefix-command 'pani/t-key)
-  (define-key evil-normal-state-map (kbd "t") 'pani/t-key)
-  (define-key pani/t-key (kbd "j") 'tab-previous)
-  (define-key pani/t-key (kbd "k") 'tab-next)
-  (define-key pani/t-key (kbd "n") 'tab-new)
-  (define-key pani/t-key (kbd "x") 'tab-close)
-  (define-key pani/t-key (kbd "X") 'tab-close-other)
+  ;; Vim-commentary without any extra package
+  (evil-define-operator pani/evil-comment-or-uncomment (beg end)
+    "Toggle comment for the region between BEG and END."
+    (interactive "<r>")
+    (comment-or-uncomment-region beg end))
+  (evil-define-key 'normal 'global "gc" #'pani/evil-comment-or-uncomment)
 
-  (evil-set-initial-state 'messages-buffer-mode 'normal)
-  (evil-set-initial-state 'dashboard-mode 'normal)
-  (evil-set-initial-state 'slime-repl-mode 'emacs)
-  (evil-set-initial-state 'comint-mode 'normal)
-  (evil-set-initial-state 'erc-mode 'emacs)
-  (evil-set-initial-state 'inferior-python-mode 'emacs))
+  (pcase-dolist (`(,mode . ,state) '((messages-buffer-mode . normal)
+                                      (dashboard-mode . normal)
+                                      (comint-mode . normal)
+                                      (slime-repl-mode . emacs)
+                                      (erc-mode . emacs)
+                                      (inferior-python-mode . emacs)))
+    (evil-set-initial-state mode state)))
 
 ;;; Vim Bindings Everywhere else
 (use-package evil-collection
   :ensure t
   :after evil
   :init
-  ;; unbind SPC in evil-mode since I use it as a leader key
+  ;; unbind SPC in evil-collection since I use it as a leader key
   (setq evil-collection-key-blacklist '("SPC"))
   :config
-  (setq evil-want-integration t)
-  (evil-collection-init)
-  ;; Vim-commentary without any extra package
-  (with-eval-after-load "evil"
-    (evil-define-operator my-evil-comment-or-uncomment (beg end)
-      "Toggle comment for the region between BEG and END."
-      (interactive "<r>")
-      (comment-or-uncomment-region beg end))
-    (evil-define-key 'normal 'global (kbd "gc") 'my-evil-comment-or-uncomment)))
+  (evil-collection-init))
 
 ;;; Some useful config for emacs-lisp
 (use-package emacs-lisp-mode
@@ -1573,11 +1567,6 @@ that and instead tries to complete against dictionary entries."
 	  (push-button (button-start btn))
 	(notmuch-show-toggle-message))))
 
-  (evil-collection-define-key 'normal 'notmuch-show-mode-map
-    (kbd "RET")      #'pani/notmuch-show-ret
-    (kbd "<return>") #'pani/notmuch-show-ret
-    (kbd "H")        #'evil-window-top)
-
   ;; View attachments without hunting for the part button
   (defun pani/notmuch-show--attachments ()
     "Return an alist of (LABEL . POSITION) for attachments of the message at point."
@@ -1620,9 +1609,6 @@ that and instead tries to complete against dictionary entries."
 	      (notmuch-show-interactively-view-part)
 	    (notmuch-show-view-part))))))
 
-  (evil-collection-define-key 'normal 'notmuch-show-mode-map
-    (kbd "P") #'pani/notmuch-show-view-attachment)
-
   :hook ((message-send . notmuch-mua-attachment-check)
 	 (message-send . pani/notmuch-mua-empty-subject-check))
 
@@ -1656,14 +1642,6 @@ that and instead tries to complete against dictionary entries."
 	       (message "mbsync failed (%s) — see *mbsync*"
 			(string-trim event)))))))))
 
-  (with-eval-after-load 'evil-collection
-    (evil-collection-define-key 'normal 'notmuch-hello-mode-map
-      "gR" #'pani/notmuch-poll-async)
-    (evil-collection-define-key 'normal 'notmuch-search-mode-map
-      "gR" #'pani/notmuch-poll-async)
-    (evil-collection-define-key 'normal 'notmuch-tree-mode-map
-      "gR" #'pani/notmuch-poll-async))
-
   :bind
   ( :map global-map
     ("C-c m m" . notmuch)
@@ -1688,10 +1666,17 @@ that and instead tries to complete against dictionary entries."
     ("C-<tab>" . nil)
     ("J" . notmuch-jump-search))
   :config
-  (evil-define-key 'normal notmuch-show-mode-map
-    (kbd "C-j") 'notmuch-show-next-message
-    (kbd "C-k") 'notmuch-show-previous-message
-    (kbd "c d") 'notmuch-show-resume-message))
+  (evil-collection-define-key 'normal 'notmuch-show-mode-map
+    (kbd "RET")      #'pani/notmuch-show-ret
+    (kbd "<return>") #'pani/notmuch-show-ret
+    "H"              #'evil-window-top
+    "P"              #'pani/notmuch-show-view-attachment
+    (kbd "C-j")      #'notmuch-show-next-message
+    (kbd "C-k")      #'notmuch-show-previous-message
+    "cd"             #'notmuch-show-resume-message)
+
+  (dolist (map '(notmuch-hello-mode-map notmuch-search-mode-map notmuch-tree-mode-map))
+    (evil-collection-define-key 'normal map "gR" #'pani/notmuch-poll-async)))
 
 ;;; Orgmode integration for notmuch
 (use-package ol-notmuch
@@ -2334,9 +2319,9 @@ author among the currently listed entries."
                  (if exclude "!" "")
                  (string-replace " " "_" name))))))
 
-  (evil-define-key 'normal elfeed-search-mode-map
-    (kbd "a") #'pani/elfeed-toggle-arxiv-filter
-    (kbd "A") #'pani/elfeed-search-filter-author)
+  (evil-collection-define-key 'normal 'elfeed-search-mode-map
+    "a" #'pani/elfeed-toggle-arxiv-filter
+    "A" #'pani/elfeed-search-filter-author)
 
   (defun pani/elfeed-open-link (entry)
     "Open ENTRY's main article link in the browser.
@@ -2848,8 +2833,8 @@ first."
 (use-package windmove
   :ensure nil
   :bind (:map global-map
-              ("C-k" . windmove-up)
-              ("C-j" . windmove-down)
+              ("C-<up>" . windmove-up)
+              ("C-<down>" . windmove-down)
               ("C-<left>" . windmove-left)
               ("C-<right>" . windmove-right))
   :config
