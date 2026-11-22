@@ -551,7 +551,8 @@ Clicking +N pops up the same minor-mode menu as the stock collapsed `…'."
   (evil-set-leader 'normal (kbd "SPC"))
   (evil-define-key nil 'global
     (kbd "<leader>b") #'consult-buffer
-    (kbd "<leader>v") #'consult-project-buffer)
+    (kbd "<leader>v") #'consult-project-buffer
+    (kbd "<leader>u") 'universal-argument)
 
   ;; `t' as a prefix for tab commands
   (defvar-keymap pani/tab-map
@@ -1558,14 +1559,18 @@ that and instead tries to complete against dictionary entries."
       (error "Sending message cancelled: empty subject")))
 
   (defun pani/notmuch-show-ret ()
-    "Expand a wash citation button on the current line; else toggle the message."
+    "Push the button at point; else expand a wash citation button on
+the current line; else toggle the message."
     (interactive)
     (let* ((eol (line-end-position))
 	   (btn (let ((b (next-button (line-beginning-position) t)))
-		  (and b (< (button-start b) eol) b))))
-      (if btn
-	  (push-button (button-start btn))
-	(notmuch-show-toggle-message))))
+		  (and b (< (button-start b) eol)
+		       (not (eq (button-type b) 'pani/notmuch-calendar-button))
+		       b))))
+      (cond
+       ((button-at (point)) (push-button (point)))
+       (btn (push-button (button-start btn)))
+       (t (notmuch-show-toggle-message)))))
 
   ;; View attachments without hunting for the part button
   (defun pani/notmuch-show--attachments ()
@@ -1682,6 +1687,17 @@ that and instead tries to complete against dictionary entries."
 (use-package ol-notmuch
   :ensure t
   :after notmuch)
+
+;;; Calendar invitations via notmuch and integration with org-agenda
+(use-package pani-notmuch-calendar
+  :load-path "lisp/"
+  :after notmuch
+  :custom
+  (pani/notmuch-calendar-capture-target '(file+olp+datetree "~/org/calendar.org"))
+  (pani/notmuch-calendar-identities '("ashish\\.panigrahi@aalto\\.fi"
+                                      "@ashishpanigrahi\\.com"))
+  :config
+  (pani/notmuch-calendar-mode 1))
 
 ;;; Attach marked dired files to an open message (notmuch in my case) buffer
 (use-package gnus-dired
