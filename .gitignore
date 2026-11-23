@@ -26,4 +26,5 @@ tree-sitter/
 *.eld
 games/
 .authinfo
+.user-lisp-autoloads.el
 emms/
