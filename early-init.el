@@ -19,7 +19,7 @@
 (setq inhibit-startup-message t)
 
 ;; Set user-lisp-directory
-(setq user-lisp-directory "~/.emacs.d/lisp/")
+(setq user-lisp-directory "~/.emacs.d/site-lisp/")
 
 ;; Hack to increase startup speed
 (setq vc-handled-backends '(Git))
