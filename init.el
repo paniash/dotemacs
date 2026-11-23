@@ -2384,7 +2384,8 @@ Works in both `elfeed-search-mode' and `elfeed-show-mode'."
                  (elfeed-tagged-p 'arxiv elfeed-show-entry)))
            ((derived-mode-p 'elfeed-search-mode)
             (string-match-p "\\+arxiv\\b" elfeed-search-filter)))
-      (pani/elfeed-latex-preview)))
+      (with-demoted-errors "elfeed LaTeX preview failed: %S"
+        (pani/elfeed-latex-preview))))
 
   (add-hook 'elfeed-search-update-hook #'pani/elfeed-latex)
   (advice-add 'elfeed-search-update-entry :after #'pani/elfeed-latex)
