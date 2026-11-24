@@ -1092,7 +1092,8 @@ It displays every DONE item closed from the chosen day upto today."
 ;;; Citar for bibliography and note-taking
 (use-package citar
   :ensure t
-  :hook (org-mode . citar-capf-setup)
+  :hook ((org-mode . citar-capf-setup)
+         (LaTeX-mode . citar-capf-setup))
   :config
   (defvar pani/zotero-path
     (expand-file-name
