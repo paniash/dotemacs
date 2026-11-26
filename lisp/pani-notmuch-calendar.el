@@ -271,9 +271,10 @@ Uses whichever of your addresses the invitation was sent to."
 (defvar-local pani/notmuch-calendar-reply-buffer nil
   "Non-nil in a compose buffer holding a calendar invitation reply.")
 
-(defun pani/notmuch-calendar--compose (ctx event status reply-ics edit)
+(defun pani/notmuch-calendar--compose (ctx event status reply-ics edit on-send)
   "Compose the reply REPLY-ICS with STATUS to EVENT; send unless EDIT.
-CTX is the message context stored on the button."
+CTX is the message context stored on the button. ON-SEND is called
+once the reply has actually been sent."
   (let* ((organizer (pani/notmuch-calendar--strip-mailto
 		     (gnus-icalendar-event:organizer event)))
 	 (summary (gnus-icalendar-event:summary event))
@@ -287,6 +288,7 @@ CTX is the message context stored on the button."
 			(In-Reply-To . ,(format "<%s>" id))
 			(References . ,(format "<%s>" id))))
     (setq pani/notmuch-calendar-reply-buffer t)
+    (message-add-action on-send 'send)
     (goto-char (point-max))
     (insert "<#multipart type=alternative>\n"
 	    "<#part type=\"text/plain\" charset=utf-8 disposition=inline>\n"
@@ -315,7 +317,9 @@ CTX is the message context stored on the button."
       (notmuch-show-refresh-view))))
 
 (defun pani/notmuch-calendar--respond (button)
-  "Answer the invitation stored on BUTTON."
+  "Answer the invitation stored on BUTTON.
+The calendar entry and tags are only changed once the reply is sent,
+so a reply opened for editing and then discarded changes nothing."
   (let* ((ics (button-get button 'pani-ics))
 	 (ctx (button-get button 'pani-ctx))
 	 (status (button-get button 'pani-status))
@@ -327,19 +331,23 @@ CTX is the message context stored on the button."
 	 (seq (pani/notmuch-calendar--sequence ics))
 	 ;; Build the reply first so a failure has no side effects.
 	 (reply (and (not (eq status 'added))
-		     (pani/notmuch-calendar--build-reply ics status))))
-    (if (eq status 'declined)
-	(pani/notmuch-calendar--remove-entry key)
-      (pani/notmuch-calendar--capture event key seq
-				      (if (eq status 'added) 'accepted status)))
-    (when (and reply pani/notmuch-calendar-tag-messages)
-      (notmuch-tag (notmuch-id-to-query (plist-get ctx :id))
-		   (mapcar (lambda (s)
-			     (concat (if (eq s status) "+" "-") (symbol-name s)))
-			   '(accepted tentative declined))))
-    (pani/notmuch-calendar--refresh show-buf)
+		     (pani/notmuch-calendar--build-reply ics status)))
+	 (commit
+	  (lambda ()
+	    (if (eq status 'declined)
+		(pani/notmuch-calendar--remove-entry key)
+	      (pani/notmuch-calendar--capture
+	       event key seq (if (eq status 'added) 'accepted status)))
+	    (when (and reply pani/notmuch-calendar-tag-messages)
+	      (notmuch-tag (notmuch-id-to-query (plist-get ctx :id))
+			   (mapcar (lambda (s)
+				     (concat (if (eq s status) "+" "-")
+					     (symbol-name s)))
+				   '(accepted tentative declined))))
+	    (pani/notmuch-calendar--refresh show-buf))))
     (if reply
-	(pani/notmuch-calendar--compose ctx event status reply edit)
+	(pani/notmuch-calendar--compose ctx event status reply edit commit)
+      (funcall commit)
       (message "Added \"%s\" to calendar without replying"
 	       (gnus-icalendar-event:summary event)))))
 
